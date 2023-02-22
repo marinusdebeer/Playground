@@ -8,9 +8,9 @@ import time
 # Define the Q-learning parameters
 alpha = 0.1         # learning rate, how much past experience is valued
 gamma = 0.9999        # discount factor, importance of future rewards
-epsilon = 0.9997    # exploration, how much exploration to do
-EPSILON_DECAY=0.9997
-SAVE_EVERY = 100
+epsilon = 0.997    # exploration, how much exploration to do
+EPSILON_DECAY=0.997
+SAVE_EVERY = 10
 #           0.99    0.993   0.997    0.9997      0.9985  0.9997     0.99985     0.99997
 # 50        0.61    0.704                        0.928              0.993
 # 100       0.366   0.495                        0.861              0.985
@@ -23,13 +23,13 @@ SAVE_EVERY = 100
 rand = 0
 choice = 0
 # Train the Q-learning agent for a number of episodes
-num_episodes = 10_000
+num_episodes = 1000
 training = False
 if training:
     env = gym.make("MountainCar-v0")
 else:
     env = gym.make("MountainCar-v0", render_mode="human")
-Q_TABLES_PATH='q_tables/8600_-132-qtables.npy'
+Q_TABLES_PATH='qtables/1000_-149-qtables.npy'
 DISCRETE_OS_SIZE = [20, 20]
 discrete_os_win_size = (env.observation_space.high - env.observation_space.low)/DISCRETE_OS_SIZE
 print("env.action_space.n", env.action_space.n)
