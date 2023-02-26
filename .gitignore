@@ -7,3 +7,9 @@ qtables
 qtabel_models
 models
 logs
+PetImages
+TestingPetImages
+.pickle
+.model
+num_reader.model
+.pb
