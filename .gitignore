@@ -1,5 +1,9 @@
 venv
 __pycache__
+*.h5
+*.npy
+carla_qtables
 qtables
+qtabel_models
 models
 logs
