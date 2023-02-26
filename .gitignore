@@ -4,3 +4,8 @@ qtables
 models
 logs
 PetImages
+TestingPetImages
+.pickle
+.model
+num_reader.model
+.pb
