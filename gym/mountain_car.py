@@ -25,14 +25,16 @@ choice = 0
 # Train the Q-learning agent for a number of episodes
 num_episodes = 1000
 training = False
+EXISTING_MODEL=False
 if training:
     env = gym.make("MountainCar-v0")
 else:
     env = gym.make("MountainCar-v0", render_mode="human")
-Q_TABLES_PATH='qtables/1000_-149-qtables.npy'
-DISCRETE_OS_SIZE = [20, 20]
+Q_TABLES_PATH='qtables/1000_-190-qtables.npy'
+STATES=25
+DISCRETE_OS_SIZE = [STATES, STATES]
 discrete_os_win_size = (env.observation_space.high - env.observation_space.low)/DISCRETE_OS_SIZE
-print("env.action_space.n", env.action_space.n)
+# print("env.action_space.n", env.action_space.n)
 # Define the function for selecting an action using epsilon-greedy policy
 def select_action(state, q_table):
     if np.random.random() > epsilon or not training:
@@ -55,19 +57,17 @@ def save_q_table(q_table, filename):
 # Try to initialize it that action 1 will happen so going straight
 # Initialize the Q-table with zeros
 
-if training:
-    q_table = np.zeros((20,20,2))
-    # q_table[:, :, 0] = -200000
-    # q_table = np.random.uniform(low=-2, high=0, size=(DISCRETE_OS_SIZE + [env.action_space.n]))
-else:
+if not training or EXISTING_MODEL:
     q_table = np.load(Q_TABLES_PATH)
-# q_table[:, :, :, :, 1] = 1
+else:
+    q_table = np.zeros((STATES, STATES ,2))
+    # q_table[:, :, 0] = -200000
+    # q_table = np.random.uniform(low=-2, high=0, size=(DISCRETE_OS_SIZE + [2]))
+
 episode_rewards = 0
 for episode in range(num_episodes+1):
     # Initialize the state
     state = env.reset()
-    if not training:
-        q_table = np.load(Q_TABLES_PATH)
     episode_reward = 0
     # Reduce the exploration rate over time
     epsilon = pow(EPSILON_DECAY, episode)
@@ -82,6 +82,7 @@ for episode in range(num_episodes+1):
         # print(action)
         # Take the action and observe the next state and reward
         next_state, reward, done, truncated, info = env.step(action)
+        reward = -1
         if action == 2:
             action = 1
         # print(next_state)
@@ -90,12 +91,13 @@ for episode in range(num_episodes+1):
         # print(next_discrete_state)
         # Update the Q-table using the Q-learning rule
         if training:
-            q_table[state + (action,)] += alpha * (reward + gamma * np.max(q_table[next_discrete_state]) - q_table[state + (action,)])
+            q_table[state + (action,)] = round(q_table[state + (action,)] + alpha * (reward + gamma * np.max(q_table[next_discrete_state]) - q_table[state + (action,)]), 3)
 
         # Update the state
         state = next_state
         # time.sleep(0.2)
         if done:
+            # print(reward)
             # print("rand", rand, " choice", choice, "epsilon", epsilon)
             rand = 0
             choice = 0
@@ -106,7 +108,7 @@ for episode in range(num_episodes+1):
     if episode % SAVE_EVERY == 0 and training:
         avg = round(episode_rewards/SAVE_EVERY)
         episode_rewards = 0
-        np.save(f"q_tables/{episode}_{avg}-qtables.npy", q_table)
+        np.save(f"qtables/{episode}_{avg}-qtables.npy", q_table)
     # Print the total reward for the episode
     # print(f"Episode {episode}: Total reward = {episode_reward}")
     epsilon = pow(EPSILON_DECAY, episode)

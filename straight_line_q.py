@@ -48,8 +48,8 @@ def discretize_state(state):
 class CarEnv:
     STEER_AMT = 1.0
     front_camera = None
-    goal_position = carla.Location(x=-76, y=133, z=0)
-    vehicle_prev_loc = carla.Location(x=81, y=133, z=0.1)
+    goal_position = carla.Location(x=-109, y=44, z=0)
+    vehicle_prev_loc = carla.Location(x=-25, y=135, z=0.1)
     im_width = 640
     im_height = 480
     SHOW_CAM = False
@@ -58,6 +58,27 @@ class CarEnv:
         self.client = carla.Client("localhost", 2000)
         self.client.set_timeout(5.0)
         self.world = self.client.get_world()
+        settings = self.world.get_settings()
+        settings.fixed_delta_seconds = None
+        settings.quality_level = 'Low'
+        # settings.fixed_delta_seconds = 0.1
+
+
+        weather = carla.WeatherParameters()
+
+        # Set weather parameters for snow
+        weather.cloudiness = 80.0
+        weather.precipitation = 10.0
+        weather.precipitation_deposits = 10.0
+        weather.wind_intensity = 10.0
+        weather.sun_azimuth_angle = -180.0
+        weather.sun_altitude_angle = -90.0
+
+        # Apply the new weather settings
+        self.world.set_weather(weather)
+
+        
+        self.world.apply_settings(settings)
         self.blueprint_library = self.world.get_blueprint_library()
 
         self.camera_bp = self.world.get_blueprint_library().find('sensor.camera.rgb')
@@ -73,10 +94,10 @@ class CarEnv:
         self.video_writer = None
         
         self.model_3 = self.blueprint_library.filter("model3")[0]
-        self.starting_position = [81 , 133, 0.0, 0.1 ]
-        self.spawn_point = carla.Transform(carla.Location(x=81, y=133, z=0.1), carla.Rotation(yaw=180))
+        self.starting_position = None
+        self.spawn_point = None
     def approaching_goal(self, prev, curr):
-        dist = round(self.distance_to_goal(prev) - self.distance_to_goal(curr))
+        dist = round((self.distance_to_goal(prev) - self.distance_to_goal(curr))*20)
         # print(f"prev: {prev} curr: {curr} dist: {dist}")
         return dist
 
@@ -87,11 +108,6 @@ class CarEnv:
     # Define a function that computes the distance to the goal
     def distance_to_goal(self, location):
         return location.distance(self.goal_position)
-
-    # Define the reward function
-    def goal_based_reward(self, location):
-        dist = self.distance_to_goal(location)
-        return -round(dist/10)
     
     def capture_and_save_image(self, camera, episode):
         if self.front_camera is not None:
@@ -122,6 +138,13 @@ class CarEnv:
         self.collision_hist = []
         self.actor_list = []
         # self.transform = random.choice(self.world.get_map().get_spawn_points())
+        # x_bounds = (-117, -25)
+        # y_bounds = (18, 141)
+        rand_spawn_point_x = random.randint(-28, -26)
+        rand_spawn_point_y = random.randint(130, 140)
+        yaw = random.randint(160,220)
+        print(rand_spawn_point_x, rand_spawn_point_y, yaw)
+        self.spawn_point = carla.Transform(carla.Location(x=rand_spawn_point_x, y=rand_spawn_point_y, z=0.1), carla.Rotation(yaw=yaw))
         self.vehicle = self.world.spawn_actor(self.model_3, self.spawn_point)
         self.actor_list.append(self.vehicle)
         transform = carla.Transform(carla.Location(x=2.5, z=0.7))
@@ -138,21 +161,23 @@ class CarEnv:
         self.actor_list.append(self.colsensor)
         self.colsensor.listen(lambda event: self.collision_data(event))
 
-        while self.front_camera is None:
-            time.sleep(0.01)
+        # while self.front_camera is None:
+        #     time.sleep(0.01)
 
         self.episode_start = time.time()
         self.vehicle.apply_control(carla.VehicleControl(throttle=0.0, brake=0.0))
         # time.sleep(0.2)
         self.vehicle_prev_loc = self.vehicle.get_location()
-        return discretize_state(self.starting_position)
+        loc = self.vehicle_prev_loc
+        vel = self.vehicle.get_velocity()
+        return discretize_state([loc.x, loc.y, vel.x, vel.y])
         # return self.front_camera
 
     def collision_data(self, event):
         self.collision_hist.append(event)
 
     def step(self, action):
-        time.sleep(0.1)
+        # time.sleep(0.01)
         # left
         if action == 0:
             self.vehicle.apply_control(carla.VehicleControl(throttle=0.0, steer=-1*self.STEER_AMT, brake=0.0))
@@ -173,29 +198,29 @@ class CarEnv:
         # print(reward)
         if len(self.collision_hist) != 0:
             done = True
-            reward = -100
+            reward = -1000
 
         if self.episode_start + SECONDS_PER_EPISODE < time.time():
             done = True
-        if loc.x < -90 or loc.x > 100 or loc.y < 130 or loc.y > 141:
-            reward = -100
-
-        if loc.x < -90:
-            loc.x = -89
+        if loc.x <= -117 or loc.x >= -25 or loc.y <= 18 or loc.y >= 141:
+            reward = -1000
+        # x_bounds = (-117, -25)
+        # y_bounds = (18, 141)
+        if loc.x <= -117:
+            loc.x = -116
             done = True
-        if loc.x > 100:
-            loc.x = 99
+        if loc.x >= -25:
+            loc.x = -26
             done = True
-        if loc.y < 130:
-            loc.y = 131
+        if loc.y <= 18:
+            loc.y = 19
             done = True
-        if loc.y > 141:
+        if loc.y >= 141:
             loc.y = 140
             done = True
-        # goal_position = carla.Location(x=-76, y=133, z=0)
-        # if loc.x < -74 and loc.x > -78 and loc.y > 131 and loc.y < 135:
-        if loc.x < -76 and loc.y > 125 and loc.y < 138:
-            reward = 100
+        # goal_position = carla.Location(x=-109, y=44, z=0)
+        if loc.x >= -117 and loc.x <= -101 and loc.y >= 42 and loc.y <= 44:
+            reward = 1000
             done = True
             print("GOAL REACHED!!!")
         self.vehicle_prev_loc = carla.Location(x=loc.x, y=loc.y, z=0.1)
@@ -203,37 +228,44 @@ class CarEnv:
         return observation, reward, done, None
 
 env = CarEnv()
-
-x_bounds = (-90, 100)
-y_bounds = (120, 150)
+# x_bounds = (-90, 100)
+# y_bounds = (120, 150)
+# vx_bounds = (-40, 40)
+# vy_bounds = (-40, 40)
+# n_x = 190
+# n_y = 30
+# n_vx = 40
+# n_vy = 40
+x_bounds = (-117, -25)
+y_bounds = (18, 141)
 vx_bounds = (-40, 40)
 vy_bounds = (-40, 40)
 # n_x * n_y * n_vx * n_vy * 4 * 8 bytes
-n_x = 190
-n_y = 30
+n_x = 100
+n_y = 130
 n_vx = 40
 n_vy = 40
 rand = 0
 choice = 0
-#           0.99    0.993   0.997    0.9997      0.9985  0.9997     0.99985     0.99997
+#           0.99    0.993   0.997    0.9997      0.9985   0.9997    0.99985     0.99997
 # 50        0.61    0.704                        0.928              0.993
-# 100       0.366   0.495                        0.861              0.985
+# 100       0.366   0.495                        0.861    0.970     0.985
 # 300       0.049   0.122   0.406
-# 500               0.03    0.223                0.472              0.928
-# 1000     0.007    0.0008  0.050                0.223              0.861
-# 10_000                              0.050      0.223    0.050     0.223
-# 20_000                                         0.050              0.050
+# 500               0.03    0.223                0.472    0.861     0.928
+# 1000     0.007    0.0008  0.050                0.223    0.741     0.861
+# 10_000                              0.050      0        0.050     0.223
+# 20_000                                         0                  0.050
 # 100_000                                                           0           0.050
 # Define the Q-learning parameters
 alpha = 0.2           # learning rate, how much past experience is valued
 gamma = 0.995         # discount factor, importance of future rewards
-epsilon = 0.997       # exploration, how much exploration to do
-EPSILON_DECAY=0.997
-num_episodes = 1000
-training = True
+epsilon = 0.9997       # exploration, how much exploration to do
+EPSILON_DECAY=0.9997
+num_episodes = 20_000
+training = False
 use_existing_model = True
-Q_TABLES_PATH='qtables/straight_line_qtable.npy'
-SAVE_EVERY = 10
+Q_TABLES_PATH='carla_qtables/q_table_episode4500_-39695.npy'
+SAVE_EVERY = 100
 SAVE_LOCATION="F:/Coding/carla_q_learning_qtables/"
 VIDEO_LOCATION="F:/Coding/recordings/"
 RECORD = False
@@ -259,6 +291,8 @@ file_reward = 0
 session_start = time.time()
 if not training or use_existing_model:
     q_table = np.load(Q_TABLES_PATH)
+    # zero_indices = np.where(q_table == 0)
+    # q_table[zero_indices] = -1000_000_000
 for episode in range(num_episodes+1):
     state = env.reset()
     if RECORD:
