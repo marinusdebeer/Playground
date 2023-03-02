@@ -9,7 +9,11 @@ models
 logs
 PetImages
 TestingPetImages
-.pickle
-.model
+PetImagesTesting
+*.pb
+*.pickle
+*.model
 num_reader.model
 .pb
+wslvenv
+directml_venv

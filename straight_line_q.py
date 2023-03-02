@@ -82,8 +82,8 @@ class CarEnv:
         self.blueprint_library = self.world.get_blueprint_library()
 
         self.camera_bp = self.world.get_blueprint_library().find('sensor.camera.rgb')
-        self.camera_transform = carla.Transform(carla.Location(x=-6.5, z=2.4))
-
+        # self.camera_transform = carla.Transform(carla.Location(x=-6.5, z=2.4))
+        self.camera_transform = carla.Transform(carla.Location(x=2.5, z=0.7), carla.Rotation(pitch=-30))
         self.camera_bp.set_attribute('image_size_x', f'{self.im_width}')
         self.camera_bp.set_attribute('image_size_y', f'{self.im_height}')
         self.camera_bp.set_attribute('fov', '110')
