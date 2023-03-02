@@ -17,3 +17,4 @@ num_reader.model
 .pb
 wslvenv
 directml_venv
+*.DS_Store
