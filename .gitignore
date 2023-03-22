@@ -17,5 +17,6 @@ num_reader.model
 .pb
 wslvenv
 directml_venv
-*.DS_Store
+.DS_Store
 dogs_cats_75px_models
+.env
