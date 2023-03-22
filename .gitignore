@@ -20,3 +20,7 @@ directml_venv
 .DS_Store
 dogs_cats_75px_models
 .env
+oneclose_text
+oneclose_processed
+text
+processed
