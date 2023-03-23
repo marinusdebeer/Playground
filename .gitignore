@@ -28,3 +28,5 @@ deeplearning_book_text
 deeplearning_book_processed
 sentdex_text
 sentdex_processed
+node_modules
+openai-server/node_modules
