@@ -1,0 +1,5 @@
+AI Applications, layer on GPT
+-- Caption creater for influencers, trained (or even just give there past captions as context) on there profiles to make it sound more like them
+-- thumbnail generator for influencers, trained on there past thumbnails
+-- AI that can make a video for you, trained on your past videos
+-- edit your videos for you, trained on your past videos

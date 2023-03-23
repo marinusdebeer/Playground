@@ -28,18 +28,20 @@ def predict(input):
 def predict_text(input):
     global prompt_history
     prompt_history.append(input)
-    prompt = "\n".join(prompt_history)
+    print(prompt_history)
     completions = openai.Completion.create(
-        # engine=model_engine,
+        # engine="davinci-codex",
         model="text-davinci-003",
-        prompt=prompt,
+        prompt="\n".join(prompt_history),
         max_tokens=60,
-        temperature=0,
+        temperature=0.7,
+        # stop="\n"
     )
     message = completions.choices[0].text.strip()
+    
+    prompt_history.append(message)
     print("message", message)
     print("prompt_history", prompt_history)
-    prompt_history.append(message)
     response = [(prompt_history[i], prompt_history[i+1]) for i in range(0, len(prompt_history)-1, 2)]
     return response
 
