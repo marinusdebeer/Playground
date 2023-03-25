@@ -30,3 +30,7 @@ sentdex_text
 sentdex_processed
 node_modules
 openai-server/node_modules
+roms
+ffmpeg-master-latest-win64-gpl
+*.mp3
+*.json
