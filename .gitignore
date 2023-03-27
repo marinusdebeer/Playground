@@ -34,3 +34,4 @@ roms
 ffmpeg-master-latest-win64-gpl
 *.mp3
 *.json
+output_images
