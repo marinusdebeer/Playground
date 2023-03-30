@@ -1,5 +1,4 @@
 import gymnasium as gym
-import curses
 env = gym.make("ALE/Breakout-v5", render_mode="human")
 observation = env.reset()
 action = 0
@@ -10,8 +9,8 @@ done = False
 # curses.noecho()
 # screen.keypad(True)
 # screen.nodelay(True)
-while not done:
-    env.render()
+while not done or True:
+    # env.render()
      # Read user input
     # key = screen.getch()
     # print(key)
@@ -23,6 +22,7 @@ while not done:
     action = env.action_space.sample()
     
     observation, reward, done, _, info = env.step(action)
+    print(observation.shape)
     
 env.close()
 
