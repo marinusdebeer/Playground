@@ -33,7 +33,7 @@ app.post('/chat', async (req, res) => {
   if (!prompt) 
     return res.status(400).json({ error: 'Prompt is required' });
   try {
-    const message = await createCompletion(prompt)
+    const message = await createCompletion("write a story")
     console.log(message)
     res.status(200).json({ message });
   } catch (error) {

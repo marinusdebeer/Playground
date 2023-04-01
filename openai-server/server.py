@@ -19,33 +19,34 @@ def predict(input):
     # model="gpt-3.5-turbo",#10x cheaper than davinci, and better. $0.002 per 1k tokens
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
-        messages=message_history
+        messages=[{"role": "user", "content": f"{input}"}],
+        max_tokens=3000,
     )
     reply_content = completion.choices[0].message.content
-    message_history.append({"role": "assistant", "content": f"{reply_content}"}) 
-    response = [(message_history[i]["content"], message_history[i+1]["content"]) for i in range(1, len(message_history)-1, 2)]  # convert to tuples of list
-    return response
+    # message_history.append({"role": "assistant", "content": f"{reply_content}"}) 
+    # response = [(message_history[i]["content"], message_history[i+1]["content"]) for i in range(1, len(message_history)-1, 2)]  # convert to tuples of list
+    return reply_content
 
 
 def predict_text(input):
     global prompt_history
     prompt_history.append(input)
-    print(prompt_history)
+    print(input)
     completions = openai.Completion.create(
         # engine="davinci-codex",
         model="text-davinci-003",
-        prompt="\n".join(prompt_history),
-        max_tokens=60,
+        # prompt="\n".join(prompt_history),
+        prompt=input,
+        max_tokens=10_000,
         temperature=0.7,
         # stop="\n"
     )
     message = completions.choices[0].text.strip()
     
     prompt_history.append(message)
-    print("message", message)
-    print("prompt_history", prompt_history)
-    response = [(prompt_history[i], prompt_history[i+1]) for i in range(0, len(prompt_history)-1, 2)]
-    return response
+    # print("message", message)
+    # print("prompt_history", prompt_history)
+    return message
 
 def create_image(input):
     #returns urls of the images the just open it in a new tab or display somehow
@@ -65,7 +66,8 @@ def chat():
     prompt = data['prompt']
 
     try:
-        message = predict_text(prompt)
+        # message = predict_text(prompt)
+        message = predict(prompt)
         return jsonify({'message': message}), 200
     except Exception as e:
         print(e)
