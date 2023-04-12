@@ -33,5 +33,5 @@ openai-server/node_modules
 roms
 ffmpeg-master-latest-win64-gpl
 *.mp3
-*.json
+# *.json
 output_images
