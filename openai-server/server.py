@@ -20,7 +20,7 @@ def predict(input):
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
         messages=[{"role": "user", "content": f"{input}"}],
-        max_tokens=3000,
+        max_tokens=300,
     )
     reply_content = completion.choices[0].message.content
     # message_history.append({"role": "assistant", "content": f"{reply_content}"}) 
