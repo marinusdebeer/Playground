@@ -1,8 +1,32 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import EventSource from 'react-native-event-source';
 import {Configuration, OpenAIApi} from 'openai';
 import 'react-native-url-polyfill/auto';
+// import {NavigationContainer} from '@react-navigation/native';
+// import {createDrawerNavigator} from '@react-navigation/drawer';
+// import HomeScreen from './Screens/HomeScreen';
+// import SettingsScreen from './Screens/SettingsScreen';
+// const Drawer = createDrawerNavigator();
+
+
+function HomeScreen({navigation}) {
+  return (
+    <View style={styles.container}>
+      <Text>Home Screen</Text>
+      <Button title="Open Drawer" onPress={() => navigation.openDrawer()} />
+    </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>Settings Screen</Text>
+    </View>
+  );
+}
+
 import {
   SafeAreaView,
   ScrollView,
@@ -14,92 +38,104 @@ import {
   Text,
   Image,
   TextInput,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Modal,
 } from 'react-native';
 
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
-const API_KEY = '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';
+const API_KEY = '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';
 const configuration = new Configuration({
   apiKey: API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  inputContainer: {
+    margin: 20,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 10,
+    borderColor: 'gray',
+    width: 290,
+    height: 60,
+  },
+  keyboardContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  input: {
+    color: 'white',
+    flex: 1,
+    fontSize: 16,
+  },
+  button: {
+    flex: 1,
+    backgroundColor: 'orange',
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    marginRight: 20,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
 function App(): JSX.Element {
   let [imageUrl, setImageUrl] = useState<string | null>(null);
   let [chatText, setChatText] = useState<string | null>(null);
-  let [conversation, setConversation] = useState<string[]>([]);
+  let [conversation, setConversation] = useState<any>({messages: []});
+  let [conversations, setConversations] = useState<any>([]);
   let [prompt, setPrompt] = useState<string>('');
+  const inputRef = useRef(null);
+  const scrollViewRef = useRef();
   const isDarkMode = useColorScheme() === 'dark';
+  useEffect(() => {
+    // Scroll to the bottom of the ScrollView whenever new messages are added
+    scrollViewRef.current.scrollToEnd({animated: true});
+  }, [conversation.messages]);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    color: 'white',
   };
 
-  function createStream() {
-    const url = 'https://api.openai.com/v1/chat/completions/sse'; // Replace with your SSE server URL
-
-    const eventSource = new EventSource(url);
-
-    eventSource.onmessage = event => {
-      console.log('Received data:', event.data);
-      // Process the streamed data here
-    };
-
-    eventSource.addEventListener('open', event => {
-      console.log('Connection opened:', event);
-    });
-
-    eventSource.addEventListener('error', error => {
-      if (error.eventPhase === EventSource.CLOSED) {
-        console.log('Connection closed');
-      } else {
-        console.error('Error:', error);
-      }
-    });
-
-    // To close the stream when you're done
-    // eventSource.close();
+  function newConversation() {
+    setConversation({id: 1, messages: []});
+    setPrompt('');
   }
-  createStream();
   async function chat() {
     console.log('Chat started');
+    const updatedConversation = {
+      id: conversation.id,
+      messages: [...conversation.messages, {role: 'user', content: prompt}],
+    };
+    setConversation(updatedConversation);
+    console.log(updatedConversation);
+    inputRef.current.clear();
     const response = await openai.createChatCompletion({
-      messages: [{role: 'user', content: prompt}],
+      messages: updatedConversation.messages,
       model: 'gpt-3.5-turbo',
       max_tokens: 200,
       // stream: true,
     });
-    // console.log(response);
-    console.log(response.data.choices[0].message.content);
-    setChatText(response.data.choices[0].message.content);
-    setConversation([
-      ...conversation,
-      response.data.choices[0].message.content,
-    ]);
+
+    const updatedConversationWithResponse = {
+      id: updatedConversation.id,
+      messages: [
+        ...updatedConversation.messages,
+        {role: 'assistant', content: response.data.choices[0].message.content},
+      ],
+    };
+    setConversation(updatedConversationWithResponse);
     console.log(conversation);
-    /* await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${API_KEY}`,
-      },
-      body: JSON.stringify({
-        messages: [{role: 'user', content: prompt}],
-        max_tokens: 200,
-        model: 'gpt-3.5-turbo',
-        n: 1,
-        stop: null,
-        stream: true,
-        temperature: 1,
-      }),
-    })
-      .then(response => {
-        console.log('1', response);
-        // return response.json();
-      })
-      .then(data => {
-        // console.log(data);
-        // console.log(data.choices[0].message.content);
-        // setChatText(data.choices[0].message.content);
-      }); */
   }
   async function image() {
     console.log('Image generation started');
@@ -110,132 +146,117 @@ function App(): JSX.Element {
         size: '512x512',
       });
       console.log(response.data.data[0].url);
-      console.log(response.data.data[0].url);
       setImageUrl(response.data.data[0].url);
-      /* await fetch('https://api.openai.com/v1/images/generations', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: 'image-alpha-001',
-          prompt: prompt,
-        }),
-      })
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          console.log(data.data[0].url);
-          setImageUrl(data.data[0].url);
-          // imageUrl = data.data[0].url;
-        }); */
     } catch (error) {
       console.error('error: ', error);
     }
   }
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        {/* <Header /> */}
-        <View
+    <SafeAreaView style={{backgroundColor: 'rgb(52, 53, 65)', flex: 1}}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      {/* <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Home">
+          <Drawer.Screen name="Home" component={HomeScreen} />
+          <Drawer.Screen name="Settings" component={SettingsScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer> */}
+      <View
+        style={{
+          backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          alignItems: 'center',
+          flexDirection: 'row', // add this
+          justifyContent: 'space-between',
+          paddingHorizontal: 30,
+          padding: 10,
+        }}>
+        <TouchableOpacity
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 10,
-          }}>
-          <Text style={{fontSize: 20, fontWeight: 'bold', margin: 10}}>
-            GPT-3 Mobile App
+            borderRadius: 5,
+            width: 20,
+            height: 20,
+            marginLeft: 0,
+            alignItems: 'flex-start',
+          }}
+          onPress={chat}>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 16,
+              fontWeight: 'bold',
+            }}>
+            m
           </Text>
-          
-          </View>
-          {conversation.map((message, index) => (
-          <ScrollView 
+        </TouchableOpacity>
+
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            margin: 10,
+            color: isDarkMode ? Colors.white : Colors.black,
+          }}>
+          GPT-3 Mobile App
+        </Text>
+
+        <TouchableOpacity
+          style={{
+            // backgroundColor: 'blue',
+            borderRadius: 5,
+            width: 20,
+            height: 20,
+            marginLeft: 30,
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+          }}
+          onPress={newConversation}>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 20,
+              fontWeight: 'bold',
+            }}>
+            +
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <ScrollView
+        ref={scrollViewRef}
+        style={{flex: 1}}
+        contentInsetAdjustmentBehavior="automatic">
+        {conversation.messages.map((message, index) => (
+          <View
             key={index}
             style={{
-              height: 300,
-              margin: 20,
-              width: 350,
-              borderWidth: 1,
-              borderColor: 'gray',
-              borderRadius: 10,
-            }}>
-            <Text style={{fontSize: 18, margin: 20}}>{message}</Text>
-          </ScrollView>
-        ))}
-        <ScrollView
-            style={{
-              margin: 10,
-              borderWidth: 1,
               padding: 10,
-              borderRadius: 10,
-              borderColor: 'gray',
-              width: 350,
+              backgroundColor:
+                index % 2 === 0 ? 'rgb(68, 70, 84)' : 'rgb(52, 53, 65)',
             }}>
-            <TextInput
+            <Text
               style={{
-                height: 80,
-              }}
-              placeholder="Prompt here"
-              multiline={true}
-              onChangeText={newText => setPrompt(newText)}
-            />
-          </ScrollView>
-          <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity
-              style={{
-                backgroundColor: '#ff8c00',
-                borderRadius: 10,
-                height: 50,
-                width: 120,
-                alignItems: 'center',
-                justifyContent: 'center',
+                fontSize: 18,
                 margin: 10,
-              }}
-              onPress={chat}>
-              <Text style={{color: 'white', fontSize: 20}}>Chat</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                backgroundColor: '#4b0082',
-                borderRadius: 10,
-                height: 50,
-                width: 120,
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: 10,
-              }}
-              onPress={image}>
-              <Text style={{color: 'white', fontSize: 20}}>Image</Text>
-            </TouchableOpacity>
-          <ScrollView
-            style={{
-              height: 300,
-              margin: 20,
-              width: 350,
-              borderWidth: 1,
-              borderColor: 'gray',
-              borderRadius: 10,
-            }}>
-            <Text style={{fontSize: 18, margin: 20}}>{chatText}</Text>
-          </ScrollView>
-          <Image
-            source={{
-              uri: imageUrl,
-              width: 200,
-              height: 200,
-            }}
+                color: isDarkMode ? 'white' : 'white',
+              }}>
+              {message.content}
+            </Text>
+          </View>
+        ))}
+      </ScrollView>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            ref={inputRef}
+            style={styles.input}
+            placeholder="Prompt here"
+            placeholderTextColor={isDarkMode ? 'white' : 'black'}
+            multiline={true}
+            onChangeText={newText => setPrompt(newText)}
           />
         </View>
-      </ScrollView>
+        <TouchableOpacity style={styles.button} onPress={chat}>
+          <Text style={styles.buttonText}>Chat</Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
