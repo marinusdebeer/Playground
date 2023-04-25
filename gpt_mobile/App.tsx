@@ -3,49 +3,28 @@ import React, {useState, useRef, useEffect} from 'react';
 import EventSource from 'react-native-event-source';
 import {Configuration, OpenAIApi} from 'openai';
 import 'react-native-url-polyfill/auto';
-// import {NavigationContainer} from '@react-navigation/native';
-// import {createDrawerNavigator} from '@react-navigation/drawer';
-// import HomeScreen from './Screens/HomeScreen';
-// import SettingsScreen from './Screens/SettingsScreen';
-// const Drawer = createDrawerNavigator();
-
-
-function HomeScreen({navigation}) {
-  return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button title="Open Drawer" onPress={() => navigation.openDrawer()} />
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>Settings Screen</Text>
-    </View>
-  );
-}
-
+import {API_KEY} from '@env';
+// import dotenv from 'dotenv';
+// dotenv.config();
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import ConversationList from './ConversationList';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   useColorScheme,
   View,
-  Button,
   TouchableOpacity,
   Text,
   Image,
   TextInput,
   KeyboardAvoidingView,
   StyleSheet,
-  Modal,
 } from 'react-native';
 
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
-const API_KEY = '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';
 const configuration = new Configuration({
+  // apiKey: process.env.API_KEY,
   apiKey: API_KEY,
 });
 const openai = new OpenAIApi(configuration);
@@ -56,12 +35,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   inputContainer: {
+    flex: 1,
     margin: 20,
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
     borderColor: 'gray',
-    width: 290,
+    // width: 290,
     height: 60,
   },
   keyboardContainer: {
@@ -74,9 +54,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: 'orange',
     height: 60,
+    width: 70,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
@@ -89,54 +70,182 @@ const styles = StyleSheet.create({
   },
 });
 function App(): JSX.Element {
+  let [menu, setMenu] = useState<boolean>(false);
   let [imageUrl, setImageUrl] = useState<string | null>(null);
-  let [chatText, setChatText] = useState<string | null>(null);
-  let [conversation, setConversation] = useState<any>({messages: []});
-  let [conversations, setConversations] = useState<any>([]);
+  let [conversationId, setConversationId] = useState<number>(1);
+  let [conversation, setConversation] = useState<number | null>(1);
+  let [conversations, setConversations] = useState<any>([
+    {id: 1, messages: [], title: 'conversation: 1'},
+  ]);
+  const promptRef = React.useRef(null);
   let [prompt, setPrompt] = useState<string>('');
-  const inputRef = useRef(null);
+  const [title, setTitle] = useState<string>('');
   const scrollViewRef = useRef();
   const isDarkMode = useColorScheme() === 'dark';
+  const storeData = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, value);
+      console.log('Data successfully saved');
+    } catch (error) {
+      // Handle error
+      console.log('Error saving data: ', error);
+    }
+  };
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('conversations');
+      if (value) {
+        setConversations(JSON.parse(value));
+        // console.log('Data successfully retrieved');
+        // console.log(JSON.parse(value));
+        return JSON.parse(value);
+      } else {
+        storeData('conversations', JSON.stringify(conversations));
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
   useEffect(() => {
-    // Scroll to the bottom of the ScrollView whenever new messages are added
-    scrollViewRef.current.scrollToEnd({animated: true});
-  }, [conversation.messages]);
+    (async () => {
+      const initialData = await getData();
+      if (!initialData || initialData.length === 0) {
+        newConversation();
+        return;
+      }
+      // console.log('id: ', initialData[initialData.length - 1].id + 1);
+      setConversationId(initialData[initialData.length - 1].id + 1);
+      setConversations(initialData);
+      setConversation(initialData[0].id);
+      setTitle(initialData[0].title);
+      // console.log("you're in the useEffect");
+      // newConversation();
+    })();
+  }, []);
+  const handleContentSizeChange = () => {
+    if (scrollViewRef.current)
+      scrollViewRef.current.scrollToEnd({animated: true});
+  };
+  async function handleSetConversations(conversations) {
+    // console.log(conversations);
+    storeData('conversations', JSON.stringify(conversations));
+    // await AsyncStorage.setItem('@conversations', JSON.stringify(conversations));
+    setConversations(conversations);
+  }
+  const handleConversationDelete = conversationId => {
+    const updatedConversations = conversations.filter(conv => {
+      if (conv.id === conversationId) {
+        return false;
+      }
+      return true;
+    });
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    color: 'white',
+    if (updatedConversations.length === 0) {
+      newConversation();
+      // handleSetConversations(updatedConversations);
+      // setConversation(null);
+    } else {
+      handleSetConversations(updatedConversations);
+      setConversation(updatedConversations[0].id);
+    }
+    setMenu(true);
+  };
+  const handleConversationPress = conversationId => {
+    const updatedConversations = conversations.filter(conv => {
+      if (conv.messages.length === 0 && conv.id !== conversationId) {
+        return false;
+      }
+      return true;
+    });
+    handleSetConversations(updatedConversations);
+    setConversation(conversationId);
+    setTitle(conversations.find(el => el.id === conversationId).title);
+    setMenu(false);
   };
 
   function newConversation() {
-    setConversation({id: 1, messages: []});
-    setPrompt('');
+    const conv = conversations.find(el => el.id === conversation);
+    if (!conv || conv.messages.length > 0) {
+      setMenu(false);
+      let newId = conversationId + 1;
+      const updatedConversation = {
+        id: newId,
+        messages: [],
+        title: 'New Chat',
+      };
+      setTitle('New Chat');
+      setConversation(conversationId + 1);
+      setPrompt('');
+      handleSetConversations([...conversations, updatedConversation]);
+      // setConversations([...conversations, updatedConversation]);
+      // console.log(conversation);
+      setConversationId(conversationId + 1);
+    }
   }
-  async function chat() {
-    console.log('Chat started');
+
+  function updateConversation(current, user: string, msg: string) {
     const updatedConversation = {
-      id: conversation.id,
-      messages: [...conversation.messages, {role: 'user', content: prompt}],
+      ...current,
+      messages: [...current.messages, {role: user, content: msg}],
     };
-    setConversation(updatedConversation);
-    console.log(updatedConversation);
-    inputRef.current.clear();
+    const updatedConversations = conversations.map(el => {
+      if (el.id === conversation) {
+        return updatedConversation;
+      }
+      return el;
+    });
+    handleSetConversations(updatedConversations);
+    // setConversations(updatedConversations);
+    // console.log(updatedConversations);
+    return updatedConversation;
+  }
+  const calculateFontSize = (text) => {
+    const baseFontSize = 20;
+    const maxLength = 23; // Adjust this value based on the desired maximum length before scaling the font size
+    if (text.length > maxLength) {
+      const fontSize = baseFontSize * (maxLength / text.length);
+      return fontSize;
+    }
+    return baseFontSize;
+  };
+  async function openai_chat(msgs) {
     const response = await openai.createChatCompletion({
-      messages: updatedConversation.messages,
+      messages: msgs,
+      // model: 'gpt-4',
       model: 'gpt-3.5-turbo',
-      max_tokens: 200,
+      // max_tokens: 200,
       // stream: true,
     });
-
-    const updatedConversationWithResponse = {
-      id: updatedConversation.id,
-      messages: [
-        ...updatedConversation.messages,
-        {role: 'assistant', content: response.data.choices[0].message.content},
-      ],
-    };
-    setConversation(updatedConversationWithResponse);
-    console.log(conversation);
+    return response.data.choices[0].message.content;
   }
+  async function chat() {
+    if (!prompt || prompt.length === 0) {
+      return;
+    }
+    console.log('Chat started');
+    let current = conversations.find(el => el.id === conversation);
+    current = updateConversation(current, 'user', prompt);
+    promptRef.current.clear();
+    // console.log(current.messages);
+    let msg = await openai_chat(current.messages);
+    current = updateConversation(current, 'assistant', msg);
+    if (current.messages.length === 2) {
+      const titleMsg = {
+        role: 'user',
+        content: 'create a short 4 word title based on the following: ' + prompt,
+      };
+      current.title = await openai_chat([titleMsg]);
+      const conv = conversations.map(el => {
+        if (el.id === conversation) {
+          setTitle(current.title);
+          return current;
+        }
+        return el;
+      });
+      handleSetConversations(conv);
+    }
+  }
+
   async function image() {
     console.log('Image generation started');
     try {
@@ -152,7 +261,8 @@ function App(): JSX.Element {
     }
   }
   return (
-    <SafeAreaView style={{backgroundColor: 'rgb(52, 53, 65)', flex: 1}}>
+    <SafeAreaView
+      style={{backgroundColor: 'rgb(52, 53, 65)', flex: 1, height: '100%'}}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {/* <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home">
@@ -172,16 +282,15 @@ function App(): JSX.Element {
         <TouchableOpacity
           style={{
             borderRadius: 5,
-            width: 20,
-            height: 20,
             marginLeft: 0,
             alignItems: 'flex-start',
           }}
-          onPress={chat}>
+          onPress={() => setMenu(!menu)}>
           <Text
             style={{
-              color: 'white',
+              color: isDarkMode ? 'white' : 'black',
               fontSize: 16,
+              padding: 10,
               fontWeight: 'bold',
             }}>
             m
@@ -189,21 +298,20 @@ function App(): JSX.Element {
         </TouchableOpacity>
 
         <Text
+          numberOfLines={1}
           style={{
-            fontSize: 20,
+            fontSize: menu ? 20 : calculateFontSize(title),
             fontWeight: 'bold',
             margin: 10,
+            maxWidth: '70%',
             color: isDarkMode ? Colors.white : Colors.black,
           }}>
-          GPT-3 Mobile App
+          {menu ? 'GPT' : title}
         </Text>
-
         <TouchableOpacity
           style={{
             // backgroundColor: 'blue',
             borderRadius: 5,
-            width: 20,
-            height: 20,
             marginLeft: 30,
             justifyContent: 'center',
             alignItems: 'flex-end',
@@ -211,53 +319,75 @@ function App(): JSX.Element {
           onPress={newConversation}>
           <Text
             style={{
-              color: 'white',
+              color: isDarkMode ? 'white' : 'black',
               fontSize: 20,
+              padding: 10,
               fontWeight: 'bold',
             }}>
             +
           </Text>
         </TouchableOpacity>
       </View>
-      <ScrollView
-        ref={scrollViewRef}
-        style={{flex: 1}}
-        contentInsetAdjustmentBehavior="automatic">
-        {conversation.messages.map((message, index) => (
-          <View
-            key={index}
-            style={{
-              padding: 10,
-              backgroundColor:
-                index % 2 === 0 ? 'rgb(68, 70, 84)' : 'rgb(52, 53, 65)',
-            }}>
-            <Text
-              style={{
-                fontSize: 18,
-                margin: 10,
-                color: isDarkMode ? 'white' : 'white',
-              }}>
-              {message.content}
-            </Text>
-          </View>
-        ))}
-      </ScrollView>
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            ref={inputRef}
-            style={styles.input}
-            placeholder="Prompt here"
-            placeholderTextColor={isDarkMode ? 'white' : 'black'}
-            multiline={true}
-            onChangeText={newText => setPrompt(newText)}
+      {!menu ? (
+        <View style={{flex: 1}}>
+          <ScrollView
+            ref={scrollViewRef}
+            style={{flex: 1}}
+            onContentSizeChange={handleContentSizeChange}
+            contentInsetAdjustmentBehavior="automatic">
+            {conversations
+              ?.find(el => el.id === conversation)
+              ?.messages?.map((message, index) => (
+                <View
+                  key={index}
+                  style={{
+                    padding: 10,
+                    backgroundColor:
+                      index % 2 === 0 ? 'rgb(68, 70, 84)' : 'rgb(52, 53, 65)',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      margin: 10,
+                      color: isDarkMode ? 'white' : 'white',
+                    }}>
+                    {message.content}
+                  </Text>
+                </View>
+              ))}
+              {/* <View style={{height: 500}}></View> */}
+          </ScrollView>
+        </View>
+      ) : (
+        <View>
+          <ConversationList
+            conversations={conversations}
+            onConversationPress={handleConversationPress}
+            onConversationDelete={handleConversationDelete}
           />
         </View>
-        <TouchableOpacity style={styles.button} onPress={chat}>
-          <Text style={styles.buttonText}>Chat</Text>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+      )}
+      {!menu && conversations.length > 0 ? (
+        <KeyboardAvoidingView behavior="padding" style={styles.container}>
+          <View style={styles.inputContainer}>
+            <TextInput
+              ref={promptRef}
+              style={styles.input}
+              placeholder="Prompt here"
+              placeholderTextColor={'white'}
+              multiline={true}
+              onChangeText={newText => setPrompt(newText)}
+            />
+          </View>
+          <TouchableOpacity style={styles.button} onPress={chat}>
+            <Text style={styles.buttonText}>Chat</Text>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
+      ) : (
+        ''
+      )}
     </SafeAreaView>
   );
 }
+
 export default App;
