@@ -12,7 +12,9 @@ TestingPetImages
 PetImagesTesting
 *.pb
 *.pickle
-*.model
+# *.model
+dogs_cats.model
+dogs_cats_150px.model
 num_reader.model
 .pb
 wslvenv
