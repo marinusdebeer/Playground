@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     // width: '90%',
   },
   container: {
-    height: '100%',
+    height: '90%',
     width: '100%',
     backgroundColor: 'rgb(52, 53, 65)',
   },
