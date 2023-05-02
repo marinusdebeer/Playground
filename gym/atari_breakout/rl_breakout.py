@@ -35,9 +35,6 @@ class DQN(tf.keras.Model):
 
 class DQNAgent:
     def __init__(self, num_actions=3):
-        self.save_path = "models_3_actions_small_reward_noop/"
-        self.model_truncate = 50
-
         self.num_actions = num_actions
         self.memory = deque(maxlen=100_000)
         self.frame_buffer = deque(maxlen=4)
@@ -56,15 +53,16 @@ class DQNAgent:
         self.render = False
         self.actions = [0, 2, 3]
 
+        self.model_truncate = 50
         self.model = DQN(self.num_actions, self.model_truncate)
         self.target_model = DQN(self.num_actions, self.model_truncate)
         self.optimizer = tf.keras.optimizers.Adam(learning_rate=self.learning_rate)
-        
-        # MODEL = f"models_3_actions/model_weights_episode_5000.h5"
-        # dummy_input = np.zeros((1, 84-self.model_truncate, 84, 4))
-        # self.model(dummy_input)
-        # self.model.load_weights(MODEL)
-        # self.target_model(dummy_input)
+
+        self.save_path = "models_3_actions_small_reward_noop/"
+        dummy_input = np.zeros((1, 84-self.model_truncate, 84, 4))
+        self.model(dummy_input)
+        self.model.load_weights(f"models_3_actions_small_reward_noop/model_weights_episode_510.h5")
+        self.target_model(dummy_input)
 
         self.update_target_network()
 
