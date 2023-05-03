@@ -40,16 +40,16 @@ class DQNAgent:
         self.num_actions = num_actions
         self.memory = deque(maxlen=250_000)
         self.frame_buffer = deque(maxlen=4)
-        self.epsilon = 0.3
+        self.epsilon = 0.2
         # self.epsilon_decay = 0.9997
-        self.epsilon_start = 0.3
+        self.epsilon_start = 0.2
         # self.epsilon_min = 0.10
         self.gamma = 0.99
         self.learning_rate = 0.00025
         # self.initial_learning_rate = 0.001
         # self.decay_rate = 0.99
 
-        self.num_episodes = 5000
+        self.num_episodes = 1000
         self.target_update_freq_steps = 5_000
         self.batch_size = 1024
         self.training_frequency = 200
@@ -67,7 +67,7 @@ class DQNAgent:
             print("..................Pretrained model..................")
             dummy_input = np.zeros((1, 84-self.model_truncate, 84, 4))
             self.model(dummy_input)
-            self.model.load_weights("models_3_actions/model_weights_episode_60.h5")
+            self.model.load_weights("models_3_actions/model_weights_episode_2310.h5")
             self.target_model(dummy_input)
             self.update_target_network()
 
@@ -103,7 +103,7 @@ class DQNAgent:
         self.scatter_axes.relim()
         self.scatter_axes.autoscale_view()
         self.fig_scatter.canvas.draw()
-        plt.pause(0.5)
+        plt.pause(0.1)
 
     def display_stacked_frames(self, state, pause_time=0.5):
         fig, axes = plt.subplots(1, 4, figsize=(16, 4))
@@ -199,14 +199,18 @@ class DQNAgent:
                     # replay_thread.start()
                 self.frame_buffer.append(self.preprocess_state(next_state))
                 next_state = np.stack(self.frame_buffer, axis=-1)
-                self.remember(state, action, reward, next_state, done)
-                state = next_state
                 episode_reward += reward
                 step_count += 1
 
                 if (info["lives"] < lives):
                     lives = info["lives"]
+                    reward = -5
+                    # print(f"lost a life and got {reward} points, done: {done}")
                     env.step(1)
+
+                self.remember(state, action, reward, next_state, done)
+                state = next_state
+
                 if done:
                     blocks += episode_reward
                     if episode_reward > highscore:
@@ -224,7 +228,7 @@ class DQNAgent:
                 self.update_scatter_plot(episode, blocks/10)
                 self.fig_scatter.savefig(f'models_3_actions/episode{episode}_vs_rewards.png', dpi=300)
                 blocks = 0
-            if episode % 300 == 0:  
+            if episode % 500 == 0:  
                 start = time.time()
                 self.save_experience_replay()
                 print(f"Experience replay saved at episode {episode}, took {time.time() - start} seconds")
