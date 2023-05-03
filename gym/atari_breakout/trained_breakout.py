@@ -5,14 +5,15 @@ import random
 from tqdm import tqdm
 from rl_breakout import DQNAgent
 # Create a new instance of the DQNAgent class with the same architecture as the trained model
-env = gym.make('Breakout-v4', render_mode="human")
-# env = gym.make('Breakout-v4')
-agent = DQNAgent(num_actions=3)
+# env = gym.make('Breakout-v4', render_mode="human")
+env = gym.make('Breakout-v4')
+model_truncate = 0
+agent = DQNAgent(num_actions=3, model_truncate=model_truncate, trained=True)
 # Build the model by calling it with an input shape
-dummy_input = np.zeros((1, 84, 84, 4))  # Replace with the appropriate input shape
+dummy_input = np.zeros((1, 84-model_truncate, 84, 4))  # Replace with the appropriate input shape
 _ = agent.model(dummy_input)
 # Load the saved weights from a specific episode
-agent.model.load_weights("models_3_actions/model_weights_episode_5000.h5")
+agent.model.load_weights("models_3_actions/model_weights_episode_3740.h5")
 # agent.model.load_weights("models/model_weights_episode_4380.h5")
 # Function to play the game using the trained model
 def play_game(agent, num_episodes=5):
@@ -30,19 +31,18 @@ def play_game(agent, num_episodes=5):
         episode_reward = 0
         env.step(1)
         while not done:
-          q_values = agent.model.predict(np.expand_dims(state, axis=0), verbose=0)[0]
+          state = np.expand_dims(state[model_truncate:], axis=0)
+          # print(state.shape)
+          q_values = agent.model.predict(state, verbose=0)[0]
           action = np.argmax(q_values)
           if action != 0:
             action += 1
           # action += 2
           # print(q_values, action)
           next_state, reward, done, _, info = env.step(action)
-          reward *= 20
-          if action == 0:
-              reward += 1
           steps += 1
-          if steps % 100 == 0:
-             agent.show_frame(next_state)
+          # if steps % 100 == 0:
+            #  agent.show_frame(agent.preprocess_state(next_state))
           agent.frame_buffer.append(agent.preprocess_state(next_state))
           next_state = np.stack(agent.frame_buffer, axis=-1).astype(np.float32) 
           state = next_state
