@@ -40,12 +40,12 @@ class DQNAgent:
         self.num_actions = num_actions
         self.memory = deque(maxlen=250_000)
         self.frame_buffer = deque(maxlen=4)
-        self.epsilon = 0.2
+        self.epsilon = 0.15
         # self.epsilon_decay = 0.9997
-        self.epsilon_start = 0.2
+        self.epsilon_start = 0.15
         # self.epsilon_min = 0.10
         self.gamma = 0.99
-        self.learning_rate = 0.00025
+        self.learning_rate = 0.000_1
         # self.initial_learning_rate = 0.001
         # self.decay_rate = 0.99
 
@@ -67,7 +67,7 @@ class DQNAgent:
             print("..................Pretrained model..................")
             dummy_input = np.zeros((1, 84-self.model_truncate, 84, 4))
             self.model(dummy_input)
-            self.model.load_weights("models_3_actions/model_weights_episode_2310.h5")
+            self.model.load_weights("models_3_actions/best_models_ranked_1_to_best/model_weights_episode_1000_3.h5")
             self.target_model(dummy_input)
             self.update_target_network()
 
@@ -161,6 +161,17 @@ class DQNAgent:
         gradients = tape.gradient(loss, self.model.trainable_variables)
         self.optimizer.apply_gradients(zip(gradients, self.model.trainable_variables))
 
+        # with tf.GradientTape() as tape:
+        #     q_values = self.model(states)
+        #     q_values_next = self.model(next_states)
+        #     target_q_values = rewards + self.gamma * tf.reduce_max(q_values_next, axis=1) * (1 - dones)
+        #     actions_one_hot = tf.one_hot(actions, self.num_actions)
+        #     q_values_pred = tf.reduce_sum(q_values * actions_one_hot, axis=1)
+        #     loss = tf.keras.losses.MSE(target_q_values, q_values_pred)
+        # gradients = tape.gradient(loss, self.model.trainable_variables)
+        # self.optimizer.apply_gradients(zip(gradients, self.model.trainable_variables))
+
+
     def train(self):
         if self.render:
             env = gym.make('Breakout-v4', render_mode="human")
@@ -204,7 +215,7 @@ class DQNAgent:
 
                 if (info["lives"] < lives):
                     lives = info["lives"]
-                    reward = -5
+                    reward = -15
                     # print(f"lost a life and got {reward} points, done: {done}")
                     env.step(1)
 

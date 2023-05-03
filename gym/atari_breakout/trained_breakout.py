@@ -13,7 +13,7 @@ agent = DQNAgent(num_actions=3, model_truncate=model_truncate, trained=True)
 dummy_input = np.zeros((1, 84-model_truncate, 84, 4))  # Replace with the appropriate input shape
 _ = agent.model(dummy_input)
 # Load the saved weights from a specific episode
-agent.model.load_weights("models_3_actions/model_weights_episode_2070.h5")
+agent.model.load_weights("models_3_actions/model_weights_episode_1000.h5")
 # agent.model.load_weights("models/model_weights_episode_4380.h5")
 # Function to play the game using the trained model
 def play_game(agent, num_episodes=5):
