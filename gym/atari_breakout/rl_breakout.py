@@ -40,9 +40,9 @@ class DQNAgent:
         self.num_actions = num_actions
         self.memory = deque(maxlen=250_000)
         self.frame_buffer = deque(maxlen=4)
-        self.epsilon = 0.15
+        self.epsilon = 0.0
         # self.epsilon_decay = 0.9997
-        self.epsilon_start = 0.15
+        self.epsilon_start = 0.10
         # self.epsilon_min = 0.10
         self.gamma = 0.99
         self.learning_rate = 0.000_1
@@ -63,13 +63,13 @@ class DQNAgent:
 
         self.experience_replay = "models_3_actions/experience_replay.pkl"
         self.save_path = "models_3_actions/"
-        if not trained:
-            print("..................Pretrained model..................")
-            dummy_input = np.zeros((1, 84-self.model_truncate, 84, 4))
-            self.model(dummy_input)
-            self.model.load_weights("models_3_actions/best_models_ranked_1_to_best/model_weights_episode_1000_3.h5")
-            self.target_model(dummy_input)
-            self.update_target_network()
+        # if not trained:
+        #     print("..................Pretrained model..................")
+        #     dummy_input = np.zeros((1, 84-self.model_truncate, 84, 4))
+        #     self.model(dummy_input)
+        #     self.model.load_weights("models_3_actions/best_models_ranked_1_to_best/model_weights_episode_1000_4.h5")
+        #     self.target_model(dummy_input)
+        #     self.update_target_network()
 
         self.fig_frame, self.ax_frame = plt.subplots()
         self.fig_scatter, self.scatter_axes = plt.subplots()
@@ -182,6 +182,7 @@ class DQNAgent:
         highscore = 0
         total_action_counter = {0: 0, 2: 0, 3: 0}
         blocks = 0
+        all_rewards = []
         # replay_lock = threading.Lock()
         for episode in tqdm(range(1, self.num_episodes + 1), ascii=True, unit='episodes'):
             lives = 5
@@ -211,6 +212,7 @@ class DQNAgent:
                 self.frame_buffer.append(self.preprocess_state(next_state))
                 next_state = np.stack(self.frame_buffer, axis=-1)
                 episode_reward += reward
+                
                 step_count += 1
 
                 if (info["lives"] < lives):
@@ -223,25 +225,28 @@ class DQNAgent:
                 state = next_state
 
                 if done:
+                    all_rewards.append(episode_reward)
                     blocks += episode_reward
                     if episode_reward > highscore:
                         highscore = episode_reward
-                    print(f"Episode {episode}, Highscore: {highscore}, Reward: {episode_reward}, Epsilon: {self.epsilon}, No op: {action_counter[0]}, Left: {action_counter[3]}, Right: {action_counter[2]}")
+                    print(f"Episode {episode}, Highscore: {highscore}, Reward: {episode_reward}, Epsilon: {self.epsilon}")
                     print(f"Total No op: {total_action_counter[0]}, Total Left: {total_action_counter[3]}, Total Right: {total_action_counter[2]}, memory size: {len(self.memory)}")
                 if step_count % self.target_update_freq_steps == 0:
                     self.update_target_network()
             # if self.epsilon > self.epsilon_min:
             # self.epsilon = pow(self.epsilon_decay, episode)
-            self.epsilon = self.epsilon_start -(episode/(self.num_episodes*(1/self.epsilon_start)))
+            # self.epsilon = self.epsilon_start -(episode/(self.num_episodes*(1/self.epsilon_start)))
             if episode % 10 == 0:
-                self.model.save_weights(f"{self.save_path}model_weights_episode_{episode}.h5")
+                # self.model.save_weights(f"{self.save_path}model_weights_episode_{episode}.h5")
                 print(f"Model weights saved at episode {episode}, Average Rewards: {round(blocks/10)}")
                 self.update_scatter_plot(episode, blocks/10)
-                self.fig_scatter.savefig(f'models_3_actions/episode{episode}_vs_rewards.png', dpi=300)
+                # self.fig_scatter.savefig(f'models_3_actions/episode{episode}_vs_rewards.png', dpi=300)
                 blocks = 0
+                # with open(f"{self.save_path}rewards.txt", "w") as f:
+                    # f.write(str(all_rewards))
             if episode % 500 == 0:  
                 start = time.time()
-                self.save_experience_replay()
+                # self.save_experience_replay()
                 print(f"Experience replay saved at episode {episode}, took {time.time() - start} seconds")
 
 
