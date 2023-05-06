@@ -14,6 +14,7 @@ PetImagesTesting
 *.pickle
 # *.model
 dogs_cats.model
+dogs_cats_100px.model
 dogs_cats_150px.model
 num_reader.model
 .pb

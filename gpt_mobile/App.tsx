@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import EventSource from 'react-native-event-source';
-import {Configuration, OpenAIApi} from 'openai';
+import { Configuration, OpenAIApi } from 'openai';
 import 'react-native-url-polyfill/auto';
-import {API_KEY} from '@env';
+import { API_KEY } from '@env';
 // import dotenv from 'dotenv';
 // dotenv.config();
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -20,14 +20,24 @@ import {
   TextInput,
   KeyboardAvoidingView,
   StyleSheet,
+  Animated,
 } from 'react-native';
 
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 const configuration = new Configuration({
   // apiKey: process.env.API_KEY,
   apiKey: API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+const conversationsContainer = {
+  zIndex: 1,
+  flex: 1,
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  backgroundColor: '#222',
+  width: '80%',
+};
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -75,8 +85,9 @@ function App(): JSX.Element {
   let [conversationId, setConversationId] = useState<number>(1);
   let [conversation, setConversation] = useState<number | null>(1);
   let [conversations, setConversations] = useState<any>([
-    {id: 1, messages: [], title: 'conversation: 1'},
+    { id: 1, messages: [], title: 'conversation: 1' },
   ]);
+  const slideAnim = useRef(new Animated.Value(-300)).current;
   const promptRef = React.useRef(null);
   let [prompt, setPrompt] = useState<string>('');
   const [title, setTitle] = useState<string>('');
@@ -91,6 +102,30 @@ function App(): JSX.Element {
       console.log('Error saving data: ', error);
     }
   };
+  const handleHideConversations = (value) => {
+    Animated.timing(slideAnim, {
+      toValue: -500,
+      duration: 300,
+      useNativeDriver: true,
+    }).start(() => setMenu(value));
+  };
+
+  useEffect(() => {
+    if (menu) {
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(slideAnim, {
+        toValue: -500,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [menu, slideAnim]);
+
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('conversations');
@@ -124,7 +159,7 @@ function App(): JSX.Element {
   }, []);
   const handleContentSizeChange = () => {
     if (scrollViewRef.current)
-      scrollViewRef.current.scrollToEnd({animated: true});
+      scrollViewRef.current.scrollToEnd({ animated: true });
   };
   async function handleSetConversations(conversations) {
     // console.log(conversations);
@@ -160,13 +195,15 @@ function App(): JSX.Element {
     handleSetConversations(updatedConversations);
     setConversation(conversationId);
     setTitle(conversations.find(el => el.id === conversationId).title);
-    setMenu(false);
+    // setMenu(false);
+    handleHideConversations(false);
   };
 
   function newConversation() {
     const conv = conversations.find(el => el.id === conversation);
     if (!conv || conv.messages.length > 0) {
-      setMenu(false);
+      // setMenu(false);
+      handleHideConversations(false);
       let newId = conversationId + 1;
       const updatedConversation = {
         id: newId,
@@ -180,13 +217,17 @@ function App(): JSX.Element {
       // setConversations([...conversations, updatedConversation]);
       // console.log(conversation);
       setConversationId(conversationId + 1);
+    } else {
+      // setConversation(conversationId);
+      // setMenu(false);
+      handleHideConversations(false);
     }
   }
 
   function updateConversation(current, user: string, msg: string) {
     const updatedConversation = {
       ...current,
-      messages: [...current.messages, {role: user, content: msg}],
+      messages: [...current.messages, { role: user, content: msg }],
     };
     const updatedConversations = conversations.map(el => {
       if (el.id === conversation) {
@@ -262,7 +303,7 @@ function App(): JSX.Element {
   }
   return (
     <SafeAreaView
-      style={{backgroundColor: 'rgb(52, 53, 65)', flex: 1, height: '100%'}}>
+      style={{ backgroundColor: 'rgb(52, 53, 65)', flex: 1, height: '100%' }}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {/* <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home">
@@ -285,7 +326,9 @@ function App(): JSX.Element {
             marginLeft: 0,
             alignItems: 'flex-start',
           }}
-          onPress={() => setMenu(!menu)}>
+          onPress={() =>
+            !menu ? setMenu(true) : handleHideConversations(false)
+          }>
           <Text
             style={{
               color: isDarkMode ? 'white' : 'black',
@@ -300,13 +343,14 @@ function App(): JSX.Element {
         <Text
           numberOfLines={1}
           style={{
-            fontSize: menu ? 20 : calculateFontSize(title),
+            fontSize: calculateFontSize(title),
             fontWeight: 'bold',
             margin: 10,
             maxWidth: '70%',
             color: isDarkMode ? Colors.white : Colors.black,
           }}>
-          {menu ? 'GPT' : title}
+          {title}
+          {/* {menu ? 'GPT' : title} */}
         </Text>
         <TouchableOpacity
           style={{
@@ -328,45 +372,48 @@ function App(): JSX.Element {
           </Text>
         </TouchableOpacity>
       </View>
-      {!menu ? (
-        <View style={{flex: 1}}>
-          <ScrollView
-            ref={scrollViewRef}
-            style={{flex: 1}}
-            onContentSizeChange={handleContentSizeChange}
-            contentInsetAdjustmentBehavior="automatic">
-            {conversations
-              ?.find(el => el.id === conversation)
-              ?.messages?.map((message, index) => (
-                <View
-                  key={index}
+
+      <View style={{ flex: 1, backgroundColor: 'rgba(68, 70, 84, 0.6)'}}>
+        <ScrollView
+          ref={scrollViewRef}
+          style={{ flex: 1, zIndex: 0 }}
+          onContentSizeChange={handleContentSizeChange}
+          contentInsetAdjustmentBehavior="automatic">
+          {conversations
+            ?.find(el => el.id === conversation)
+            ?.messages?.map((message, index) => (
+              <View
+                key={index}
+                style={{
+                  padding: 10,
+                  backgroundColor:
+                    index % 2 === 0 ? 'rgb(68, 70, 84)' : 'rgb(52, 53, 65)',
+                }}>
+                <Text
                   style={{
-                    padding: 10,
-                    backgroundColor:
-                      index % 2 === 0 ? 'rgb(68, 70, 84)' : 'rgb(52, 53, 65)',
+                    fontSize: 18,
+                    margin: 10,
+                    color: isDarkMode ? 'white' : 'white',
                   }}>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      margin: 10,
-                      color: isDarkMode ? 'white' : 'white',
-                    }}>
-                    {message.content}
-                  </Text>
-                </View>
-              ))}
-              {/* <View style={{height: 500}}></View> */}
-          </ScrollView>
-        </View>
-      ) : (
-        <View>
+                  {message.content}
+                </Text>
+              </View>
+            ))}
+          {/* <View style={{height: 500}}></View> */}
+        </ScrollView>
+        <Animated.View
+          style={{
+            ...conversationsContainer,
+            transform: [{translateX: slideAnim}],
+          }}>
           <ConversationList
             conversations={conversations}
             onConversationPress={handleConversationPress}
             onConversationDelete={handleConversationDelete}
           />
-        </View>
-      )}
+        </Animated.View>
+      </View>
+
       {!menu && conversations.length > 0 ? (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <View style={styles.inputContainer}>
