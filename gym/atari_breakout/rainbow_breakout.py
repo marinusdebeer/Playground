@@ -33,10 +33,11 @@ SAVE_PATH = "rainbow_models/"
 RENDER = False
 PRETRAINED = False
 MODEL = "rainbow_models/model_100.h5"
-
-def write_to_file(self, output_str, file_name="output.txt"):
-    with open(f"{SAVE_PATH}{file_name}", "a") as f:
-        f.write(output_str)
+TRAINING = False
+def write_to_file(output_str, file_name="output.txt"):
+    if TRAINING:
+        with open(f"{SAVE_PATH}{file_name}", "a") as f:
+            f.write(output_str)
 # Prioritized experience replay buffer
 class PrioritizedReplayBuffer:
     def __init__(self, buffer_size, alpha):
@@ -92,7 +93,8 @@ def DQN(num_actions):
     return model
 # Rainbow agent
 class RainbowAgent:
-    def __init__(self):
+    def __init__(self, TRAIN=False):
+        TRAINING = TRAIN
         self.frame_buffer = deque(maxlen=4)
         self.num_actions = NUM_ACTIONS
         self.learning_rate = LEARNING_RATE
@@ -113,7 +115,7 @@ class RainbowAgent:
             self.env = gym.make('Breakout-v4', render_mode="human")
         else:
             self.env = gym.make('Breakout-v4')
-        if PRETRAINED:
+        if PRETRAINED and TRAINING:
             print("..................Pretrained model..................\n{MODEL}")
             write_to_file(f"..................Pretrained model..................\n{MODEL}\n")
             dummy_input = np.zeros((1, 84, 84, 4))
@@ -276,7 +278,7 @@ class RainbowAgent:
 
                 if (info["lives"] < lives):
                     lives = info["lives"]
-                    reward = -2
+                    reward = -15
                     self.env.step(1)
 
                 self.remember(state, action, reward, next_state, done)
@@ -293,7 +295,7 @@ class RainbowAgent:
                     average_time_per_episode = elapsed_time / episode
                     output_str = f"Episode {episode}/{NUM_EPISODES}, Highscore: {highscore}, Reward: {ep_reward}, Epsilon: {round(self.epsilon, 3)}\n"
                     output_str += f"Total time: {round(elapsed_time, 1)}s, Episode time: {round(time.time() - ep_start, 1)}s, Average time: {round(average_time_per_episode, 1)}s\n"
-                    output_str += f"No op: {action_counter[0]}, Left: {action_counter[3]}, Right: {action_counter[2]}\n"
+                    output_str += f"No op: {action_counter[0]}, Left: {action_counter[3]}, Right: {action_counter[2]}, Total: {action_counter[0] + action_counter[2] + action_counter[3]}\n"
                     output_str += f"Total No op: {total_action_counter[0]}, Total Left: {total_action_counter[3]}, Total Right: {total_action_counter[2]}, memory size: {len(self.buffer)}\n\n"
                     write_to_file(output_str)
                     print(output_str, end='')  # print the output to the console

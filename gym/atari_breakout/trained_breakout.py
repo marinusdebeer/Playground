@@ -3,17 +3,17 @@ import gymnasium as gym
 import time
 import random
 from tqdm import tqdm
-from rl_breakout import DQNAgent
+# from rl_breakout import DQNAgent
+from rainbow_breakout import RainbowAgent
 # Create a new instance of the DQNAgent class with the same architecture as the trained model
 env = gym.make('Breakout-v4', render_mode="human")
 # env = gym.make('Breakout-v4')
-model_truncate = 0
-agent = DQNAgent(num_actions=3, model_truncate=model_truncate, trained=True)
+agent = RainbowAgent(TRAIN=True)
 # Build the model by calling it with an input shape
-dummy_input = np.zeros((1, 84-model_truncate, 84, 4))  # Replace with the appropriate input shape
-_ = agent.model(dummy_input)
+dummy_input = np.zeros((1, 84, 84, 4))  # Replace with the appropriate input shape
+_ = agent.q_network(dummy_input)
 # Load the saved weights from a specific episode
-agent.model.load_weights("models_3_actions/model_weights_episode_760.h5")
+agent.q_network.load_weights("rainbow_models/model_10000.h5")
 # agent.model.load_weights("models/model_weights_episode_4380.h5")
 # Function to play the game using the trained model
 def play_game(agent, num_episodes=5):
@@ -31,16 +31,16 @@ def play_game(agent, num_episodes=5):
         episode_reward = 0
         env.step(1)
         while not done:
-          state = np.expand_dims(state[model_truncate:], axis=0)
+          state = np.expand_dims(state, axis=0)
           # print(state.shape)
-          q_values = agent.model.predict(state, verbose=0)[0]
+          q_values = agent.q_network.predict(state, verbose=0)[0]
           action = np.argmax(q_values)
           if action != 0:
             action += 1
           # action += 2
           # print(q_values, action)
           next_state, reward, done, bruh, info = env.step(action)
-          print(info, bruh)
+          # print(info, bruh)
           steps += 1
           # if steps % 100 == 0:
             #  agent.show_frame(agent.preprocess_state(next_state))
@@ -59,5 +59,6 @@ def play_game(agent, num_episodes=5):
     
     env.close()
 
+print("play game")
 # Play the game using the trained model
 play_game(agent, num_episodes=5)
