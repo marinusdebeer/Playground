@@ -12,12 +12,14 @@ TestingPetImages
 PetImagesTesting
 *.pb
 *.pickle
+*.pkl
 # *.model
 dogs_cats.model
 dogs_cats_100px.model
 dogs_cats_150px.model
 num_reader.model
 .pb
+*.png
 wslvenv
 directml_venv
 .DS_Store
