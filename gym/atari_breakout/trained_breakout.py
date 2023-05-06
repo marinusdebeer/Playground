@@ -8,12 +8,12 @@ from rainbow_breakout import RainbowAgent
 # Create a new instance of the DQNAgent class with the same architecture as the trained model
 env = gym.make('Breakout-v4', render_mode="human")
 # env = gym.make('Breakout-v4')
-agent = RainbowAgent(TRAIN=True)
+agent = RainbowAgent(TRAIN=False)
 # Build the model by calling it with an input shape
 dummy_input = np.zeros((1, 84, 84, 4))  # Replace with the appropriate input shape
 _ = agent.q_network(dummy_input)
 # Load the saved weights from a specific episode
-agent.q_network.load_weights("rainbow_models/model_10000.h5")
+agent.q_network.load_weights("rainbow_models/good_models/model_10000_1.h5")
 # agent.model.load_weights("models/model_weights_episode_4380.h5")
 # Function to play the game using the trained model
 def play_game(agent, num_episodes=5):

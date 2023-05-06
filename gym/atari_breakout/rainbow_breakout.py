@@ -25,17 +25,18 @@ BATCH_SIZE = 1024
 TARGET_UPDATE_FREQ = 3_000
 TRAINING_FREQ = 200
 LEARNING_RATE = 0.000_25
-EPSILON_START = 1.0
+EPSILON_START = 0.5
 
-NUM_EPISODES = 10_000
+NUM_EPISODES = 100
 SAVE_FREQ = 10
 SAVE_PATH = "rainbow_models/"
 RENDER = False
-PRETRAINED = False
-MODEL = "rainbow_models/model_100.h5"
-TRAINING = False
+PRETRAINED = True
+MODEL = "rainbow_models/good_models/model_10000_1.h5"
+training = False
 def write_to_file(output_str, file_name="output.txt"):
-    if TRAINING:
+    global training
+    if training:
         with open(f"{SAVE_PATH}{file_name}", "a") as f:
             f.write(output_str)
 # Prioritized experience replay buffer
@@ -94,7 +95,9 @@ def DQN(num_actions):
 # Rainbow agent
 class RainbowAgent:
     def __init__(self, TRAIN=False):
-        TRAINING = TRAIN
+        global training
+        training = TRAIN
+        print(training)
         self.frame_buffer = deque(maxlen=4)
         self.num_actions = NUM_ACTIONS
         self.learning_rate = LEARNING_RATE
@@ -115,8 +118,8 @@ class RainbowAgent:
             self.env = gym.make('Breakout-v4', render_mode="human")
         else:
             self.env = gym.make('Breakout-v4')
-        if PRETRAINED and TRAINING:
-            print("..................Pretrained model..................\n{MODEL}")
+        if PRETRAINED and training:
+            print(f"..................Pretrained model..................\n{MODEL}")
             write_to_file(f"..................Pretrained model..................\n{MODEL}\n")
             dummy_input = np.zeros((1, 84, 84, 4))
             self.q_network(dummy_input)
@@ -124,26 +127,25 @@ class RainbowAgent:
             self.target_network(dummy_input)
             self.update_target_network()
         # log the hyperparameters
-        write_to_file(f"""Hyperparameters:\n
-        NUM_ACTIONS = {NUM_ACTIONS}\n
-        ACTIONS = {ACTIONS}\n
-        GAMMA = {GAMMA}\n
-        ALPHA = {ALPHA}\n
-        BETA = {BETA}\n
-        BUFFER_SIZE = {BUFFER_SIZE}\n
-        N_STEPS = {N_STEPS}\n
-        BATCH_SIZE = {BATCH_SIZE}\n
-        TARGET_UPDATE_FREQ = {TARGET_UPDATE_FREQ}\n
-        TRAINING_FREQ = {TRAINING_FREQ}\n
-        LEARNING_RATE = {LEARNING_RATE}\n
-        EPSILON_START = {EPSILON_START}\n
-        NUM_EPISODES = {NUM_EPISODES}\n
-        SAVE_FREQ = {SAVE_FREQ}\n
-        SAVE_PATH = {SAVE_PATH}\n
-        RENDER = {RENDER}\n
-        PRETRAINED = {PRETRAINED}\n
-        MODEL = {MODEL}\n
-        """)
+        write_to_file(f"""Hyperparameters:
+        NUM_ACTIONS = {NUM_ACTIONS}
+        ACTIONS = {ACTIONS}
+        GAMMA = {GAMMA}
+        ALPHA = {ALPHA}
+        BETA = {BETA}
+        BUFFER_SIZE = {BUFFER_SIZE}
+        N_STEPS = {N_STEPS}
+        BATCH_SIZE = {BATCH_SIZE}
+        TARGET_UPDATE_FREQ = {TARGET_UPDATE_FREQ}
+        TRAINING_FREQ = {TRAINING_FREQ}
+        LEARNING_RATE = {LEARNING_RATE}
+        EPSILON_START = {EPSILON_START}
+        NUM_EPISODES = {NUM_EPISODES}
+        SAVE_FREQ = {SAVE_FREQ}
+        SAVE_PATH = {SAVE_PATH}
+        RENDER = {RENDER}
+        PRETRAINED = {PRETRAINED}
+        MODEL = {MODEL}\n\n""")
 
     def update_target_network(self):
         print("updating target network")
@@ -308,6 +310,6 @@ class RainbowAgent:
                     f.write(str(all_rewards))
 
 if __name__ == "__main__":
-    agent = RainbowAgent()
+    agent = RainbowAgent(TRAIN=True)
     agent.train()
 
