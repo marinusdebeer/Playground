@@ -3,6 +3,7 @@ import numpy as np
 import ast
 # create some sample data
 with open("rainbow_models/rewards.txt", "r") as f:
+# with open("rainbow_models/good_models/rewards_1.txt", "r") as f:
     data_str = f.read()
     data = ast.literal_eval(data_str)
 
@@ -11,7 +12,8 @@ fig, ax = plt.subplots()
 data_array = np.array(data)
 # print(np.average(data_array[5000:]))
 
-reshaped_arr = data_array[-2_000:].reshape(40, 50)
+# reshaped_arr = data_array[-2_000:].reshape(40, 50)
+reshaped_arr = data_array[-2000:].reshape(20, 100)
 
 averaged_arr = reshaped_arr.mean(axis=1)
 

@@ -1,3 +1,23 @@
+updating target network
+Hyperparameters:
+        NUM_ACTIONS = 3
+        ACTIONS = [0, 2, 3]
+        GAMMA = 0.99
+        ALPHA = 0.6
+        BETA = 0.4
+        BUFFER_SIZE = 250_000
+        N_STEPS = 5 // not used though
+        BATCH_SIZE = 1024
+        TARGET_UPDATE_FREQ = 2_000
+        TRAINING_FREQ = 200
+        LEARNING_RATE = 0.000_25
+        EPSILON_START = 1.0
+        NUM_EPISODES = 10_000
+        SAVE_FREQ = 10
+        SAVE_PATH = rainbow_models/
+        RENDER = False
+        PRETRAINED = False
+
 Episode 1/10000, Highscore: 0, Reward: 0.0, Epsilon: 1.0
 Total time: 0.3s, Episode time: 0.3s, Average time: 0.3s
 No op: 56, Left: 46, Right: 58

@@ -13,12 +13,13 @@ from tqdm import tqdm
 import threading
 import pickle
 import time
+from send_email import send_email
 
 
 class DQN(tf.keras.Model):
-    def __init__(self, num_actions, model_truncate):
+    def __init__(self, num_actions):
         super(DQN, self).__init__()
-        self.conv1 = Conv2D(32, 8, strides=4, activation='relu', input_shape=(84-model_truncate, 84, 4))
+        self.conv1 = Conv2D(32, 8, strides=4, activation='relu', input_shape=(84, 84, 4))
         self.conv2 = Conv2D(64, 4, strides=2, activation='relu')
         self.conv3 = Conv2D(64, 3, strides=1, activation='relu')
         self.flatten = Flatten()
@@ -36,7 +37,7 @@ class DQN(tf.keras.Model):
 
 
 class DQNAgent:
-    def __init__(self, num_actions=3, model_truncate=0, trained=False):
+    def __init__(self, num_actions=3):
         self.num_actions = num_actions
         self.memory = deque(maxlen=250_000)
         self.frame_buffer = deque(maxlen=4)
@@ -53,29 +54,30 @@ class DQNAgent:
         self.target_update_freq_steps = 5_000
         self.batch_size = 1024
         self.training_frequency = 200
-        self.render = False
+        self.render = True
         self.actions = [0, 2, 3]
+        self.training = False
+        self.pre_trained = True
 
-        self.model_truncate = model_truncate
-        self.model = DQN(num_actions, model_truncate=model_truncate)
-        self.target_model = DQN(num_actions, model_truncate=model_truncate)
+        self.model = DQN(num_actions)
+        self.target_model = DQN(num_actions)
         self.optimizer = tf.keras.optimizers.Adam(learning_rate=self.learning_rate)
 
         self.experience_replay = "models_3_actions/experience_replay.pkl"
         self.save_path = "models_3_actions/"
-        # if not trained:
-        #     print("..................Pretrained model..................")
-        #     dummy_input = np.zeros((1, 84-self.model_truncate, 84, 4))
-        #     self.model(dummy_input)
-        #     self.model.load_weights("models_3_actions/best_models_ranked_1_to_best/model_weights_episode_1000_4.h5")
-        #     self.target_model(dummy_input)
-        #     self.update_target_network()
+        if self.pre_trained:
+            print("..................Pretrained model..................")
+            dummy_input = np.zeros((1, 84, 84, 4))
+            self.model(dummy_input)
+            self.model.load_weights("models_3_actions/best_models_ranked_1_to_best/model_weights_episode_1000_4.h5")
+            self.target_model(dummy_input)
+            self.update_target_network()
 
         self.fig_frame, self.ax_frame = plt.subplots()
-        self.fig_scatter, self.scatter_axes = plt.subplots()
-        self.scatter_axes.set_xlabel('Episodes')
-        self.scatter_axes.set_ylabel('Average Rewards Per 10 Episodes')
-        self.scatter_axes.set_title('Episode vs Average Rewards Per 10 Episodes')
+        # self.fig_scatter, self.scatter_axes = plt.subplots()
+        # self.scatter_axes.set_xlabel('Episodes')
+        # self.scatter_axes.set_ylabel('Average Rewards Per 10 Episodes')
+        # self.scatter_axes.set_title('Episode vs Average Rewards Per 10 Episodes')
         self.rewards = []
         self.episodes = []
     def preprocess_state(self, state):
@@ -90,11 +92,13 @@ class DQNAgent:
         return processed_observe
 
     def show_frame(self, state):
+        if self.fig_frame is None or not plt.fignum_exists(self.fig_frame.number):
+            self.fig_frame, self.ax_frame = plt.subplots()
         self.ax_frame.clear()
         self.ax_frame.imshow(state, cmap='gray')
         self.fig_frame.canvas.draw()
         plt.pause(0.1)
-
+        
     def update_scatter_plot(self, episode, reward):
         self.episodes.append(episode)
         self.rewards.append(reward)
@@ -119,10 +123,10 @@ class DQNAgent:
         self.memory.append((state, action, reward, next_state, done))
 
     def choose_action(self, state):
-        if np.random.rand() <= self.epsilon:
+        if np.random.rand() <= self.epsilon and self.training:
             return np.random.choice(self.actions)
-        truncated_state = [s[self.model_truncate:, :] for s in state]
-        q_values = self.model(np.array([truncated_state], dtype=np.float32))
+        
+        q_values = self.model(np.array([state], dtype=np.float32))
         action = np.argmax(q_values.numpy()[0])
         if action != 0:
             action += 1
@@ -146,10 +150,10 @@ class DQNAgent:
             return
         minibatch = random.sample(self.memory, self.batch_size)
         states, actions, rewards, next_states, dones = zip(*minibatch)
-        states = np.array([state[self.model_truncate:, :, :] for state in states], dtype=np.float32)
+        states = np.array(states, dtype=np.float32)
         actions = np.array(actions, dtype=np.int32)
         rewards = np.array(rewards, dtype=np.float32)
-        next_states = np.array([state[self.model_truncate:, :, :] for state in next_states], dtype=np.float32)
+        next_states = np.array(next_states, dtype=np.float32)
         dones = np.array(dones, dtype=bool)
         with tf.GradientTape() as tape:
             q_values = self.model(states)
@@ -161,28 +165,26 @@ class DQNAgent:
         gradients = tape.gradient(loss, self.model.trainable_variables)
         self.optimizer.apply_gradients(zip(gradients, self.model.trainable_variables))
 
-        # with tf.GradientTape() as tape:
-        #     q_values = self.model(states)
-        #     q_values_next = self.model(next_states)
-        #     target_q_values = rewards + self.gamma * tf.reduce_max(q_values_next, axis=1) * (1 - dones)
-        #     actions_one_hot = tf.one_hot(actions, self.num_actions)
-        #     q_values_pred = tf.reduce_sum(q_values * actions_one_hot, axis=1)
-        #     loss = tf.keras.losses.MSE(target_q_values, q_values_pred)
-        # gradients = tape.gradient(loss, self.model.trainable_variables)
-        # self.optimizer.apply_gradients(zip(gradients, self.model.trainable_variables))
-
 
     def train(self):
-        if self.render:
+        print("starting training")
+        try:
             env = gym.make('Breakout-v4', render_mode="human")
-        else:
-            env = gym.make('Breakout-v4')
+        except Exception as e:
+            print("Failed to load environment, trying again", e)
+        print("started training")
+        # if self.render:
+            # env = gym.make('Breakout-v4', render_mode="human")
+            
+        # else:
+        #     env = gym.make('Breakout-v4')
             # env = gym.make('BreakoutDeterministic-v4')
         step_count = 0
         highscore = 0
         total_action_counter = {0: 0, 2: 0, 3: 0}
         blocks = 0
         all_rewards = []
+        
         # replay_lock = threading.Lock()
         for episode in tqdm(range(1, self.num_episodes + 1), ascii=True, unit='episodes'):
             lives = 5
@@ -205,8 +207,9 @@ class DQNAgent:
                 if action != 0:
                     action -= 1
                 if step_count % self.training_frequency == 0:
-                    self.show_frame(self.preprocess_state(next_state)[self.model_truncate:])
-                    self.replay()
+                    self.show_frame(self.preprocess_state(next_state))
+                    if self.training:
+                        self.replay()
                     # replay_thread = threading.Thread(target=self.replay, args=(replay_lock,))
                     # replay_thread.start()
                 self.frame_buffer.append(self.preprocess_state(next_state))
@@ -220,8 +223,8 @@ class DQNAgent:
                     reward = -15
                     # print(f"lost a life and got {reward} points, done: {done}")
                     env.step(1)
-
-                self.remember(state, action, reward, next_state, done)
+                if self.training:
+                    self.remember(state, action, reward, next_state, done)
                 state = next_state
 
                 if done:
@@ -231,20 +234,20 @@ class DQNAgent:
                         highscore = episode_reward
                     print(f"Episode {episode}, Highscore: {highscore}, Reward: {episode_reward}, Epsilon: {self.epsilon}")
                     print(f"Total No op: {total_action_counter[0]}, Total Left: {total_action_counter[3]}, Total Right: {total_action_counter[2]}, memory size: {len(self.memory)}")
-                if step_count % self.target_update_freq_steps == 0:
+                if step_count % self.target_update_freq_steps == 0 and self.training:
                     self.update_target_network()
-            # if self.epsilon > self.epsilon_min:
-            # self.epsilon = pow(self.epsilon_decay, episode)
-            # self.epsilon = self.epsilon_start -(episode/(self.num_episodes*(1/self.epsilon_start)))
-            if episode % 10 == 0:
+
+            self.epsilon = self.epsilon_start -(episode/(self.num_episodes*(1/self.epsilon_start)))
+            if episode % 10 == 0 and self.training:
                 # self.model.save_weights(f"{self.save_path}model_weights_episode_{episode}.h5")
+                send_email(f"Average Rewards for ep: {episode}: {round(blocks/10)}", f"Total: {blocks}, Highscore: {highscore}")
                 print(f"Model weights saved at episode {episode}, Average Rewards: {round(blocks/10)}")
-                self.update_scatter_plot(episode, blocks/10)
+                # self.update_scatter_plot(episode, blocks/10)
                 # self.fig_scatter.savefig(f'models_3_actions/episode{episode}_vs_rewards.png', dpi=300)
                 blocks = 0
-                # with open(f"{self.save_path}rewards.txt", "w") as f:
-                    # f.write(str(all_rewards))
-            if episode % 500 == 0:  
+                with open(f"{self.save_path}rewards.txt", "w") as f:
+                    f.write(str(all_rewards))
+            if episode % 500 == 0 and self.training:  
                 start = time.time()
                 # self.save_experience_replay()
                 print(f"Experience replay saved at episode {episode}, took {time.time() - start} seconds")

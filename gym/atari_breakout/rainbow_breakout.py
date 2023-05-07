@@ -12,6 +12,11 @@ from tqdm import tqdm
 import time
 import threading
 
+import os
+from send_email import send_email
+from dotenv import load_dotenv
+load_dotenv()
+
 # https://chat.openai.com/c/2b12934e-de73-4813-a047-8db8e8aa87a7
 # Hyperparameters
 NUM_ACTIONS = 3
@@ -22,21 +27,21 @@ BETA = 0.40
 BUFFER_SIZE = 250_000
 N_STEPS = 5
 BATCH_SIZE = 1024
-TARGET_UPDATE_FREQ = 3_000
+TARGET_UPDATE_FREQ = 10_000
 TRAINING_FREQ = 200
 LEARNING_RATE = 0.000_25
-EPSILON_START = 0.5
+EPSILON_START = 0.03
 
-NUM_EPISODES = 100
+NUM_EPISODES = 500
 SAVE_FREQ = 10
 SAVE_PATH = "rainbow_models/"
-RENDER = False
+RENDER = True
 PRETRAINED = True
-MODEL = "rainbow_models/good_models/model_10000_1.h5"
-training = False
+TRAINING = False
+MODEL = "rainbow_models/good_models/model_2000_3.h5"
+
 def write_to_file(output_str, file_name="output.txt"):
-    global training
-    if training:
+    if TRAINING:
         with open(f"{SAVE_PATH}{file_name}", "a") as f:
             f.write(output_str)
 # Prioritized experience replay buffer
@@ -58,6 +63,7 @@ class PrioritizedReplayBuffer:
         # top_10 = sorted(enumerate(probs), key=lambda x: x[1], reverse=True)[:10]
         # print(top_10)
         indices = np.random.choice(len(self.memory), batch_size, p=probs)
+        indices.sort()
         samples = [self.memory[i] for i in indices]
 
         weights = (len(self.memory) * probs[indices]) ** (-beta)
@@ -77,27 +83,19 @@ class PrioritizedReplayBuffer:
 # Create the Q-Network model with dueling architecture
 def DQN(num_actions):
     input_state = Input(shape=(84, 84, 4))
-    x = tf.keras.layers.Conv2D(32, (8, 8), strides=(4, 4), activation='relu')(input_state)
-    x = tf.keras.layers.Conv2D(64, (4, 4), strides=(2, 2), activation='relu')(x)
-    x = tf.keras.layers.Conv2D(64, (3, 3), strides=(1, 1), activation='relu')(x)
-    x = tf.keras.layers.Flatten()(x)
+    x = Conv2D(32, 8, 4, activation='relu')(input_state)
+    x = Conv2D(64, 4, 2, activation='relu')(x)
+    x = Conv2D(64, 3, 1, activation='relu')(x)
+    x = Flatten()(x)
 
-    value_fc = Dense(512, activation='relu')(x)
-    value = Dense(1, activation=None)(value_fc)
-
-    advantage_fc = Dense(512, activation='relu')(x)
-    advantage = Dense(num_actions, activation=None)(advantage_fc)
-
+    value = Dense(1)(Dense(512, activation='relu')(x))
+    advantage = Dense(num_actions)(Dense(512, activation='relu')(x))
     q_values = Add()([value, advantage - tf.math.reduce_mean(advantage, axis=1, keepdims=True)])
 
-    model = Model(inputs=input_state, outputs=q_values)
-    return model
+    return Model(inputs=input_state, outputs=q_values)
 # Rainbow agent
 class RainbowAgent:
-    def __init__(self, TRAIN=False):
-        global training
-        training = TRAIN
-        print(training)
+    def __init__(self):
         self.frame_buffer = deque(maxlen=4)
         self.num_actions = NUM_ACTIONS
         self.learning_rate = LEARNING_RATE
@@ -118,7 +116,7 @@ class RainbowAgent:
             self.env = gym.make('Breakout-v4', render_mode="human")
         else:
             self.env = gym.make('Breakout-v4')
-        if PRETRAINED and training:
+        if PRETRAINED:
             print(f"..................Pretrained model..................\n{MODEL}")
             write_to_file(f"..................Pretrained model..................\n{MODEL}\n")
             dummy_input = np.zeros((1, 84, 84, 4))
@@ -184,7 +182,7 @@ class RainbowAgent:
 
         samples, indices, weights = self.buffer.sample(BATCH_SIZE, self.beta)
         if steps % TRAINING_FREQ*100 == 0:
-            write_to_file({samples, indices, weights}, "sample.txt")
+            write_to_file(", ".join(map(str, indices)), "sample.txt")
             write_to_file("\n", "sample.txt")
         states, actions, rewards, next_states, dones = zip(*samples)
 
@@ -214,16 +212,19 @@ class RainbowAgent:
         self.buffer.update_priorities(indices, priorities)
         # lock.release()
     def choose_action(self, state):
-        if np.random.rand() < self.epsilon:
+        if np.random.rand() < self.epsilon and TRAINING:
             return np.random.choice(ACTIONS)
         
         q_values = self.q_network(np.expand_dims(state, axis=0))
+        # print(q_values.numpy())
         action = np.argmax(q_values.numpy())
         if action != 0:
             action += 1
         return action
     
     def show_frame(self, state):
+        if self.fig_frame is None or not plt.fignum_exists(self.fig_frame.number):
+            self.fig_frame, self.ax_frame = plt.subplots()
         self.ax_frame.clear()
         self.ax_frame.imshow(state, cmap='gray')
         self.fig_frame.canvas.draw()
@@ -246,6 +247,7 @@ class RainbowAgent:
         total_action_counter = {0: 0, 2: 0, 3: 0}
         highscore = 0
         start_time = time.time()
+        write_to_file(f"Starting training at {start_time}\n")
         # lock = threading.Lock()  # create a lock object
         for episode in range(1, NUM_EPISODES + 1):
             ep_start = time.time()
@@ -273,7 +275,8 @@ class RainbowAgent:
                 steps += 1
                 if steps % TRAINING_FREQ == 0:
                     self.show_frame(processed_state)
-                    self.learn(steps=steps)
+                    if TRAINING:
+                        self.learn(steps=steps)
                     # learn_thread = threading.Thread(target=self.learn, args=(lock,))
                     # learn_thread.start()
                 ep_reward += reward
@@ -282,11 +285,11 @@ class RainbowAgent:
                     lives = info["lives"]
                     reward = -15
                     self.env.step(1)
-
-                self.remember(state, action, reward, next_state, done)
+                if TRAINING:
+                    self.remember(state, action, reward, next_state, done)
                 state = next_state
 
-                if steps % TARGET_UPDATE_FREQ == 0:
+                if steps % TARGET_UPDATE_FREQ == 0 and TRAINING:
                     self.update_target_network()
 
                 if done:
@@ -298,18 +301,23 @@ class RainbowAgent:
                     output_str = f"Episode {episode}/{NUM_EPISODES}, Highscore: {highscore}, Reward: {ep_reward}, Epsilon: {round(self.epsilon, 3)}\n"
                     output_str += f"Total time: {round(elapsed_time, 1)}s, Episode time: {round(time.time() - ep_start, 1)}s, Average time: {round(average_time_per_episode, 1)}s\n"
                     output_str += f"No op: {action_counter[0]}, Left: {action_counter[3]}, Right: {action_counter[2]}, Total: {action_counter[0] + action_counter[2] + action_counter[3]}\n"
-                    output_str += f"Total No op: {total_action_counter[0]}, Total Left: {total_action_counter[3]}, Total Right: {total_action_counter[2]}, memory size: {len(self.buffer)}\n\n"
+                    output_str += f"Total No op: {total_action_counter[0]}, Total Left: {total_action_counter[3]}, Total Right: {total_action_counter[2]}, Total: {total_action_counter[0] + total_action_counter[2] + total_action_counter[3]}, memory size: {len(self.buffer)}\n\n"
                     write_to_file(output_str)
                     print(output_str, end='')  # print the output to the console
 
             self.epsilon = EPSILON_START - (episode/(NUM_EPISODES*(1/EPSILON_START)))
-            if episode % SAVE_FREQ == 0:
+            if episode % SAVE_FREQ == 0 and TRAINING:
                 print(f"Model weights saved at episode {episode}")
-                self.q_network.save_weights(f"{SAVE_PATH}model_{episode}.h5")
+                self.q_network.save_weights(f"{SAVE_PATH}models/model_{episode}.h5")
                 with open(f"{SAVE_PATH}rewards.txt", "w") as f:
                     f.write(str(all_rewards))
+                average_rewards_100 = sum(all_rewards[-100:])/100
+                average_rewards = sum(all_rewards)/len(all_rewards)
+                send_email(f"Episode {episode}/{NUM_EPISODES}, Average Rewards: {average_rewards}, Average Rewards 100: {average_rewards_100}, Highscore: {highscore}",
+                           f"{output_str}\n{all_rewards}")
 
 if __name__ == "__main__":
-    agent = RainbowAgent(TRAIN=True)
+    agent = RainbowAgent()
     agent.train()
+    write_to_file(f"Finished training at {time.time()}\n")
 
