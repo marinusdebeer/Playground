@@ -1,0 +1,2701 @@
+updating target network
+Hyperparameters:
+NUM_ACTIONS = 3
+ACTIONS = [0, 2, 3]
+GAMMA = 0.99
+ALPHA = 0.6
+BETA = 0.4
+BUFFER_SIZE = 250000
+BATCH_SIZE = 1024
+TARGET_UPDATE_FREQ = 5000
+TRAINING_FREQ = 200
+LEARNING_RATE = 0.00025
+EPSILON_START = 0.1
+NUM_EPISODES = 500
+SAVE_FREQ = 10
+SAVE_PATH = models_3_actions/
+RENDER = False
+PRETRAINED = True
+MODEL = models_3_actions/best_models_ranked_1_to_best/model_weights_episode_1000_4.h5
+
+Starting training at 1683504044.4511576
+Episode 1/500, Highscore: 55.0, Reward: 55.0, Epsilon: 0.1
+Total time: 14.5s, Episode time: 14.5s, Average time: 14.5s
+No op: 750, Left: 433, Right: 397, Total: 1580
+Total No op: 750, Total Left: 433, Total Right: 397, Total: 1580, memory size: 1580
+
+Episode 2/500, Highscore: 56.0, Reward: 56.0, Epsilon: 0.1
+Total time: 41.5s, Episode time: 27.0s, Average time: 20.8s
+No op: 1270, Left: 238, Right: 234, Total: 1742
+Total No op: 2020, Total Left: 671, Total Right: 631, Total: 3322, memory size: 3322
+
+Episode 3/500, Highscore: 56.0, Reward: 40.0, Epsilon: 0.1
+Total time: 61.7s, Episode time: 20.2s, Average time: 20.6s
+No op: 927, Left: 231, Right: 245, Total: 1403
+Total No op: 2947, Total Left: 902, Total Right: 876, Total: 4725, memory size: 4725
+
+updating target network
+Episode 4/500, Highscore: 120.0, Reward: 120.0, Epsilon: 0.099
+Total time: 97.1s, Episode time: 35.4s, Average time: 24.3s
+No op: 1217, Left: 638, Right: 480, Total: 2335
+Total No op: 4164, Total Left: 1540, Total Right: 1356, Total: 7060, memory size: 7060
+
+Episode 5/500, Highscore: 120.0, Reward: 64.0, Epsilon: 0.099
+Total time: 120.0s, Episode time: 22.9s, Average time: 24.0s
+No op: 569, Left: 677, Right: 392, Total: 1638
+Total No op: 4733, Total Left: 2217, Total Right: 1748, Total: 8698, memory size: 8698
+
+updating target network
+Episode 6/500, Highscore: 120.0, Reward: 50.0, Epsilon: 0.099
+Total time: 140.4s, Episode time: 20.5s, Average time: 23.4s
+No op: 365, Left: 628, Right: 441, Total: 1434
+Total No op: 5098, Total Left: 2845, Total Right: 2189, Total: 10132, memory size: 10132
+
+Episode 7/500, Highscore: 120.0, Reward: 120.0, Epsilon: 0.099
+Total time: 170.9s, Episode time: 30.5s, Average time: 24.4s
+No op: 549, Left: 813, Right: 767, Total: 2129
+Total No op: 5647, Total Left: 3658, Total Right: 2956, Total: 12261, memory size: 12261
+
+Episode 8/500, Highscore: 120.0, Reward: 107.0, Epsilon: 0.099
+Total time: 197.3s, Episode time: 26.4s, Average time: 24.7s
+No op: 506, Left: 860, Right: 468, Total: 1834
+Total No op: 6153, Total Left: 4518, Total Right: 3424, Total: 14095, memory size: 14095
+
+updating target network
+Episode 9/500, Highscore: 120.0, Reward: 51.0, Epsilon: 0.098
+Total time: 221.5s, Episode time: 24.2s, Average time: 24.6s
+No op: 686, Left: 548, Right: 394, Total: 1628
+Total No op: 6839, Total Left: 5066, Total Right: 3818, Total: 15723, memory size: 15723
+
+Episode 10/500, Highscore: 120.0, Reward: 54.0, Epsilon: 0.098
+Total time: 250.0s, Episode time: 28.5s, Average time: 25.0s
+No op: 1045, Left: 479, Right: 361, Total: 1885
+Total No op: 7884, Total Left: 5545, Total Right: 4179, Total: 17608, memory size: 17608
+
+Episode 11/500, Highscore: 120.0, Reward: 82.0, Epsilon: 0.098
+Total time: 277.1s, Episode time: 27.1s, Average time: 25.2s
+No op: 770, Left: 730, Right: 450, Total: 1950
+Total No op: 8654, Total Left: 6275, Total Right: 4629, Total: 19558, memory size: 19558
+
+updating target network
+Episode 12/500, Highscore: 120.0, Reward: 77.0, Epsilon: 0.098
+Total time: 309.0s, Episode time: 31.9s, Average time: 25.8s
+No op: 894, Left: 723, Right: 488, Total: 2105
+Total No op: 9548, Total Left: 6998, Total Right: 5117, Total: 21663, memory size: 21663
+
+Episode 13/500, Highscore: 120.0, Reward: 71.0, Epsilon: 0.098
+Total time: 335.5s, Episode time: 26.4s, Average time: 25.8s
+No op: 857, Left: 644, Right: 431, Total: 1932
+Total No op: 10405, Total Left: 7642, Total Right: 5548, Total: 23595, memory size: 23595
+
+Episode 14/500, Highscore: 120.0, Reward: 34.0, Epsilon: 0.097
+Total time: 352.4s, Episode time: 16.9s, Average time: 25.2s
+No op: 478, Left: 363, Right: 281, Total: 1122
+Total No op: 10883, Total Left: 8005, Total Right: 5829, Total: 24717, memory size: 24717
+
+updating target network
+Episode 15/500, Highscore: 120.0, Reward: 69.0, Epsilon: 0.097
+Total time: 378.8s, Episode time: 26.4s, Average time: 25.3s
+No op: 931, Left: 393, Right: 355, Total: 1679
+Total No op: 11814, Total Left: 8398, Total Right: 6184, Total: 26396, memory size: 26396
+
+Episode 16/500, Highscore: 120.0, Reward: 42.0, Epsilon: 0.097
+Total time: 398.6s, Episode time: 19.9s, Average time: 24.9s
+No op: 687, Left: 381, Right: 328, Total: 1396
+Total No op: 12501, Total Left: 8779, Total Right: 6512, Total: 27792, memory size: 27792
+
+Episode 17/500, Highscore: 120.0, Reward: 65.0, Epsilon: 0.097
+Total time: 421.4s, Episode time: 22.8s, Average time: 24.8s
+No op: 533, Left: 551, Right: 494, Total: 1578
+Total No op: 13034, Total Left: 9330, Total Right: 7006, Total: 29370, memory size: 29370
+
+updating target network
+Episode 18/500, Highscore: 120.0, Reward: 26.0, Epsilon: 0.097
+Total time: 436.3s, Episode time: 14.9s, Average time: 24.2s
+No op: 341, Left: 361, Right: 267, Total: 969
+Total No op: 13375, Total Left: 9691, Total Right: 7273, Total: 30339, memory size: 30339
+
+Episode 19/500, Highscore: 120.0, Reward: 48.0, Epsilon: 0.096
+Total time: 456.5s, Episode time: 20.2s, Average time: 24.0s
+No op: 545, Left: 567, Right: 309, Total: 1421
+Total No op: 13920, Total Left: 10258, Total Right: 7582, Total: 31760, memory size: 31760
+
+Episode 20/500, Highscore: 120.0, Reward: 38.0, Epsilon: 0.096
+Total time: 474.0s, Episode time: 17.5s, Average time: 23.7s
+No op: 666, Left: 290, Right: 234, Total: 1190
+Total No op: 14586, Total Left: 10548, Total Right: 7816, Total: 32950, memory size: 32950
+
+Episode 21/500, Highscore: 120.0, Reward: 18.0, Epsilon: 0.096
+Total time: 487.5s, Episode time: 13.5s, Average time: 23.2s
+No op: 533, Left: 185, Right: 172, Total: 890
+Total No op: 15119, Total Left: 10733, Total Right: 7988, Total: 33840, memory size: 33840
+
+updating target network
+Episode 22/500, Highscore: 120.0, Reward: 78.0, Epsilon: 0.096
+Total time: 513.7s, Episode time: 26.2s, Average time: 23.3s
+No op: 1014, Left: 399, Right: 367, Total: 1780
+Total No op: 16133, Total Left: 11132, Total Right: 8355, Total: 35620, memory size: 35620
+
+Episode 23/500, Highscore: 120.0, Reward: 104.0, Epsilon: 0.096
+Total time: 540.1s, Episode time: 26.4s, Average time: 23.5s
+No op: 834, Left: 565, Right: 488, Total: 1887
+Total No op: 16967, Total Left: 11697, Total Right: 8843, Total: 37507, memory size: 37507
+
+Episode 24/500, Highscore: 120.0, Reward: 53.0, Epsilon: 0.095
+Total time: 560.0s, Episode time: 19.9s, Average time: 23.3s
+No op: 498, Left: 491, Right: 429, Total: 1418
+Total No op: 17465, Total Left: 12188, Total Right: 9272, Total: 38925, memory size: 38925
+
+updating target network
+Episode 25/500, Highscore: 120.0, Reward: 65.0, Epsilon: 0.095
+Total time: 583.3s, Episode time: 23.4s, Average time: 23.3s
+No op: 695, Left: 531, Right: 410, Total: 1636
+Total No op: 18160, Total Left: 12719, Total Right: 9682, Total: 40561, memory size: 40561
+
+Episode 26/500, Highscore: 120.0, Reward: 47.0, Epsilon: 0.095
+Total time: 606.5s, Episode time: 23.1s, Average time: 23.3s
+No op: 441, Left: 574, Right: 478, Total: 1493
+Total No op: 18601, Total Left: 13293, Total Right: 10160, Total: 42054, memory size: 42054
+
+Episode 27/500, Highscore: 120.0, Reward: 33.0, Epsilon: 0.095
+Total time: 623.7s, Episode time: 17.3s, Average time: 23.1s
+No op: 434, Left: 446, Right: 335, Total: 1215
+Total No op: 19035, Total Left: 13739, Total Right: 10495, Total: 43269, memory size: 43269
+
+updating target network
+Episode 28/500, Highscore: 120.0, Reward: 84.0, Epsilon: 0.095
+Total time: 653.6s, Episode time: 29.9s, Average time: 23.3s
+No op: 786, Left: 757, Right: 474, Total: 2017
+Total No op: 19821, Total Left: 14496, Total Right: 10969, Total: 45286, memory size: 45286
+
+Episode 29/500, Highscore: 120.0, Reward: 33.0, Epsilon: 0.094
+Total time: 668.1s, Episode time: 14.5s, Average time: 23.0s
+No op: 362, Left: 361, Right: 324, Total: 1047
+Total No op: 20183, Total Left: 14857, Total Right: 11293, Total: 46333, memory size: 46333
+
+Episode 30/500, Highscore: 120.0, Reward: 84.0, Epsilon: 0.094
+Total time: 697.6s, Episode time: 29.5s, Average time: 23.3s
+No op: 821, Left: 629, Right: 516, Total: 1966
+Total No op: 21004, Total Left: 15486, Total Right: 11809, Total: 48299, memory size: 48299
+
+Episode 31/500, Highscore: 120.0, Reward: 61.0, Epsilon: 0.094
+Total time: 720.8s, Episode time: 23.2s, Average time: 23.3s
+No op: 689, Left: 491, Right: 367, Total: 1547
+Total No op: 21693, Total Left: 15977, Total Right: 12176, Total: 49846, memory size: 49846
+
+updating target network
+Episode 32/500, Highscore: 258.0, Reward: 258.0, Epsilon: 0.094
+Total time: 759.9s, Episode time: 39.1s, Average time: 23.7s
+No op: 1085, Left: 848, Right: 731, Total: 2664
+Total No op: 22778, Total Left: 16825, Total Right: 12907, Total: 52510, memory size: 52510
+
+Episode 33/500, Highscore: 258.0, Reward: 37.0, Epsilon: 0.094
+Total time: 780.3s, Episode time: 20.4s, Average time: 23.6s
+No op: 663, Left: 463, Right: 343, Total: 1469
+Total No op: 23441, Total Left: 17288, Total Right: 13250, Total: 53979, memory size: 53979
+
+updating target network
+Episode 34/500, Highscore: 258.0, Reward: 66.0, Epsilon: 0.093
+Total time: 812.2s, Episode time: 31.9s, Average time: 23.9s
+No op: 616, Left: 894, Right: 558, Total: 2068
+Total No op: 24057, Total Left: 18182, Total Right: 13808, Total: 56047, memory size: 56047
+
+Episode 35/500, Highscore: 258.0, Reward: 55.0, Epsilon: 0.093
+Total time: 837.0s, Episode time: 24.8s, Average time: 23.9s
+No op: 877, Left: 486, Right: 384, Total: 1747
+Total No op: 24934, Total Left: 18668, Total Right: 14192, Total: 57794, memory size: 57794
+
+Episode 36/500, Highscore: 258.0, Reward: 58.0, Epsilon: 0.093
+Total time: 863.9s, Episode time: 26.9s, Average time: 24.0s
+No op: 885, Left: 460, Right: 436, Total: 1781
+Total No op: 25819, Total Left: 19128, Total Right: 14628, Total: 59575, memory size: 59575
+
+updating target network
+Episode 37/500, Highscore: 258.0, Reward: 57.0, Epsilon: 0.093
+Total time: 887.0s, Episode time: 23.1s, Average time: 24.0s
+No op: 839, Left: 430, Right: 298, Total: 1567
+Total No op: 26658, Total Left: 19558, Total Right: 14926, Total: 61142, memory size: 61142
+
+Episode 38/500, Highscore: 258.0, Reward: 77.0, Epsilon: 0.093
+Total time: 911.2s, Episode time: 24.2s, Average time: 24.0s
+No op: 929, Left: 371, Right: 287, Total: 1587
+Total No op: 27587, Total Left: 19929, Total Right: 15213, Total: 62729, memory size: 62729
+
+Episode 39/500, Highscore: 258.0, Reward: 64.0, Epsilon: 0.092
+Total time: 934.8s, Episode time: 23.6s, Average time: 24.0s
+No op: 749, Left: 468, Right: 402, Total: 1619
+Total No op: 28336, Total Left: 20397, Total Right: 15615, Total: 64348, memory size: 64348
+
+updating target network
+Episode 40/500, Highscore: 258.0, Reward: 88.0, Epsilon: 0.092
+Total time: 964.0s, Episode time: 29.2s, Average time: 24.1s
+No op: 937, Left: 576, Right: 411, Total: 1924
+Total No op: 29273, Total Left: 20973, Total Right: 16026, Total: 66272, memory size: 66272
+
+Episode 41/500, Highscore: 258.0, Reward: 106.0, Epsilon: 0.092
+Total time: 999.4s, Episode time: 35.3s, Average time: 24.4s
+No op: 768, Left: 876, Right: 589, Total: 2233
+Total No op: 30041, Total Left: 21849, Total Right: 16615, Total: 68505, memory size: 68505
+
+Episode 42/500, Highscore: 258.0, Reward: 49.0, Epsilon: 0.092
+Total time: 1014.6s, Episode time: 15.2s, Average time: 24.2s
+No op: 415, Left: 387, Right: 276, Total: 1078
+Total No op: 30456, Total Left: 22236, Total Right: 16891, Total: 69583, memory size: 69583
+
+updating target network
+Episode 43/500, Highscore: 258.0, Reward: 97.0, Epsilon: 0.092
+Total time: 1048.1s, Episode time: 33.5s, Average time: 24.4s
+No op: 881, Left: 746, Right: 583, Total: 2210
+Total No op: 31337, Total Left: 22982, Total Right: 17474, Total: 71793, memory size: 71793
+
+Episode 44/500, Highscore: 258.0, Reward: 64.0, Epsilon: 0.091
+Total time: 1076.5s, Episode time: 28.4s, Average time: 24.5s
+No op: 989, Left: 509, Right: 338, Total: 1836
+Total No op: 32326, Total Left: 23491, Total Right: 17812, Total: 73629, memory size: 73629
+
+updating target network
+Episode 45/500, Highscore: 258.0, Reward: 94.0, Epsilon: 0.091
+Total time: 1106.9s, Episode time: 30.4s, Average time: 24.6s
+No op: 864, Left: 698, Right: 498, Total: 2060
+Total No op: 33190, Total Left: 24189, Total Right: 18310, Total: 75689, memory size: 75689
+
+Episode 46/500, Highscore: 258.0, Reward: 114.0, Epsilon: 0.091
+Total time: 1139.2s, Episode time: 32.3s, Average time: 24.8s
+No op: 1166, Left: 546, Right: 456, Total: 2168
+Total No op: 34356, Total Left: 24735, Total Right: 18766, Total: 77857, memory size: 77857
+
+updating target network
+Episode 47/500, Highscore: 258.0, Reward: 118.0, Epsilon: 0.091
+Total time: 1172.9s, Episode time: 33.7s, Average time: 25.0s
+No op: 1012, Left: 676, Right: 555, Total: 2243
+Total No op: 35368, Total Left: 25411, Total Right: 19321, Total: 80100, memory size: 80100
+
+Episode 48/500, Highscore: 258.0, Reward: 55.0, Epsilon: 0.091
+Total time: 1193.4s, Episode time: 20.6s, Average time: 24.9s
+No op: 491, Left: 543, Right: 427, Total: 1461
+Total No op: 35859, Total Left: 25954, Total Right: 19748, Total: 81561, memory size: 81561
+
+Episode 49/500, Highscore: 258.0, Reward: 90.0, Epsilon: 0.09
+Total time: 1217.9s, Episode time: 24.4s, Average time: 24.9s
+No op: 636, Left: 579, Right: 375, Total: 1590
+Total No op: 36495, Total Left: 26533, Total Right: 20123, Total: 83151, memory size: 83151
+
+updating target network
+Episode 50/500, Highscore: 258.0, Reward: 104.0, Epsilon: 0.09
+Total time: 1247.4s, Episode time: 29.5s, Average time: 24.9s
+No op: 840, Left: 701, Right: 470, Total: 2011
+Total No op: 37335, Total Left: 27234, Total Right: 20593, Total: 85162, memory size: 85162
+
+Episode 51/500, Highscore: 258.0, Reward: 45.0, Epsilon: 0.09
+Total time: 1271.1s, Episode time: 23.7s, Average time: 24.9s
+No op: 696, Left: 459, Right: 354, Total: 1509
+Total No op: 38031, Total Left: 27693, Total Right: 20947, Total: 86671, memory size: 86671
+
+Episode 52/500, Highscore: 258.0, Reward: 221.0, Epsilon: 0.09
+Total time: 1295.7s, Episode time: 24.5s, Average time: 24.9s
+No op: 853, Left: 457, Right: 379, Total: 1689
+Total No op: 38884, Total Left: 28150, Total Right: 21326, Total: 88360, memory size: 88360
+
+updating target network
+Episode 53/500, Highscore: 258.0, Reward: 69.0, Epsilon: 0.09
+Total time: 1322.4s, Episode time: 26.7s, Average time: 25.0s
+No op: 759, Left: 560, Right: 440, Total: 1759
+Total No op: 39643, Total Left: 28710, Total Right: 21766, Total: 90119, memory size: 90119
+
+Episode 54/500, Highscore: 258.0, Reward: 21.0, Epsilon: 0.089
+Total time: 1334.9s, Episode time: 12.5s, Average time: 24.7s
+No op: 402, Left: 261, Right: 197, Total: 860
+Total No op: 40045, Total Left: 28971, Total Right: 21963, Total: 90979, memory size: 90979
+
+Episode 55/500, Highscore: 258.0, Reward: 83.0, Epsilon: 0.089
+Total time: 1364.0s, Episode time: 29.1s, Average time: 24.8s
+No op: 771, Left: 662, Right: 511, Total: 1944
+Total No op: 40816, Total Left: 29633, Total Right: 22474, Total: 92923, memory size: 92923
+
+Episode 56/500, Highscore: 258.0, Reward: 58.0, Epsilon: 0.089
+Total time: 1381.8s, Episode time: 17.8s, Average time: 24.7s
+No op: 372, Left: 424, Right: 366, Total: 1162
+Total No op: 41188, Total Left: 30057, Total Right: 22840, Total: 94085, memory size: 94085
+
+updating target network
+Episode 57/500, Highscore: 258.0, Reward: 90.0, Epsilon: 0.089
+Total time: 1409.2s, Episode time: 27.3s, Average time: 24.7s
+No op: 1024, Left: 455, Right: 366, Total: 1845
+Total No op: 42212, Total Left: 30512, Total Right: 23206, Total: 95930, memory size: 95930
+
+Episode 58/500, Highscore: 258.0, Reward: 101.0, Epsilon: 0.089
+Total time: 1442.9s, Episode time: 33.7s, Average time: 24.9s
+No op: 1134, Left: 605, Right: 480, Total: 2219
+Total No op: 43346, Total Left: 31117, Total Right: 23686, Total: 98149, memory size: 98149
+
+updating target network
+Episode 59/500, Highscore: 258.0, Reward: 64.0, Epsilon: 0.088
+Total time: 1472.2s, Episode time: 29.3s, Average time: 25.0s
+No op: 735, Left: 735, Right: 475, Total: 1945
+Total No op: 44081, Total Left: 31852, Total Right: 24161, Total: 100094, memory size: 100094
+
+Episode 60/500, Highscore: 258.0, Reward: 64.0, Epsilon: 0.088
+Total time: 1498.6s, Episode time: 26.5s, Average time: 25.0s
+No op: 725, Left: 590, Right: 394, Total: 1709
+Total No op: 44806, Total Left: 32442, Total Right: 24555, Total: 101803, memory size: 101803
+
+Episode 61/500, Highscore: 258.0, Reward: 100.0, Epsilon: 0.088
+Total time: 1529.7s, Episode time: 31.0s, Average time: 25.1s
+No op: 827, Left: 719, Right: 531, Total: 2077
+Total No op: 45633, Total Left: 33161, Total Right: 25086, Total: 103880, memory size: 103880
+
+updating target network
+Episode 62/500, Highscore: 258.0, Reward: 122.0, Epsilon: 0.088
+Total time: 1563.4s, Episode time: 33.7s, Average time: 25.2s
+No op: 737, Left: 900, Right: 636, Total: 2273
+Total No op: 46370, Total Left: 34061, Total Right: 25722, Total: 106153, memory size: 106153
+
+Episode 63/500, Highscore: 258.0, Reward: 80.0, Epsilon: 0.088
+Total time: 1591.6s, Episode time: 28.2s, Average time: 25.3s
+No op: 772, Left: 605, Right: 451, Total: 1828
+Total No op: 47142, Total Left: 34666, Total Right: 26173, Total: 107981, memory size: 107981
+
+Episode 64/500, Highscore: 258.0, Reward: 46.0, Epsilon: 0.087
+Total time: 1619.1s, Episode time: 27.5s, Average time: 25.3s
+No op: 738, Left: 666, Right: 398, Total: 1802
+Total No op: 47880, Total Left: 35332, Total Right: 26571, Total: 109783, memory size: 109783
+
+updating target network
+Episode 65/500, Highscore: 258.0, Reward: 55.0, Epsilon: 0.087
+Total time: 1645.9s, Episode time: 26.8s, Average time: 25.3s
+No op: 572, Left: 726, Right: 448, Total: 1746
+Total No op: 48452, Total Left: 36058, Total Right: 27019, Total: 111529, memory size: 111529
+
+Episode 66/500, Highscore: 258.0, Reward: 72.0, Epsilon: 0.087
+Total time: 1673.2s, Episode time: 27.2s, Average time: 25.4s
+No op: 850, Left: 452, Right: 392, Total: 1694
+Total No op: 49302, Total Left: 36510, Total Right: 27411, Total: 113223, memory size: 113223
+
+Episode 67/500, Highscore: 258.0, Reward: 77.0, Epsilon: 0.087
+Total time: 1699.4s, Episode time: 26.2s, Average time: 25.4s
+No op: 652, Left: 641, Right: 466, Total: 1759
+Total No op: 49954, Total Left: 37151, Total Right: 27877, Total: 114982, memory size: 114982
+
+updating target network
+Episode 68/500, Highscore: 258.0, Reward: 108.0, Epsilon: 0.087
+Total time: 1730.7s, Episode time: 31.2s, Average time: 25.5s
+No op: 824, Left: 630, Right: 546, Total: 2000
+Total No op: 50778, Total Left: 37781, Total Right: 28423, Total: 116982, memory size: 116982
+
+Episode 69/500, Highscore: 258.0, Reward: 51.0, Epsilon: 0.086
+Total time: 1753.8s, Episode time: 23.1s, Average time: 25.4s
+No op: 408, Left: 634, Right: 384, Total: 1426
+Total No op: 51186, Total Left: 38415, Total Right: 28807, Total: 118408, memory size: 118408
+
+updating target network
+Episode 70/500, Highscore: 258.0, Reward: 81.0, Epsilon: 0.086
+Total time: 1782.1s, Episode time: 28.3s, Average time: 25.5s
+No op: 768, Left: 587, Right: 440, Total: 1795
+Total No op: 51954, Total Left: 39002, Total Right: 29247, Total: 120203, memory size: 120203
+
+Episode 71/500, Highscore: 258.0, Reward: 62.0, Epsilon: 0.086
+Total time: 1804.7s, Episode time: 22.6s, Average time: 25.4s
+No op: 621, Left: 466, Right: 386, Total: 1473
+Total No op: 52575, Total Left: 39468, Total Right: 29633, Total: 121676, memory size: 121676
+
+Episode 72/500, Highscore: 258.0, Reward: 47.0, Epsilon: 0.086
+Total time: 1830.4s, Episode time: 25.7s, Average time: 25.4s
+No op: 538, Left: 616, Right: 446, Total: 1600
+Total No op: 53113, Total Left: 40084, Total Right: 30079, Total: 123276, memory size: 123276
+
+Episode 73/500, Highscore: 258.0, Reward: 39.0, Epsilon: 0.086
+Total time: 1849.8s, Episode time: 19.4s, Average time: 25.3s
+No op: 498, Left: 432, Right: 360, Total: 1290
+Total No op: 53611, Total Left: 40516, Total Right: 30439, Total: 124566, memory size: 124566
+
+updating target network
+Episode 74/500, Highscore: 258.0, Reward: 66.0, Epsilon: 0.085
+Total time: 1878.0s, Episode time: 28.2s, Average time: 25.4s
+No op: 373, Left: 790, Right: 569, Total: 1732
+Total No op: 53984, Total Left: 41306, Total Right: 31008, Total: 126298, memory size: 126298
+
+Episode 75/500, Highscore: 258.0, Reward: 72.0, Epsilon: 0.085
+Total time: 1903.9s, Episode time: 25.9s, Average time: 25.4s
+No op: 814, Left: 465, Right: 360, Total: 1639
+Total No op: 54798, Total Left: 41771, Total Right: 31368, Total: 127937, memory size: 127937
+
+Episode 76/500, Highscore: 258.0, Reward: 81.0, Epsilon: 0.085
+Total time: 1932.2s, Episode time: 28.4s, Average time: 25.4s
+No op: 574, Left: 677, Right: 489, Total: 1740
+Total No op: 55372, Total Left: 42448, Total Right: 31857, Total: 129677, memory size: 129677
+
+updating target network
+Episode 77/500, Highscore: 258.0, Reward: 39.0, Epsilon: 0.085
+Total time: 1955.6s, Episode time: 23.3s, Average time: 25.4s
+No op: 869, Left: 323, Right: 256, Total: 1448
+Total No op: 56241, Total Left: 42771, Total Right: 32113, Total: 131125, memory size: 131125
+
+Episode 78/500, Highscore: 258.0, Reward: 80.0, Epsilon: 0.085
+Total time: 1985.1s, Episode time: 29.6s, Average time: 25.5s
+No op: 749, Left: 596, Right: 504, Total: 1849
+Total No op: 56990, Total Left: 43367, Total Right: 32617, Total: 132974, memory size: 132974
+
+Episode 79/500, Highscore: 258.0, Reward: 62.0, Epsilon: 0.084
+Total time: 2014.2s, Episode time: 29.0s, Average time: 25.5s
+No op: 918, Left: 498, Right: 362, Total: 1778
+Total No op: 57908, Total Left: 43865, Total Right: 32979, Total: 134752, memory size: 134752
+
+updating target network
+Episode 80/500, Highscore: 258.0, Reward: 58.0, Epsilon: 0.084
+Total time: 2039.5s, Episode time: 25.3s, Average time: 25.5s
+No op: 597, Left: 552, Right: 390, Total: 1539
+Total No op: 58505, Total Left: 44417, Total Right: 33369, Total: 136291, memory size: 136291
+
+Episode 81/500, Highscore: 258.0, Reward: 69.0, Epsilon: 0.084
+Total time: 2072.2s, Episode time: 32.6s, Average time: 25.6s
+No op: 897, Left: 610, Right: 475, Total: 1982
+Total No op: 59402, Total Left: 45027, Total Right: 33844, Total: 138273, memory size: 138273
+
+updating target network
+Episode 82/500, Highscore: 258.0, Reward: 80.0, Epsilon: 0.084
+Total time: 2107.5s, Episode time: 35.4s, Average time: 25.7s
+No op: 1019, Left: 608, Right: 520, Total: 2147
+Total No op: 60421, Total Left: 45635, Total Right: 34364, Total: 140420, memory size: 140420
+
+Episode 83/500, Highscore: 258.0, Reward: 62.0, Epsilon: 0.084
+Total time: 2137.7s, Episode time: 30.2s, Average time: 25.8s
+No op: 936, Left: 509, Right: 428, Total: 1873
+Total No op: 61357, Total Left: 46144, Total Right: 34792, Total: 142293, memory size: 142293
+
+Episode 84/500, Highscore: 258.0, Reward: 86.0, Epsilon: 0.083
+Total time: 2172.7s, Episode time: 35.0s, Average time: 25.9s
+No op: 869, Left: 669, Right: 533, Total: 2071
+Total No op: 62226, Total Left: 46813, Total Right: 35325, Total: 144364, memory size: 144364
+
+updating target network
+Episode 85/500, Highscore: 258.0, Reward: 53.0, Epsilon: 0.083
+Total time: 2195.5s, Episode time: 22.8s, Average time: 25.8s
+No op: 421, Left: 535, Right: 363, Total: 1319
+Total No op: 62647, Total Left: 47348, Total Right: 35688, Total: 145683, memory size: 145683
+
+Episode 86/500, Highscore: 258.0, Reward: 93.0, Epsilon: 0.083
+Total time: 2231.1s, Episode time: 35.6s, Average time: 25.9s
+No op: 772, Left: 817, Right: 491, Total: 2080
+Total No op: 63419, Total Left: 48165, Total Right: 36179, Total: 147763, memory size: 147763
+
+Episode 87/500, Highscore: 258.0, Reward: 44.0, Epsilon: 0.083
+Total time: 2254.3s, Episode time: 23.2s, Average time: 25.9s
+No op: 628, Left: 380, Right: 309, Total: 1317
+Total No op: 64047, Total Left: 48545, Total Right: 36488, Total: 149080, memory size: 149080
+
+updating target network
+Episode 88/500, Highscore: 258.0, Reward: 68.0, Epsilon: 0.083
+Total time: 2289.2s, Episode time: 34.9s, Average time: 26.0s
+No op: 900, Left: 672, Right: 497, Total: 2069
+Total No op: 64947, Total Left: 49217, Total Right: 36985, Total: 151149, memory size: 151149
+
+Episode 89/500, Highscore: 258.0, Reward: 121.0, Epsilon: 0.082
+Total time: 2328.0s, Episode time: 38.8s, Average time: 26.2s
+No op: 738, Left: 868, Right: 601, Total: 2207
+Total No op: 65685, Total Left: 50085, Total Right: 37586, Total: 153356, memory size: 153356
+
+Episode 90/500, Highscore: 258.0, Reward: 57.0, Epsilon: 0.082
+Total time: 2356.0s, Episode time: 28.1s, Average time: 26.2s
+No op: 718, Left: 522, Right: 370, Total: 1610
+Total No op: 66403, Total Left: 50607, Total Right: 37956, Total: 154966, memory size: 154966
+
+updating target network
+Episode 91/500, Highscore: 258.0, Reward: 191.0, Epsilon: 0.082
+Total time: 2389.6s, Episode time: 33.5s, Average time: 26.3s
+No op: 978, Left: 532, Right: 346, Total: 1856
+Total No op: 67381, Total Left: 51139, Total Right: 38302, Total: 156822, memory size: 156822
+
+Episode 92/500, Highscore: 258.0, Reward: 48.0, Epsilon: 0.082
+Total time: 2418.2s, Episode time: 28.6s, Average time: 26.3s
+No op: 828, Left: 438, Right: 401, Total: 1667
+Total No op: 68209, Total Left: 51577, Total Right: 38703, Total: 158489, memory size: 158489
+
+updating target network
+Episode 93/500, Highscore: 258.0, Reward: 85.0, Epsilon: 0.082
+Total time: 2450.4s, Episode time: 32.2s, Average time: 26.3s
+No op: 858, Left: 544, Right: 464, Total: 1866
+Total No op: 69067, Total Left: 52121, Total Right: 39167, Total: 160355, memory size: 160355
+
+Episode 94/500, Highscore: 258.0, Reward: 46.0, Epsilon: 0.081
+Total time: 2474.9s, Episode time: 24.6s, Average time: 26.3s
+No op: 471, Left: 524, Right: 439, Total: 1434
+Total No op: 69538, Total Left: 52645, Total Right: 39606, Total: 161789, memory size: 161789
+
+Episode 95/500, Highscore: 258.0, Reward: 153.0, Epsilon: 0.081
+Total time: 2516.8s, Episode time: 41.8s, Average time: 26.5s
+No op: 1008, Left: 717, Right: 641, Total: 2366
+Total No op: 70546, Total Left: 53362, Total Right: 40247, Total: 164155, memory size: 164155
+
+updating target network
+Episode 96/500, Highscore: 258.0, Reward: 122.0, Epsilon: 0.081
+Total time: 2558.0s, Episode time: 41.2s, Average time: 26.6s
+No op: 929, Left: 756, Right: 618, Total: 2303
+Total No op: 71475, Total Left: 54118, Total Right: 40865, Total: 166458, memory size: 166458
+
+Episode 97/500, Highscore: 258.0, Reward: 77.0, Epsilon: 0.081
+Total time: 2586.1s, Episode time: 28.1s, Average time: 26.7s
+No op: 638, Left: 527, Right: 435, Total: 1600
+Total No op: 72113, Total Left: 54645, Total Right: 41300, Total: 168058, memory size: 168058
+
+Episode 98/500, Highscore: 258.0, Reward: 50.0, Epsilon: 0.081
+Total time: 2613.6s, Episode time: 27.5s, Average time: 26.7s
+No op: 678, Left: 463, Right: 404, Total: 1545
+Total No op: 72791, Total Left: 55108, Total Right: 41704, Total: 169603, memory size: 169603
+
+updating target network
+Episode 99/500, Highscore: 258.0, Reward: 38.0, Epsilon: 0.08
+Total time: 2636.2s, Episode time: 22.5s, Average time: 26.6s
+No op: 638, Left: 378, Right: 334, Total: 1350
+Total No op: 73429, Total Left: 55486, Total Right: 42038, Total: 170953, memory size: 170953
+
+Episode 100/500, Highscore: 258.0, Reward: 80.0, Epsilon: 0.08
+Total time: 2667.1s, Episode time: 31.0s, Average time: 26.7s
+No op: 688, Left: 600, Right: 499, Total: 1787
+Total No op: 74117, Total Left: 56086, Total Right: 42537, Total: 172740, memory size: 172740
+
+Episode 101/500, Highscore: 258.0, Reward: 65.0, Epsilon: 0.08
+Total time: 2697.6s, Episode time: 30.4s, Average time: 26.7s
+No op: 609, Left: 636, Right: 422, Total: 1667
+Total No op: 74726, Total Left: 56722, Total Right: 42959, Total: 174407, memory size: 174407
+
+updating target network
+Episode 102/500, Highscore: 258.0, Reward: 73.0, Epsilon: 0.08
+Total time: 2726.8s, Episode time: 29.2s, Average time: 26.7s
+No op: 608, Left: 628, Right: 490, Total: 1726
+Total No op: 75334, Total Left: 57350, Total Right: 43449, Total: 176133, memory size: 176133
+
+Episode 103/500, Highscore: 258.0, Reward: 72.0, Epsilon: 0.08
+Total time: 2754.3s, Episode time: 27.5s, Average time: 26.7s
+No op: 599, Left: 471, Right: 430, Total: 1500
+Total No op: 75933, Total Left: 57821, Total Right: 43879, Total: 177633, memory size: 177633
+
+Episode 104/500, Highscore: 258.0, Reward: 63.0, Epsilon: 0.079
+Total time: 2776.0s, Episode time: 21.7s, Average time: 26.7s
+No op: 611, Left: 295, Right: 265, Total: 1171
+Total No op: 76544, Total Left: 58116, Total Right: 44144, Total: 178804, memory size: 178804
+
+updating target network
+Episode 105/500, Highscore: 258.0, Reward: 85.0, Epsilon: 0.079
+Total time: 2805.5s, Episode time: 29.5s, Average time: 26.7s
+No op: 877, Left: 417, Right: 363, Total: 1657
+Total No op: 77421, Total Left: 58533, Total Right: 44507, Total: 180461, memory size: 180461
+
+Episode 106/500, Highscore: 258.0, Reward: 105.0, Epsilon: 0.079
+Total time: 2842.9s, Episode time: 37.4s, Average time: 26.8s
+No op: 664, Left: 844, Right: 572, Total: 2080
+Total No op: 78085, Total Left: 59377, Total Right: 45079, Total: 182541, memory size: 182541
+
+Episode 107/500, Highscore: 258.0, Reward: 89.0, Epsilon: 0.079
+Total time: 2883.4s, Episode time: 40.6s, Average time: 26.9s
+No op: 665, Left: 913, Right: 610, Total: 2188
+Total No op: 78750, Total Left: 60290, Total Right: 45689, Total: 184729, memory size: 184729
+
+updating target network
+Episode 108/500, Highscore: 258.0, Reward: 36.0, Epsilon: 0.079
+Total time: 2905.0s, Episode time: 21.5s, Average time: 26.9s
+No op: 687, Left: 251, Right: 233, Total: 1171
+Total No op: 79437, Total Left: 60541, Total Right: 45922, Total: 185900, memory size: 185900
+
+Episode 109/500, Highscore: 258.0, Reward: 66.0, Epsilon: 0.078
+Total time: 2938.2s, Episode time: 33.2s, Average time: 27.0s
+No op: 879, Left: 483, Right: 405, Total: 1767
+Total No op: 80316, Total Left: 61024, Total Right: 46327, Total: 187667, memory size: 187667
+
+Episode 110/500, Highscore: 258.0, Reward: 83.0, Epsilon: 0.078
+Total time: 2973.8s, Episode time: 35.6s, Average time: 27.0s
+No op: 752, Left: 680, Right: 511, Total: 1943
+Total No op: 81068, Total Left: 61704, Total Right: 46838, Total: 189610, memory size: 189610
+
+updating target network
+Episode 111/500, Highscore: 258.0, Reward: 89.0, Epsilon: 0.078
+Total time: 3007.9s, Episode time: 34.1s, Average time: 27.1s
+No op: 590, Left: 759, Right: 511, Total: 1860
+Total No op: 81658, Total Left: 62463, Total Right: 47349, Total: 191470, memory size: 191470
+
+Episode 112/500, Highscore: 258.0, Reward: 41.0, Epsilon: 0.078
+Total time: 3031.1s, Episode time: 23.2s, Average time: 27.1s
+No op: 439, Left: 591, Right: 286, Total: 1316
+Total No op: 82097, Total Left: 63054, Total Right: 47635, Total: 192786, memory size: 192786
+
+updating target network
+Episode 113/500, Highscore: 258.0, Reward: 111.0, Epsilon: 0.078
+Total time: 3073.8s, Episode time: 42.7s, Average time: 27.2s
+No op: 1022, Left: 715, Right: 550, Total: 2287
+Total No op: 83119, Total Left: 63769, Total Right: 48185, Total: 195073, memory size: 195073
+
+Episode 114/500, Highscore: 258.0, Reward: 112.0, Epsilon: 0.077
+Total time: 3113.6s, Episode time: 39.8s, Average time: 27.3s
+No op: 921, Left: 670, Right: 556, Total: 2147
+Total No op: 84040, Total Left: 64439, Total Right: 48741, Total: 197220, memory size: 197220
+
+Episode 115/500, Highscore: 258.0, Reward: 111.0, Epsilon: 0.077
+Total time: 3155.0s, Episode time: 41.3s, Average time: 27.4s
+No op: 1033, Left: 652, Right: 548, Total: 2233
+Total No op: 85073, Total Left: 65091, Total Right: 49289, Total: 199453, memory size: 199453
+
+updating target network
+Episode 116/500, Highscore: 258.0, Reward: 86.0, Epsilon: 0.077
+Total time: 3194.9s, Episode time: 40.0s, Average time: 27.5s
+No op: 940, Left: 628, Right: 583, Total: 2151
+Total No op: 86013, Total Left: 65719, Total Right: 49872, Total: 201604, memory size: 201604
+
+Episode 117/500, Highscore: 258.0, Reward: 49.0, Epsilon: 0.077
+Total time: 3214.8s, Episode time: 19.9s, Average time: 27.5s
+No op: 412, Left: 396, Right: 271, Total: 1079
+Total No op: 86425, Total Left: 66115, Total Right: 50143, Total: 202683, memory size: 202683
+
+updating target network
+Episode 118/500, Highscore: 258.0, Reward: 119.0, Epsilon: 0.077
+Total time: 3258.5s, Episode time: 43.7s, Average time: 27.6s
+No op: 1042, Left: 709, Right: 600, Total: 2351
+Total No op: 87467, Total Left: 66824, Total Right: 50743, Total: 205034, memory size: 205034
+
+Episode 119/500, Highscore: 258.0, Reward: 51.0, Epsilon: 0.076
+Total time: 3277.6s, Episode time: 19.2s, Average time: 27.5s
+No op: 499, Left: 269, Right: 281, Total: 1049
+Total No op: 87966, Total Left: 67093, Total Right: 51024, Total: 206083, memory size: 206083
+
+Episode 120/500, Highscore: 258.0, Reward: 47.0, Epsilon: 0.076
+Total time: 3303.9s, Episode time: 26.2s, Average time: 27.5s
+No op: 636, Left: 423, Right: 359, Total: 1418
+Total No op: 88602, Total Left: 67516, Total Right: 51383, Total: 207501, memory size: 207501
+
+Episode 121/500, Highscore: 258.0, Reward: 94.0, Epsilon: 0.076
+Total time: 3345.3s, Episode time: 41.4s, Average time: 27.6s
+No op: 766, Left: 856, Right: 579, Total: 2201
+Total No op: 89368, Total Left: 68372, Total Right: 51962, Total: 209702, memory size: 209702
+
+updating target network
+Episode 122/500, Highscore: 258.0, Reward: 57.0, Epsilon: 0.076
+Total time: 3380.5s, Episode time: 35.2s, Average time: 27.7s
+No op: 574, Left: 669, Right: 556, Total: 1799
+Total No op: 89942, Total Left: 69041, Total Right: 52518, Total: 211501, memory size: 211501
+
+Episode 123/500, Highscore: 258.0, Reward: 105.0, Epsilon: 0.076
+Total time: 3415.3s, Episode time: 34.8s, Average time: 27.8s
+No op: 951, Left: 514, Right: 401, Total: 1866
+Total No op: 90893, Total Left: 69555, Total Right: 52919, Total: 213367, memory size: 213367
+
+updating target network
+Episode 124/500, Highscore: 258.0, Reward: 103.0, Epsilon: 0.075
+Total time: 3453.9s, Episode time: 38.6s, Average time: 27.9s
+No op: 1048, Left: 520, Right: 428, Total: 1996
+Total No op: 91941, Total Left: 70075, Total Right: 53347, Total: 215363, memory size: 215363
+
+Episode 125/500, Highscore: 258.0, Reward: 44.0, Epsilon: 0.075
+Total time: 3482.5s, Episode time: 28.6s, Average time: 27.9s
+No op: 678, Left: 441, Right: 334, Total: 1453
+Total No op: 92619, Total Left: 70516, Total Right: 53681, Total: 216816, memory size: 216816
+
+Episode 126/500, Highscore: 258.0, Reward: 85.0, Epsilon: 0.075
+Total time: 3518.8s, Episode time: 36.3s, Average time: 27.9s
+No op: 684, Left: 715, Right: 541, Total: 1940
+Total No op: 93303, Total Left: 71231, Total Right: 54222, Total: 218756, memory size: 218756
+
+updating target network
+Episode 127/500, Highscore: 258.0, Reward: 94.0, Epsilon: 0.075
+Total time: 3553.2s, Episode time: 34.4s, Average time: 28.0s
+No op: 947, Left: 438, Right: 338, Total: 1723
+Total No op: 94250, Total Left: 71669, Total Right: 54560, Total: 220479, memory size: 220479
+
+Episode 128/500, Highscore: 258.0, Reward: 57.0, Epsilon: 0.075
+Total time: 3585.4s, Episode time: 32.2s, Average time: 28.0s
+No op: 1180, Left: 277, Right: 250, Total: 1707
+Total No op: 95430, Total Left: 71946, Total Right: 54810, Total: 222186, memory size: 222186
+
+Episode 129/500, Highscore: 258.0, Reward: 33.0, Epsilon: 0.074
+Total time: 3611.8s, Episode time: 26.4s, Average time: 28.0s
+No op: 705, Left: 311, Right: 334, Total: 1350
+Total No op: 96135, Total Left: 72257, Total Right: 55144, Total: 223536, memory size: 223536
+
+updating target network
+Episode 130/500, Highscore: 258.0, Reward: 76.0, Epsilon: 0.074
+Total time: 3653.8s, Episode time: 42.0s, Average time: 28.1s
+No op: 754, Left: 658, Right: 674, Total: 2086
+Total No op: 96889, Total Left: 72915, Total Right: 55818, Total: 225622, memory size: 225622
+
+Episode 131/500, Highscore: 258.0, Reward: 75.0, Epsilon: 0.074
+Total time: 3682.8s, Episode time: 29.0s, Average time: 28.1s
+No op: 345, Left: 676, Right: 516, Total: 1537
+Total No op: 97234, Total Left: 73591, Total Right: 56334, Total: 227159, memory size: 227159
+
+Episode 132/500, Highscore: 258.0, Reward: 100.0, Epsilon: 0.074
+Total time: 3722.4s, Episode time: 39.6s, Average time: 28.2s
+No op: 674, Left: 878, Right: 445, Total: 1997
+Total No op: 97908, Total Left: 74469, Total Right: 56779, Total: 229156, memory size: 229156
+
+updating target network
+Episode 133/500, Highscore: 258.0, Reward: 51.0, Epsilon: 0.074
+Total time: 3756.8s, Episode time: 34.4s, Average time: 28.2s
+No op: 526, Left: 677, Right: 461, Total: 1664
+Total No op: 98434, Total Left: 75146, Total Right: 57240, Total: 230820, memory size: 230820
+
+Episode 134/500, Highscore: 258.0, Reward: 73.0, Epsilon: 0.073
+Total time: 3796.8s, Episode time: 40.0s, Average time: 28.3s
+No op: 777, Left: 701, Right: 576, Total: 2054
+Total No op: 99211, Total Left: 75847, Total Right: 57816, Total: 232874, memory size: 232874
+
+Episode 135/500, Highscore: 258.0, Reward: 241.0, Epsilon: 0.073
+Total time: 3828.0s, Episode time: 31.2s, Average time: 28.4s
+No op: 424, Left: 547, Right: 622, Total: 1593
+Total No op: 99635, Total Left: 76394, Total Right: 58438, Total: 234467, memory size: 234467
+
+updating target network
+Episode 136/500, Highscore: 258.0, Reward: 117.0, Epsilon: 0.073
+Total time: 3868.5s, Episode time: 40.5s, Average time: 28.4s
+No op: 798, Left: 718, Right: 513, Total: 2029
+Total No op: 100433, Total Left: 77112, Total Right: 58951, Total: 236496, memory size: 236496
+
+Episode 137/500, Highscore: 328.0, Reward: 328.0, Epsilon: 0.073
+Total time: 3895.5s, Episode time: 27.1s, Average time: 28.4s
+No op: 462, Left: 468, Right: 430, Total: 1360
+Total No op: 100895, Total Left: 77580, Total Right: 59381, Total: 237856, memory size: 237856
+
+Episode 138/500, Highscore: 328.0, Reward: 37.0, Epsilon: 0.073
+Total time: 3919.1s, Episode time: 23.6s, Average time: 28.4s
+No op: 463, Left: 403, Right: 348, Total: 1214
+Total No op: 101358, Total Left: 77983, Total Right: 59729, Total: 239070, memory size: 239070
+
+updating target network
+Episode 139/500, Highscore: 328.0, Reward: 100.0, Epsilon: 0.072
+Total time: 3969.0s, Episode time: 49.9s, Average time: 28.6s
+No op: 548, Left: 1043, Right: 836, Total: 2427
+Total No op: 101906, Total Left: 79026, Total Right: 60565, Total: 241497, memory size: 241497
+
+Episode 140/500, Highscore: 328.0, Reward: 253.0, Epsilon: 0.072
+Total time: 4012.9s, Episode time: 43.9s, Average time: 28.7s
+No op: 969, Left: 610, Right: 526, Total: 2105
+Total No op: 102875, Total Left: 79636, Total Right: 61091, Total: 243602, memory size: 243602
+
+Episode 141/500, Highscore: 328.0, Reward: 38.0, Epsilon: 0.072
+Total time: 4040.3s, Episode time: 27.4s, Average time: 28.7s
+No op: 751, Left: 289, Right: 243, Total: 1283
+Total No op: 103626, Total Left: 79925, Total Right: 61334, Total: 244885, memory size: 244885
+
+updating target network
+Episode 142/500, Highscore: 328.0, Reward: 48.0, Epsilon: 0.072
+Total time: 4068.1s, Episode time: 27.8s, Average time: 28.6s
+No op: 483, Left: 487, Right: 382, Total: 1352
+Total No op: 104109, Total Left: 80412, Total Right: 61716, Total: 246237, memory size: 246237
+
+Episode 143/500, Highscore: 328.0, Reward: 47.0, Epsilon: 0.072
+Total time: 4098.6s, Episode time: 30.5s, Average time: 28.7s
+No op: 504, Left: 545, Right: 380, Total: 1429
+Total No op: 104613, Total Left: 80957, Total Right: 62096, Total: 247666, memory size: 247666
+
+Episode 144/500, Highscore: 328.0, Reward: 88.0, Epsilon: 0.071
+Total time: 4138.0s, Episode time: 39.5s, Average time: 28.7s
+No op: 452, Left: 800, Right: 563, Total: 1815
+Total No op: 105065, Total Left: 81757, Total Right: 62659, Total: 249481, memory size: 249481
+
+updating target network
+Episode 145/500, Highscore: 328.0, Reward: 93.0, Epsilon: 0.071
+Total time: 4186.1s, Episode time: 48.1s, Average time: 28.9s
+No op: 571, Left: 1029, Right: 635, Total: 2235
+Total No op: 105636, Total Left: 82786, Total Right: 63294, Total: 251716, memory size: 250000
+
+Episode 146/500, Highscore: 328.0, Reward: 71.0, Epsilon: 0.071
+Total time: 4224.4s, Episode time: 38.3s, Average time: 28.9s
+No op: 441, Left: 789, Right: 470, Total: 1700
+Total No op: 106077, Total Left: 83575, Total Right: 63764, Total: 253416, memory size: 250000
+
+updating target network
+Episode 147/500, Highscore: 328.0, Reward: 75.0, Epsilon: 0.071
+Total time: 4265.1s, Episode time: 40.7s, Average time: 29.0s
+No op: 975, Left: 524, Right: 420, Total: 1919
+Total No op: 107052, Total Left: 84099, Total Right: 64184, Total: 255335, memory size: 250000
+
+Episode 148/500, Highscore: 328.0, Reward: 87.0, Epsilon: 0.071
+Total time: 4308.5s, Episode time: 43.4s, Average time: 29.1s
+No op: 634, Left: 812, Right: 516, Total: 1962
+Total No op: 107686, Total Left: 84911, Total Right: 64700, Total: 257297, memory size: 250000
+
+Episode 149/500, Highscore: 328.0, Reward: 62.0, Epsilon: 0.07
+Total time: 4344.3s, Episode time: 35.8s, Average time: 29.2s
+No op: 966, Left: 382, Right: 339, Total: 1687
+Total No op: 108652, Total Left: 85293, Total Right: 65039, Total: 258984, memory size: 250000
+
+updating target network
+Episode 150/500, Highscore: 328.0, Reward: 47.0, Epsilon: 0.07
+Total time: 4378.1s, Episode time: 33.8s, Average time: 29.2s
+No op: 671, Left: 425, Right: 392, Total: 1488
+Total No op: 109323, Total Left: 85718, Total Right: 65431, Total: 260472, memory size: 250000
+
+Episode 151/500, Highscore: 328.0, Reward: 44.0, Epsilon: 0.07
+Total time: 4409.1s, Episode time: 30.9s, Average time: 29.2s
+No op: 828, Left: 349, Right: 239, Total: 1416
+Total No op: 110151, Total Left: 86067, Total Right: 65670, Total: 261888, memory size: 250000
+
+Episode 152/500, Highscore: 328.0, Reward: 100.0, Epsilon: 0.07
+Total time: 4453.9s, Episode time: 44.8s, Average time: 29.3s
+No op: 1016, Left: 600, Right: 475, Total: 2091
+Total No op: 111167, Total Left: 86667, Total Right: 66145, Total: 263979, memory size: 250000
+
+updating target network
+Episode 153/500, Highscore: 328.0, Reward: 118.0, Epsilon: 0.07
+Total time: 4496.2s, Episode time: 42.3s, Average time: 29.4s
+No op: 943, Left: 498, Right: 428, Total: 1869
+Total No op: 112110, Total Left: 87165, Total Right: 66573, Total: 265848, memory size: 250000
+
+Episode 154/500, Highscore: 328.0, Reward: 57.0, Epsilon: 0.069
+Total time: 4536.4s, Episode time: 40.2s, Average time: 29.5s
+No op: 816, Left: 572, Right: 483, Total: 1871
+Total No op: 112926, Total Left: 87737, Total Right: 67056, Total: 267719, memory size: 250000
+
+Episode 155/500, Highscore: 328.0, Reward: 82.0, Epsilon: 0.069
+Total time: 4576.3s, Episode time: 39.9s, Average time: 29.5s
+No op: 776, Left: 571, Right: 481, Total: 1828
+Total No op: 113702, Total Left: 88308, Total Right: 67537, Total: 269547, memory size: 250000
+
+updating target network
+Episode 156/500, Highscore: 328.0, Reward: 107.0, Epsilon: 0.069
+Total time: 4624.6s, Episode time: 48.3s, Average time: 29.6s
+No op: 870, Left: 740, Right: 593, Total: 2203
+Total No op: 114572, Total Left: 89048, Total Right: 68130, Total: 271750, memory size: 250000
+
+Episode 157/500, Highscore: 328.0, Reward: 72.0, Epsilon: 0.069
+Total time: 4662.4s, Episode time: 37.8s, Average time: 29.7s
+No op: 837, Left: 469, Right: 368, Total: 1674
+Total No op: 115409, Total Left: 89517, Total Right: 68498, Total: 273424, memory size: 250000
+
+updating target network
+Episode 158/500, Highscore: 328.0, Reward: 88.0, Epsilon: 0.069
+Total time: 4707.5s, Episode time: 45.1s, Average time: 29.8s
+No op: 997, Left: 717, Right: 404, Total: 2118
+Total No op: 116406, Total Left: 90234, Total Right: 68902, Total: 275542, memory size: 250000
+
+Episode 159/500, Highscore: 328.0, Reward: 71.0, Epsilon: 0.068
+Total time: 4746.8s, Episode time: 39.2s, Average time: 29.9s
+No op: 817, Left: 573, Right: 394, Total: 1784
+Total No op: 117223, Total Left: 90807, Total Right: 69296, Total: 277326, memory size: 250000
+
+Episode 160/500, Highscore: 328.0, Reward: 74.0, Epsilon: 0.068
+Total time: 4782.0s, Episode time: 35.2s, Average time: 29.9s
+No op: 737, Left: 499, Right: 379, Total: 1615
+Total No op: 117960, Total Left: 91306, Total Right: 69675, Total: 278941, memory size: 250000
+
+updating target network
+Episode 161/500, Highscore: 328.0, Reward: 49.0, Epsilon: 0.068
+Total time: 4817.0s, Episode time: 34.9s, Average time: 29.9s
+No op: 964, Left: 340, Right: 310, Total: 1614
+Total No op: 118924, Total Left: 91646, Total Right: 69985, Total: 280555, memory size: 250000
+
+Episode 162/500, Highscore: 328.0, Reward: 115.0, Epsilon: 0.068
+Total time: 4860.4s, Episode time: 43.5s, Average time: 30.0s
+No op: 674, Left: 796, Right: 488, Total: 1958
+Total No op: 119598, Total Left: 92442, Total Right: 70473, Total: 282513, memory size: 250000
+
+Episode 163/500, Highscore: 328.0, Reward: 78.0, Epsilon: 0.068
+Total time: 4903.4s, Episode time: 43.0s, Average time: 30.1s
+No op: 587, Left: 775, Right: 564, Total: 1926
+Total No op: 120185, Total Left: 93217, Total Right: 71037, Total: 284439, memory size: 250000
+
+updating target network
+Episode 164/500, Highscore: 328.0, Reward: 49.0, Epsilon: 0.067
+Total time: 4938.7s, Episode time: 35.3s, Average time: 30.1s
+No op: 789, Left: 439, Right: 358, Total: 1586
+Total No op: 120974, Total Left: 93656, Total Right: 71395, Total: 286025, memory size: 250000
+
+Episode 165/500, Highscore: 328.0, Reward: 99.0, Epsilon: 0.067
+Total time: 4978.6s, Episode time: 39.9s, Average time: 30.2s
+No op: 677, Left: 644, Right: 521, Total: 1842
+Total No op: 121651, Total Left: 94300, Total Right: 71916, Total: 287867, memory size: 250000
+
+Episode 166/500, Highscore: 328.0, Reward: 89.0, Epsilon: 0.067
+Total time: 5022.3s, Episode time: 43.6s, Average time: 30.3s
+No op: 774, Left: 691, Right: 512, Total: 1977
+Total No op: 122425, Total Left: 94991, Total Right: 72428, Total: 289844, memory size: 250000
+
+updating target network
+Episode 167/500, Highscore: 328.0, Reward: 103.0, Epsilon: 0.067
+Total time: 5067.0s, Episode time: 44.7s, Average time: 30.3s
+No op: 906, Left: 647, Right: 527, Total: 2080
+Total No op: 123331, Total Left: 95638, Total Right: 72955, Total: 291924, memory size: 250000
+
+Episode 168/500, Highscore: 328.0, Reward: 142.0, Epsilon: 0.067
+Total time: 5123.7s, Episode time: 56.7s, Average time: 30.5s
+No op: 942, Left: 952, Right: 700, Total: 2594
+Total No op: 124273, Total Left: 96590, Total Right: 73655, Total: 294518, memory size: 250000
+
+updating target network
+Episode 169/500, Highscore: 328.0, Reward: 40.0, Epsilon: 0.066
+Total time: 5154.0s, Episode time: 30.3s, Average time: 30.5s
+No op: 702, Left: 395, Right: 292, Total: 1389
+Total No op: 124975, Total Left: 96985, Total Right: 73947, Total: 295907, memory size: 250000
+
+Episode 170/500, Highscore: 328.0, Reward: 81.0, Epsilon: 0.066
+Total time: 5194.2s, Episode time: 40.2s, Average time: 30.6s
+No op: 564, Left: 756, Right: 569, Total: 1889
+Total No op: 125539, Total Left: 97741, Total Right: 74516, Total: 297796, memory size: 250000
+
+Episode 171/500, Highscore: 328.0, Reward: 65.0, Epsilon: 0.066
+Total time: 5224.3s, Episode time: 30.1s, Average time: 30.6s
+No op: 365, Left: 490, Right: 469, Total: 1324
+Total No op: 125904, Total Left: 98231, Total Right: 74985, Total: 299120, memory size: 250000
+
+updating target network
+Episode 172/500, Highscore: 328.0, Reward: 70.0, Epsilon: 0.066
+Total time: 5263.6s, Episode time: 39.3s, Average time: 30.6s
+No op: 877, Left: 467, Right: 438, Total: 1782
+Total No op: 126781, Total Left: 98698, Total Right: 75423, Total: 300902, memory size: 250000
+
+Episode 173/500, Highscore: 328.0, Reward: 79.0, Epsilon: 0.066
+Total time: 5303.2s, Episode time: 39.6s, Average time: 30.7s
+No op: 615, Left: 694, Right: 507, Total: 1816
+Total No op: 127396, Total Left: 99392, Total Right: 75930, Total: 302718, memory size: 250000
+
+Episode 174/500, Highscore: 328.0, Reward: 96.0, Epsilon: 0.065
+Total time: 5347.5s, Episode time: 44.3s, Average time: 30.7s
+No op: 416, Left: 872, Right: 742, Total: 2030
+Total No op: 127812, Total Left: 100264, Total Right: 76672, Total: 304748, memory size: 250000
+
+updating target network
+Episode 175/500, Highscore: 328.0, Reward: 96.0, Epsilon: 0.065
+Total time: 5385.8s, Episode time: 38.3s, Average time: 30.8s
+No op: 622, Left: 567, Right: 496, Total: 1685
+Total No op: 128434, Total Left: 100831, Total Right: 77168, Total: 306433, memory size: 250000
+
+Episode 176/500, Highscore: 328.0, Reward: 72.0, Epsilon: 0.065
+Total time: 5425.8s, Episode time: 40.0s, Average time: 30.8s
+No op: 585, Left: 647, Right: 617, Total: 1849
+Total No op: 129019, Total Left: 101478, Total Right: 77785, Total: 308282, memory size: 250000
+
+Episode 177/500, Highscore: 328.0, Reward: 28.0, Epsilon: 0.065
+Total time: 5451.5s, Episode time: 25.7s, Average time: 30.8s
+No op: 679, Left: 260, Right: 232, Total: 1171
+Total No op: 129698, Total Left: 101738, Total Right: 78017, Total: 309453, memory size: 250000
+
+updating target network
+Episode 178/500, Highscore: 328.0, Reward: 58.0, Epsilon: 0.065
+Total time: 5491.4s, Episode time: 39.9s, Average time: 30.9s
+No op: 1099, Left: 386, Right: 362, Total: 1847
+Total No op: 130797, Total Left: 102124, Total Right: 78379, Total: 311300, memory size: 250000
+
+Episode 179/500, Highscore: 328.0, Reward: 75.0, Epsilon: 0.064
+Total time: 5525.9s, Episode time: 34.4s, Average time: 30.9s
+No op: 641, Left: 515, Right: 409, Total: 1565
+Total No op: 131438, Total Left: 102639, Total Right: 78788, Total: 312865, memory size: 250000
+
+updating target network
+Episode 180/500, Highscore: 328.0, Reward: 98.0, Epsilon: 0.064
+Total time: 5578.9s, Episode time: 53.0s, Average time: 31.0s
+No op: 1097, Left: 782, Right: 578, Total: 2457
+Total No op: 132535, Total Left: 103421, Total Right: 79366, Total: 315322, memory size: 250000
+
+Episode 181/500, Highscore: 328.0, Reward: 26.0, Epsilon: 0.064
+Total time: 5599.8s, Episode time: 20.8s, Average time: 30.9s
+No op: 395, Left: 270, Right: 240, Total: 905
+Total No op: 132930, Total Left: 103691, Total Right: 79606, Total: 316227, memory size: 250000
+
+Episode 182/500, Highscore: 328.0, Reward: 94.0, Epsilon: 0.064
+Total time: 5639.5s, Episode time: 39.7s, Average time: 31.0s
+No op: 516, Left: 770, Right: 546, Total: 1832
+Total No op: 133446, Total Left: 104461, Total Right: 80152, Total: 318059, memory size: 250000
+
+Episode 183/500, Highscore: 328.0, Reward: 25.0, Epsilon: 0.064
+Total time: 5666.2s, Episode time: 26.7s, Average time: 31.0s
+No op: 777, Left: 232, Right: 234, Total: 1243
+Total No op: 134223, Total Left: 104693, Total Right: 80386, Total: 319302, memory size: 250000
+
+updating target network
+Episode 184/500, Highscore: 328.0, Reward: 50.0, Epsilon: 0.063
+Total time: 5702.0s, Episode time: 35.8s, Average time: 31.0s
+No op: 800, Left: 451, Right: 436, Total: 1687
+Total No op: 135023, Total Left: 105144, Total Right: 80822, Total: 320989, memory size: 250000
+
+Episode 185/500, Highscore: 328.0, Reward: 45.0, Epsilon: 0.063
+Total time: 5735.6s, Episode time: 33.7s, Average time: 31.0s
+No op: 184, Left: 712, Right: 585, Total: 1481
+Total No op: 135207, Total Left: 105856, Total Right: 81407, Total: 322470, memory size: 250000
+
+Episode 186/500, Highscore: 328.0, Reward: 126.0, Epsilon: 0.063
+Total time: 5783.3s, Episode time: 47.7s, Average time: 31.1s
+No op: 564, Left: 875, Right: 715, Total: 2154
+Total No op: 135771, Total Left: 106731, Total Right: 82122, Total: 324624, memory size: 250000
+
+updating target network
+Episode 187/500, Highscore: 328.0, Reward: 64.0, Epsilon: 0.063
+Total time: 5819.4s, Episode time: 36.1s, Average time: 31.1s
+No op: 632, Left: 588, Right: 462, Total: 1682
+Total No op: 136403, Total Left: 107319, Total Right: 82584, Total: 326306, memory size: 250000
+
+Episode 188/500, Highscore: 328.0, Reward: 79.0, Epsilon: 0.063
+Total time: 5859.8s, Episode time: 40.4s, Average time: 31.2s
+No op: 578, Left: 750, Right: 550, Total: 1878
+Total No op: 136981, Total Left: 108069, Total Right: 83134, Total: 328184, memory size: 250000
+
+Episode 189/500, Highscore: 328.0, Reward: 60.0, Epsilon: 0.062
+Total time: 5898.0s, Episode time: 38.2s, Average time: 31.2s
+No op: 486, Left: 805, Right: 403, Total: 1694
+Total No op: 137467, Total Left: 108874, Total Right: 83537, Total: 329878, memory size: 250000
+
+updating target network
+Episode 190/500, Highscore: 328.0, Reward: 56.0, Epsilon: 0.062
+Total time: 5938.3s, Episode time: 40.4s, Average time: 31.3s
+No op: 933, Left: 543, Right: 397, Total: 1873
+Total No op: 138400, Total Left: 109417, Total Right: 83934, Total: 331751, memory size: 250000
+
+Episode 191/500, Highscore: 328.0, Reward: 40.0, Epsilon: 0.062
+Total time: 5972.5s, Episode time: 34.2s, Average time: 31.3s
+No op: 967, Left: 280, Right: 291, Total: 1538
+Total No op: 139367, Total Left: 109697, Total Right: 84225, Total: 333289, memory size: 250000
+
+Episode 192/500, Highscore: 328.0, Reward: 80.0, Epsilon: 0.062
+Total time: 6007.0s, Episode time: 34.4s, Average time: 31.3s
+No op: 746, Left: 425, Right: 388, Total: 1559
+Total No op: 140113, Total Left: 110122, Total Right: 84613, Total: 334848, memory size: 250000
+
+updating target network
+Episode 193/500, Highscore: 328.0, Reward: 81.0, Epsilon: 0.062
+Total time: 6047.0s, Episode time: 40.0s, Average time: 31.3s
+No op: 952, Left: 487, Right: 428, Total: 1867
+Total No op: 141065, Total Left: 110609, Total Right: 85041, Total: 336715, memory size: 250000
+
+Episode 194/500, Highscore: 328.0, Reward: 74.0, Epsilon: 0.061
+Total time: 6086.4s, Episode time: 39.4s, Average time: 31.4s
+No op: 758, Left: 591, Right: 491, Total: 1840
+Total No op: 141823, Total Left: 111200, Total Right: 85532, Total: 338555, memory size: 250000
+
+updating target network
+Episode 195/500, Highscore: 328.0, Reward: 58.0, Epsilon: 0.061
+Total time: 6119.9s, Episode time: 33.5s, Average time: 31.4s
+No op: 555, Left: 504, Right: 439, Total: 1498
+Total No op: 142378, Total Left: 111704, Total Right: 85971, Total: 340053, memory size: 250000
+
+Episode 196/500, Highscore: 328.0, Reward: 90.0, Epsilon: 0.061
+Total time: 6163.1s, Episode time: 43.2s, Average time: 31.4s
+No op: 780, Left: 642, Right: 560, Total: 1982
+Total No op: 143158, Total Left: 112346, Total Right: 86531, Total: 342035, memory size: 250000
+
+Episode 197/500, Highscore: 328.0, Reward: 43.0, Epsilon: 0.061
+Total time: 6197.3s, Episode time: 34.2s, Average time: 31.5s
+No op: 803, Left: 406, Right: 386, Total: 1595
+Total No op: 143961, Total Left: 112752, Total Right: 86917, Total: 343630, memory size: 250000
+
+updating target network
+Episode 198/500, Highscore: 328.0, Reward: 49.0, Epsilon: 0.061
+Total time: 6231.7s, Episode time: 34.4s, Average time: 31.5s
+No op: 307, Left: 907, Right: 399, Total: 1613
+Total No op: 144268, Total Left: 113659, Total Right: 87316, Total: 345243, memory size: 250000
+
+Episode 199/500, Highscore: 328.0, Reward: 57.0, Epsilon: 0.06
+Total time: 6267.5s, Episode time: 35.7s, Average time: 31.5s
+No op: 279, Left: 1117, Right: 343, Total: 1739
+Total No op: 144547, Total Left: 114776, Total Right: 87659, Total: 346982, memory size: 250000
+
+Episode 200/500, Highscore: 328.0, Reward: 85.0, Epsilon: 0.06
+Total time: 6309.1s, Episode time: 41.6s, Average time: 31.5s
+No op: 635, Left: 696, Right: 541, Total: 1872
+Total No op: 145182, Total Left: 115472, Total Right: 88200, Total: 348854, memory size: 250000
+
+updating target network
+Episode 201/500, Highscore: 328.0, Reward: 55.0, Epsilon: 0.06
+Total time: 6340.6s, Episode time: 31.4s, Average time: 31.5s
+No op: 745, Left: 371, Right: 379, Total: 1495
+Total No op: 145927, Total Left: 115843, Total Right: 88579, Total: 350349, memory size: 250000
+
+Episode 202/500, Highscore: 328.0, Reward: 35.0, Epsilon: 0.06
+Total time: 6365.8s, Episode time: 25.2s, Average time: 31.5s
+No op: 626, Left: 257, Right: 243, Total: 1126
+Total No op: 146553, Total Left: 116100, Total Right: 88822, Total: 351475, memory size: 250000
+
+Episode 203/500, Highscore: 328.0, Reward: 42.0, Epsilon: 0.06
+Total time: 6392.6s, Episode time: 26.9s, Average time: 31.5s
+No op: 646, Left: 358, Right: 267, Total: 1271
+Total No op: 147199, Total Left: 116458, Total Right: 89089, Total: 352746, memory size: 250000
+
+Episode 204/500, Highscore: 328.0, Reward: 63.0, Epsilon: 0.059
+Total time: 6431.4s, Episode time: 38.7s, Average time: 31.5s
+No op: 724, Left: 586, Right: 460, Total: 1770
+Total No op: 147923, Total Left: 117044, Total Right: 89549, Total: 354516, memory size: 250000
+
+updating target network
+Episode 205/500, Highscore: 328.0, Reward: 100.0, Epsilon: 0.059
+Total time: 6478.7s, Episode time: 47.3s, Average time: 31.6s
+No op: 1102, Left: 554, Right: 522, Total: 2178
+Total No op: 149025, Total Left: 117598, Total Right: 90071, Total: 356694, memory size: 250000
+
+Episode 206/500, Highscore: 328.0, Reward: 20.0, Epsilon: 0.059
+Total time: 6496.8s, Episode time: 18.2s, Average time: 31.5s
+No op: 522, Left: 192, Right: 159, Total: 873
+Total No op: 149547, Total Left: 117790, Total Right: 90230, Total: 357567, memory size: 250000
+
+Episode 207/500, Highscore: 328.0, Reward: 91.0, Epsilon: 0.059
+Total time: 6539.2s, Episode time: 42.3s, Average time: 31.6s
+No op: 710, Left: 672, Right: 533, Total: 1915
+Total No op: 150257, Total Left: 118462, Total Right: 90763, Total: 359482, memory size: 250000
+
+updating target network
+Episode 208/500, Highscore: 328.0, Reward: 68.0, Epsilon: 0.059
+Total time: 6583.6s, Episode time: 44.4s, Average time: 31.7s
+No op: 458, Left: 801, Right: 757, Total: 2016
+Total No op: 150715, Total Left: 119263, Total Right: 91520, Total: 361498, memory size: 250000
+
+Episode 209/500, Highscore: 328.0, Reward: 79.0, Epsilon: 0.058
+Total time: 6619.6s, Episode time: 36.0s, Average time: 31.7s
+No op: 522, Left: 621, Right: 530, Total: 1673
+Total No op: 151237, Total Left: 119884, Total Right: 92050, Total: 363171, memory size: 250000
+
+updating target network
+Episode 210/500, Highscore: 328.0, Reward: 90.0, Epsilon: 0.058
+Total time: 6662.3s, Episode time: 42.7s, Average time: 31.7s
+No op: 580, Left: 770, Right: 563, Total: 1913
+Total No op: 151817, Total Left: 120654, Total Right: 92613, Total: 365084, memory size: 250000
+
+Episode 211/500, Highscore: 328.0, Reward: 86.0, Epsilon: 0.058
+Total time: 6710.9s, Episode time: 48.6s, Average time: 31.8s
+No op: 953, Left: 630, Right: 629, Total: 2212
+Total No op: 152770, Total Left: 121284, Total Right: 93242, Total: 367296, memory size: 250000
+
+Episode 212/500, Highscore: 328.0, Reward: 88.0, Epsilon: 0.058
+Total time: 6753.8s, Episode time: 42.9s, Average time: 31.9s
+No op: 857, Left: 640, Right: 419, Total: 1916
+Total No op: 153627, Total Left: 121924, Total Right: 93661, Total: 369212, memory size: 250000
+
+updating target network
+Episode 213/500, Highscore: 328.0, Reward: 131.0, Epsilon: 0.058
+Total time: 6804.1s, Episode time: 50.3s, Average time: 31.9s
+No op: 1133, Left: 708, Right: 545, Total: 2386
+Total No op: 154760, Total Left: 122632, Total Right: 94206, Total: 371598, memory size: 250000
+
+Episode 214/500, Highscore: 328.0, Reward: 134.0, Epsilon: 0.057
+Total time: 6855.0s, Episode time: 50.9s, Average time: 32.0s
+No op: 1193, Left: 558, Right: 486, Total: 2237
+Total No op: 155953, Total Left: 123190, Total Right: 94692, Total: 373835, memory size: 250000
+
+updating target network
+Episode 215/500, Highscore: 328.0, Reward: 70.0, Epsilon: 0.057
+Total time: 6894.9s, Episode time: 39.8s, Average time: 32.1s
+No op: 992, Left: 505, Right: 354, Total: 1851
+Total No op: 156945, Total Left: 123695, Total Right: 95046, Total: 375686, memory size: 250000
+
+Episode 216/500, Highscore: 328.0, Reward: 93.0, Epsilon: 0.057
+Total time: 6938.9s, Episode time: 44.0s, Average time: 32.1s
+No op: 985, Left: 623, Right: 437, Total: 2045
+Total No op: 157930, Total Left: 124318, Total Right: 95483, Total: 377731, memory size: 250000
+
+Episode 217/500, Highscore: 328.0, Reward: 29.0, Epsilon: 0.057
+Total time: 6968.8s, Episode time: 29.9s, Average time: 32.1s
+No op: 491, Left: 379, Right: 502, Total: 1372
+Total No op: 158421, Total Left: 124697, Total Right: 95985, Total: 379103, memory size: 250000
+
+updating target network
+Episode 218/500, Highscore: 328.0, Reward: 23.0, Epsilon: 0.057
+Total time: 6991.7s, Episode time: 22.9s, Average time: 32.1s
+No op: 393, Left: 248, Right: 452, Total: 1093
+Total No op: 158814, Total Left: 124945, Total Right: 96437, Total: 380196, memory size: 250000
+
+Episode 219/500, Highscore: 328.0, Reward: 34.0, Epsilon: 0.056
+Total time: 7021.3s, Episode time: 29.6s, Average time: 32.1s
+No op: 703, Left: 286, Right: 322, Total: 1311
+Total No op: 159517, Total Left: 125231, Total Right: 96759, Total: 381507, memory size: 250000
+
+Episode 220/500, Highscore: 328.0, Reward: 46.0, Epsilon: 0.056
+Total time: 7051.2s, Episode time: 29.9s, Average time: 32.1s
+No op: 939, Left: 240, Right: 177, Total: 1356
+Total No op: 160456, Total Left: 125471, Total Right: 96936, Total: 382863, memory size: 250000
+
+Episode 221/500, Highscore: 328.0, Reward: 8.0, Epsilon: 0.056
+Total time: 7064.1s, Episode time: 12.8s, Average time: 32.0s
+No op: 397, Left: 148, Right: 49, Total: 594
+Total No op: 160853, Total Left: 125619, Total Right: 96985, Total: 383457, memory size: 250000
+
+Episode 222/500, Highscore: 328.0, Reward: 8.0, Epsilon: 0.056
+Total time: 7077.0s, Episode time: 12.9s, Average time: 31.9s
+No op: 234, Left: 300, Right: 49, Total: 583
+Total No op: 161087, Total Left: 125919, Total Right: 97034, Total: 384040, memory size: 250000
+
+Episode 223/500, Highscore: 328.0, Reward: 22.0, Epsilon: 0.056
+Total time: 7096.0s, Episode time: 19.0s, Average time: 31.8s
+No op: 363, Left: 450, Right: 142, Total: 955
+Total No op: 161450, Total Left: 126369, Total Right: 97176, Total: 384995, memory size: 250000
+
+updating target network
+Episode 224/500, Highscore: 328.0, Reward: 3.0, Epsilon: 0.055
+Total time: 7103.6s, Episode time: 7.6s, Average time: 31.7s
+No op: 73, Left: 165, Right: 55, Total: 293
+Total No op: 161523, Total Left: 126534, Total Right: 97231, Total: 385288, memory size: 250000
+
+Episode 225/500, Highscore: 328.0, Reward: 20.0, Epsilon: 0.055
+Total time: 7117.6s, Episode time: 14.0s, Average time: 31.6s
+No op: 278, Left: 297, Right: 110, Total: 685
+Total No op: 161801, Total Left: 126831, Total Right: 97341, Total: 385973, memory size: 250000
+
+Episode 226/500, Highscore: 328.0, Reward: 12.0, Epsilon: 0.055
+Total time: 7130.2s, Episode time: 12.6s, Average time: 31.5s
+No op: 296, Left: 186, Right: 80, Total: 562
+Total No op: 162097, Total Left: 127017, Total Right: 97421, Total: 386535, memory size: 250000
+
+Episode 227/500, Highscore: 328.0, Reward: 14.0, Epsilon: 0.055
+Total time: 7147.9s, Episode time: 17.7s, Average time: 31.5s
+No op: 602, Left: 137, Right: 89, Total: 828
+Total No op: 162699, Total Left: 127154, Total Right: 97510, Total: 387363, memory size: 250000
+
+Episode 228/500, Highscore: 328.0, Reward: 48.0, Epsilon: 0.055
+Total time: 7182.3s, Episode time: 34.4s, Average time: 31.5s
+No op: 1160, Left: 228, Right: 182, Total: 1570
+Total No op: 163859, Total Left: 127382, Total Right: 97692, Total: 388933, memory size: 250000
+
+Episode 229/500, Highscore: 328.0, Reward: 19.0, Epsilon: 0.054
+Total time: 7203.3s, Episode time: 21.0s, Average time: 31.5s
+No op: 689, Left: 147, Right: 107, Total: 943
+Total No op: 164548, Total Left: 127529, Total Right: 97799, Total: 389876, memory size: 250000
+
+updating target network
+Episode 230/500, Highscore: 328.0, Reward: 14.0, Epsilon: 0.054
+Total time: 7221.4s, Episode time: 18.0s, Average time: 31.4s
+No op: 575, Left: 174, Right: 113, Total: 862
+Total No op: 165123, Total Left: 127703, Total Right: 97912, Total: 390738, memory size: 250000
+
+Episode 231/500, Highscore: 328.0, Reward: 65.0, Epsilon: 0.054
+Total time: 7264.2s, Episode time: 42.8s, Average time: 31.4s
+No op: 1202, Left: 398, Right: 353, Total: 1953
+Total No op: 166325, Total Left: 128101, Total Right: 98265, Total: 392691, memory size: 250000
+
+Episode 232/500, Highscore: 328.0, Reward: 25.0, Epsilon: 0.054
+Total time: 7290.7s, Episode time: 26.5s, Average time: 31.4s
+No op: 588, Left: 371, Right: 294, Total: 1253
+Total No op: 166913, Total Left: 128472, Total Right: 98559, Total: 393944, memory size: 250000
+
+updating target network
+Episode 233/500, Highscore: 328.0, Reward: 44.0, Epsilon: 0.054
+Total time: 7317.0s, Episode time: 26.4s, Average time: 31.4s
+No op: 367, Left: 460, Right: 409, Total: 1236
+Total No op: 167280, Total Left: 128932, Total Right: 98968, Total: 395180, memory size: 250000
+
+Episode 234/500, Highscore: 328.0, Reward: 55.0, Epsilon: 0.053
+Total time: 7354.6s, Episode time: 37.6s, Average time: 31.4s
+No op: 269, Left: 750, Right: 657, Total: 1676
+Total No op: 167549, Total Left: 129682, Total Right: 99625, Total: 396856, memory size: 250000
+
+Episode 235/500, Highscore: 328.0, Reward: 29.0, Epsilon: 0.053
+Total time: 7377.1s, Episode time: 22.5s, Average time: 31.4s
+No op: 389, Left: 398, Right: 286, Total: 1073
+Total No op: 167938, Total Left: 130080, Total Right: 99911, Total: 397929, memory size: 250000
+
+Episode 236/500, Highscore: 328.0, Reward: 47.0, Epsilon: 0.053
+Total time: 7407.6s, Episode time: 30.5s, Average time: 31.4s
+No op: 616, Left: 429, Right: 379, Total: 1424
+Total No op: 168554, Total Left: 130509, Total Right: 100290, Total: 399353, memory size: 250000
+
+updating target network
+Episode 237/500, Highscore: 328.0, Reward: 26.0, Epsilon: 0.053
+Total time: 7432.9s, Episode time: 25.4s, Average time: 31.4s
+No op: 616, Left: 316, Right: 225, Total: 1157
+Total No op: 169170, Total Left: 130825, Total Right: 100515, Total: 400510, memory size: 250000
+
+Episode 238/500, Highscore: 328.0, Reward: 77.0, Epsilon: 0.053
+Total time: 7476.2s, Episode time: 43.3s, Average time: 31.4s
+No op: 830, Left: 720, Right: 449, Total: 1999
+Total No op: 170000, Total Left: 131545, Total Right: 100964, Total: 402509, memory size: 250000
+
+Episode 239/500, Highscore: 328.0, Reward: 40.0, Epsilon: 0.052
+Total time: 7511.4s, Episode time: 35.2s, Average time: 31.4s
+No op: 332, Left: 758, Right: 559, Total: 1649
+Total No op: 170332, Total Left: 132303, Total Right: 101523, Total: 404158, memory size: 250000
+
+updating target network
+Episode 240/500, Highscore: 328.0, Reward: 58.0, Epsilon: 0.052
+Total time: 7549.0s, Episode time: 37.6s, Average time: 31.5s
+No op: 692, Left: 534, Right: 458, Total: 1684
+Total No op: 171024, Total Left: 132837, Total Right: 101981, Total: 405842, memory size: 250000
+
+Episode 241/500, Highscore: 328.0, Reward: 66.0, Epsilon: 0.052
+Total time: 7584.8s, Episode time: 35.8s, Average time: 31.5s
+No op: 815, Left: 430, Right: 461, Total: 1706
+Total No op: 171839, Total Left: 133267, Total Right: 102442, Total: 407548, memory size: 250000
+
+Episode 242/500, Highscore: 328.0, Reward: 77.0, Epsilon: 0.052
+Total time: 7631.1s, Episode time: 46.3s, Average time: 31.5s
+No op: 1248, Left: 409, Right: 414, Total: 2071
+Total No op: 173087, Total Left: 133676, Total Right: 102856, Total: 409619, memory size: 250000
+
+updating target network
+Episode 243/500, Highscore: 328.0, Reward: 41.0, Epsilon: 0.052
+Total time: 7662.5s, Episode time: 31.4s, Average time: 31.5s
+No op: 570, Left: 486, Right: 448, Total: 1504
+Total No op: 173657, Total Left: 134162, Total Right: 103304, Total: 411123, memory size: 250000
+
+Episode 244/500, Highscore: 328.0, Reward: 47.0, Epsilon: 0.051
+Total time: 7693.1s, Episode time: 30.6s, Average time: 31.5s
+No op: 421, Left: 586, Right: 435, Total: 1442
+Total No op: 174078, Total Left: 134748, Total Right: 103739, Total: 412565, memory size: 250000
+
+Episode 245/500, Highscore: 328.0, Reward: 117.0, Epsilon: 0.051
+Total time: 7743.6s, Episode time: 50.5s, Average time: 31.6s
+No op: 923, Left: 791, Right: 601, Total: 2315
+Total No op: 175001, Total Left: 135539, Total Right: 104340, Total: 414880, memory size: 250000
+
+updating target network
+Episode 246/500, Highscore: 328.0, Reward: 100.0, Epsilon: 0.051
+Total time: 7786.7s, Episode time: 43.1s, Average time: 31.7s
+No op: 1165, Left: 427, Right: 403, Total: 1995
+Total No op: 176166, Total Left: 135966, Total Right: 104743, Total: 416875, memory size: 250000
+
+Episode 247/500, Highscore: 328.0, Reward: 80.0, Epsilon: 0.051
+Total time: 7826.3s, Episode time: 39.6s, Average time: 31.7s
+No op: 815, Left: 615, Right: 436, Total: 1866
+Total No op: 176981, Total Left: 136581, Total Right: 105179, Total: 418741, memory size: 250000
+
+updating target network
+Episode 248/500, Highscore: 328.0, Reward: 102.0, Epsilon: 0.051
+Total time: 7869.8s, Episode time: 43.4s, Average time: 31.7s
+No op: 517, Left: 977, Right: 530, Total: 2024
+Total No op: 177498, Total Left: 137558, Total Right: 105709, Total: 420765, memory size: 250000
+
+Episode 249/500, Highscore: 328.0, Reward: 85.0, Epsilon: 0.05
+Total time: 7912.9s, Episode time: 43.2s, Average time: 31.8s
+No op: 745, Left: 735, Right: 501, Total: 1981
+Total No op: 178243, Total Left: 138293, Total Right: 106210, Total: 422746, memory size: 250000
+
+Episode 250/500, Highscore: 328.0, Reward: 51.0, Epsilon: 0.05
+Total time: 7942.4s, Episode time: 29.5s, Average time: 31.8s
+No op: 678, Left: 360, Right: 293, Total: 1331
+Total No op: 178921, Total Left: 138653, Total Right: 106503, Total: 424077, memory size: 250000
+
+updating target network
+Episode 251/500, Highscore: 328.0, Reward: 81.0, Epsilon: 0.05
+Total time: 7981.4s, Episode time: 38.9s, Average time: 31.8s
+No op: 780, Left: 595, Right: 412, Total: 1787
+Total No op: 179701, Total Left: 139248, Total Right: 106915, Total: 425864, memory size: 250000
+
+Episode 252/500, Highscore: 328.0, Reward: 60.0, Epsilon: 0.05
+Total time: 8021.4s, Episode time: 40.1s, Average time: 31.8s
+No op: 847, Left: 564, Right: 487, Total: 1898
+Total No op: 180548, Total Left: 139812, Total Right: 107402, Total: 427762, memory size: 250000
+
+Episode 253/500, Highscore: 328.0, Reward: 66.0, Epsilon: 0.05
+Total time: 8060.1s, Episode time: 38.7s, Average time: 31.9s
+No op: 603, Left: 678, Right: 514, Total: 1795
+Total No op: 181151, Total Left: 140490, Total Right: 107916, Total: 429557, memory size: 250000
+
+updating target network
+Episode 254/500, Highscore: 328.0, Reward: 110.0, Epsilon: 0.049
+Total time: 8102.1s, Episode time: 42.0s, Average time: 31.9s
+No op: 720, Left: 656, Right: 521, Total: 1897
+Total No op: 181871, Total Left: 141146, Total Right: 108437, Total: 431454, memory size: 250000
+
+Episode 255/500, Highscore: 328.0, Reward: 50.0, Epsilon: 0.049
+Total time: 8136.4s, Episode time: 34.3s, Average time: 31.9s
+No op: 931, Left: 388, Right: 289, Total: 1608
+Total No op: 182802, Total Left: 141534, Total Right: 108726, Total: 433062, memory size: 250000
+
+updating target network
+Episode 256/500, Highscore: 328.0, Reward: 114.0, Epsilon: 0.049
+Total time: 8179.1s, Episode time: 42.8s, Average time: 31.9s
+No op: 668, Left: 691, Right: 635, Total: 1994
+Total No op: 183470, Total Left: 142225, Total Right: 109361, Total: 435056, memory size: 250000
+
+Episode 257/500, Highscore: 328.0, Reward: 33.0, Epsilon: 0.049
+Total time: 8206.2s, Episode time: 27.1s, Average time: 31.9s
+No op: 583, Left: 417, Right: 328, Total: 1328
+Total No op: 184053, Total Left: 142642, Total Right: 109689, Total: 436384, memory size: 250000
+
+Episode 258/500, Highscore: 328.0, Reward: 63.0, Epsilon: 0.049
+Total time: 8243.6s, Episode time: 37.4s, Average time: 32.0s
+No op: 650, Left: 540, Right: 459, Total: 1649
+Total No op: 184703, Total Left: 143182, Total Right: 110148, Total: 438033, memory size: 250000
+
+Episode 259/500, Highscore: 328.0, Reward: 68.0, Epsilon: 0.048
+Total time: 8278.6s, Episode time: 34.9s, Average time: 32.0s
+No op: 973, Left: 359, Right: 296, Total: 1628
+Total No op: 185676, Total Left: 143541, Total Right: 110444, Total: 439661, memory size: 250000
+
+updating target network
+Episode 260/500, Highscore: 328.0, Reward: 58.0, Epsilon: 0.048
+Total time: 8318.1s, Episode time: 39.5s, Average time: 32.0s
+No op: 980, Left: 436, Right: 447, Total: 1863
+Total No op: 186656, Total Left: 143977, Total Right: 110891, Total: 441524, memory size: 250000
+
+Episode 261/500, Highscore: 328.0, Reward: 87.0, Epsilon: 0.048
+Total time: 8361.9s, Episode time: 43.8s, Average time: 32.0s
+No op: 809, Left: 649, Right: 611, Total: 2069
+Total No op: 187465, Total Left: 144626, Total Right: 111502, Total: 443593, memory size: 250000
+
+updating target network
+Episode 262/500, Highscore: 328.0, Reward: 83.0, Epsilon: 0.048
+Total time: 8408.0s, Episode time: 46.0s, Average time: 32.1s
+No op: 575, Left: 815, Right: 675, Total: 2065
+Total No op: 188040, Total Left: 145441, Total Right: 112177, Total: 445658, memory size: 250000
+
+Episode 263/500, Highscore: 328.0, Reward: 69.0, Epsilon: 0.048
+Total time: 8439.0s, Episode time: 31.0s, Average time: 32.1s
+No op: 795, Left: 385, Right: 304, Total: 1484
+Total No op: 188835, Total Left: 145826, Total Right: 112481, Total: 447142, memory size: 250000
+
+Episode 264/500, Highscore: 328.0, Reward: 110.0, Epsilon: 0.047
+Total time: 8490.6s, Episode time: 51.5s, Average time: 32.2s
+No op: 1081, Left: 694, Right: 567, Total: 2342
+Total No op: 189916, Total Left: 146520, Total Right: 113048, Total: 449484, memory size: 250000
+
+updating target network
+Episode 265/500, Highscore: 328.0, Reward: 113.0, Epsilon: 0.047
+Total time: 8529.8s, Episode time: 39.2s, Average time: 32.2s
+No op: 648, Left: 642, Right: 558, Total: 1848
+Total No op: 190564, Total Left: 147162, Total Right: 113606, Total: 451332, memory size: 250000
+
+Episode 266/500, Highscore: 328.0, Reward: 90.0, Epsilon: 0.047
+Total time: 8577.4s, Episode time: 47.6s, Average time: 32.2s
+No op: 640, Left: 837, Right: 739, Total: 2216
+Total No op: 191204, Total Left: 147999, Total Right: 114345, Total: 453548, memory size: 250000
+
+Episode 267/500, Highscore: 328.0, Reward: 29.0, Epsilon: 0.047
+Total time: 8602.5s, Episode time: 25.1s, Average time: 32.2s
+No op: 586, Left: 273, Right: 259, Total: 1118
+Total No op: 191790, Total Left: 148272, Total Right: 114604, Total: 454666, memory size: 250000
+
+updating target network
+Episode 268/500, Highscore: 328.0, Reward: 82.0, Epsilon: 0.047
+Total time: 8642.2s, Episode time: 39.8s, Average time: 32.2s
+No op: 1009, Left: 564, Right: 328, Total: 1901
+Total No op: 192799, Total Left: 148836, Total Right: 114932, Total: 456567, memory size: 250000
+
+Episode 269/500, Highscore: 328.0, Reward: 55.0, Epsilon: 0.046
+Total time: 8683.8s, Episode time: 41.6s, Average time: 32.3s
+No op: 989, Left: 524, Right: 339, Total: 1852
+Total No op: 193788, Total Left: 149360, Total Right: 115271, Total: 458419, memory size: 250000
+
+updating target network
+Episode 270/500, Highscore: 328.0, Reward: 58.0, Epsilon: 0.046
+Total time: 8718.7s, Episode time: 34.8s, Average time: 32.3s
+No op: 674, Left: 514, Right: 411, Total: 1599
+Total No op: 194462, Total Left: 149874, Total Right: 115682, Total: 460018, memory size: 250000
+
+Episode 271/500, Highscore: 328.0, Reward: 86.0, Epsilon: 0.046
+Total time: 8763.2s, Episode time: 44.5s, Average time: 32.3s
+No op: 1259, Left: 458, Right: 408, Total: 2125
+Total No op: 195721, Total Left: 150332, Total Right: 116090, Total: 462143, memory size: 250000
+
+Episode 272/500, Highscore: 328.0, Reward: 55.0, Epsilon: 0.046
+Total time: 8797.6s, Episode time: 34.4s, Average time: 32.3s
+No op: 839, Left: 416, Right: 348, Total: 1603
+Total No op: 196560, Total Left: 150748, Total Right: 116438, Total: 463746, memory size: 250000
+
+updating target network
+Episode 273/500, Highscore: 328.0, Reward: 77.0, Epsilon: 0.046
+Total time: 8839.0s, Episode time: 41.5s, Average time: 32.4s
+No op: 998, Left: 480, Right: 395, Total: 1873
+Total No op: 197558, Total Left: 151228, Total Right: 116833, Total: 465619, memory size: 250000
+
+Episode 274/500, Highscore: 328.0, Reward: 105.0, Epsilon: 0.045
+Total time: 8882.0s, Episode time: 43.0s, Average time: 32.4s
+No op: 754, Left: 759, Right: 513, Total: 2026
+Total No op: 198312, Total Left: 151987, Total Right: 117346, Total: 467645, memory size: 250000
+
+Episode 275/500, Highscore: 328.0, Reward: 46.0, Epsilon: 0.045
+Total time: 8920.1s, Episode time: 38.0s, Average time: 32.4s
+No op: 592, Left: 670, Right: 502, Total: 1764
+Total No op: 198904, Total Left: 152657, Total Right: 117848, Total: 469409, memory size: 250000
+
+updating target network
+Episode 276/500, Highscore: 328.0, Reward: 68.0, Epsilon: 0.045
+Total time: 8958.6s, Episode time: 38.6s, Average time: 32.5s
+No op: 794, Left: 579, Right: 457, Total: 1830
+Total No op: 199698, Total Left: 153236, Total Right: 118305, Total: 471239, memory size: 250000
+
+Episode 277/500, Highscore: 328.0, Reward: 95.0, Epsilon: 0.045
+Total time: 9005.5s, Episode time: 46.8s, Average time: 32.5s
+No op: 567, Left: 897, Right: 749, Total: 2213
+Total No op: 200265, Total Left: 154133, Total Right: 119054, Total: 473452, memory size: 250000
+
+Episode 278/500, Highscore: 328.0, Reward: 46.0, Epsilon: 0.045
+Total time: 9031.0s, Episode time: 25.6s, Average time: 32.5s
+No op: 296, Left: 573, Right: 313, Total: 1182
+Total No op: 200561, Total Left: 154706, Total Right: 119367, Total: 474634, memory size: 250000
+
+updating target network
+Episode 279/500, Highscore: 328.0, Reward: 129.0, Epsilon: 0.044
+Total time: 9082.5s, Episode time: 51.5s, Average time: 32.6s
+No op: 1126, Left: 737, Right: 505, Total: 2368
+Total No op: 201687, Total Left: 155443, Total Right: 119872, Total: 477002, memory size: 250000
+
+Episode 280/500, Highscore: 328.0, Reward: 114.0, Epsilon: 0.044
+Total time: 9125.9s, Episode time: 43.4s, Average time: 32.6s
+No op: 766, Left: 712, Right: 546, Total: 2024
+Total No op: 202453, Total Left: 156155, Total Right: 120418, Total: 479026, memory size: 250000
+
+updating target network
+Episode 281/500, Highscore: 328.0, Reward: 140.0, Epsilon: 0.044
+Total time: 9176.8s, Episode time: 50.9s, Average time: 32.7s
+No op: 1190, Left: 693, Right: 499, Total: 2382
+Total No op: 203643, Total Left: 156848, Total Right: 120917, Total: 481408, memory size: 250000
+
+Episode 282/500, Highscore: 328.0, Reward: 62.0, Epsilon: 0.044
+Total time: 9207.6s, Episode time: 30.8s, Average time: 32.7s
+No op: 670, Left: 467, Right: 356, Total: 1493
+Total No op: 204313, Total Left: 157315, Total Right: 121273, Total: 482901, memory size: 250000
+
+Episode 283/500, Highscore: 328.0, Reward: 66.0, Epsilon: 0.044
+Total time: 9249.2s, Episode time: 41.5s, Average time: 32.7s
+No op: 759, Left: 621, Right: 521, Total: 1901
+Total No op: 205072, Total Left: 157936, Total Right: 121794, Total: 484802, memory size: 250000
+
+updating target network
+Episode 284/500, Highscore: 328.0, Reward: 126.0, Epsilon: 0.043
+Total time: 9293.7s, Episode time: 44.5s, Average time: 32.7s
+No op: 882, Left: 667, Right: 605, Total: 2154
+Total No op: 205954, Total Left: 158603, Total Right: 122399, Total: 486956, memory size: 250000
+
+Episode 285/500, Highscore: 328.0, Reward: 93.0, Epsilon: 0.043
+Total time: 9336.1s, Episode time: 42.4s, Average time: 32.8s
+No op: 934, Left: 614, Right: 444, Total: 1992
+Total No op: 206888, Total Left: 159217, Total Right: 122843, Total: 488948, memory size: 250000
+
+updating target network
+Episode 286/500, Highscore: 328.0, Reward: 58.0, Epsilon: 0.043
+Total time: 9369.2s, Episode time: 33.1s, Average time: 32.8s
+No op: 435, Left: 615, Right: 460, Total: 1510
+Total No op: 207323, Total Left: 159832, Total Right: 123303, Total: 490458, memory size: 250000
+
+Episode 287/500, Highscore: 328.0, Reward: 49.0, Epsilon: 0.043
+Total time: 9401.6s, Episode time: 32.3s, Average time: 32.8s
+No op: 494, Left: 548, Right: 488, Total: 1530
+Total No op: 207817, Total Left: 160380, Total Right: 123791, Total: 491988, memory size: 250000
+
+Episode 288/500, Highscore: 328.0, Reward: 47.0, Epsilon: 0.043
+Total time: 9439.1s, Episode time: 37.6s, Average time: 32.8s
+No op: 393, Left: 667, Right: 649, Total: 1709
+Total No op: 208210, Total Left: 161047, Total Right: 124440, Total: 493697, memory size: 250000
+
+updating target network
+Episode 289/500, Highscore: 328.0, Reward: 92.0, Epsilon: 0.042
+Total time: 9482.2s, Episode time: 43.1s, Average time: 32.8s
+No op: 890, Left: 614, Right: 537, Total: 2041
+Total No op: 209100, Total Left: 161661, Total Right: 124977, Total: 495738, memory size: 250000
+
+Episode 290/500, Highscore: 328.0, Reward: 67.0, Epsilon: 0.042
+Total time: 9519.6s, Episode time: 37.3s, Average time: 32.8s
+No op: 1120, Left: 292, Right: 279, Total: 1691
+Total No op: 210220, Total Left: 161953, Total Right: 125256, Total: 497429, memory size: 250000
+
+Episode 291/500, Highscore: 328.0, Reward: 70.0, Epsilon: 0.042
+Total time: 9560.0s, Episode time: 40.4s, Average time: 32.9s
+No op: 963, Left: 531, Right: 418, Total: 1912
+Total No op: 211183, Total Left: 162484, Total Right: 125674, Total: 499341, memory size: 250000
+
+updating target network
+Episode 292/500, Highscore: 328.0, Reward: 82.0, Epsilon: 0.042
+Total time: 9598.9s, Episode time: 38.9s, Average time: 32.9s
+No op: 475, Left: 769, Right: 613, Total: 1857
+Total No op: 211658, Total Left: 163253, Total Right: 126287, Total: 501198, memory size: 250000
+
+Episode 293/500, Highscore: 328.0, Reward: 248.0, Epsilon: 0.042
+Total time: 9649.2s, Episode time: 50.2s, Average time: 32.9s
+No op: 758, Left: 802, Right: 778, Total: 2338
+Total No op: 212416, Total Left: 164055, Total Right: 127065, Total: 503536, memory size: 250000
+
+updating target network
+Episode 294/500, Highscore: 328.0, Reward: 125.0, Epsilon: 0.041
+Total time: 9690.3s, Episode time: 41.1s, Average time: 33.0s
+No op: 724, Left: 668, Right: 542, Total: 1934
+Total No op: 213140, Total Left: 164723, Total Right: 127607, Total: 505470, memory size: 250000
+
+Episode 295/500, Highscore: 328.0, Reward: 227.0, Epsilon: 0.041
+Total time: 9743.0s, Episode time: 52.8s, Average time: 33.0s
+No op: 1211, Left: 638, Right: 483, Total: 2332
+Total No op: 214351, Total Left: 165361, Total Right: 128090, Total: 507802, memory size: 250000
+
+Episode 296/500, Highscore: 328.0, Reward: 73.0, Epsilon: 0.041
+Total time: 9779.4s, Episode time: 36.3s, Average time: 33.0s
+No op: 548, Left: 705, Right: 541, Total: 1794
+Total No op: 214899, Total Left: 166066, Total Right: 128631, Total: 509596, memory size: 250000
+
+updating target network
+Episode 297/500, Highscore: 328.0, Reward: 263.0, Epsilon: 0.041
+Total time: 9826.9s, Episode time: 47.5s, Average time: 33.1s
+No op: 651, Left: 796, Right: 734, Total: 2181
+Total No op: 215550, Total Left: 166862, Total Right: 129365, Total: 511777, memory size: 250000
+
+Episode 298/500, Highscore: 328.0, Reward: 50.0, Epsilon: 0.041
+Total time: 9863.7s, Episode time: 36.9s, Average time: 33.1s
+No op: 607, Left: 600, Right: 433, Total: 1640
+Total No op: 216157, Total Left: 167462, Total Right: 129798, Total: 513417, memory size: 250000
+
+updating target network
+Episode 299/500, Highscore: 328.0, Reward: 81.0, Epsilon: 0.04
+Total time: 9904.0s, Episode time: 40.2s, Average time: 33.1s
+No op: 515, Left: 908, Right: 534, Total: 1957
+Total No op: 216672, Total Left: 168370, Total Right: 130332, Total: 515374, memory size: 250000
+
+Episode 300/500, Highscore: 328.0, Reward: 130.0, Epsilon: 0.04
+Total time: 9950.5s, Episode time: 46.5s, Average time: 33.2s
+No op: 919, Left: 695, Right: 535, Total: 2149
+Total No op: 217591, Total Left: 169065, Total Right: 130867, Total: 517523, memory size: 250000
+
+Episode 301/500, Highscore: 328.0, Reward: 88.0, Epsilon: 0.04
+Total time: 9993.9s, Episode time: 43.4s, Average time: 33.2s
+No op: 613, Left: 813, Right: 647, Total: 2073
+Total No op: 218204, Total Left: 169878, Total Right: 131514, Total: 519596, memory size: 250000
+
+updating target network
+Episode 302/500, Highscore: 328.0, Reward: 91.0, Epsilon: 0.04
+Total time: 10035.9s, Episode time: 42.0s, Average time: 33.2s
+No op: 823, Left: 606, Right: 520, Total: 1949
+Total No op: 219027, Total Left: 170484, Total Right: 132034, Total: 521545, memory size: 250000
+
+Episode 303/500, Highscore: 328.0, Reward: 55.0, Epsilon: 0.04
+Total time: 10077.7s, Episode time: 41.8s, Average time: 33.3s
+No op: 812, Left: 648, Right: 469, Total: 1929
+Total No op: 219839, Total Left: 171132, Total Right: 132503, Total: 523474, memory size: 250000
+
+Episode 304/500, Highscore: 328.0, Reward: 46.0, Epsilon: 0.039
+Total time: 10108.2s, Episode time: 30.5s, Average time: 33.3s
+No op: 527, Left: 560, Right: 363, Total: 1450
+Total No op: 220366, Total Left: 171692, Total Right: 132866, Total: 524924, memory size: 250000
+
+updating target network
+Episode 305/500, Highscore: 328.0, Reward: 77.0, Epsilon: 0.039
+Total time: 10150.7s, Episode time: 42.5s, Average time: 33.3s
+No op: 966, Left: 510, Right: 474, Total: 1950
+Total No op: 221332, Total Left: 172202, Total Right: 133340, Total: 526874, memory size: 250000
+
+Episode 306/500, Highscore: 328.0, Reward: 108.0, Epsilon: 0.039
+Total time: 10193.1s, Episode time: 42.3s, Average time: 33.3s
+No op: 962, Left: 576, Right: 524, Total: 2062
+Total No op: 222294, Total Left: 172778, Total Right: 133864, Total: 528936, memory size: 250000
+
+updating target network
+Episode 307/500, Highscore: 328.0, Reward: 65.0, Epsilon: 0.039
+Total time: 10230.6s, Episode time: 37.5s, Average time: 33.3s
+No op: 474, Left: 852, Right: 426, Total: 1752
+Total No op: 222768, Total Left: 173630, Total Right: 134290, Total: 530688, memory size: 250000
+
+Episode 308/500, Highscore: 328.0, Reward: 87.0, Epsilon: 0.039
+Total time: 10277.7s, Episode time: 47.1s, Average time: 33.4s
+No op: 754, Left: 816, Right: 689, Total: 2259
+Total No op: 223522, Total Left: 174446, Total Right: 134979, Total: 532947, memory size: 250000
+
+Episode 309/500, Highscore: 328.0, Reward: 62.0, Epsilon: 0.038
+Total time: 10311.0s, Episode time: 33.3s, Average time: 33.4s
+No op: 638, Left: 550, Right: 375, Total: 1563
+Total No op: 224160, Total Left: 174996, Total Right: 135354, Total: 534510, memory size: 250000
+
+updating target network
+Episode 310/500, Highscore: 328.0, Reward: 107.0, Epsilon: 0.038
+Total time: 10353.6s, Episode time: 42.6s, Average time: 33.4s
+No op: 710, Left: 779, Right: 546, Total: 2035
+Total No op: 224870, Total Left: 175775, Total Right: 135900, Total: 536545, memory size: 250000
+
+Episode 311/500, Highscore: 328.0, Reward: 72.0, Epsilon: 0.038
+Total time: 10386.3s, Episode time: 32.7s, Average time: 33.4s
+No op: 480, Left: 610, Right: 410, Total: 1500
+Total No op: 225350, Total Left: 176385, Total Right: 136310, Total: 538045, memory size: 250000
+
+updating target network
+Episode 312/500, Highscore: 328.0, Reward: 105.0, Epsilon: 0.038
+Total time: 10428.2s, Episode time: 41.9s, Average time: 33.4s
+No op: 927, Left: 567, Right: 509, Total: 2003
+Total No op: 226277, Total Left: 176952, Total Right: 136819, Total: 540048, memory size: 250000
+
+Episode 313/500, Highscore: 328.0, Reward: 102.0, Epsilon: 0.038
+Total time: 10471.4s, Episode time: 43.2s, Average time: 33.5s
+No op: 876, Left: 689, Right: 545, Total: 2110
+Total No op: 227153, Total Left: 177641, Total Right: 137364, Total: 542158, memory size: 250000
+
+Episode 314/500, Highscore: 328.0, Reward: 104.0, Epsilon: 0.037
+Total time: 10520.5s, Episode time: 49.1s, Average time: 33.5s
+No op: 777, Left: 814, Right: 671, Total: 2262
+Total No op: 227930, Total Left: 178455, Total Right: 138035, Total: 544420, memory size: 250000
+
+updating target network
+Episode 315/500, Highscore: 328.0, Reward: 113.0, Epsilon: 0.037
+Total time: 10564.5s, Episode time: 43.9s, Average time: 33.5s
+No op: 925, Left: 624, Right: 621, Total: 2170
+Total No op: 228855, Total Left: 179079, Total Right: 138656, Total: 546590, memory size: 250000
+
+Episode 316/500, Highscore: 328.0, Reward: 75.0, Epsilon: 0.037
+Total time: 10597.2s, Episode time: 32.7s, Average time: 33.5s
+No op: 675, Left: 471, Right: 370, Total: 1516
+Total No op: 229530, Total Left: 179550, Total Right: 139026, Total: 548106, memory size: 250000
+
+Episode 317/500, Highscore: 328.0, Reward: 90.0, Epsilon: 0.037
+Total time: 10635.5s, Episode time: 38.3s, Average time: 33.6s
+No op: 792, Left: 554, Right: 510, Total: 1856
+Total No op: 230322, Total Left: 180104, Total Right: 139536, Total: 549962, memory size: 250000
+
+updating target network
+Episode 318/500, Highscore: 328.0, Reward: 131.0, Epsilon: 0.037
+Total time: 10681.1s, Episode time: 45.6s, Average time: 33.6s
+No op: 1146, Left: 528, Right: 480, Total: 2154
+Total No op: 231468, Total Left: 180632, Total Right: 140016, Total: 552116, memory size: 250000
+
+Episode 319/500, Highscore: 328.0, Reward: 87.0, Epsilon: 0.036
+Total time: 10727.1s, Episode time: 46.0s, Average time: 33.6s
+No op: 786, Left: 817, Right: 584, Total: 2187
+Total No op: 232254, Total Left: 181449, Total Right: 140600, Total: 554303, memory size: 250000
+
+updating target network
+Episode 320/500, Highscore: 328.0, Reward: 101.0, Epsilon: 0.036
+Total time: 10770.0s, Episode time: 42.9s, Average time: 33.7s
+No op: 702, Left: 818, Right: 567, Total: 2087
+Total No op: 232956, Total Left: 182267, Total Right: 141167, Total: 556390, memory size: 250000
+
+Episode 321/500, Highscore: 328.0, Reward: 57.0, Epsilon: 0.036
+Total time: 10807.4s, Episode time: 37.4s, Average time: 33.7s
+No op: 835, Left: 547, Right: 398, Total: 1780
+Total No op: 233791, Total Left: 182814, Total Right: 141565, Total: 558170, memory size: 250000
+
+updating target network
+Episode 322/500, Highscore: 328.0, Reward: 77.0, Epsilon: 0.036
+Total time: 10848.1s, Episode time: 40.7s, Average time: 33.7s
+No op: 629, Left: 678, Right: 581, Total: 1888
+Total No op: 234420, Total Left: 183492, Total Right: 142146, Total: 560058, memory size: 250000
+
+Episode 323/500, Highscore: 328.0, Reward: 87.0, Epsilon: 0.036
+Total time: 10881.8s, Episode time: 33.7s, Average time: 33.7s
+No op: 695, Left: 522, Right: 389, Total: 1606
+Total No op: 235115, Total Left: 184014, Total Right: 142535, Total: 561664, memory size: 250000
+
+Episode 324/500, Highscore: 328.0, Reward: 102.0, Epsilon: 0.035
+Total time: 10920.6s, Episode time: 38.8s, Average time: 33.7s
+No op: 874, Left: 590, Right: 433, Total: 1897
+Total No op: 235989, Total Left: 184604, Total Right: 142968, Total: 563561, memory size: 250000
+
+Episode 325/500, Highscore: 328.0, Reward: 55.0, Epsilon: 0.035
+Total time: 10949.4s, Episode time: 28.8s, Average time: 33.7s
+No op: 888, Left: 245, Right: 214, Total: 1347
+Total No op: 236877, Total Left: 184849, Total Right: 143182, Total: 564908, memory size: 250000
+
+updating target network
+Episode 326/500, Highscore: 328.0, Reward: 59.0, Epsilon: 0.035
+Total time: 10979.2s, Episode time: 29.8s, Average time: 33.7s
+No op: 632, Left: 475, Right: 347, Total: 1454
+Total No op: 237509, Total Left: 185324, Total Right: 143529, Total: 566362, memory size: 250000
+
+Episode 327/500, Highscore: 328.0, Reward: 70.0, Epsilon: 0.035
+Total time: 11024.3s, Episode time: 45.1s, Average time: 33.7s
+No op: 535, Left: 879, Right: 696, Total: 2110
+Total No op: 238044, Total Left: 186203, Total Right: 144225, Total: 568472, memory size: 250000
+
+updating target network
+Episode 328/500, Highscore: 328.0, Reward: 71.0, Epsilon: 0.035
+Total time: 11063.0s, Episode time: 38.7s, Average time: 33.7s
+No op: 814, Left: 636, Right: 471, Total: 1921
+Total No op: 238858, Total Left: 186839, Total Right: 144696, Total: 570393, memory size: 250000
+
+Episode 329/500, Highscore: 328.0, Reward: 72.0, Epsilon: 0.034
+Total time: 11099.5s, Episode time: 36.5s, Average time: 33.7s
+No op: 583, Left: 646, Right: 487, Total: 1716
+Total No op: 239441, Total Left: 187485, Total Right: 145183, Total: 572109, memory size: 250000
+
+Episode 330/500, Highscore: 328.0, Reward: 126.0, Epsilon: 0.034
+Total time: 11145.4s, Episode time: 45.9s, Average time: 33.8s
+No op: 1416, Left: 433, Right: 348, Total: 2197
+Total No op: 240857, Total Left: 187918, Total Right: 145531, Total: 574306, memory size: 250000
+
+updating target network
+Episode 331/500, Highscore: 328.0, Reward: 91.0, Epsilon: 0.034
+Total time: 11186.1s, Episode time: 40.7s, Average time: 33.8s
+No op: 1155, Left: 394, Right: 356, Total: 1905
+Total No op: 242012, Total Left: 188312, Total Right: 145887, Total: 576211, memory size: 250000
+
+Episode 332/500, Highscore: 328.0, Reward: 264.0, Epsilon: 0.034
+Total time: 11225.1s, Episode time: 39.0s, Average time: 33.8s
+No op: 628, Left: 652, Right: 668, Total: 1948
+Total No op: 242640, Total Left: 188964, Total Right: 146555, Total: 578159, memory size: 250000
+
+Episode 333/500, Highscore: 328.0, Reward: 77.0, Epsilon: 0.034
+Total time: 11259.3s, Episode time: 34.2s, Average time: 33.8s
+No op: 716, Left: 610, Right: 462, Total: 1788
+Total No op: 243356, Total Left: 189574, Total Right: 147017, Total: 579947, memory size: 250000
+
+updating target network
+Episode 334/500, Highscore: 328.0, Reward: 68.0, Epsilon: 0.033
+Total time: 11294.9s, Episode time: 35.6s, Average time: 33.8s
+No op: 742, Left: 577, Right: 517, Total: 1836
+Total No op: 244098, Total Left: 190151, Total Right: 147534, Total: 581783, memory size: 250000
+
+Episode 335/500, Highscore: 328.0, Reward: 76.0, Epsilon: 0.033
+Total time: 11335.0s, Episode time: 40.1s, Average time: 33.8s
+No op: 658, Left: 635, Right: 541, Total: 1834
+Total No op: 244756, Total Left: 190786, Total Right: 148075, Total: 583617, memory size: 250000
+
+updating target network
+Episode 336/500, Highscore: 328.0, Reward: 116.0, Epsilon: 0.033
+Total time: 11374.3s, Episode time: 39.3s, Average time: 33.9s
+No op: 890, Left: 590, Right: 494, Total: 1974
+Total No op: 245646, Total Left: 191376, Total Right: 148569, Total: 585591, memory size: 250000
+
+Episode 337/500, Highscore: 328.0, Reward: 69.0, Epsilon: 0.033
+Total time: 11410.6s, Episode time: 36.4s, Average time: 33.9s
+No op: 638, Left: 526, Right: 493, Total: 1657
+Total No op: 246284, Total Left: 191902, Total Right: 149062, Total: 587248, memory size: 250000
+
+Episode 338/500, Highscore: 328.0, Reward: 107.0, Epsilon: 0.033
+Total time: 11444.6s, Episode time: 33.9s, Average time: 33.9s
+No op: 611, Left: 606, Right: 428, Total: 1645
+Total No op: 246895, Total Left: 192508, Total Right: 149490, Total: 588893, memory size: 250000
+
+updating target network
+Episode 339/500, Highscore: 328.0, Reward: 94.0, Epsilon: 0.032
+Total time: 11490.6s, Episode time: 46.1s, Average time: 33.9s
+No op: 835, Left: 794, Right: 606, Total: 2235
+Total No op: 247730, Total Left: 193302, Total Right: 150096, Total: 591128, memory size: 250000
+
+Episode 340/500, Highscore: 328.0, Reward: 41.0, Epsilon: 0.032
+Total time: 11522.9s, Episode time: 32.3s, Average time: 33.9s
+No op: 487, Left: 542, Right: 480, Total: 1509
+Total No op: 248217, Total Left: 193844, Total Right: 150576, Total: 592637, memory size: 250000
+
+Episode 341/500, Highscore: 328.0, Reward: 106.0, Epsilon: 0.032
+Total time: 11565.0s, Episode time: 42.1s, Average time: 33.9s
+No op: 1179, Left: 462, Right: 413, Total: 2054
+Total No op: 249396, Total Left: 194306, Total Right: 150989, Total: 594691, memory size: 250000
+
+updating target network
+Episode 342/500, Highscore: 328.0, Reward: 79.0, Epsilon: 0.032
+Total time: 11606.2s, Episode time: 41.1s, Average time: 33.9s
+No op: 578, Left: 804, Right: 576, Total: 1958
+Total No op: 249974, Total Left: 195110, Total Right: 151565, Total: 596649, memory size: 250000
+
+Episode 343/500, Highscore: 328.0, Reward: 71.0, Epsilon: 0.032
+Total time: 11644.4s, Episode time: 38.2s, Average time: 33.9s
+No op: 635, Left: 762, Right: 449, Total: 1846
+Total No op: 250609, Total Left: 195872, Total Right: 152014, Total: 598495, memory size: 250000
+
+updating target network
+Episode 344/500, Highscore: 328.0, Reward: 92.0, Epsilon: 0.031
+Total time: 11686.3s, Episode time: 41.9s, Average time: 34.0s
+No op: 906, Left: 629, Right: 492, Total: 2027
+Total No op: 251515, Total Left: 196501, Total Right: 152506, Total: 600522, memory size: 250000
+
+Episode 345/500, Highscore: 328.0, Reward: 126.0, Epsilon: 0.031
+Total time: 11739.4s, Episode time: 53.1s, Average time: 34.0s
+No op: 996, Left: 970, Right: 544, Total: 2510
+Total No op: 252511, Total Left: 197471, Total Right: 153050, Total: 603032, memory size: 250000
+
+updating target network
+Episode 346/500, Highscore: 328.0, Reward: 84.0, Epsilon: 0.031
+Total time: 11785.4s, Episode time: 45.9s, Average time: 34.1s
+No op: 1143, Left: 573, Right: 511, Total: 2227
+Total No op: 253654, Total Left: 198044, Total Right: 153561, Total: 605259, memory size: 250000
+
+Episode 347/500, Highscore: 328.0, Reward: 75.0, Epsilon: 0.031
+Total time: 11818.6s, Episode time: 33.2s, Average time: 34.1s
+No op: 813, Left: 419, Right: 364, Total: 1596
+Total No op: 254467, Total Left: 198463, Total Right: 153925, Total: 606855, memory size: 250000
+
+Episode 348/500, Highscore: 328.0, Reward: 119.0, Epsilon: 0.031
+Total time: 11865.3s, Episode time: 46.7s, Average time: 34.1s
+No op: 820, Left: 870, Right: 628, Total: 2318
+Total No op: 255287, Total Left: 199333, Total Right: 154553, Total: 609173, memory size: 250000
+
+updating target network
+Episode 349/500, Highscore: 328.0, Reward: 126.0, Epsilon: 0.03
+Total time: 11906.7s, Episode time: 41.4s, Average time: 34.1s
+No op: 477, Left: 1031, Right: 477, Total: 1985
+Total No op: 255764, Total Left: 200364, Total Right: 155030, Total: 611158, memory size: 250000
+
+Episode 350/500, Highscore: 328.0, Reward: 108.0, Epsilon: 0.03
+Total time: 11954.6s, Episode time: 47.9s, Average time: 34.2s
+No op: 1007, Left: 681, Right: 560, Total: 2248
+Total No op: 256771, Total Left: 201045, Total Right: 155590, Total: 613406, memory size: 250000
+
+Episode 351/500, Highscore: 328.0, Reward: 51.0, Epsilon: 0.03
+Total time: 11976.7s, Episode time: 22.1s, Average time: 34.1s
+No op: 622, Left: 318, Right: 232, Total: 1172
+Total No op: 257393, Total Left: 201363, Total Right: 155822, Total: 614578, memory size: 250000
+
+updating target network
+Episode 352/500, Highscore: 328.0, Reward: 102.0, Epsilon: 0.03
+Total time: 12021.6s, Episode time: 44.9s, Average time: 34.2s
+No op: 970, Left: 752, Right: 458, Total: 2180
+Total No op: 258363, Total Left: 202115, Total Right: 156280, Total: 616758, memory size: 250000
+
+Episode 353/500, Highscore: 328.0, Reward: 100.0, Epsilon: 0.03
+Total time: 12056.9s, Episode time: 35.3s, Average time: 34.2s
+No op: 595, Left: 619, Right: 433, Total: 1647
+Total No op: 258958, Total Left: 202734, Total Right: 156713, Total: 618405, memory size: 250000
+
+updating target network
+Episode 354/500, Highscore: 328.0, Reward: 104.0, Epsilon: 0.029
+Total time: 12094.7s, Episode time: 37.8s, Average time: 34.2s
+No op: 1068, Left: 439, Right: 402, Total: 1909
+Total No op: 260026, Total Left: 203173, Total Right: 157115, Total: 620314, memory size: 250000
+
+Episode 355/500, Highscore: 328.0, Reward: 171.0, Epsilon: 0.029
+Total time: 12147.9s, Episode time: 53.2s, Average time: 34.2s
+No op: 1524, Left: 606, Right: 506, Total: 2636
+Total No op: 261550, Total Left: 203779, Total Right: 157621, Total: 622950, memory size: 250000
+
+Episode 356/500, Highscore: 328.0, Reward: 54.0, Epsilon: 0.029
+Total time: 12176.7s, Episode time: 28.7s, Average time: 34.2s
+No op: 611, Left: 473, Right: 335, Total: 1419
+Total No op: 262161, Total Left: 204252, Total Right: 157956, Total: 624369, memory size: 250000
+
+updating target network
+Episode 357/500, Highscore: 328.0, Reward: 79.0, Epsilon: 0.029
+Total time: 12220.7s, Episode time: 44.1s, Average time: 34.2s
+No op: 1124, Left: 557, Right: 418, Total: 2099
+Total No op: 263285, Total Left: 204809, Total Right: 158374, Total: 626468, memory size: 250000
+
+Episode 358/500, Highscore: 328.0, Reward: 100.0, Epsilon: 0.029
+Total time: 12246.5s, Episode time: 25.8s, Average time: 34.2s
+No op: 627, Left: 398, Right: 296, Total: 1321
+Total No op: 263912, Total Left: 205207, Total Right: 158670, Total: 627789, memory size: 250000
+
+Episode 359/500, Highscore: 328.0, Reward: 183.0, Epsilon: 0.028
+Total time: 12287.5s, Episode time: 41.0s, Average time: 34.2s
+No op: 858, Left: 634, Right: 480, Total: 1972
+Total No op: 264770, Total Left: 205841, Total Right: 159150, Total: 629761, memory size: 250000
+
+updating target network
+Episode 360/500, Highscore: 328.0, Reward: 76.0, Epsilon: 0.028
+Total time: 12319.5s, Episode time: 32.0s, Average time: 34.2s
+No op: 564, Left: 583, Right: 339, Total: 1486
+Total No op: 265334, Total Left: 206424, Total Right: 159489, Total: 631247, memory size: 250000
+
+Episode 361/500, Highscore: 328.0, Reward: 107.0, Epsilon: 0.028
+Total time: 12361.1s, Episode time: 41.6s, Average time: 34.2s
+No op: 1148, Left: 560, Right: 344, Total: 2052
+Total No op: 266482, Total Left: 206984, Total Right: 159833, Total: 633299, memory size: 250000
+
+Episode 362/500, Highscore: 328.0, Reward: 42.0, Epsilon: 0.028
+Total time: 12393.7s, Episode time: 32.6s, Average time: 34.2s
+No op: 634, Left: 513, Right: 424, Total: 1571
+Total No op: 267116, Total Left: 207497, Total Right: 160257, Total: 634870, memory size: 250000
+
+updating target network
+Episode 363/500, Highscore: 328.0, Reward: 90.0, Epsilon: 0.028
+Total time: 12431.2s, Episode time: 37.4s, Average time: 34.2s
+No op: 625, Left: 714, Right: 509, Total: 1848
+Total No op: 267741, Total Left: 208211, Total Right: 160766, Total: 636718, memory size: 250000
+
+Episode 364/500, Highscore: 328.0, Reward: 100.0, Epsilon: 0.027
+Total time: 12468.3s, Episode time: 37.1s, Average time: 34.3s
+No op: 553, Left: 739, Right: 539, Total: 1831
+Total No op: 268294, Total Left: 208950, Total Right: 161305, Total: 638549, memory size: 250000
+
+updating target network
+Episode 365/500, Highscore: 328.0, Reward: 84.0, Epsilon: 0.027
+Total time: 12509.2s, Episode time: 40.8s, Average time: 34.3s
+No op: 946, Left: 674, Right: 327, Total: 1947
+Total No op: 269240, Total Left: 209624, Total Right: 161632, Total: 640496, memory size: 250000
+
+Episode 366/500, Highscore: 328.0, Reward: 136.0, Epsilon: 0.027
+Total time: 12549.7s, Episode time: 40.5s, Average time: 34.3s
+No op: 670, Left: 707, Right: 558, Total: 1935
+Total No op: 269910, Total Left: 210331, Total Right: 162190, Total: 642431, memory size: 250000
+
+Episode 367/500, Highscore: 328.0, Reward: 108.0, Epsilon: 0.027
+Total time: 12587.2s, Episode time: 37.5s, Average time: 34.3s
+No op: 808, Left: 644, Right: 389, Total: 1841
+Total No op: 270718, Total Left: 210975, Total Right: 162579, Total: 644272, memory size: 250000
+
+updating target network
+Episode 368/500, Highscore: 328.0, Reward: 94.0, Epsilon: 0.027
+Total time: 12621.1s, Episode time: 33.9s, Average time: 34.3s
+No op: 559, Left: 739, Right: 421, Total: 1719
+Total No op: 271277, Total Left: 211714, Total Right: 163000, Total: 645991, memory size: 250000
+
+Episode 369/500, Highscore: 328.0, Reward: 72.0, Epsilon: 0.026
+Total time: 12661.3s, Episode time: 40.2s, Average time: 34.3s
+No op: 1136, Left: 431, Right: 379, Total: 1946
+Total No op: 272413, Total Left: 212145, Total Right: 163379, Total: 647937, memory size: 250000
+
+Episode 370/500, Highscore: 328.0, Reward: 65.0, Epsilon: 0.026
+Total time: 12694.3s, Episode time: 32.9s, Average time: 34.3s
+No op: 724, Left: 510, Right: 401, Total: 1635
+Total No op: 273137, Total Left: 212655, Total Right: 163780, Total: 649572, memory size: 250000
+
+updating target network
+Episode 371/500, Highscore: 328.0, Reward: 107.0, Epsilon: 0.026
+Total time: 12738.1s, Episode time: 43.8s, Average time: 34.3s
+No op: 921, Left: 602, Right: 555, Total: 2078
+Total No op: 274058, Total Left: 213257, Total Right: 164335, Total: 651650, memory size: 250000
+
+Episode 372/500, Highscore: 328.0, Reward: 67.0, Epsilon: 0.026
+Total time: 12771.0s, Episode time: 32.9s, Average time: 34.3s
+No op: 971, Left: 364, Right: 314, Total: 1649
+Total No op: 275029, Total Left: 213621, Total Right: 164649, Total: 653299, memory size: 250000
+
+updating target network
+Episode 373/500, Highscore: 328.0, Reward: 111.0, Epsilon: 0.026
+Total time: 12817.0s, Episode time: 46.0s, Average time: 34.4s
+No op: 1407, Left: 467, Right: 421, Total: 2295
+Total No op: 276436, Total Left: 214088, Total Right: 165070, Total: 655594, memory size: 250000
+
+Episode 374/500, Highscore: 328.0, Reward: 95.0, Epsilon: 0.025
+Total time: 12858.0s, Episode time: 41.0s, Average time: 34.4s
+No op: 727, Left: 826, Right: 434, Total: 1987
+Total No op: 277163, Total Left: 214914, Total Right: 165504, Total: 657581, memory size: 250000
+
+Episode 375/500, Highscore: 328.0, Reward: 42.0, Epsilon: 0.025
+Total time: 12885.8s, Episode time: 27.9s, Average time: 34.4s
+No op: 792, Left: 311, Right: 202, Total: 1305
+Total No op: 277955, Total Left: 215225, Total Right: 165706, Total: 658886, memory size: 250000
+
+updating target network
+Episode 376/500, Highscore: 328.0, Reward: 160.0, Epsilon: 0.025
+Total time: 12935.0s, Episode time: 49.2s, Average time: 34.4s
+No op: 1124, Left: 647, Right: 610, Total: 2381
+Total No op: 279079, Total Left: 215872, Total Right: 166316, Total: 661267, memory size: 250000
+
+Episode 377/500, Highscore: 328.0, Reward: 82.0, Epsilon: 0.025
+Total time: 12976.1s, Episode time: 41.2s, Average time: 34.4s
+No op: 761, Left: 696, Right: 556, Total: 2013
+Total No op: 279840, Total Left: 216568, Total Right: 166872, Total: 663280, memory size: 250000
+
+Episode 378/500, Highscore: 328.0, Reward: 67.0, Epsilon: 0.025
+Total time: 13010.2s, Episode time: 34.1s, Average time: 34.4s
+No op: 667, Left: 630, Right: 416, Total: 1713
+Total No op: 280507, Total Left: 217198, Total Right: 167288, Total: 664993, memory size: 250000
+
+updating target network
+Episode 379/500, Highscore: 328.0, Reward: 97.0, Epsilon: 0.024
+Total time: 13047.1s, Episode time: 36.9s, Average time: 34.4s
+No op: 692, Left: 721, Right: 372, Total: 1785
+Total No op: 281199, Total Left: 217919, Total Right: 167660, Total: 666778, memory size: 250000
+
+Episode 380/500, Highscore: 328.0, Reward: 148.0, Epsilon: 0.024
+Total time: 13100.2s, Episode time: 53.0s, Average time: 34.5s
+No op: 1136, Left: 852, Right: 558, Total: 2546
+Total No op: 282335, Total Left: 218771, Total Right: 168218, Total: 669324, memory size: 250000
+
+updating target network
+Episode 381/500, Highscore: 328.0, Reward: 83.0, Epsilon: 0.024
+Total time: 13144.7s, Episode time: 44.5s, Average time: 34.5s
+No op: 1470, Left: 353, Right: 309, Total: 2132
+Total No op: 283805, Total Left: 219124, Total Right: 168527, Total: 671456, memory size: 250000
+
+Episode 382/500, Highscore: 328.0, Reward: 237.0, Epsilon: 0.024
+Total time: 13191.1s, Episode time: 46.4s, Average time: 34.5s
+No op: 1388, Left: 532, Right: 398, Total: 2318
+Total No op: 285193, Total Left: 219656, Total Right: 168925, Total: 673774, memory size: 250000
+
+updating target network
+Episode 383/500, Highscore: 328.0, Reward: 170.0, Epsilon: 0.024
+Total time: 13239.8s, Episode time: 48.8s, Average time: 34.6s
+No op: 1306, Left: 567, Right: 482, Total: 2355
+Total No op: 286499, Total Left: 220223, Total Right: 169407, Total: 676129, memory size: 250000
+
+Episode 384/500, Highscore: 328.0, Reward: 84.0, Epsilon: 0.023
+Total time: 13280.5s, Episode time: 40.7s, Average time: 34.6s
+No op: 835, Left: 690, Right: 451, Total: 1976
+Total No op: 287334, Total Left: 220913, Total Right: 169858, Total: 678105, memory size: 250000
+
+Episode 385/500, Highscore: 328.0, Reward: 81.0, Epsilon: 0.023
+Total time: 13317.8s, Episode time: 37.2s, Average time: 34.6s
+No op: 962, Left: 464, Right: 418, Total: 1844
+Total No op: 288296, Total Left: 221377, Total Right: 170276, Total: 679949, memory size: 250000
+
+updating target network
+Episode 386/500, Highscore: 328.0, Reward: 84.0, Epsilon: 0.023
+Total time: 13358.3s, Episode time: 40.5s, Average time: 34.6s
+No op: 1320, Left: 331, Right: 303, Total: 1954
+Total No op: 289616, Total Left: 221708, Total Right: 170579, Total: 681903, memory size: 250000
+
+Episode 387/500, Highscore: 328.0, Reward: 121.0, Epsilon: 0.023
+Total time: 13404.5s, Episode time: 46.2s, Average time: 34.6s
+No op: 721, Left: 994, Right: 578, Total: 2293
+Total No op: 290337, Total Left: 222702, Total Right: 171157, Total: 684196, memory size: 250000
+
+updating target network
+Episode 388/500, Highscore: 328.0, Reward: 107.0, Epsilon: 0.023
+Total time: 13452.9s, Episode time: 48.4s, Average time: 34.7s
+No op: 1081, Left: 677, Right: 576, Total: 2334
+Total No op: 291418, Total Left: 223379, Total Right: 171733, Total: 686530, memory size: 250000
+
+Episode 389/500, Highscore: 328.0, Reward: 84.0, Epsilon: 0.022
+Total time: 13489.7s, Episode time: 36.8s, Average time: 34.7s
+No op: 816, Left: 580, Right: 393, Total: 1789
+Total No op: 292234, Total Left: 223959, Total Right: 172126, Total: 688319, memory size: 250000
+
+updating target network
+Episode 390/500, Highscore: 328.0, Reward: 141.0, Epsilon: 0.022
+Total time: 13534.2s, Episode time: 44.5s, Average time: 34.7s
+No op: 783, Left: 856, Right: 514, Total: 2153
+Total No op: 293017, Total Left: 224815, Total Right: 172640, Total: 690472, memory size: 250000
+
+Episode 391/500, Highscore: 328.0, Reward: 110.0, Epsilon: 0.022
+Total time: 13576.1s, Episode time: 41.8s, Average time: 34.7s
+No op: 935, Left: 635, Right: 541, Total: 2111
+Total No op: 293952, Total Left: 225450, Total Right: 173181, Total: 692583, memory size: 250000
+
+Episode 392/500, Highscore: 328.0, Reward: 101.0, Epsilon: 0.022
+Total time: 13619.2s, Episode time: 43.2s, Average time: 34.7s
+No op: 880, Left: 648, Right: 502, Total: 2030
+Total No op: 294832, Total Left: 226098, Total Right: 173683, Total: 694613, memory size: 250000
+
+updating target network
+Episode 393/500, Highscore: 328.0, Reward: 114.0, Epsilon: 0.022
+Total time: 13660.9s, Episode time: 41.7s, Average time: 34.8s
+No op: 665, Left: 987, Right: 460, Total: 2112
+Total No op: 295497, Total Left: 227085, Total Right: 174143, Total: 696725, memory size: 250000
+
+Episode 394/500, Highscore: 328.0, Reward: 120.0, Epsilon: 0.021
+Total time: 13705.1s, Episode time: 44.1s, Average time: 34.8s
+No op: 777, Left: 680, Right: 675, Total: 2132
+Total No op: 296274, Total Left: 227765, Total Right: 174818, Total: 698857, memory size: 250000
+
+updating target network
+Episode 395/500, Highscore: 328.0, Reward: 135.0, Epsilon: 0.021
+Total time: 13749.2s, Episode time: 44.2s, Average time: 34.8s
+No op: 897, Left: 721, Right: 544, Total: 2162
+Total No op: 297171, Total Left: 228486, Total Right: 175362, Total: 701019, memory size: 250000
+
+Episode 396/500, Highscore: 328.0, Reward: 53.0, Epsilon: 0.021
+Total time: 13778.7s, Episode time: 29.4s, Average time: 34.8s
+No op: 494, Left: 555, Right: 450, Total: 1499
+Total No op: 297665, Total Left: 229041, Total Right: 175812, Total: 702518, memory size: 250000
+
+updating target network
+Episode 397/500, Highscore: 328.0, Reward: 142.0, Epsilon: 0.021
+Total time: 13831.3s, Episode time: 52.7s, Average time: 34.8s
+No op: 1030, Left: 878, Right: 652, Total: 2560
+Total No op: 298695, Total Left: 229919, Total Right: 176464, Total: 705078, memory size: 250000
+
+Episode 398/500, Highscore: 328.0, Reward: 91.0, Epsilon: 0.021
+Total time: 13868.0s, Episode time: 36.6s, Average time: 34.8s
+No op: 343, Left: 754, Right: 699, Total: 1796
+Total No op: 299038, Total Left: 230673, Total Right: 177163, Total: 706874, memory size: 250000
+
+Episode 399/500, Highscore: 328.0, Reward: 62.0, Epsilon: 0.02
+Total time: 13900.2s, Episode time: 32.2s, Average time: 34.8s
+No op: 610, Left: 555, Right: 384, Total: 1549
+Total No op: 299648, Total Left: 231228, Total Right: 177547, Total: 708423, memory size: 250000
+
+updating target network
+Episode 400/500, Highscore: 328.0, Reward: 73.0, Epsilon: 0.02
+Total time: 13933.4s, Episode time: 33.2s, Average time: 34.8s
+No op: 504, Left: 653, Right: 490, Total: 1647
+Total No op: 300152, Total Left: 231881, Total Right: 178037, Total: 710070, memory size: 250000
+
+Episode 401/500, Highscore: 328.0, Reward: 70.0, Epsilon: 0.02
+Total time: 13971.5s, Episode time: 38.1s, Average time: 34.8s
+No op: 901, Left: 658, Right: 365, Total: 1924
+Total No op: 301053, Total Left: 232539, Total Right: 178402, Total: 711994, memory size: 250000
+
+Episode 402/500, Highscore: 328.0, Reward: 38.0, Epsilon: 0.02
+Total time: 13998.9s, Episode time: 27.4s, Average time: 34.8s
+No op: 605, Left: 298, Right: 383, Total: 1286
+Total No op: 301658, Total Left: 232837, Total Right: 178785, Total: 713280, memory size: 250000
+
+updating target network
+Episode 403/500, Highscore: 328.0, Reward: 112.0, Epsilon: 0.02
+Total time: 14040.1s, Episode time: 41.3s, Average time: 34.8s
+No op: 772, Left: 798, Right: 484, Total: 2054
+Total No op: 302430, Total Left: 233635, Total Right: 179269, Total: 715334, memory size: 250000
+
+Episode 404/500, Highscore: 328.0, Reward: 73.0, Epsilon: 0.019
+Total time: 14072.6s, Episode time: 32.5s, Average time: 34.8s
+No op: 751, Left: 473, Right: 343, Total: 1567
+Total No op: 303181, Total Left: 234108, Total Right: 179612, Total: 716901, memory size: 250000
+
+Episode 405/500, Highscore: 328.0, Reward: 125.0, Epsilon: 0.019
+Total time: 14116.7s, Episode time: 44.1s, Average time: 34.9s
+No op: 768, Left: 837, Right: 499, Total: 2104
+Total No op: 303949, Total Left: 234945, Total Right: 180111, Total: 719005, memory size: 250000
+
+updating target network
+Episode 406/500, Highscore: 328.0, Reward: 119.0, Epsilon: 0.019
+Total time: 14158.5s, Episode time: 41.8s, Average time: 34.9s
+No op: 676, Left: 870, Right: 568, Total: 2114
+Total No op: 304625, Total Left: 235815, Total Right: 180679, Total: 721119, memory size: 250000
+
+Episode 407/500, Highscore: 328.0, Reward: 284.0, Epsilon: 0.019
+Total time: 14207.0s, Episode time: 48.6s, Average time: 34.9s
+No op: 1186, Left: 647, Right: 553, Total: 2386
+Total No op: 305811, Total Left: 236462, Total Right: 181232, Total: 723505, memory size: 250000
+
+updating target network
+Episode 408/500, Highscore: 328.0, Reward: 79.0, Epsilon: 0.019
+Total time: 14244.0s, Episode time: 37.0s, Average time: 34.9s
+No op: 1042, Left: 394, Right: 399, Total: 1835
+Total No op: 306853, Total Left: 236856, Total Right: 181631, Total: 725340, memory size: 250000
+
+Episode 409/500, Highscore: 328.0, Reward: 77.0, Epsilon: 0.018
+Total time: 14279.5s, Episode time: 35.5s, Average time: 34.9s
+No op: 718, Left: 502, Right: 464, Total: 1684
+Total No op: 307571, Total Left: 237358, Total Right: 182095, Total: 727024, memory size: 250000
+
+Episode 410/500, Highscore: 328.0, Reward: 83.0, Epsilon: 0.018
+Total time: 14313.0s, Episode time: 33.6s, Average time: 34.9s
+No op: 595, Left: 716, Right: 406, Total: 1717
+Total No op: 308166, Total Left: 238074, Total Right: 182501, Total: 728741, memory size: 250000
+
+updating target network
+Episode 411/500, Highscore: 328.0, Reward: 54.0, Epsilon: 0.018
+Total time: 14349.0s, Episode time: 35.9s, Average time: 34.9s
+No op: 373, Left: 844, Right: 508, Total: 1725
+Total No op: 308539, Total Left: 238918, Total Right: 183009, Total: 730466, memory size: 250000
+
+Episode 412/500, Highscore: 328.0, Reward: 82.0, Epsilon: 0.018
+Total time: 14389.7s, Episode time: 40.7s, Average time: 34.9s
+No op: 650, Left: 788, Right: 539, Total: 1977
+Total No op: 309189, Total Left: 239706, Total Right: 183548, Total: 732443, memory size: 250000
+
+Episode 413/500, Highscore: 328.0, Reward: 108.0, Epsilon: 0.018
+Total time: 14435.6s, Episode time: 45.9s, Average time: 35.0s
+No op: 1322, Left: 535, Right: 455, Total: 2312
+Total No op: 310511, Total Left: 240241, Total Right: 184003, Total: 734755, memory size: 250000
+
+updating target network
+Episode 414/500, Highscore: 328.0, Reward: 60.0, Epsilon: 0.017
+Total time: 14471.3s, Episode time: 35.7s, Average time: 35.0s
+No op: 598, Left: 677, Right: 389, Total: 1664
+Total No op: 311109, Total Left: 240918, Total Right: 184392, Total: 736419, memory size: 250000
+
+Episode 415/500, Highscore: 328.0, Reward: 116.0, Epsilon: 0.017
+Total time: 14509.3s, Episode time: 38.1s, Average time: 35.0s
+No op: 846, Left: 694, Right: 401, Total: 1941
+Total No op: 311955, Total Left: 241612, Total Right: 184793, Total: 738360, memory size: 250000
+
+updating target network
+Episode 416/500, Highscore: 328.0, Reward: 136.0, Epsilon: 0.017
+Total time: 14549.9s, Episode time: 40.6s, Average time: 35.0s
+No op: 975, Left: 514, Right: 506, Total: 1995
+Total No op: 312930, Total Left: 242126, Total Right: 185299, Total: 740355, memory size: 250000
+
+Episode 417/500, Highscore: 328.0, Reward: 82.0, Epsilon: 0.017
+Total time: 14589.7s, Episode time: 39.9s, Average time: 35.0s
+No op: 1152, Left: 442, Right: 300, Total: 1894
+Total No op: 314082, Total Left: 242568, Total Right: 185599, Total: 742249, memory size: 250000
+
+Episode 418/500, Highscore: 328.0, Reward: 70.0, Epsilon: 0.017
+Total time: 14627.4s, Episode time: 37.7s, Average time: 35.0s
+No op: 923, Left: 616, Right: 396, Total: 1935
+Total No op: 315005, Total Left: 243184, Total Right: 185995, Total: 744184, memory size: 250000
+
+updating target network
+Episode 419/500, Highscore: 328.0, Reward: 96.0, Epsilon: 0.016
+Total time: 14675.1s, Episode time: 47.6s, Average time: 35.0s
+No op: 387, Left: 966, Right: 892, Total: 2245
+Total No op: 315392, Total Left: 244150, Total Right: 186887, Total: 746429, memory size: 250000
+
+Episode 420/500, Highscore: 328.0, Reward: 55.0, Epsilon: 0.016
+Total time: 14704.4s, Episode time: 29.4s, Average time: 35.0s
+No op: 774, Left: 381, Right: 319, Total: 1474
+Total No op: 316166, Total Left: 244531, Total Right: 187206, Total: 747903, memory size: 250000
+
+updating target network
+Episode 421/500, Highscore: 328.0, Reward: 83.0, Epsilon: 0.016
+Total time: 14748.6s, Episode time: 44.1s, Average time: 35.0s
+No op: 877, Left: 733, Right: 522, Total: 2132
+Total No op: 317043, Total Left: 245264, Total Right: 187728, Total: 750035, memory size: 250000
+
+Episode 422/500, Highscore: 328.0, Reward: 90.0, Epsilon: 0.016
+Total time: 14781.5s, Episode time: 33.0s, Average time: 35.0s
+No op: 727, Left: 575, Right: 361, Total: 1663
+Total No op: 317770, Total Left: 245839, Total Right: 188089, Total: 751698, memory size: 250000
+
+Episode 423/500, Highscore: 328.0, Reward: 101.0, Epsilon: 0.016
+Total time: 14814.3s, Episode time: 32.8s, Average time: 35.0s
+No op: 1149, Left: 445, Right: 411, Total: 2005
+Total No op: 318919, Total Left: 246284, Total Right: 188500, Total: 753703, memory size: 250000
+
+updating target network
+Episode 424/500, Highscore: 328.0, Reward: 287.0, Epsilon: 0.015
+Total time: 14854.6s, Episode time: 40.2s, Average time: 35.0s
+No op: 1269, Left: 608, Right: 647, Total: 2524
+Total No op: 320188, Total Left: 246892, Total Right: 189147, Total: 756227, memory size: 250000
+
+Episode 425/500, Highscore: 328.0, Reward: 96.0, Epsilon: 0.015
+Total time: 14890.7s, Episode time: 36.1s, Average time: 35.0s
+No op: 910, Left: 500, Right: 417, Total: 1827
+Total No op: 321098, Total Left: 247392, Total Right: 189564, Total: 758054, memory size: 250000
+
+Episode 426/500, Highscore: 328.0, Reward: 101.0, Epsilon: 0.015
+Total time: 14923.0s, Episode time: 32.3s, Average time: 35.0s
+No op: 836, Left: 502, Right: 344, Total: 1682
+Total No op: 321934, Total Left: 247894, Total Right: 189908, Total: 759736, memory size: 250000
+
+updating target network
+Episode 427/500, Highscore: 328.0, Reward: 94.0, Epsilon: 0.015
+Total time: 14960.5s, Episode time: 37.4s, Average time: 35.0s
+No op: 735, Left: 627, Right: 397, Total: 1759
+Total No op: 322669, Total Left: 248521, Total Right: 190305, Total: 761495, memory size: 250000
+
+Episode 428/500, Highscore: 328.0, Reward: 92.0, Epsilon: 0.015
+Total time: 14987.4s, Episode time: 26.9s, Average time: 35.0s
+No op: 653, Left: 478, Right: 452, Total: 1583
+Total No op: 323322, Total Left: 248999, Total Right: 190757, Total: 763078, memory size: 250000
+
+Episode 429/500, Highscore: 328.0, Reward: 92.0, Epsilon: 0.014
+Total time: 15016.1s, Episode time: 28.7s, Average time: 35.0s
+No op: 977, Left: 375, Right: 355, Total: 1707
+Total No op: 324299, Total Left: 249374, Total Right: 191112, Total: 764785, memory size: 250000
+
+updating target network
+Episode 430/500, Highscore: 328.0, Reward: 71.0, Epsilon: 0.014
+Total time: 15045.6s, Episode time: 29.5s, Average time: 35.0s
+No op: 587, Left: 646, Right: 434, Total: 1667
+Total No op: 324886, Total Left: 250020, Total Right: 191546, Total: 766452, memory size: 250000
+
+Episode 431/500, Highscore: 328.0, Reward: 97.0, Epsilon: 0.014
+Total time: 15078.9s, Episode time: 33.3s, Average time: 35.0s
+No op: 938, Left: 575, Right: 447, Total: 1960
+Total No op: 325824, Total Left: 250595, Total Right: 191993, Total: 768412, memory size: 250000
+
+Episode 432/500, Highscore: 328.0, Reward: 55.0, Epsilon: 0.014
+Total time: 15100.0s, Episode time: 21.1s, Average time: 35.0s
+No op: 708, Left: 373, Right: 292, Total: 1373
+Total No op: 326532, Total Left: 250968, Total Right: 192285, Total: 769785, memory size: 250000
+
+updating target network
+Episode 433/500, Highscore: 328.0, Reward: 171.0, Epsilon: 0.014
+Total time: 15141.4s, Episode time: 41.5s, Average time: 35.0s
+No op: 992, Left: 823, Right: 765, Total: 2580
+Total No op: 327524, Total Left: 251791, Total Right: 193050, Total: 772365, memory size: 250000
+
+Episode 434/500, Highscore: 328.0, Reward: 141.0, Epsilon: 0.013
+Total time: 15178.3s, Episode time: 36.9s, Average time: 35.0s
+No op: 1259, Left: 622, Right: 434, Total: 2315
+Total No op: 328783, Total Left: 252413, Total Right: 193484, Total: 774680, memory size: 250000
+
+updating target network
+Episode 435/500, Highscore: 328.0, Reward: 171.0, Epsilon: 0.013
+Total time: 15217.1s, Episode time: 38.8s, Average time: 35.0s
+No op: 1156, Left: 689, Right: 613, Total: 2458
+Total No op: 329939, Total Left: 253102, Total Right: 194097, Total: 777138, memory size: 250000
+
+Episode 436/500, Highscore: 328.0, Reward: 88.0, Epsilon: 0.013
+Total time: 15250.8s, Episode time: 33.7s, Average time: 35.0s
+No op: 879, Left: 758, Right: 483, Total: 2120
+Total No op: 330818, Total Left: 253860, Total Right: 194580, Total: 779258, memory size: 250000
+
+updating target network
+Episode 437/500, Highscore: 328.0, Reward: 68.0, Epsilon: 0.013
+Total time: 15281.2s, Episode time: 30.4s, Average time: 35.0s
+No op: 475, Left: 739, Right: 608, Total: 1822
+Total No op: 331293, Total Left: 254599, Total Right: 195188, Total: 781080, memory size: 250000
+
+Episode 438/500, Highscore: 328.0, Reward: 118.0, Epsilon: 0.013
+Total time: 15313.8s, Episode time: 32.6s, Average time: 35.0s
+No op: 592, Left: 919, Right: 561, Total: 2072
+Total No op: 331885, Total Left: 255518, Total Right: 195749, Total: 783152, memory size: 250000
+
+Episode 439/500, Highscore: 328.0, Reward: 69.0, Epsilon: 0.012
+Total time: 15339.2s, Episode time: 25.4s, Average time: 34.9s
+No op: 479, Left: 665, Right: 424, Total: 1568
+Total No op: 332364, Total Left: 256183, Total Right: 196173, Total: 784720, memory size: 250000
+
+updating target network
+Episode 440/500, Highscore: 328.0, Reward: 63.0, Epsilon: 0.012
+Total time: 15365.6s, Episode time: 26.4s, Average time: 34.9s
+No op: 618, Left: 536, Right: 451, Total: 1605
+Total No op: 332982, Total Left: 256719, Total Right: 196624, Total: 786325, memory size: 250000
+
+Episode 441/500, Highscore: 328.0, Reward: 109.0, Epsilon: 0.012
+Total time: 15396.0s, Episode time: 30.4s, Average time: 34.9s
+No op: 849, Left: 575, Right: 475, Total: 1899
+Total No op: 333831, Total Left: 257294, Total Right: 197099, Total: 788224, memory size: 250000
+
+updating target network
+Episode 442/500, Highscore: 328.0, Reward: 125.0, Epsilon: 0.012
+Total time: 15436.3s, Episode time: 40.2s, Average time: 34.9s
+No op: 979, Left: 1022, Right: 548, Total: 2549
+Total No op: 334810, Total Left: 258316, Total Right: 197647, Total: 790773, memory size: 250000
+
+Episode 443/500, Highscore: 328.0, Reward: 115.0, Epsilon: 0.012
+Total time: 15471.9s, Episode time: 35.6s, Average time: 34.9s
+No op: 805, Left: 780, Right: 629, Total: 2214
+Total No op: 335615, Total Left: 259096, Total Right: 198276, Total: 792987, memory size: 250000
+
+Episode 444/500, Highscore: 328.0, Reward: 74.0, Epsilon: 0.011
+Total time: 15503.5s, Episode time: 31.6s, Average time: 34.9s
+No op: 1316, Left: 338, Right: 294, Total: 1948
+Total No op: 336931, Total Left: 259434, Total Right: 198570, Total: 794935, memory size: 250000
+
+updating target network
+Episode 445/500, Highscore: 328.0, Reward: 92.0, Epsilon: 0.011
+Total time: 15534.4s, Episode time: 30.9s, Average time: 34.9s
+No op: 537, Left: 988, Right: 406, Total: 1931
+Total No op: 337468, Total Left: 260422, Total Right: 198976, Total: 796866, memory size: 250000
+
+Episode 446/500, Highscore: 328.0, Reward: 71.0, Epsilon: 0.011
+Total time: 15560.4s, Episode time: 26.0s, Average time: 34.9s
+No op: 628, Left: 684, Right: 403, Total: 1715
+Total No op: 338096, Total Left: 261106, Total Right: 199379, Total: 798581, memory size: 250000
+
+updating target network
+Episode 447/500, Highscore: 328.0, Reward: 85.0, Epsilon: 0.011
+Total time: 15593.3s, Episode time: 32.8s, Average time: 34.9s
+No op: 743, Left: 669, Right: 553, Total: 1965
+Total No op: 338839, Total Left: 261775, Total Right: 199932, Total: 800546, memory size: 250000
+
+Episode 448/500, Highscore: 328.0, Reward: 59.0, Epsilon: 0.011
+Total time: 15615.3s, Episode time: 22.1s, Average time: 34.9s
+No op: 712, Left: 330, Right: 325, Total: 1367
+Total No op: 339551, Total Left: 262105, Total Right: 200257, Total: 801913, memory size: 250000
+
+Episode 449/500, Highscore: 375.0, Reward: 375.0, Epsilon: 0.01
+Total time: 15645.0s, Episode time: 29.7s, Average time: 34.8s
+No op: 1086, Left: 388, Right: 404, Total: 1878
+Total No op: 340637, Total Left: 262493, Total Right: 200661, Total: 803791, memory size: 250000
+
+updating target network
+Episode 450/500, Highscore: 375.0, Reward: 70.0, Epsilon: 0.01
+Total time: 15673.4s, Episode time: 28.4s, Average time: 34.8s
+No op: 952, Left: 456, Right: 332, Total: 1740
+Total No op: 341589, Total Left: 262949, Total Right: 200993, Total: 805531, memory size: 250000
+
+Episode 451/500, Highscore: 375.0, Reward: 170.0, Epsilon: 0.01
+Total time: 15702.6s, Episode time: 29.2s, Average time: 34.8s
+No op: 626, Left: 685, Right: 548, Total: 1859
+Total No op: 342215, Total Left: 263634, Total Right: 201541, Total: 807390, memory size: 250000
+
+Episode 452/500, Highscore: 375.0, Reward: 120.0, Epsilon: 0.01
+Total time: 15738.8s, Episode time: 36.2s, Average time: 34.8s
+No op: 785, Left: 769, Right: 629, Total: 2183
+Total No op: 343000, Total Left: 264403, Total Right: 202170, Total: 809573, memory size: 250000
+
+updating target network
+Episode 453/500, Highscore: 375.0, Reward: 95.0, Epsilon: 0.01
+Total time: 15773.9s, Episode time: 35.1s, Average time: 34.8s
+No op: 871, Left: 691, Right: 567, Total: 2129
+Total No op: 343871, Total Left: 265094, Total Right: 202737, Total: 811702, memory size: 250000
+
+Episode 454/500, Highscore: 375.0, Reward: 47.0, Epsilon: 0.009
+Total time: 15796.4s, Episode time: 22.5s, Average time: 34.8s
+No op: 593, Left: 454, Right: 344, Total: 1391
+Total No op: 344464, Total Left: 265548, Total Right: 203081, Total: 813093, memory size: 250000
+
+updating target network
+Episode 455/500, Highscore: 375.0, Reward: 93.0, Epsilon: 0.009
+Total time: 15828.6s, Episode time: 32.2s, Average time: 34.8s
+No op: 1068, Left: 492, Right: 407, Total: 1967
+Total No op: 345532, Total Left: 266040, Total Right: 203488, Total: 815060, memory size: 250000
+
+Episode 456/500, Highscore: 375.0, Reward: 135.0, Epsilon: 0.009
+Total time: 15862.3s, Episode time: 33.7s, Average time: 34.8s
+No op: 979, Left: 638, Right: 541, Total: 2158
+Total No op: 346511, Total Left: 266678, Total Right: 204029, Total: 817218, memory size: 250000
+
+Episode 457/500, Highscore: 375.0, Reward: 61.0, Epsilon: 0.009
+Total time: 15887.1s, Episode time: 24.8s, Average time: 34.8s
+No op: 768, Left: 455, Right: 376, Total: 1599
+Total No op: 347279, Total Left: 267133, Total Right: 204405, Total: 818817, memory size: 250000
+
+updating target network
+Episode 458/500, Highscore: 375.0, Reward: 181.0, Epsilon: 0.009
+Total time: 15922.3s, Episode time: 35.2s, Average time: 34.8s
+No op: 969, Left: 804, Right: 480, Total: 2253
+Total No op: 348248, Total Left: 267937, Total Right: 204885, Total: 821070, memory size: 250000
+
+Episode 459/500, Highscore: 375.0, Reward: 94.0, Epsilon: 0.008
+Total time: 15948.9s, Episode time: 26.6s, Average time: 34.7s
+No op: 822, Left: 500, Right: 402, Total: 1724
+Total No op: 349070, Total Left: 268437, Total Right: 205287, Total: 822794, memory size: 250000
+
+Episode 460/500, Highscore: 375.0, Reward: 93.0, Epsilon: 0.008
+Total time: 15980.0s, Episode time: 31.1s, Average time: 34.7s
+No op: 966, Left: 496, Right: 395, Total: 1857
+Total No op: 350036, Total Left: 268933, Total Right: 205682, Total: 824651, memory size: 250000
+
+updating target network
+Episode 461/500, Highscore: 375.0, Reward: 119.0, Epsilon: 0.008
+Total time: 16015.3s, Episode time: 35.3s, Average time: 34.7s
+No op: 1029, Left: 661, Right: 571, Total: 2261
+Total No op: 351065, Total Left: 269594, Total Right: 206253, Total: 826912, memory size: 250000
+
+Episode 462/500, Highscore: 375.0, Reward: 108.0, Epsilon: 0.008
+Total time: 16047.8s, Episode time: 32.4s, Average time: 34.7s
+No op: 773, Left: 748, Right: 481, Total: 2002
+Total No op: 351838, Total Left: 270342, Total Right: 206734, Total: 828914, memory size: 250000
+
+updating target network
+Episode 463/500, Highscore: 375.0, Reward: 99.0, Epsilon: 0.008
+Total time: 16079.3s, Episode time: 31.5s, Average time: 34.7s
+No op: 898, Left: 618, Right: 453, Total: 1969
+Total No op: 352736, Total Left: 270960, Total Right: 207187, Total: 830883, memory size: 250000
+
+Episode 464/500, Highscore: 375.0, Reward: 93.0, Epsilon: 0.007
+Total time: 16112.1s, Episode time: 32.9s, Average time: 34.7s
+No op: 867, Left: 610, Right: 573, Total: 2050
+Total No op: 353603, Total Left: 271570, Total Right: 207760, Total: 832933, memory size: 250000
+
+Episode 465/500, Highscore: 375.0, Reward: 54.0, Epsilon: 0.007
+Total time: 16137.5s, Episode time: 25.4s, Average time: 34.7s
+No op: 1170, Left: 225, Right: 223, Total: 1618
+Total No op: 354773, Total Left: 271795, Total Right: 207983, Total: 834551, memory size: 250000
+
+updating target network
+Episode 466/500, Highscore: 375.0, Reward: 110.0, Epsilon: 0.007
+Total time: 16171.2s, Episode time: 33.6s, Average time: 34.7s
+No op: 681, Left: 759, Right: 637, Total: 2077
+Total No op: 355454, Total Left: 272554, Total Right: 208620, Total: 836628, memory size: 250000
+
+Episode 467/500, Highscore: 375.0, Reward: 121.0, Epsilon: 0.007
+Total time: 16205.3s, Episode time: 34.1s, Average time: 34.7s
+No op: 1071, Left: 598, Right: 492, Total: 2161
+Total No op: 356525, Total Left: 273152, Total Right: 209112, Total: 838789, memory size: 250000
+
+updating target network
+Episode 468/500, Highscore: 375.0, Reward: 173.0, Epsilon: 0.007
+Total time: 16243.0s, Episode time: 37.7s, Average time: 34.7s
+No op: 968, Left: 813, Right: 516, Total: 2297
+Total No op: 357493, Total Left: 273965, Total Right: 209628, Total: 841086, memory size: 250000
+
+Episode 469/500, Highscore: 375.0, Reward: 90.0, Epsilon: 0.006
+Total time: 16277.2s, Episode time: 34.3s, Average time: 34.7s
+No op: 655, Left: 934, Right: 571, Total: 2160
+Total No op: 358148, Total Left: 274899, Total Right: 210199, Total: 843246, memory size: 250000
+
+Episode 470/500, Highscore: 375.0, Reward: 66.0, Epsilon: 0.006
+Total time: 16297.4s, Episode time: 20.2s, Average time: 34.7s
+No op: 808, Left: 268, Right: 251, Total: 1327
+Total No op: 358956, Total Left: 275167, Total Right: 210450, Total: 844573, memory size: 250000
+
+updating target network
+Episode 471/500, Highscore: 375.0, Reward: 109.0, Epsilon: 0.006
+Total time: 16328.6s, Episode time: 31.2s, Average time: 34.7s
+No op: 1097, Left: 499, Right: 372, Total: 1968
+Total No op: 360053, Total Left: 275666, Total Right: 210822, Total: 846541, memory size: 250000
+
+Episode 472/500, Highscore: 375.0, Reward: 109.0, Epsilon: 0.006
+Total time: 16360.4s, Episode time: 31.8s, Average time: 34.7s
+No op: 966, Left: 556, Right: 411, Total: 1933
+Total No op: 361019, Total Left: 276222, Total Right: 211233, Total: 848474, memory size: 250000
+
+updating target network
+Episode 473/500, Highscore: 375.0, Reward: 154.0, Epsilon: 0.006
+Total time: 16392.4s, Episode time: 31.9s, Average time: 34.7s
+No op: 932, Left: 511, Right: 521, Total: 1964
+Total No op: 361951, Total Left: 276733, Total Right: 211754, Total: 850438, memory size: 250000
+
+Episode 474/500, Highscore: 375.0, Reward: 153.0, Epsilon: 0.005
+Total time: 16426.4s, Episode time: 34.0s, Average time: 34.7s
+No op: 791, Left: 620, Right: 701, Total: 2112
+Total No op: 362742, Total Left: 277353, Total Right: 212455, Total: 852550, memory size: 250000
+
+Episode 475/500, Highscore: 375.0, Reward: 92.0, Epsilon: 0.005
+Total time: 16456.8s, Episode time: 30.4s, Average time: 34.6s
+No op: 944, Left: 523, Right: 436, Total: 1903
+Total No op: 363686, Total Left: 277876, Total Right: 212891, Total: 854453, memory size: 250000
+
+updating target network
+Episode 476/500, Highscore: 375.0, Reward: 79.0, Epsilon: 0.005
+Total time: 16489.9s, Episode time: 33.1s, Average time: 34.6s
+No op: 1233, Left: 488, Right: 315, Total: 2036
+Total No op: 364919, Total Left: 278364, Total Right: 213206, Total: 856489, memory size: 250000
+
+Episode 477/500, Highscore: 375.0, Reward: 286.0, Epsilon: 0.005
+Total time: 16526.0s, Episode time: 36.1s, Average time: 34.6s
+No op: 899, Left: 720, Right: 638, Total: 2257
+Total No op: 365818, Total Left: 279084, Total Right: 213844, Total: 858746, memory size: 250000
+
+updating target network
+Episode 478/500, Highscore: 375.0, Reward: 101.0, Epsilon: 0.005
+Total time: 16554.9s, Episode time: 28.9s, Average time: 34.6s
+No op: 744, Left: 567, Right: 474, Total: 1785
+Total No op: 366562, Total Left: 279651, Total Right: 214318, Total: 860531, memory size: 250000
+
+Episode 479/500, Highscore: 375.0, Reward: 89.0, Epsilon: 0.004
+Total time: 16583.3s, Episode time: 28.4s, Average time: 34.6s
+No op: 767, Left: 605, Right: 438, Total: 1810
+Total No op: 367329, Total Left: 280256, Total Right: 214756, Total: 862341, memory size: 250000
+
+Episode 480/500, Highscore: 375.0, Reward: 112.0, Epsilon: 0.004
+Total time: 16611.6s, Episode time: 28.4s, Average time: 34.6s
+No op: 995, Left: 510, Right: 334, Total: 1839
+Total No op: 368324, Total Left: 280766, Total Right: 215090, Total: 864180, memory size: 250000
+
+updating target network
+Episode 481/500, Highscore: 375.0, Reward: 93.0, Epsilon: 0.004
+Total time: 16643.5s, Episode time: 31.8s, Average time: 34.6s
+No op: 662, Left: 795, Right: 497, Total: 1954
+Total No op: 368986, Total Left: 281561, Total Right: 215587, Total: 866134, memory size: 250000
+
+Episode 482/500, Highscore: 375.0, Reward: 70.0, Epsilon: 0.004
+Total time: 16669.1s, Episode time: 25.5s, Average time: 34.6s
+No op: 541, Left: 654, Right: 426, Total: 1621
+Total No op: 369527, Total Left: 282215, Total Right: 216013, Total: 867755, memory size: 250000
+
+Episode 483/500, Highscore: 375.0, Reward: 69.0, Epsilon: 0.004
+Total time: 16696.7s, Episode time: 27.6s, Average time: 34.6s
+No op: 636, Left: 612, Right: 444, Total: 1692
+Total No op: 370163, Total Left: 282827, Total Right: 216457, Total: 869447, memory size: 250000
+
+updating target network
+Episode 484/500, Highscore: 375.0, Reward: 39.0, Epsilon: 0.003
+Total time: 16718.9s, Episode time: 22.2s, Average time: 34.5s
+No op: 910, Left: 340, Right: 251, Total: 1501
+Total No op: 371073, Total Left: 283167, Total Right: 216708, Total: 870948, memory size: 250000
+
+Episode 485/500, Highscore: 375.0, Reward: 112.0, Epsilon: 0.003
+Total time: 16749.6s, Episode time: 30.7s, Average time: 34.5s
+No op: 994, Left: 573, Right: 466, Total: 2033
+Total No op: 372067, Total Left: 283740, Total Right: 217174, Total: 872981, memory size: 250000
+
+Episode 486/500, Highscore: 375.0, Reward: 55.0, Epsilon: 0.003
+Total time: 16773.6s, Episode time: 24.0s, Average time: 34.5s
+No op: 310, Left: 732, Right: 477, Total: 1519
+Total No op: 372377, Total Left: 284472, Total Right: 217651, Total: 874500, memory size: 250000
+
+updating target network
+Episode 487/500, Highscore: 375.0, Reward: 121.0, Epsilon: 0.003
+Total time: 16805.2s, Episode time: 31.6s, Average time: 34.5s
+No op: 498, Left: 1056, Right: 525, Total: 2079
+Total No op: 372875, Total Left: 285528, Total Right: 218176, Total: 876579, memory size: 250000
+
+Episode 488/500, Highscore: 375.0, Reward: 81.0, Epsilon: 0.003
+Total time: 16837.6s, Episode time: 32.4s, Average time: 34.5s
+No op: 679, Left: 801, Right: 574, Total: 2054
+Total No op: 373554, Total Left: 286329, Total Right: 218750, Total: 878633, memory size: 250000
+
+updating target network
+Episode 489/500, Highscore: 375.0, Reward: 157.0, Epsilon: 0.002
+Total time: 16871.6s, Episode time: 34.0s, Average time: 34.5s
+No op: 1428, Left: 422, Right: 372, Total: 2222
+Total No op: 374982, Total Left: 286751, Total Right: 219122, Total: 880855, memory size: 250000
+
+Episode 490/500, Highscore: 375.0, Reward: 104.0, Epsilon: 0.002
+Total time: 16904.2s, Episode time: 32.6s, Average time: 34.5s
+No op: 1169, Left: 502, Right: 361, Total: 2032
+Total No op: 376151, Total Left: 287253, Total Right: 219483, Total: 882887, memory size: 250000
+
+Episode 491/500, Highscore: 375.0, Reward: 73.0, Epsilon: 0.002
+Total time: 16929.5s, Episode time: 25.3s, Average time: 34.5s
+No op: 305, Left: 766, Right: 533, Total: 1604
+Total No op: 376456, Total Left: 288019, Total Right: 220016, Total: 884491, memory size: 250000
+
+updating target network
+Episode 492/500, Highscore: 375.0, Reward: 98.0, Epsilon: 0.002
+Total time: 16963.1s, Episode time: 33.6s, Average time: 34.5s
+No op: 412, Left: 1084, Right: 691, Total: 2187
+Total No op: 376868, Total Left: 289103, Total Right: 220707, Total: 886678, memory size: 250000
+
+Episode 493/500, Highscore: 375.0, Reward: 85.0, Epsilon: 0.002
+Total time: 16994.5s, Episode time: 31.4s, Average time: 34.5s
+No op: 1168, Left: 461, Right: 422, Total: 2051
+Total No op: 378036, Total Left: 289564, Total Right: 221129, Total: 888729, memory size: 250000
+
+updating target network
+Episode 494/500, Highscore: 375.0, Reward: 93.0, Epsilon: 0.001
+Total time: 17028.1s, Episode time: 33.6s, Average time: 34.5s
+No op: 1030, Left: 630, Right: 454, Total: 2114
+Total No op: 379066, Total Left: 290194, Total Right: 221583, Total: 890843, memory size: 250000
+
+Episode 495/500, Highscore: 375.0, Reward: 70.0, Epsilon: 0.001
+Total time: 17060.6s, Episode time: 32.6s, Average time: 34.5s
+No op: 509, Left: 1089, Right: 499, Total: 2097
+Total No op: 379575, Total Left: 291283, Total Right: 222082, Total: 892940, memory size: 250000
+
+Episode 496/500, Highscore: 375.0, Reward: 75.0, Epsilon: 0.001
+Total time: 17091.3s, Episode time: 30.7s, Average time: 34.5s
+No op: 608, Left: 873, Right: 502, Total: 1983
+Total No op: 380183, Total Left: 292156, Total Right: 222584, Total: 894923, memory size: 250000
+
+updating target network
+Episode 497/500, Highscore: 375.0, Reward: 67.0, Epsilon: 0.001
+Total time: 17119.6s, Episode time: 28.3s, Average time: 34.4s
+No op: 664, Left: 644, Right: 472, Total: 1780
+Total No op: 380847, Total Left: 292800, Total Right: 223056, Total: 896703, memory size: 250000
+
+Episode 498/500, Highscore: 375.0, Reward: 90.0, Epsilon: 0.001
+Total time: 17147.3s, Episode time: 27.7s, Average time: 34.4s
+No op: 740, Left: 562, Right: 425, Total: 1727
+Total No op: 381587, Total Left: 293362, Total Right: 223481, Total: 898430, memory size: 250000
+
+updating target network
+Episode 499/500, Highscore: 375.0, Reward: 75.0, Epsilon: 0.0
+Total time: 17172.1s, Episode time: 24.8s, Average time: 34.4s
+No op: 662, Left: 539, Right: 416, Total: 1617
+Total No op: 382249, Total Left: 293901, Total Right: 223897, Total: 900047, memory size: 250000
+
+Episode 500/500, Highscore: 375.0, Reward: 46.0, Epsilon: 0.0
+Total time: 17191.7s, Episode time: 19.5s, Average time: 34.4s
+No op: 571, Left: 425, Right: 282, Total: 1278
+Total No op: 382820, Total Left: 294326, Total Right: 224179, Total: 901325, memory size: 250000
+
