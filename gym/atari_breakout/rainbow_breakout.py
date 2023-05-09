@@ -1,7 +1,9 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.layers import Input, Dense, Lambda, Add, Conv2D, Flatten
+from tensorflow.keras.layers import Input, Dense, Lambda, Add, Conv2D, Flatten, BatchNormalization
 from tensorflow.keras.models import Model
+# import tensorflow_probability as tfp
+import tensorflow.experimental.numpy as tnp
 import gymnasium as gym
 from collections import deque
 import random
@@ -18,17 +20,6 @@ from send_email import send_email
 from dotenv import load_dotenv
 load_dotenv()
 
-
-""" This is the rainbow algorithm with duelling architecture and prioritized experience replay
-    The code is based on the following paper: https://arxiv.org/pdf/1710.02298.pdf
-    It is yet to include the following:
-        - Noisy Nets            
-        - Multi-step returns
-        - Distributional RL
-        - Dueling DQN                       - DONE
-        - Prioritized Experience Replay     - DONE
-        - Double DQN                        - DONE
-          """
 # https://chat.openai.com/c/2b12934e-de73-4813-a047-8db8e8aa87a7
 # Hyperparameters
 NUM_ACTIONS = 3
@@ -40,18 +31,20 @@ BUFFER_SIZE = 100_000
 N_STEPS = 5
 BATCH_SIZE = 1024
 TRAINING_FREQ = 200
+SHOW_FRAME = 500
 TARGET_UPDATE_FREQ = 5_000
 LEARNING_RATE = 0.000_25
 EPSILON_START = 0.4
+# Maybe change this to exponential decay again
 
 NUM_EPISODES = 10_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1_000
-SAVE_PATH = "F:/Coding/breakout/"
+SAVE_PATH = "F:/Coding/breakout/noNormalizationWithSteps_2/"
 RENDER = False
 PRETRAINED = True
 TRAINING = True
-MODEL = "rainbow_models/good_models/model_500_4.h5"
+MODEL = "F:/Coding/breakout/noNormalizationWithSteps/good_models/model_10000_1.h5"
 
 def write_to_file(output_str, file_name="output.txt"):
     if TRAINING:
@@ -61,6 +54,7 @@ def write_to_file(output_str, file_name="output.txt"):
         except:
             print("error writing to file")
             pass
+        
 def send_email_notification(all_rewards, episode, highscore, output_str):
     try:
         def get_averages(rewards):
@@ -104,7 +98,8 @@ class PrioritizedReplayBuffer:
         probs /= probs.sum()
 
         indices = np.random.choice(len(self.memory), batch_size, p=probs)
-        indices.sort()
+        # indices.sort()
+        # samples = np.array(self.memory)[indices]
         samples = [self.memory[i] for i in indices]
 
         weights = (len(self.memory) * probs[indices]) ** (-beta)
@@ -129,17 +124,38 @@ def DQN(num_actions):
     x = Conv2D(64, 3, 1, activation='relu')(x)
     x = Flatten()(x)
 
-    # No Duelling
-    # x = Dense(512, activation='relu')(x)
-    # x = Dense(num_actions)(x)
-
     # Duelling
     value = Dense(1)(Dense(512, activation='relu')(x))
     advantage = Dense(num_actions)(Dense(512, activation='relu')(x))
     q_values = Add()([value, advantage - tf.math.reduce_mean(advantage, axis=1, keepdims=True)])
 
-    # return Model(inputs=input_state, outputs=x)
     return Model(inputs=input_state, outputs=q_values)
+
+# def DQN(num_actions):
+#     input_state = Input(shape=(84, 84, 4))
+#     x = Conv2D(32, 8, 4, activation=None, kernel_initializer='he_uniform')(input_state)
+#     x = BatchNormalization()(x)
+#     x = tf.keras.activations.relu(x)
+#     x = Conv2D(64, 4, 2, activation=None, kernel_initializer='he_uniform')(x)
+#     x = BatchNormalization()(x)
+#     x = tf.keras.activations.relu(x)
+#     x = Conv2D(64, 3, 1, activation=None, kernel_initializer='he_uniform')(x)
+#     x = BatchNormalization()(x)
+#     x = tf.keras.activations.relu(x)
+#     x = Flatten()(x)
+
+#     value_fc = Dense(512, activation=None, kernel_initializer='he_uniform')(x)
+#     value_fc = tf.keras.activations.relu(value_fc)
+#     value = Dense(1, kernel_initializer='he_uniform')(value_fc)
+
+#     advantage_fc = Dense(512, activation=None, kernel_initializer='he_uniform')(x)
+#     advantage_fc = tf.keras.activations.relu(advantage_fc)
+#     advantage = Dense(num_actions, kernel_initializer='he_uniform')(advantage_fc)
+
+#     q_values = Add()([value, advantage - tf.math.reduce_mean(advantage, axis=1, keepdims=True)])
+
+#     model = Model(inputs=input_state, outputs=q_values)
+#     return model
 
 @tf.function
 def forward_pass(model, state):
@@ -174,7 +190,16 @@ class RainbowAgent:
             self.q_network.load_weights(MODEL)
             self.target_network(dummy_input)
             self.update_target_network()
-        # log the hyperparameters
+
+        model="""Rainbow Algorithm: https://arxiv.org/pdf/1710.02298.pdf
+  - Noisy Nets                        - No
+  - Multi-step returns                - Yes
+  - Distributional RL                 - No  
+  - Dueling DQN                       - Yes 
+  - Prioritized Experience Replay     - Yes
+  - Double DQN                        - Yes\n"""
+        write_to_file(model)
+        
         params = f"""Hyperparameters:
 NUM_ACTIONS = {NUM_ACTIONS}
 ACTIONS = {ACTIONS}
@@ -186,6 +211,7 @@ N_STEPS = {N_STEPS}
 BATCH_SIZE = {BATCH_SIZE}
 TARGET_UPDATE_FREQ = {TARGET_UPDATE_FREQ}
 TRAINING_FREQ = {TRAINING_FREQ}
+SHOW_FRAME = {SHOW_FRAME}
 LEARNING_RATE = {LEARNING_RATE}
 EPSILON_START = {EPSILON_START}
 NUM_EPISODES = {NUM_EPISODES}
@@ -193,6 +219,7 @@ SAVE_FREQ = {SAVE_FREQ}
 SAVE_PATH = {SAVE_PATH}
 RENDER = {RENDER}
 PRETRAINED = {PRETRAINED}
+TRAINING = {TRAINING}
 MODEL = {MODEL}\n\n"""
         print(params)
         write_to_file(params, "output.txt")
@@ -205,25 +232,21 @@ MODEL = {MODEL}\n\n"""
 
     def remember(self, state, action, reward, next_state, done):
         self.buffer.add(state, action, reward, next_state, done)
-        # self.n_step_buffer.append((state, action, reward, next_state, done))
-        # if len(self.n_step_buffer) < N_STEPS:
-        #     return
-        # n_step_reward, n_step_state, n_step_done = self.calculate_n_step_info()
-        # state, action, _, _, _ = self.n_step_buffer[0]
-        # self.buffer.add(state, action, n_step_reward, n_step_state, n_step_done)
+        self.n_step_buffer.append((state, action, reward, next_state, done))
+        if len(self.n_step_buffer) < N_STEPS:
+            return
+        n_step_reward, n_step_state, n_step_done = self.calculate_n_step_info()
+        state, action, _, _, _ = self.n_step_buffer[0]
+        self.buffer.add(state, action, n_step_reward, n_step_state, n_step_done)
 
     def calculate_n_step_info(self):
         n_step_reward = 0
         n_step_state = self.n_step_buffer[-1][-2]
         n_step_done = self.n_step_buffer[-1][-1]
-
-        for idx, transition in enumerate(reversed(self.n_step_buffer)):
-            _, _, reward, _, done = transition
+        for idx, (_, _, reward, _, done) in enumerate(reversed(self.n_step_buffer)):
             n_step_reward += (GAMMA ** idx) * reward
-
             if not done:
                 break
-
         return n_step_reward, n_step_state, n_step_done
     
     # Use tf.function to speed up the computation graph
@@ -246,7 +269,7 @@ MODEL = {MODEL}\n\n"""
             target_q_values = tf.stop_gradient(target_q_values)
             td_errors = target_q_values - q_values
             loss = tf.reduce_mean(weights * tf.square(td_errors) * 0.5)
-
+            # loss = tf.keras.losses.MSE(target_q_values, q_values)
         gradients = tape.gradient(loss, self.q_network.trainable_variables)
         return loss, gradients, td_errors
     
@@ -280,20 +303,24 @@ MODEL = {MODEL}\n\n"""
         return round(end - start, 2)
 
         # lock.release()
+    # @tf.function
+    # def choose_action(self, state):
+    #     if TRAINING and tf.random.uniform(()) < self.epsilon:
+    #         action = tf.random.categorical(tf.math.log([[1/NUM_ACTIONS] * NUM_ACTIONS]), 1)
+    #         action = tf.squeeze(action, axis=0)
+    #     else:
+    #         q_values = forward_pass(self.q_network, tf.expand_dims(state, axis=0))
+    #         action = tf.argmax(q_values, axis=-1)[0]
+    #     return action
+
+    
     def choose_action(self, state):
-        start = time.time()
         if np.random.rand() < self.epsilon and TRAINING:
-            return np.random.choice(ACTIONS), time.time() - start
-        
-        if np.random.rand() < 0.0:
-            action = 0
+            return np.random.choice(ACTIONS)
         else:
             q_values = forward_pass(self.q_network, np.expand_dims(state, axis=0))
-            # q_values = self.q_network(np.expand_dims(state, axis=0))
-            action = np.argmax(q_values.numpy())
-        if action != 0:
-            action += 1
-        return action, time.time() - start
+            action = ACTIONS[np.argmax(q_values.numpy())]
+        return action
     
     def show_frame(self, state):
         if self.fig_frame is None or not plt.fignum_exists(self.fig_frame.number):
@@ -325,13 +352,13 @@ MODEL = {MODEL}\n\n"""
             pass
         processed_observe = cv2.cvtColor(state, cv2.COLOR_RGB2GRAY)
         processed_observe = cv2.resize(processed_observe, (84, 84), interpolation=cv2.INTER_AREA)
-        # processed_observe = np.expand_dims(processed_observe, axis=-1)
         return processed_observe, time.time() - start
 
     def train(self):
         steps = 0
         all_rewards = []
-        total_action_counter = {0: 0, 2: 0, 3: 0}
+        ep_times = []
+        total_actions = {0: 0, 2: 0, 3: 0}
         highscore = 0
         start_time = time.time()
         write_to_file(f"Starting training at {start_time}\n")
@@ -340,7 +367,7 @@ MODEL = {MODEL}\n\n"""
         for episode in range(1, NUM_EPISODES + 1):
             
             ep_start = time.time()
-            action_counter = {0: 0, 2: 0, 3: 0}
+            actions = {0: 0, 2: 0, 3: 0}
             done = False
             ep_reward = 0
             lives = 5
@@ -355,11 +382,13 @@ MODEL = {MODEL}\n\n"""
             procs_time = 0
             self.env.step(1)
             while not done:
-                action, action_time = self.choose_action(state)
-                total_actions_time += action_time
-                # print(action)
-                action_counter[action] += 1
-                total_action_counter[action] += 1
+                action_time = time.time()
+                # action = ACTIONS[int(tnp.array(self.choose_action(state)))]
+                # action = ACTIONS[int(self.choose_action(state).numpy())]
+                action = self.choose_action(state)
+                total_actions_time += time.time() - action_time
+                actions[action] += 1
+                total_actions[action] += 1
                 step_time = time.time()
                 next_state, reward, done, _, info = self.env.step(action)
                 step_times += time.time() - step_time
@@ -371,10 +400,10 @@ MODEL = {MODEL}\n\n"""
                 self.frame_buffer.append(processed_state)
                 next_state = np.stack(self.frame_buffer, axis=-1)
                 steps += 1
-                if steps % TRAINING_FREQ == 0:
+                if steps % SHOW_FRAME == 0:
                     self.show_frame(processed_state)
-                    if TRAINING:
-                        training_time += self.learn(steps=steps)
+                if steps % TRAINING_FREQ == 0 and TRAINING:
+                    training_time += self.learn(steps=steps)
                     # learn_thread = threading.Thread(target=self.learn, args=(lock,))
                     # learn_thread.start()
                 ep_reward += reward
@@ -394,18 +423,31 @@ MODEL = {MODEL}\n\n"""
                     all_rewards.append(ep_reward)
                     if ep_reward > highscore:
                         highscore = ep_reward
-                    elapsed_time = time.time() - start_time
-                    average_time_per_episode = elapsed_time / episode
+                    elapsed_time = round(time.time() - start_time, 1)
+                    ep_times.append(time.time() - ep_start)
+
+                    avgTime = round(elapsed_time / episode, 1)
+                    ep_time = round(time.time() - ep_start, 1)
+                    avg100time = np.round(np.mean(ep_times[-100:]), 1)
+                    avg10 = np.round(np.mean(all_rewards[-10:]), 1)
+                    avg100 = np.round(np.mean(all_rewards[-100:]), 1)
+                    avg500 = np.round(np.mean(all_rewards[-500:]), 1)
+                    avg1000 = np.round(np.mean(all_rewards[-1000:]), 1)
+                    avg = np.round(np.mean(all_rewards), 1)
+                    if total_actions_time != 0:
+                        actions_per_second = round((actions[0] + actions[2] + actions[3]) / total_actions_time)
+                    else:
+                        actions_per_second = 'lots'
+
                     output_str = f"Episode {episode}/{NUM_EPISODES}, Highscore: {highscore}, Reward: {ep_reward}, Epsilon: {round(self.epsilon, 3)}\n"
-                    output_str += f"Average: {round(sum(all_rewards)/len(all_rewards))}, Avg10: {round(sum(all_rewards[-10:])/len(all_rewards[-10:]))}, Avg100: {round(sum(all_rewards[-100:])/len(all_rewards[-100:]))}\n"
-                    output_str += f"Total time: {round(elapsed_time, 1)}s, Episode time: {round(time.time() - ep_start, 1)}s, Average time: {round(average_time_per_episode, 1)}s\n"
-                    output_str += f"No op: {action_counter[0]}, Left: {action_counter[3]}, Right: {action_counter[2]}, Total: {action_counter[0] + action_counter[2] + action_counter[3]}\n"
-                    output_str += f"Total No op: {total_action_counter[0]}, Total Left: {total_action_counter[3]}, Total Right: {total_action_counter[2]}, Total: {total_action_counter[0] + total_action_counter[2] + total_action_counter[3]}, memory size: {len(self.buffer)}\n"
-                    output_str += f"Training time: {round(training_time, 2)}s\n"
-                    output_str += f"Total action time: {round(total_actions_time, 2)}s\n"
-                    output_str += f"Step time: {round(step_times, 2)}s\n"
-                    output_str += f"Preprocessing time: {round(procs_time, 2)}s\n"
-                    output_str += f"Total time: {round(training_time + total_actions_time + step_times + procs_time, 2)}/{round(time.time() - ep_start, 1)}s\n"
+                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}\n"
+                    output_str += f"Total time: {elapsed_time}s, Episode time: {ep_time}s, Average time: {avgTime}s, Avg100: {avg100time}\n"
+                    output_str += f"No op: {actions[0]}/{total_actions[0]}, Left: {actions[3]}/{total_actions[3]}, Right: {actions[2]}/{total_actions[2]}, Total: {actions[0] + actions[2] + actions[3]}/{total_actions[0] + total_actions[2] + total_actions[3]}, memory size: {len(self.buffer)}\n"
+                    output_str += f"Training time: {round(training_time, 1)}s, "
+                    output_str += f"Action time: {round(total_actions_time, 1)}s, Actions per second: {actions_per_second}, "
+                    output_str += f"Step time: {round(step_times, 1)}s, "
+                    output_str += f"Preprocessing time: {round(procs_time, 1)}s, "
+                    output_str += f"Total time: {round(training_time + total_actions_time + step_times + procs_time, 1)}/{round(time.time() - ep_start, 1)}s\n"
                     
                     print(output_str, end='\n')  # print the output to the console
                     if episode % SAVE_FREQ == 0 and TRAINING:
