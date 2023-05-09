@@ -3,7 +3,8 @@ import numpy as np
 import ast
 # with open("rainbow_models/rewards.txt", "r") as f:
 # with open("F:/Coding/breakout/rewards.txt", "r") as f:
-with open("F:/Coding/breakout/noNormalizationWithSteps_2/rewards.txt", "r") as f:
+with open("F:/Coding/breakout/control/run1/rewards.txt", "r") as f:
+# with open("F:/Coding/breakout/noNormalizationWithSteps_2/rewards.txt", "r") as f:
 # with open("F:/Coding/breakout/normalizedModelSteps/rewards.txt", "r") as f:
 # with open("models_3_actions/rewards.txt", "r") as f:
 # with open("rainbow_models/good_models/rewards_1.txt", "r") as f:
@@ -13,7 +14,7 @@ with open("F:/Coding/breakout/noNormalizationWithSteps_2/rewards.txt", "r") as f
 fig, ax = plt.subplots()
 data_array = np.array(data)
 # print(np.average(data_array[5000:]))
-total = 7500
+total = 7400
 interval = 100
 # reshaped_arr = data_array[-2_000:].reshape(40, 50)
 print(data_array[-total:].mean())

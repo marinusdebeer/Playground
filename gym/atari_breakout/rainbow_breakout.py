@@ -3,7 +3,6 @@ import tensorflow as tf
 from tensorflow.keras.layers import Input, Dense, Lambda, Add, Conv2D, Flatten, BatchNormalization
 from tensorflow.keras.models import Model
 # import tensorflow_probability as tfp
-import tensorflow.experimental.numpy as tnp
 import gymnasium as gym
 from collections import deque
 import random
@@ -28,21 +27,21 @@ GAMMA = 0.95
 ALPHA = 0.80
 BETA = 0.40
 BUFFER_SIZE = 100_000
-N_STEPS = 5
+N_STEPS = 3
 BATCH_SIZE = 1024
 TRAINING_FREQ = 200
 SHOW_FRAME = 500
 TARGET_UPDATE_FREQ = 5_000
 LEARNING_RATE = 0.000_25
-EPSILON_START = 0.4
+EPSILON_START = 1.0
 # Maybe change this to exponential decay again
 
-NUM_EPISODES = 10_000
+NUM_EPISODES = 20_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1_000
-SAVE_PATH = "F:/Coding/breakout/rainbow/"
+SAVE_PATH = "F:/Coding/breakout/good_rainbow/"
 RENDER = False
-PRETRAINED = True
+PRETRAINED = False
 TRAINING = True
 MODEL = "F:/Coding/breakout/rainbow/good_models/model_7900_2.h5"
 
@@ -70,16 +69,13 @@ def send_email_notification(all_rewards, output_str):
 
         email_subject = SAVE_PATH
         email_body = f"""{output_str}\n
-Average per 100: {average_per_100}\n
-All Rewards: {all_rewards}"""
-        print(email_body)
+Average per 100: {average_per_100}\n"""
         write_to_file(email_body)
-        send_email(email_subject, email_body)
+        send_email(email_subject, f"{email_body}\nAll Rewards: {all_rewards}")
     except Exception as e:
         print("email error", e)
         pass
     
-        
 # Prioritized experience replay buffer
 class PrioritizedReplayBuffer:
     def __init__(self, buffer_size, alpha):
@@ -244,13 +240,10 @@ MODEL = {MODEL}\n\n"""
     def compute_loss_and_gradients(self, states, actions, rewards, next_states, dones, weights):
         with tf.GradientTape() as tape:
             q_values = self.q_network(states)
-            # q_values = forward_pass(self.q_network, states)
             q_values = tf.reduce_sum(q_values * tf.one_hot(actions, self.num_actions), axis=1)
 
             next_q_values = self.target_network(next_states)
             next_q_values_online = self.q_network(next_states)
-            # next_q_values = forward_pass(self.target_network, next_states)
-            # next_q_values_online = forward_pass(self.q_network, next_states)
 
             next_actions = tf.argmax(next_q_values_online, axis=1)
             next_q_values = tf.reduce_sum(next_q_values * tf.one_hot(next_actions, self.num_actions), axis=1)
@@ -262,18 +255,14 @@ MODEL = {MODEL}\n\n"""
             # loss = tf.keras.losses.MSE(target_q_values, q_values)
         gradients = tape.gradient(loss, self.q_network.trainable_variables)
         return loss, gradients, td_errors
-    
-    def learn(self, lock=None, steps=None):
+
+    def learn(self):
         if len(self.buffer) < BATCH_SIZE:
             return 0
         start = time.time()
         self.beta = min(1.0, self.beta + self.beta_increment)
 
         minibatch, indices, weights = self.buffer.sample(BATCH_SIZE, self.beta)
-        # if steps % TRAINING_FREQ*100 == 0:
-        #     write_to_file(", ".join(map(str, indices)), "sample.txt")
-        #     write_to_file("\n", "sample.txt")
-        # states, actions, rewards, next_states, dones = map(np.array, zip(*minibatch))
         states, actions, rewards, next_states, dones = zip(*minibatch)
 
         states = np.array(states, dtype=np.float32)
@@ -287,29 +276,14 @@ MODEL = {MODEL}\n\n"""
 
         priorities = tf.abs(td_errors) + 1e-6
         self.buffer.update_priorities(indices, priorities.numpy())
-        # print(f"Loss: {loss.numpy()}")
-        # write_to_file(f"Loss: {loss.numpy()}\n")
         end = time.time()
         return round(end - start, 2)
 
-        # lock.release()
-    # @tf.function
-    # def choose_action(self, state):
-    #     if TRAINING and tf.random.uniform(()) < self.epsilon:
-    #         action = tf.random.categorical(tf.math.log([[1/NUM_ACTIONS] * NUM_ACTIONS]), 1)
-    #         action = tf.squeeze(action, axis=0)
-    #     else:
-    #         q_values = forward_pass(self.q_network, tf.expand_dims(state, axis=0))
-    #         action = tf.argmax(q_values, axis=-1)[0]
-    #     return action
-
-    
     def choose_action(self, state):
         if np.random.rand() < self.epsilon and TRAINING:
             return np.random.choice(ACTIONS)
         else:
             q_values = self.q_network(np.array([state], dtype=np.float32))
-            # q_values = forward_pass(self.q_network, np.expand_dims(state, axis=0))
             action = ACTIONS[np.argmax(q_values.numpy())]
         return action
     
@@ -321,18 +295,6 @@ MODEL = {MODEL}\n\n"""
         self.ax_frame.imshow(state, cmap='gray')
         self.fig_frame.canvas.draw()
         plt.pause(0.01)
-
-    # def preprocess_state(self, state):
-    #     start = time.time()
-    #     try:
-    #         state.shape
-    #     except:
-    #         state = state[0]
-    #         pass
-    #     gray = rgb2gray(state)
-    #     resized = resize(gray, (84, 84), mode='constant')
-    #     processed_observe = np.uint8(resized * 255)
-    #     return processed_observe, time.time() - start
     
     def preprocess_state(self, state):
         start = time.time()
@@ -353,8 +315,6 @@ MODEL = {MODEL}\n\n"""
         highscore = 0
         start_time = time.time()
         write_to_file(f"Starting training at {start_time}\n")
-        # lock = threading.Lock()  # create a lock object
-        
         for episode in range(1, NUM_EPISODES + 1):
             
             ep_start = time.time()
@@ -374,8 +334,6 @@ MODEL = {MODEL}\n\n"""
             self.env.step(1)
             while not done:
                 action_time = time.time()
-                # action = ACTIONS[int(tnp.array(self.choose_action(state)))]
-                # action = ACTIONS[int(self.choose_action(state).numpy())]
                 action = self.choose_action(state)
                 total_actions_time += time.time() - action_time
                 actions[action] += 1
@@ -394,9 +352,7 @@ MODEL = {MODEL}\n\n"""
                 if steps % SHOW_FRAME == 0:
                     self.show_frame(processed_state)
                 if steps % TRAINING_FREQ == 0 and TRAINING:
-                    training_time += self.learn(steps=steps)
-                    # learn_thread = threading.Thread(target=self.learn, args=(lock,))
-                    # learn_thread.start()
+                    training_time += self.learn()
                 ep_reward += reward
 
                 if (info["lives"] < lives):
@@ -451,11 +407,9 @@ MODEL = {MODEL}\n\n"""
                         send_email_notification(all_rewards, output_str)
                     write_to_file(f"{output_str}\n")
             self.epsilon = EPSILON_START - (episode/(NUM_EPISODES*(1/EPSILON_START)))
-            
 
 if __name__ == "__main__":
     agent = RainbowAgent()
     agent.train()
     print(f"Finished training at {time.time()}")
     write_to_file(f"Finished training at {time.time()}\n")
-
