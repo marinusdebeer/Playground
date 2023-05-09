@@ -36,14 +36,21 @@ LEARNING_RATE = 0.000_25
 EPSILON_START = 1.0
 # Maybe change this to exponential decay again
 
-NUM_EPISODES = 20_000
+NUM_EPISODES = 10_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1_000
-SAVE_PATH = "F:/Coding/breakout/good_rainbow/"
+SAVE_PATH = "F:/Coding/breakout/prioritized_exp_replay/"
 RENDER = False
 PRETRAINED = False
 TRAINING = True
-MODEL = "F:/Coding/breakout/rainbow/good_models/model_7900_2.h5"
+MODEL = ""
+
+N_STEPS = False
+DUELING_DQN = False
+PRIORITIZED_EXPERIENCE_REPLAY = True
+DOUBLE_DQN = True
+DISTIBUTIONAL_RL = False
+NOISY_NETS = False
 
 def write_to_file(output_str, file_name="output.txt"):
     if TRAINING:
@@ -119,10 +126,14 @@ class DQN(tf.keras.Model):
         self.conv2 = Conv2D(64, 4, strides=2, activation='relu')
         self.conv3 = Conv2D(64, 3, strides=1, activation='relu')
         self.flatten = Flatten()
-        self.dense1_adv = Dense(512, activation='relu')
-        self.dense2_adv = Dense(NUM_ACTIONS)
-        self.dense1_val = Dense(512, activation='relu')
-        self.dense2_val = Dense(1)
+        if DUELING_DQN:
+            self.dense1_adv = Dense(512, activation='relu')
+            self.dense2_adv = Dense(NUM_ACTIONS)
+            self.dense1_val = Dense(512, activation='relu')
+            self.dense2_val = Dense(1)
+        else:
+            self.dense1 = Dense(512, activation='relu')
+            self.dense2 = Dense(NUM_ACTIONS)
 
     @tf.function
     def call(self, inputs):
@@ -131,14 +142,18 @@ class DQN(tf.keras.Model):
         x = self.conv3(x)
         x = self.flatten(x)
 
-        adv = self.dense1_adv(x)
-        adv = self.dense2_adv(adv)
+        if DUELING_DQN:
+            adv = self.dense1_adv(x)
+            adv = self.dense2_adv(adv)
 
-        val = self.dense1_val(x)
-        val = self.dense2_val(val)
+            val = self.dense1_val(x)
+            val = self.dense2_val(val)
 
-        # Combine advantage and value streams
-        q_values = val + adv - tf.reduce_mean(adv, axis=1, keepdims=True)
+            # Combine advantage and value streams
+            q_values = val + adv - tf.reduce_mean(adv, axis=1, keepdims=True)
+        else:
+            x = self.dense1(x)
+            q_values = self.dense2(x)
         return q_values
 
 @tf.function
@@ -152,10 +167,14 @@ class RainbowAgent:
         self.num_actions = NUM_ACTIONS
         self.learning_rate = LEARNING_RATE
         self.epsilon = EPSILON_START
-        self.buffer = PrioritizedReplayBuffer(BUFFER_SIZE, ALPHA)
-        self.n_step_buffer = deque(maxlen=N_STEPS)
-        self.beta = BETA
-        self.beta_increment = (1.0 - BETA) / NUM_EPISODES
+        if PRIORITIZED_EXPERIENCE_REPLAY:
+            self.buffer = PrioritizedReplayBuffer(BUFFER_SIZE, ALPHA)
+            self.beta = BETA
+            self.beta_increment = (1.0 - BETA) / NUM_EPISODES
+        else:
+            self.buffer = deque(maxlen=BUFFER_SIZE)
+        if N_STEPS:
+            self.n_step_buffer = deque(maxlen=N_STEPS)
         self.fig_frame = None
         self.q_network = DQN()
         self.target_network = DQN()
@@ -175,13 +194,13 @@ class RainbowAgent:
             self.target_network(dummy_input)
             self.update_target_network()
 
-        model="""Rainbow Algorithm: https://arxiv.org/pdf/1710.02298.pdf
-  - Noisy Nets                        - No
-  - Multi-step returns                - Yes
-  - Distributional RL                 - No  
-  - Dueling DQN                       - Yes 
-  - Prioritized Experience Replay     - Yes
-  - Double DQN                        - Yes\n"""
+        model=f"""Rainbow Algorithm: https://arxiv.org/pdf/1710.02298.pdf
+  - Noisy Nets                        - {NOISY_NETS}
+  - Multi-step returns                - {N_STEPS}
+  - Distributional RL                 - {DISTIBUTIONAL_RL}  
+  - Dueling DQN                       - {DUELING_DQN}
+  - Prioritized Experience Replay     - {PRIORITIZED_EXPERIENCE_REPLAY}
+  - Double DQN                        - {DOUBLE_DQN}\n"""
         write_to_file(model)
         
         params = f"""Hyperparameters:
@@ -215,15 +234,21 @@ MODEL = {MODEL}\n\n"""
             self.target_network.set_weights(self.q_network.get_weights())
 
     def remember(self, state, action, reward, next_state, done):
-        # Used for no n-step
-        # self.buffer.append((state, action, reward, next_state, done))
-        
-        self.n_step_buffer.append((state, action, reward, next_state, done))
-        if len(self.n_step_buffer) < N_STEPS:
-            return
-        n_step_reward, n_step_state, n_step_done = self.calculate_n_step_info()
-        state, action, _, _, _ = self.n_step_buffer[0]
-        self.buffer.add(state, action, n_step_reward, n_step_state, n_step_done)
+        if N_STEPS:
+            self.n_step_buffer.append((state, action, reward, next_state, done))
+            if len(self.n_step_buffer) < N_STEPS:
+                return
+            n_step_reward, n_step_state, n_step_done = self.calculate_n_step_info()
+            state, action, _, _, _ = self.n_step_buffer[0]
+            if PRIORITIZED_EXPERIENCE_REPLAY:
+                self.buffer.add(state, action, n_step_reward, n_step_state, n_step_done)
+            else:
+                self.buffer.append((state, action, n_step_reward, n_step_state, n_step_done))
+        else:
+            if PRIORITIZED_EXPERIENCE_REPLAY:
+                self.buffer.add(state, action, reward, next_state, done)
+            else:
+                self.buffer.append((state, action, reward, next_state, done))
 
     def calculate_n_step_info(self):
         n_step_reward = 0
@@ -237,7 +262,7 @@ MODEL = {MODEL}\n\n"""
     
     # Use tf.function to speed up the computation graph
     @tf.function
-    def compute_loss_and_gradients(self, states, actions, rewards, next_states, dones, weights):
+    def compute_loss_and_gradients(self, states, actions, rewards, next_states, dones, weights=None):
         with tf.GradientTape() as tape:
             q_values = self.q_network(states)
             q_values = tf.reduce_sum(q_values * tf.one_hot(actions, self.num_actions), axis=1)
@@ -251,18 +276,22 @@ MODEL = {MODEL}\n\n"""
             target_q_values = rewards + GAMMA * (1 - dones) * next_q_values
             target_q_values = tf.stop_gradient(target_q_values)
             td_errors = target_q_values - q_values
-            loss = tf.reduce_mean(weights * tf.square(td_errors) * 0.5)
-            # loss = tf.keras.losses.MSE(target_q_values, q_values)
+            if PRIORITIZED_EXPERIENCE_REPLAY:
+                loss = tf.reduce_mean(weights * tf.square(td_errors) * 0.5)
+            else:
+                loss = tf.keras.losses.MSE(target_q_values, q_values)
         gradients = tape.gradient(loss, self.q_network.trainable_variables)
         return loss, gradients, td_errors
 
     def learn(self):
         if len(self.buffer) < BATCH_SIZE:
-            return 0
+            return 0, 0
         start = time.time()
-        self.beta = min(1.0, self.beta + self.beta_increment)
-
-        minibatch, indices, weights = self.buffer.sample(BATCH_SIZE, self.beta)
+        if PRIORITIZED_EXPERIENCE_REPLAY:
+            self.beta = min(1.0, self.beta + self.beta_increment)
+            minibatch, indices, weights = self.buffer.sample(BATCH_SIZE, self.beta)
+        else:
+            minibatch = random.sample(self.buffer, BATCH_SIZE)
         states, actions, rewards, next_states, dones = zip(*minibatch)
 
         states = np.array(states, dtype=np.float32)
@@ -271,13 +300,15 @@ MODEL = {MODEL}\n\n"""
         next_states = np.array(next_states, dtype=np.float32)
         dones = np.array(dones, dtype=np.float32)
 
-        loss, gradients, td_errors = self.compute_loss_and_gradients(states, actions, rewards, next_states, dones, weights)
+        if PRIORITIZED_EXPERIENCE_REPLAY:
+            loss, gradients, td_errors = self.compute_loss_and_gradients(states, actions, rewards, next_states, dones, weights)
+            priorities = tf.abs(td_errors) + 1e-6
+            self.buffer.update_priorities(indices, priorities.numpy())
+        else:
+            loss, gradients, td_errors = self.compute_loss_and_gradients(states, actions, rewards, next_states, dones, None)
         self.optimizer.apply_gradients(zip(gradients, self.q_network.trainable_variables))
-
-        priorities = tf.abs(td_errors) + 1e-6
-        self.buffer.update_priorities(indices, priorities.numpy())
         end = time.time()
-        return round(end - start, 2)
+        return round(end - start, 2), loss.numpy()
 
     def choose_action(self, state):
         if np.random.rand() < self.epsilon and TRAINING:
@@ -321,6 +352,7 @@ MODEL = {MODEL}\n\n"""
             actions = {0: 0, 2: 0, 3: 0}
             done = False
             ep_reward = 0
+            ep_loss = 0
             lives = 5
             state = self.env.reset()
             for _ in range(4):
@@ -352,7 +384,9 @@ MODEL = {MODEL}\n\n"""
                 if steps % SHOW_FRAME == 0:
                     self.show_frame(processed_state)
                 if steps % TRAINING_FREQ == 0 and TRAINING:
-                    training_time += self.learn()
+                    learn_time, loss = self.learn()
+                    training_time += learn_time
+                    ep_loss += loss
                 ep_reward += reward
 
                 if (info["lives"] < lives):
@@ -381,13 +415,15 @@ MODEL = {MODEL}\n\n"""
                     avg500 = np.round(np.mean(all_rewards[-500:]), 1)
                     avg1000 = np.round(np.mean(all_rewards[-1000:]), 1)
                     avg = np.round(np.mean(all_rewards), 1)
+                    actions_per_episode = actions[0] + actions[2] + actions[3]
+
                     if total_actions_time != 0:
-                        actions_per_second = round((actions[0] + actions[2] + actions[3]) / total_actions_time)
+                        actions_per_second = round(actions_per_episode / total_actions_time)
                     else:
                         actions_per_second = 'lots'
 
                     output_str = f"Episode {episode}/{NUM_EPISODES}, Highscore: {highscore}, Reward: {ep_reward}, Epsilon: {round(self.epsilon, 3)}\n"
-                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}\n"
+                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}, loss: {ep_loss}, loss/action: {ep_loss/actions_per_episode}\n"
                     output_str += f"Total time: {elapsed_time}s, Episode time: {ep_time}s, Average time: {avgTime}s, Avg100: {avg100time}\n"
                     output_str += f"No op: {actions[0]}/{total_actions[0]}, Left: {actions[3]}/{total_actions[3]}, Right: {actions[2]}/{total_actions[2]}, Total: {actions[0] + actions[2] + actions[3]}/{total_actions[0] + total_actions[2] + total_actions[3]}, memory size: {len(self.buffer)}\n"
                     output_str += f"Training time: {round(training_time, 1)}s, "
@@ -395,7 +431,7 @@ MODEL = {MODEL}\n\n"""
                     output_str += f"Step time: {round(step_times, 1)}s, "
                     output_str += f"Preprocessing time: {round(procs_time, 1)}s, "
                     output_str += f"Total time: {round(training_time + total_actions_time + step_times + procs_time, 1)}/{round(time.time() - ep_start, 1)}s\n"
-                    
+
                     print(output_str, end='\n')  # print the output to the console
                     if episode % SAVE_FREQ == 0 and TRAINING:
                         print(f"Model weights saved at episode {episode}")
