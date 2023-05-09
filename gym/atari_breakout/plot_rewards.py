@@ -13,7 +13,7 @@ with open("F:/Coding/breakout/noNormalizationWithSteps_2/rewards.txt", "r") as f
 fig, ax = plt.subplots()
 data_array = np.array(data)
 # print(np.average(data_array[5000:]))
-total = 6600
+total = 7500
 interval = 100
 # reshaped_arr = data_array[-2_000:].reshape(40, 50)
 print(data_array[-total:].mean())

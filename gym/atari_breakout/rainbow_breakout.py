@@ -40,11 +40,11 @@ EPSILON_START = 0.4
 NUM_EPISODES = 10_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1_000
-SAVE_PATH = "F:/Coding/breakout/noNormalizationWithSteps_2/"
+SAVE_PATH = "F:/Coding/breakout/rainbow/"
 RENDER = False
 PRETRAINED = True
 TRAINING = True
-MODEL = "F:/Coding/breakout/noNormalizationWithSteps/good_models/model_10000_1.h5"
+MODEL = "F:/Coding/breakout/rainbow/good_models/model_7900_2.h5"
 
 def write_to_file(output_str, file_name="output.txt"):
     if TRAINING:
@@ -55,26 +55,25 @@ def write_to_file(output_str, file_name="output.txt"):
             print("error writing to file")
             pass
         
-def send_email_notification(all_rewards, episode, highscore, output_str):
+def send_email_notification(all_rewards, output_str):
     try:
         def get_averages(rewards):
-            averages = []
-            for i in range(0, len(rewards), 100):
-                chunk = rewards[i:i+10]
-                average = sum(chunk) / len(chunk)
-                averages.append(average)
-            return averages
-        
+          averages = []
+          chunk_size = 100
+          for i in range(0, len(rewards), chunk_size):
+              chunk = rewards[i:i + chunk_size]
+              average = sum(chunk) / len(chunk)
+              averages.append(average)
+          return averages
+
         average_per_100 = get_averages(all_rewards)
-        average_rewards = round(sum(all_rewards)/len(all_rewards))
 
-
-        email_subject = f"Episode {episode}/{NUM_EPISODES}, Average: {average_rewards}, Last 100: {average_per_100[-1]}, Highscore: {highscore}"
-        email_body = f"""Average per 100: {average_per_100}\n
-    {output_str}All Rewards: {all_rewards}"""
-
-        print(f"""{email_subject}\nAverage per 100: {average_per_100}\n""")
-        write_to_file(f"""{email_subject}\nAverage per 100: {average_per_100}\n""")
+        email_subject = SAVE_PATH
+        email_body = f"""{output_str}\n
+Average per 100: {average_per_100}\n
+All Rewards: {all_rewards}"""
+        print(email_body)
+        write_to_file(email_body)
         send_email(email_subject, email_body)
     except Exception as e:
         print("email error", e)
@@ -117,45 +116,34 @@ class PrioritizedReplayBuffer:
         return len(self.memory)
 
 # Create the Q-Network model with dueling architecture
-def DQN(num_actions):
-    input_state = Input(shape=(84, 84, 4))
-    x = Conv2D(32, 8, 4, activation='relu')(input_state)
-    x = Conv2D(64, 4, 2, activation='relu')(x)
-    x = Conv2D(64, 3, 1, activation='relu')(x)
-    x = Flatten()(x)
+class DQN(tf.keras.Model):
+    def __init__(self):
+        super(DQN, self).__init__()
+        self.conv1 = Conv2D(32, 8, strides=4, activation='relu', input_shape=(84, 84, 4))
+        self.conv2 = Conv2D(64, 4, strides=2, activation='relu')
+        self.conv3 = Conv2D(64, 3, strides=1, activation='relu')
+        self.flatten = Flatten()
+        self.dense1_adv = Dense(512, activation='relu')
+        self.dense2_adv = Dense(NUM_ACTIONS)
+        self.dense1_val = Dense(512, activation='relu')
+        self.dense2_val = Dense(1)
 
-    # Duelling
-    value = Dense(1)(Dense(512, activation='relu')(x))
-    advantage = Dense(num_actions)(Dense(512, activation='relu')(x))
-    q_values = Add()([value, advantage - tf.math.reduce_mean(advantage, axis=1, keepdims=True)])
+    @tf.function
+    def call(self, inputs):
+        x = self.conv1(inputs)
+        x = self.conv2(x)
+        x = self.conv3(x)
+        x = self.flatten(x)
 
-    return Model(inputs=input_state, outputs=q_values)
+        adv = self.dense1_adv(x)
+        adv = self.dense2_adv(adv)
 
-# def DQN(num_actions):
-#     input_state = Input(shape=(84, 84, 4))
-#     x = Conv2D(32, 8, 4, activation=None, kernel_initializer='he_uniform')(input_state)
-#     x = BatchNormalization()(x)
-#     x = tf.keras.activations.relu(x)
-#     x = Conv2D(64, 4, 2, activation=None, kernel_initializer='he_uniform')(x)
-#     x = BatchNormalization()(x)
-#     x = tf.keras.activations.relu(x)
-#     x = Conv2D(64, 3, 1, activation=None, kernel_initializer='he_uniform')(x)
-#     x = BatchNormalization()(x)
-#     x = tf.keras.activations.relu(x)
-#     x = Flatten()(x)
+        val = self.dense1_val(x)
+        val = self.dense2_val(val)
 
-#     value_fc = Dense(512, activation=None, kernel_initializer='he_uniform')(x)
-#     value_fc = tf.keras.activations.relu(value_fc)
-#     value = Dense(1, kernel_initializer='he_uniform')(value_fc)
-
-#     advantage_fc = Dense(512, activation=None, kernel_initializer='he_uniform')(x)
-#     advantage_fc = tf.keras.activations.relu(advantage_fc)
-#     advantage = Dense(num_actions, kernel_initializer='he_uniform')(advantage_fc)
-
-#     q_values = Add()([value, advantage - tf.math.reduce_mean(advantage, axis=1, keepdims=True)])
-
-#     model = Model(inputs=input_state, outputs=q_values)
-#     return model
+        # Combine advantage and value streams
+        q_values = val + adv - tf.reduce_mean(adv, axis=1, keepdims=True)
+        return q_values
 
 @tf.function
 def forward_pass(model, state):
@@ -173,8 +161,8 @@ class RainbowAgent:
         self.beta = BETA
         self.beta_increment = (1.0 - BETA) / NUM_EPISODES
         self.fig_frame = None
-        self.q_network = DQN(NUM_ACTIONS)
-        self.target_network = DQN(NUM_ACTIONS)
+        self.q_network = DQN()
+        self.target_network = DQN()
         self.update_target_network()
 
         self.optimizer = tf.keras.optimizers.Adam(learning_rate=LEARNING_RATE)
@@ -231,7 +219,9 @@ MODEL = {MODEL}\n\n"""
             self.target_network.set_weights(self.q_network.get_weights())
 
     def remember(self, state, action, reward, next_state, done):
-        self.buffer.add(state, action, reward, next_state, done)
+        # Used for no n-step
+        # self.buffer.append((state, action, reward, next_state, done))
+        
         self.n_step_buffer.append((state, action, reward, next_state, done))
         if len(self.n_step_buffer) < N_STEPS:
             return
@@ -253,14 +243,14 @@ MODEL = {MODEL}\n\n"""
     @tf.function
     def compute_loss_and_gradients(self, states, actions, rewards, next_states, dones, weights):
         with tf.GradientTape() as tape:
-            # q_values = self.q_network(states)
-            q_values = forward_pass(self.q_network, states)
+            q_values = self.q_network(states)
+            # q_values = forward_pass(self.q_network, states)
             q_values = tf.reduce_sum(q_values * tf.one_hot(actions, self.num_actions), axis=1)
 
-            # next_q_values = self.target_network(next_states)
-            # next_q_values_online = self.q_network(next_states)
-            next_q_values = forward_pass(self.target_network, next_states)
-            next_q_values_online = forward_pass(self.q_network, next_states)
+            next_q_values = self.target_network(next_states)
+            next_q_values_online = self.q_network(next_states)
+            # next_q_values = forward_pass(self.target_network, next_states)
+            # next_q_values_online = forward_pass(self.q_network, next_states)
 
             next_actions = tf.argmax(next_q_values_online, axis=1)
             next_q_values = tf.reduce_sum(next_q_values * tf.one_hot(next_actions, self.num_actions), axis=1)
@@ -286,10 +276,10 @@ MODEL = {MODEL}\n\n"""
         # states, actions, rewards, next_states, dones = map(np.array, zip(*minibatch))
         states, actions, rewards, next_states, dones = zip(*minibatch)
 
-        states = np.array(states)
-        actions = np.array(actions)
+        states = np.array(states, dtype=np.float32)
+        actions = np.array(actions, dtype=np.int32)
         rewards = np.array(rewards, dtype=np.float32)
-        next_states = np.array(next_states)
+        next_states = np.array(next_states, dtype=np.float32)
         dones = np.array(dones, dtype=np.float32)
 
         loss, gradients, td_errors = self.compute_loss_and_gradients(states, actions, rewards, next_states, dones, weights)
@@ -318,7 +308,8 @@ MODEL = {MODEL}\n\n"""
         if np.random.rand() < self.epsilon and TRAINING:
             return np.random.choice(ACTIONS)
         else:
-            q_values = forward_pass(self.q_network, np.expand_dims(state, axis=0))
+            q_values = self.q_network(np.array([state], dtype=np.float32))
+            # q_values = forward_pass(self.q_network, np.expand_dims(state, axis=0))
             action = ACTIONS[np.argmax(q_values.numpy())]
         return action
     
@@ -457,7 +448,7 @@ MODEL = {MODEL}\n\n"""
                         with open(f"{SAVE_PATH}rewards.txt", "w") as f:
                             f.write(str(all_rewards))
                     if episode % EMAIL_FREQUENCY == 0 or episode == 1:
-                        send_email_notification(all_rewards, episode, highscore, output_str)
+                        send_email_notification(all_rewards, output_str)
                     write_to_file(f"{output_str}\n")
             self.epsilon = EPSILON_START - (episode/(NUM_EPISODES*(1/EPSILON_START)))
             
