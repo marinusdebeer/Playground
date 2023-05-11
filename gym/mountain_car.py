@@ -111,4 +111,4 @@ for episode in range(num_episodes+1):
         np.save(f"qtables/{episode}_{avg}-qtables.npy", q_table)
     # Print the total reward for the episode
     # print(f"Episode {episode}: Total reward = {episode_reward}")
-    epsilon = pow(EPSILON_DECAY, episode)
+    # epsilon = pow(EPSILON_DECAY, episode)
