@@ -15,6 +15,7 @@ import time
 from datetime import datetime, timedelta
 import threading
 from queue import Queue
+import heapq
 import cv2
 import math
 import os
@@ -26,9 +27,9 @@ load_dotenv()
 # Hyperparameters
 NUM_ACTIONS = 3
 ACTIONS = [0, 2, 3]
-GAMMA = 0.95
-ALPHA = 0.80
-BETA = 0.60
+GAMMA = 0.99
+ALPHA = 0.70
+BETA = 0.4
 BUFFER_SIZE = 100_000
 MIN_BUFFER_SIZE = 80_000
 N_STEPS = 3
@@ -36,24 +37,25 @@ BATCH_SIZE = 256
 TRAINING_FREQ = 32
 SHOW_FRAME = 100
 TARGET_UPDATE_FREQ = 2500
-INITIAL_LEARNING_RATE = 0.000_25 #0.00025 #0.002
+INITIAL_LEARNING_RATE = 0.002 #0.00025 #0.002
 LEARNING_RATE_DECAY = 0.05
 EPSILON_START = 1.0
-EPSILON_DECAY = 0.04
+EPSILON_DECAY = 0.04 #0.01 for 20_000 0.04 for 5_000
 
 NUM_EPISODES = 5_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1_000
 # SAVE_PATH = "F:/Coding/breakout/full_rainbow/"
-SAVE_PATH = "F:/Coding/breakout/3_n_steps_optimized/"
+SAVE_PATH = "F:/Coding/breakout/double_dqn_4_5000/"
 RENDER = False
 PRETRAINED = False
 TRAINING = True
 MODEL = ""
+LOGGING = True
 
 DOUBLE_DQN                    = True
 PRIORITIZED_EXPERIENCE_REPLAY = False
-N_STEPS_IMPLEMENTED           = True
+N_STEPS_IMPLEMENTED           = False
 DUELING_DQN                   = False
 DISTIBUTIONAL_RL              = False
 NOISY_NETS                    = False
@@ -61,14 +63,22 @@ NOISY_NETS                    = False
 def decay(initial, episode, decay_rate):
     return initial * (decay_rate ** (episode/NUM_EPISODES))
 
-def estimate_remaining_time(total_episodes, current_episode, times):
+def estimate_score(total_episodes, scores):
+    x = np.arange(len(scores))
+    coefficients = np.polyfit(x, scores, 1)
+    fitted_line = np.poly1d(coefficients)
+    remaining_episodes = np.arange(len(scores), total_episodes)
+    predicted_scores = fitted_line(remaining_episodes)
+    return np.mean(predicted_scores[-100:])
+
+def estimate_remaining_time(total_episodes, times):
     # Fit a line to the times
-    x = np.arange(current_episode)
+    x = np.arange(len(times))
     coefficients = np.polyfit(x, times, 1)  # Fit a line (polynomial of degree 1)
     fitted_line = np.poly1d(coefficients)
 
     # Predict the times of the remaining episodes
-    remaining_episodes = np.arange(current_episode, total_episodes)
+    remaining_episodes = np.arange(len(times), total_episodes)
     predicted_times = fitted_line(remaining_episodes)
 
     # Sum the predicted times to get the total remaining time
@@ -108,9 +118,9 @@ def send_email_notification(all_rewards, output_str):
         email_body = f"""{output_str}\n
 Average per 100: {average_per_100}\n"""
         write_to_file(email_body)
-        print("\n")
         send_email(email_subject, f"{email_body}\nAll Rewards: {all_rewards}")
-        print("\n")
+        if LOGGING:
+            print("\n")
     except Exception as e:
         print("email error", e)
         pass
@@ -123,34 +133,42 @@ class PrioritizedReplayBuffer:
         self.alpha = alpha
         self.max_priority = 1.0
 
+    # def add(self, state, action, reward, next_state, done):
+    #     self.memory.append((state, action, reward, next_state, done))
+    #     self.max_priority = max(self.max_priority, self.alpha)  # Update the maximum priority
+    #     heapq.heappush(self.priorities, -self.max_priority)  # Use negative values for priorities
+
     def add(self, state, action, reward, next_state, done):
         self.memory.append((state, action, reward, next_state, done))
         self.priorities.append(self.max_priority)
 
     def sample(self, batch_size, beta):
         probs = np.array(self.priorities) ** self.alpha
+        # probs = np.array([-priority for priority in self.priorities]) ** self.alpha
         probs /= probs.sum()
 
-        indices = np.random.choice(len(self.memory), batch_size, p=probs)
+        indices = np.random.choice(len(self.memory), batch_size, p=probs, replace=False) # Won't select the same index more than once
+        # indices = np.random.choice(len(self.memory), batch_size, p=probs)
         samples = [self.memory[i] for i in indices]
 
-        with open(f"{SAVE_PATH}samples.txt", "a") as f:
+        with open(f"{SAVE_PATH}indices.txt", "a") as f:
             f.write(f"{','.join(map(str, indices))}\n")
-            
-        weights = (len(self.memory) * probs[indices]) ** (-beta)
-        # weights /= (len(self.memory) * probs.min()) ** (-beta)
-        weights /= weights.max()
+        
+        weights = (self.priorities ** (-beta)) / np.max(self.priorities) # Proportional prioritization
+        # weights = (len(self.memory) * probs[indices]) ** (-beta)
+        # weights /= weights.max()
+        # print(weights)
         weights = np.array(weights, dtype=np.float32)
         
-        # samples = [(tf.cast(state, tf.float32), action, reward, tf.cast(next_state, tf.float32), done) for state, action, reward, next_state, done in samples]
         return samples, indices, weights
         # return samples, indices, weights
 
     def update_priorities(self, indices, priorities):
         for idx, priority in zip(indices, priorities):
             self.priorities[idx] = priority
-            self.max_priority = max(self.max_priority, priority)
-        # self.max_priority = max(self.priorities)
+            # heapq.heappushpop(self.priorities, -priority)  # Use negative values for priorities
+            # self.max_priority = max(self.max_priority, priority)
+        self.max_priority = max(self.priorities)
 
     def __len__(self):
         return len(self.memory)
@@ -216,14 +234,16 @@ class RainbowAgent:
         else:
             self.env = gym.make('Breakout-v4')
         if PRETRAINED:
-            print(f"..................Pretrained model..................\nMODEL: {MODEL}")
+            if LOGGING:
+                print(f"..................Pretrained model..................\nMODEL: {MODEL}")
             dummy_input = np.zeros((1, 84, 84, 4))
             self.q_network(dummy_input)
             self.q_network.load_weights(MODEL)
             self.target_network(dummy_input)
 
         human_readable_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"Starting training at {human_readable_time}")
+        if LOGGING:
+            print(f"Starting training at {human_readable_time}")
         write_to_file(f"Starting training at {human_readable_time}\n\n")
 
         model=f"""Rainbow Algorithm: https://arxiv.org/pdf/1710.02298.pdf
@@ -234,7 +254,8 @@ class RainbowAgent:
   - Noisy Nets                        - {NOISY_NETS}
   - Distributional RL                 - {DISTIBUTIONAL_RL}\n\n"""
         write_to_file(model)
-        print(model)
+        if LOGGING:
+            print(model)
         
         params = f"""Hyperparameters:
 NUM_ACTIONS = {NUM_ACTIONS}
@@ -259,13 +280,15 @@ RENDER = {RENDER}
 PRETRAINED = {PRETRAINED}
 TRAINING = {TRAINING}
 MODEL = {MODEL}\n\n"""
-        print(params)
+        if LOGGING:
+            print(params)
         write_to_file(f"\n\n\n{read_file()}\n\n\n")
         self.update_target_network()
 
     def update_target_network(self):
         if TRAINING:
-            print("updating target network")
+            if LOGGING:
+                print("updating target network")
             write_to_file("updating target network\n")
             self.target_network.set_weights(self.q_network.get_weights())
 
@@ -394,23 +417,27 @@ MODEL = {MODEL}\n\n"""
             action = np.random.choice(ACTIONS)
             next_state, reward, done, _, info = self.env.step(action)
 
-            if action != 0:
-                action -= 1
-            if (info["lives"] < lives):
-                lives = info["lives"]
-                reward = -15
-                self.env.step(1)
             processed_state, proc_time = self.preprocess_state(next_state)
             self.frame_buffer.append(processed_state)
             next_state = np.stack(self.frame_buffer, axis=-1)
 
-            self.remember(state, action, reward, next_state, done)
+            if action != 0:
+                action -= 1
+            if (info["lives"] < lives):
+                lives = info["lives"]
+                reward = -1
+                self.env.step(1)
+                self.remember(state, action, reward, next_state, True)
+            else:
+                self.remember(state, action, reward, next_state, done)
+
             state = next_state
             steps += 1
             pbar.update(1)
         pbar.close()
         write_to_file(f"Finished getting {steps} frames\n")
-        print(f"Finished getting {steps} frames")
+        if LOGGING:
+            print(f"Finished getting {steps} frames")
 
     def train(self):
 
@@ -420,13 +447,14 @@ MODEL = {MODEL}\n\n"""
         # lock = threading.Lock()
         # threads = []
         all_rewards = []
-        ep_times = []
+        ep_times = [0.5]
         training_loss = []
         total_actions = {0: 0, 2: 0, 3: 0}
         highscore = 0
         self.get_frames()
         start_time = time.time()
         human_readable_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         print(f"Starting training at {human_readable_time}")
         write_to_file(f"Starting training at {human_readable_time}\n")
         # for _ in range(num_threads):
@@ -471,13 +499,13 @@ MODEL = {MODEL}\n\n"""
                 if steps % TRAINING_FREQ == 0 and TRAINING:
                     learn_time, loss = self.learn()
                     training_time += learn_time
-                    if steps > TARGET_UPDATE_FREQ:
+                    if steps > TARGET_UPDATE_FREQ*2:
                         training_loss.append(loss)
                 ep_reward += reward
 
                 if (info["lives"] < lives):
                     lives = info["lives"]
-                    reward = -15
+                    reward = -1
                     self.env.step(1)
                     self.remember(state, action, reward, next_state, True)
                 elif TRAINING:
@@ -497,10 +525,13 @@ MODEL = {MODEL}\n\n"""
                     avgTime = round(elapsed_time / episode, 1)
                     ep_time = round(time.time() - ep_start, 1)
                     avg100time = np.round(np.mean(ep_times[-100:]), 1)
+                    avg1000time = np.round(np.mean(ep_times[-1000:]), 1)
+
                     avg10 = np.round(np.mean(all_rewards[-10:]), 1)
                     avg100 = np.round(np.mean(all_rewards[-100:]), 1)
                     avg500 = np.round(np.mean(all_rewards[-500:]), 1)
                     avg1000 = np.round(np.mean(all_rewards[-1000:]), 1)
+                    avg5000 = np.round(np.mean(all_rewards[-5000:]), 1)
                     avg = np.round(np.mean(all_rewards), 1)
 
                     lossAvg = np.round(np.mean(training_loss), 5)
@@ -517,9 +548,9 @@ MODEL = {MODEL}\n\n"""
                         actions_per_second = 'lots'
 
                     output_str = f"Episode {episode}/{NUM_EPISODES}, Highscore: {highscore}, Reward: {ep_reward}, Epsilon: {round(self.epsilon, 3)}, LR: {round(self.learning_rate, 6)}, NAME: {SAVE_PATH}\n"
-                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}, beta: {getattr(self, 'beta', 'N/A')}\n"
+                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}, avg5000: {avg5000}, beta: {getattr(self, 'beta', 'N/A')}, alpha: {getattr(self, 'alpha', 'N/A')}\n"
                     output_str += f"lossAvg: {lossAvg}, loss1K: {loss1K}, loss10K: {loss10K}, loss100K: {loss100K}, loss1M: {loss1M}\n"
-                    output_str += f"Total time: {elapsed_time}s, Episode time: {ep_time}s, Average time: {avgTime}s, Avg100: {avg100time}\n"
+                    output_str += f"Total time: {elapsed_time}s, Episode time: {ep_time}s, Average time: {avgTime}s, Avg100: {avg100time}s, avg1000time: {avg1000time}s\n"
                     output_str += f"No op: {actions[0]}/{total_actions[0]}, Left: {actions[3]}/{total_actions[3]}, Right: {actions[2]}/{total_actions[2]}, Total: {actions_per_episode}/{actions_per_training}, memory size: {len(self.buffer)}\n"
                     output_str += f"Training time: {round(training_time, 1)}s, "
                     output_str += f"Action time: {round(total_actions_time, 1)}s, Actions per second: {actions_per_second}, "
@@ -527,31 +558,35 @@ MODEL = {MODEL}\n\n"""
                     output_str += f"Preprocessing time: {round(procs_time, 1)}s, "
                     output_str += f"Total time: {round(training_time + total_actions_time + step_times + procs_time, 1)}/{round(time.time() - ep_start, 1)}s\n"
 
-                    if episode % SAVE_FREQ == 0 and TRAINING:
+                    if (episode % SAVE_FREQ == 0 or episode == 10) and TRAINING:
                         output_str += f"Model weights saved at episode {episode}\n"
                         self.q_network.save_weights(f"{SAVE_PATH}models/model_{episode}.h5")
-
-                        time_remaining = estimate_remaining_time(NUM_EPISODES, episode, ep_times)
+                        time_remaining = estimate_remaining_time(NUM_EPISODES, ep_times)
+                        estimated_score = estimate_score(NUM_EPISODES, all_rewards)
                         finish_time = datetime.now() + timedelta(seconds=time_remaining)
                         finish_time = finish_time.strftime("%Y-%m-%d %H:%M:%S")
-                        output_str += f"\nEstimated finish time: {finish_time}, which is in{round(time_remaining)}s\n"
+                        output_str += f"\nEstimated finish time: {finish_time}, which is in {round(time_remaining)}s\n"
+                        output_str += f"Estimated avg100 score: {estimated_score}\n"
 
                         with open(f"{SAVE_PATH}rewards.txt", "w") as f:
                             f.write(str(all_rewards))
                         with open(f"{SAVE_PATH}loss.txt", "w") as f:
                             f.write(str(training_loss))
+                        with open(f"{SAVE_PATH}ep_times.txt", "w") as f:
+                            f.write(str(ep_times))
                     if episode % EMAIL_FREQUENCY == 0 or episode == 1:
                         send_email_notification(all_rewards, output_str)
                     write_to_file(f"{output_str}\n")
-                    print(output_str, end='\n')
+                    if LOGGING:
+                        print(output_str, end='\n')
             # if steps == MIN_BUFFER_SIZE:
             # self.epsilon = EPSILON_START - (episode/(NUM_EPISODES*(1/EPSILON_START)))
             # self.epsilon = EPSILON_START * (EPSILON_DECAY ** episode)
             if getattr(self, 'beta', False):
                 self.beta = min(1.0, self.beta + self.beta_increment)
             self.epsilon = decay(EPSILON_START, episode, EPSILON_DECAY)
-            # self.learning_rate = decay(INITIAL_LEARNING_RATE, episode, LEARNING_RATE_DECAY)
-            # self.optimizer.learning_rate = self.learning_rate
+            self.learning_rate = decay(INITIAL_LEARNING_RATE, episode, LEARNING_RATE_DECAY)
+            self.optimizer.learning_rate = self.learning_rate
 
 if __name__ == "__main__":
     if not os.path.exists(SAVE_PATH):

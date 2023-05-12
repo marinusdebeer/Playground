@@ -15,7 +15,7 @@ ses_client = boto3.client(
     aws_access_key_id=aws_access_key_id,
     aws_secret_access_key=aws_secret_access_key
 )
-def send_email(subject, body):
+def send_email(subject, body, logging=True):
     # Send the email
     try:
         response = ses_client.send_email(
@@ -34,6 +34,7 @@ def send_email(subject, body):
                 }
             }
         )
-        print('Email sent! Message ID:', response['MessageId'])
+        if logging:
+            print('Email sent! Message ID:', response['MessageId'])
     except Exception as e:
         print('Something went wrong:', e)

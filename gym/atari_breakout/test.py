@@ -1,16 +1,12 @@
-import gymnasium as gym
-# env = gym.make("ALE/Breakout-v5", render_mode="human")
-env = gym.make("BreakoutNoFrameskip-v4", render_mode="human")
-from stable_baselines3 import PPO
+import numpy as np
+beta = 0.4
+# probs = np.array([0.1, 0.2, 0.3, 0.4])
+# weights = (100_000 * probs) ** (-beta)
+# # weights /= (len(self.memory) * probs.min()) ** (-beta)
+# print(weights)
+# weights /= weights.max()
+# print(weights)
 
-model = PPO.load("breakout_ppo")
-
-# Enjoy the trained agent
-obs = env.reset()
-while True:
-    action, _ = model.predict(obs, deterministic=True)
-    obs, _, done, _ = env.step(action)
-    env.render()
-
-    if done:
-        obs = env.reset()
+priorities = np.array([1.1, 0.2, 3.3, 0.4])
+weights = (priorities ** (-beta)) / np.max(priorities)
+print(weights)
