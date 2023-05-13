@@ -38,15 +38,15 @@ TRAINING_FREQ = 32
 SHOW_FRAME = 100
 TARGET_UPDATE_FREQ = 2500
 INITIAL_LEARNING_RATE = 0.002 #0.00025 #0.002
-LEARNING_RATE_DECAY = 0.05
+LEARNING_RATE_DECAY = 0.01    #0.05 for 5_000, 0.01 for 20_000
 EPSILON_START = 1.0
-EPSILON_DECAY = 0.04 #0.01 for 20_000 0.04 for 5_000
+EPSILON_DECAY = 0.01          #0.04 for 5_000, 0.01 for 20_000
 
-NUM_EPISODES = 5_000
+NUM_EPISODES = 20_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1_000
 # SAVE_PATH = "F:/Coding/breakout/full_rainbow/"
-SAVE_PATH = "F:/Coding/breakout/double_dqn_4_5000/"
+SAVE_PATH = "F:/Coding/breakout/double_dqn__5__20_000/"
 RENDER = False
 PRETRAINED = False
 TRAINING = True
@@ -69,21 +69,15 @@ def estimate_score(total_episodes, scores):
     fitted_line = np.poly1d(coefficients)
     remaining_episodes = np.arange(len(scores), total_episodes)
     predicted_scores = fitted_line(remaining_episodes)
-    return np.mean(predicted_scores[-100:])
+    return round(np.mean(predicted_scores[-100:]),1)
 
 def estimate_remaining_time(total_episodes, times):
-    # Fit a line to the times
     x = np.arange(len(times))
-    coefficients = np.polyfit(x, times, 1)  # Fit a line (polynomial of degree 1)
+    coefficients = np.polyfit(x, times, 1)
     fitted_line = np.poly1d(coefficients)
-
-    # Predict the times of the remaining episodes
     remaining_episodes = np.arange(len(times), total_episodes)
     predicted_times = fitted_line(remaining_episodes)
-
-    # Sum the predicted times to get the total remaining time
     remaining_time = np.sum(predicted_times)
-
     return remaining_time
 
 def read_file():
@@ -519,8 +513,13 @@ MODEL = {MODEL}\n\n"""
                     all_rewards.append(ep_reward)
                     if ep_reward > highscore:
                         highscore = ep_reward
+                    seconds = round(time.time() - start_time)
                     elapsed_time = round(time.time() - start_time, 1)
                     ep_times.append(time.time() - ep_start)
+                    
+                    hours = seconds // 3600
+                    minutes = (seconds % 3600) // 60
+                    seconds = round(seconds % 60)// 1
 
                     avgTime = round(elapsed_time / episode, 1)
                     ep_time = round(time.time() - ep_start, 1)
@@ -550,7 +549,7 @@ MODEL = {MODEL}\n\n"""
                     output_str = f"Episode {episode}/{NUM_EPISODES}, Highscore: {highscore}, Reward: {ep_reward}, Epsilon: {round(self.epsilon, 3)}, LR: {round(self.learning_rate, 6)}, NAME: {SAVE_PATH}\n"
                     output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}, avg5000: {avg5000}, beta: {getattr(self, 'beta', 'N/A')}, alpha: {getattr(self, 'alpha', 'N/A')}\n"
                     output_str += f"lossAvg: {lossAvg}, loss1K: {loss1K}, loss10K: {loss10K}, loss100K: {loss100K}, loss1M: {loss1M}\n"
-                    output_str += f"Total time: {elapsed_time}s, Episode time: {ep_time}s, Average time: {avgTime}s, Avg100: {avg100time}s, avg1000time: {avg1000time}s\n"
+                    output_str += f"Total time: {hours:02d}:{minutes:02d}:{seconds:02d}, Episode time: {ep_time}s, Average time: {avgTime}s, Avg100: {avg100time}s, avg1000time: {avg1000time}s\n"
                     output_str += f"No op: {actions[0]}/{total_actions[0]}, Left: {actions[3]}/{total_actions[3]}, Right: {actions[2]}/{total_actions[2]}, Total: {actions_per_episode}/{actions_per_training}, memory size: {len(self.buffer)}\n"
                     output_str += f"Training time: {round(training_time, 1)}s, "
                     output_str += f"Action time: {round(total_actions_time, 1)}s, Actions per second: {actions_per_second}, "

@@ -28,8 +28,8 @@ def plot_epsilon():
 
 def plot_learning_rate():
     initial_lr = 0.002
-    decay_rate = 0.05 # 0.9998 for 20_000 episodes and 0.9996 for 10_000 episodes
-    num_episodes = 5000
+    decay_rate = 0.01 # 0.05 for 5000 episodes, 0.01 for 20_000 episodes
+    num_episodes = 20_000
     episodes = np.arange(num_episodes+1)
 
     epsilon_values = [epsilon_decay(initial_lr, decay_rate, episode, num_episodes) for episode in episodes]
@@ -44,5 +44,5 @@ def plot_learning_rate():
     plt.grid(True)
     plt.show()
 
-# plot_learning_rate()
-plot_epsilon()
+plot_learning_rate()
+# plot_epsilon()

@@ -21,7 +21,7 @@ def plot_multiple_runs():
     for folder in folders:
         
         data_array = np.array(data[folder])
-        total = 4000
+        total = 5000
         interval = 100
         # print(data_array[:total].mean())
         reshaped_arr = data_array[:total].reshape(total//interval, interval)
