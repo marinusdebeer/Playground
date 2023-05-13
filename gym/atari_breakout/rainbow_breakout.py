@@ -31,14 +31,16 @@ GAMMA = 0.99
 ALPHA = 0.70
 BETA = 0.4
 BUFFER_SIZE = 100_000
-MIN_BUFFER_SIZE = 80_000
+MIN_BUFFER_SIZE = 1_000
 N_STEPS = 3
 BATCH_SIZE = 256
 TRAINING_FREQ = 32
 SHOW_FRAME = 100
 TARGET_UPDATE_FREQ = 2500
+TARGET_UPDATE_RATE = 40
 INITIAL_LEARNING_RATE = 0.002 #0.00025 #0.002
-LEARNING_RATE_DECAY = 0.01    #0.05 for 5_000, 0.01 for 20_000
+LEARNING_RATE_DECAY = 0.005   #0.05 for 5_000, 0.01 for 20_000
+MIN_LEARNING_RATE = 0.0001
 EPSILON_START = 1.0
 EPSILON_DECAY = 0.01          #0.04 for 5_000, 0.01 for 20_000
 
@@ -46,7 +48,7 @@ NUM_EPISODES = 20_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1_000
 # SAVE_PATH = "F:/Coding/breakout/full_rainbow/"
-SAVE_PATH = "F:/Coding/breakout/double_dqn__5__20_000/"
+SAVE_PATH = "F:/Coding/breakout/double_dqn_6_20_000/"
 RENDER = False
 PRETRAINED = False
 TRAINING = True
@@ -209,6 +211,7 @@ class RainbowAgent:
         self.num_actions = NUM_ACTIONS
         self.learning_rate = INITIAL_LEARNING_RATE
         self.epsilon = EPSILON_START
+        self.target_update_freq = TARGET_UPDATE_FREQ
         if PRIORITIZED_EXPERIENCE_REPLAY:
             self.buffer = PrioritizedReplayBuffer(BUFFER_SIZE, ALPHA)
             self.beta = BETA
@@ -261,6 +264,7 @@ BUFFER_SIZE = {BUFFER_SIZE}
 N_STEPS = {N_STEPS}
 BATCH_SIZE = {BATCH_SIZE}
 TARGET_UPDATE_FREQ = {TARGET_UPDATE_FREQ}
+TARGET_UPDATE_RATE = {TARGET_UPDATE_RATE}
 TRAINING_FREQ = {TRAINING_FREQ}
 SHOW_FRAME = {SHOW_FRAME}
 INITIAL_LEARNING_RATE = {INITIAL_LEARNING_RATE}
@@ -276,7 +280,7 @@ TRAINING = {TRAINING}
 MODEL = {MODEL}\n\n"""
         if LOGGING:
             print(params)
-        write_to_file(f"\n\n\n{read_file()}\n\n\n")
+        write_to_file(f"{read_file()}", "code.py")
         self.update_target_network()
 
     def update_target_network(self):
@@ -510,6 +514,7 @@ MODEL = {MODEL}\n\n"""
                     self.update_target_network()
 
                 if done:
+                    logging_time = time.time()
                     all_rewards.append(ep_reward)
                     if ep_reward > highscore:
                         highscore = ep_reward
@@ -547,7 +552,7 @@ MODEL = {MODEL}\n\n"""
                         actions_per_second = 'lots'
 
                     output_str = f"Episode {episode}/{NUM_EPISODES}, Highscore: {highscore}, Reward: {ep_reward}, Epsilon: {round(self.epsilon, 3)}, LR: {round(self.learning_rate, 6)}, NAME: {SAVE_PATH}\n"
-                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}, avg5000: {avg5000}, beta: {getattr(self, 'beta', 'N/A')}, alpha: {getattr(self, 'alpha', 'N/A')}\n"
+                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}, avg5000: {avg5000}, beta: {getattr(self, 'beta', 'N/A')}, alpha: {getattr(self, 'alpha', 'N/A')}, target_update_freq: {self.target_update_freq}\n"
                     output_str += f"lossAvg: {lossAvg}, loss1K: {loss1K}, loss10K: {loss10K}, loss100K: {loss100K}, loss1M: {loss1M}\n"
                     output_str += f"Total time: {hours:02d}:{minutes:02d}:{seconds:02d}, Episode time: {ep_time}s, Average time: {avgTime}s, Avg100: {avg100time}s, avg1000time: {avg1000time}s\n"
                     output_str += f"No op: {actions[0]}/{total_actions[0]}, Left: {actions[3]}/{total_actions[3]}, Right: {actions[2]}/{total_actions[2]}, Total: {actions_per_episode}/{actions_per_training}, memory size: {len(self.buffer)}\n"
@@ -558,6 +563,7 @@ MODEL = {MODEL}\n\n"""
                     output_str += f"Total time: {round(training_time + total_actions_time + step_times + procs_time, 1)}/{round(time.time() - ep_start, 1)}s\n"
 
                     if (episode % SAVE_FREQ == 0 or episode == 10) and TRAINING:
+                        self.target_update_freq += TARGET_UPDATE_RATE
                         output_str += f"Model weights saved at episode {episode}\n"
                         self.q_network.save_weights(f"{SAVE_PATH}models/model_{episode}.h5")
                         time_remaining = estimate_remaining_time(NUM_EPISODES, ep_times)
@@ -577,14 +583,15 @@ MODEL = {MODEL}\n\n"""
                         send_email_notification(all_rewards, output_str)
                     write_to_file(f"{output_str}\n")
                     if LOGGING:
-                        print(output_str, end='\n')
+                        print(output_str, end='')
+                        print(f"Logging time: {round(time.time() - logging_time, 1)}s\n")
             # if steps == MIN_BUFFER_SIZE:
             # self.epsilon = EPSILON_START - (episode/(NUM_EPISODES*(1/EPSILON_START)))
             # self.epsilon = EPSILON_START * (EPSILON_DECAY ** episode)
             if getattr(self, 'beta', False):
                 self.beta = min(1.0, self.beta + self.beta_increment)
             self.epsilon = decay(EPSILON_START, episode, EPSILON_DECAY)
-            self.learning_rate = decay(INITIAL_LEARNING_RATE, episode, LEARNING_RATE_DECAY)
+            self.learning_rate = max(decay(INITIAL_LEARNING_RATE, episode, LEARNING_RATE_DECAY), MIN_LEARNING_RATE)
             self.optimizer.learning_rate = self.learning_rate
 
 if __name__ == "__main__":

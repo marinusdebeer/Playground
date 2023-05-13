@@ -37,29 +37,15 @@ def plot_multiple_runs():
     plt.show()
 
 def plot_rewards():
-    # with open("rainbow_models/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/rewards.txt", "r") as f:
-    with open("F:/Coding/breakout/prioritized_3_n_step_dueling_20_000/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/prioritized/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/prioritized_exp_replay_retry_loss_2/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/dueling/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/n_steps/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/5_n_steps/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/test_learn_2/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/double_dqn_2/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/control/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/good_rainbow/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/noNormalizationWithSteps_2/rewards.txt", "r") as f:
-    # with open("F:/Coding/breakout/normalizedModelSteps/rewards.txt", "r") as f:
-    # with open("models_3_actions/rewards.txt", "r") as f:
-    # with open("rainbow_models/good_models/rewards_1.txt", "r") as f:
+    with open("F:/Coding/breakout/double_dqn__5__20_000/rewards.txt", "r") as f:
+    # with open("F:/Coding/breakout/double_dqn_3_5000/rewards.txt", "r") as f:
         data_str = f.read()
         data = ast.literal_eval(data_str)
 
     fig, ax = plt.subplots()
     data_array = np.array(data)
     # print(np.average(data_array[5000:]))
-    total = 18000
+    total = 17300
     interval = 100
     # reshaped_arr = data_array[-2_000:].reshape(40, 50)
     print(data_array[-total:].mean())
@@ -73,5 +59,5 @@ def plot_rewards():
     ax.set_title('Rewards over time')
     plt.show()
 
-plot_multiple_runs()
-# plot_rewards()
+# plot_multiple_runs()
+plot_rewards()
