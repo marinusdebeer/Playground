@@ -1,23 +1,24 @@
+# https://learn.microsoft.com/en-us/windows/ai/directml/gpu-tensorflow-plugin
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.layers import Input, Dense, Lambda, Add, Conv2D, Flatten, BatchNormalization
 from tensorflow.keras.models import Model
-import torch
+# import torch
 # import tensorflow_probability as tfp
 import gymnasium as gym
 from collections import deque
 import random
-from skimage.color import rgb2gray
-from skimage.transform import resize
+# from skimage.color import rgb2gray
+# from skimage.transform import resize
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 import time
 from datetime import datetime, timedelta
-import threading
-from queue import Queue
-import heapq
+# import threading
+# from queue import Queue
+# import heapq
 import cv2
-import math
+# import math
 import os
 from send_email import send_email
 from dotenv import load_dotenv
@@ -31,24 +32,31 @@ GAMMA = 0.99
 ALPHA = 0.70
 BETA = 0.4
 BUFFER_SIZE = 100_000
-MIN_BUFFER_SIZE = 1_000
+MIN_BUFFER_SIZE = 80_000
 N_STEPS = 3
 BATCH_SIZE = 256
 TRAINING_FREQ = 32
 SHOW_FRAME = 100
 TARGET_UPDATE_FREQ = 2500
 TARGET_UPDATE_RATE = 40
-INITIAL_LEARNING_RATE = 0.002 #0.00025 #0.002
-LEARNING_RATE_DECAY = 0.005   #0.05 for 5_000, 0.01 for 20_000
+INITIAL_LEARNING_RATE = 0.001 #0.00025 #0.002
+LEARNING_RATE_DECAY = 0.05   #0.05 for 5_000, 0.005 for 20_000
 MIN_LEARNING_RATE = 0.0001
 EPSILON_START = 1.0
-EPSILON_DECAY = 0.01          #0.04 for 5_000, 0.01 for 20_000
+EPSILON_DECAY = 0.04          #0.04 for 5_000, 0.01 for 20_000
+SEED=42
+# GAME = "Pong-v4"
+GAME = "Breakout-v4"
+# GAME = "BreakoutDeterministic-v4"
+# GAME = "BreakoutNoFrameskip-v4"
+# GAME = "ALE/Breakout-v5"
 
-NUM_EPISODES = 20_000
+NUM_EPISODES = 5_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1_000
 # SAVE_PATH = "F:/Coding/breakout/full_rainbow/"
-SAVE_PATH = "F:/Coding/breakout/double_dqn_6_20_000/"
+# SAVE_PATH = "F:/Coding/breakout/double_dqn_9_5_000/"
+SAVE_PATH = "F:/Coding/pong/test/"
 RENDER = False
 PRETRAINED = False
 TRAINING = True
@@ -227,9 +235,10 @@ class RainbowAgent:
         self.optimizer = tf.keras.optimizers.Adam(learning_rate=INITIAL_LEARNING_RATE)
         
         if RENDER:
-            self.env = gym.make('Breakout-v4', render_mode="human")
+            self.env = gym.make(GAME, render_mode="human")
         else:
-            self.env = gym.make('Breakout-v4')
+            self.env = gym.make(GAME)
+        self.env.seed(SEED)
         if PRETRAINED:
             if LOGGING:
                 print(f"..................Pretrained model..................\nMODEL: {MODEL}")
@@ -269,6 +278,9 @@ TRAINING_FREQ = {TRAINING_FREQ}
 SHOW_FRAME = {SHOW_FRAME}
 INITIAL_LEARNING_RATE = {INITIAL_LEARNING_RATE}
 LEARNING_RATE_DECAY = {LEARNING_RATE_DECAY}
+MIN_LEARNING_RATE = {MIN_LEARNING_RATE}
+SEED = {SEED}
+GAME = {GAME}
 EPSILON_START = {EPSILON_START}
 EPSILON_DECAY = {EPSILON_DECAY}
 NUM_EPISODES = {NUM_EPISODES}
@@ -386,6 +398,7 @@ MODEL = {MODEL}\n\n"""
             self.fig_frame = plt.figure("rainbow.py") 
             self.ax_frame = self.fig_frame.add_subplot(111)
         self.ax_frame.clear()
+        # print(state.shape)
         self.ax_frame.imshow(state, cmap='gray')
         self.fig_frame.canvas.draw()
         plt.pause(0.01)
@@ -399,6 +412,8 @@ MODEL = {MODEL}\n\n"""
             pass
         processed_observe = cv2.cvtColor(state, cv2.COLOR_RGB2GRAY)
         processed_observe = cv2.resize(processed_observe, (84, 84), interpolation=cv2.INTER_AREA)
+        # processed_observe = processed_observe.astype(np.float32) / 255.
+        # processed_observe = processed_observe[7:,:]
         return processed_observe, time.time() - start
     
     def get_frames(self):
@@ -591,10 +606,14 @@ MODEL = {MODEL}\n\n"""
             if getattr(self, 'beta', False):
                 self.beta = min(1.0, self.beta + self.beta_increment)
             self.epsilon = decay(EPSILON_START, episode, EPSILON_DECAY)
-            self.learning_rate = max(decay(INITIAL_LEARNING_RATE, episode, LEARNING_RATE_DECAY), MIN_LEARNING_RATE)
-            self.optimizer.learning_rate = self.learning_rate
+            # self.learning_rate = max(decay(INITIAL_LEARNING_RATE, episode, LEARNING_RATE_DECAY), MIN_LEARNING_RATE)
+            # self.optimizer.learning_rate = self.learning_rate
 
 if __name__ == "__main__":
+    tf.config.optimizer.set_jit(True)
+    devices = tf.config.experimental.list_physical_devices('GPU')
+    tf.config.experimental.set_memory_growth(devices[0], True)
+
     if not os.path.exists(SAVE_PATH):
         os.makedirs(SAVE_PATH)
         os.makedirs(f"{SAVE_PATH}models")
