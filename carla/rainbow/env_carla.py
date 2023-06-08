@@ -1,30 +1,12 @@
-import glob
-import os
-import sys
+import math
+import cv2
 import random
 import time
 import numpy as np
-import cv2
-import math
-from collections import deque
-from keras.applications.xception import Xception
-from keras.layers import Dense, GlobalAveragePooling2D
-from keras.optimizers import Adam
-from keras.models import Model
-from keras.callbacks import TensorBoard
-from tensorflow import random as tfrandom
-from tensorboard.summary.writer.record_writer import RecordWriter
-from tensorboard.summary.writer.event_file_writer import EventFileWriter
-from tensorflow.keras.models import load_model
-from keras.layers import Input
+import glob
+import os
+import sys
 
-
-
-import tensorflow as tf
-from keras import backend as backend
-from threading import Thread
-
-from tqdm import tqdm
 
 try:
     sys.path.append(glob.glob('C:/Users/Marinus/OneDrive/Desktop/Development/CARLA_0.9.14/WindowsNoEditor/PythonAPI/carla/dist/carla-*%d.%d-%s.egg' % (
@@ -32,12 +14,32 @@ try:
         sys.version_info.minor,
         'win-amd64' if os.name == 'nt' else 'linux-x86_64'))[0])
 except IndexError:
+    print("Error")
     pass
 import carla
 
 
+
+
+x_bounds = (-117, -25)
+y_bounds = (18, 141)
+vx_bounds = (-40, 40)
+vy_bounds = (-40, 40)
+
+n_x = 100
+n_y = 130
+n_vx = 40
+n_vy = 40
+rand = 0
+
+VIDEO_LOCATION="F:/Coding/recordings/"
 SECONDS_PER_EPISODE = 30
-# Define the function for discretizing a continuous state
+
+
+MAP_X_BOUNDS = (-120, 120)
+MAP_Y_BOUNDS = (-80, 150)
+
+
 def discretize_state(state):
     x_idx = int((state[0] - x_bounds[0]) / (x_bounds[1] - x_bounds[0]) * n_x)
     y_idx = int((state[1] - y_bounds[0]) / (y_bounds[1] - y_bounds[0]) * n_y)
@@ -45,6 +47,7 @@ def discretize_state(state):
     vy_idx = int((state[3] - vy_bounds[0]) / (vy_bounds[1] - vy_bounds[0]) * n_vy)
     # print((x_idx, y_idx, vx_idx, vy_idx))
     return (x_idx, y_idx, vx_idx, vy_idx)
+
 class CarEnv:
     STEER_AMT = 1.0
     front_camera = None
@@ -52,30 +55,34 @@ class CarEnv:
     vehicle_prev_loc = carla.Location(x=-25, y=135, z=0.1)
     im_width = 640
     im_height = 480
-    SHOW_CAM = False
 
-    def __init__(self):
+    def __init__(self, render=False):
         self.client = carla.Client("localhost", 2000)
         self.client.set_timeout(5.0)
+        # self.client.load_world('Town01') # Change 'Town01' to your desired map
         self.world = self.client.get_world()
+        self.world.unload_map_layer(carla.MapLayer.Buildings)
         settings = self.world.get_settings()
-        settings.fixed_delta_seconds = None
-        settings.quality_level = 'Low'
+        # settings.no_rendering_mode = True
+        settings.fixed_delta_seconds = 0.05
+        # settings.quality_level = 'high'
+        self.render = render
         # settings.fixed_delta_seconds = 0.1
+        self.collision_hist = []
+        self.actor_list = []
 
+        # weather = carla.WeatherParameters()
 
-        weather = carla.WeatherParameters()
+        # # Set weather parameters for snow
+        # weather.cloudiness = 80.0
+        # weather.precipitation = 10.0
+        # weather.precipitation_deposits = 10.0
+        # weather.wind_intensity = 10.0
+        # weather.sun_azimuth_angle = -180.0
+        # weather.sun_altitude_angle = -90.0
 
-        # Set weather parameters for snow
-        weather.cloudiness = 80.0
-        weather.precipitation = 10.0
-        weather.precipitation_deposits = 10.0
-        weather.wind_intensity = 10.0
-        weather.sun_azimuth_angle = -180.0
-        weather.sun_altitude_angle = -90.0
-
-        # Apply the new weather settings
-        self.world.set_weather(weather)
+        # # Apply the new weather settings
+        # self.world.set_weather(weather)
 
         
         self.world.apply_settings(settings)
@@ -96,10 +103,21 @@ class CarEnv:
         self.model_3 = self.blueprint_library.filter("model3")[0]
         self.starting_position = None
         self.spawn_point = None
+    def destroy_actors(self):
+        for actor in self.actor_list:
+            actor.destroy()
+        # print("All actors destroyed")
+        self.actor_list = []
     def approaching_goal(self, prev, curr):
-        dist = round((self.distance_to_goal(prev) - self.distance_to_goal(curr))*20)
+        dist = self.distance_to_goal(prev) - self.distance_to_goal(curr)
+        # print(dist)
+        if dist > 0.01:
+            return 1
+        elif dist < 0:
+            return -0.5
+        else:
+            return -0.2
         # print(f"prev: {prev} curr: {curr} dist: {dist}")
-        return dist
 
     def video(self, episode):
         self.video_file = f"{VIDEO_LOCATION}episode_{episode}.mp4"
@@ -128,28 +146,29 @@ class CarEnv:
             img = cv2.cvtColor(i3, cv2.COLOR_RGB2BGR)
             # Write the frame to the video file
             self.video_writer.write(img)
-        if self.SHOW_CAM:
+        if self.render:
             cv2.imshow("",i3)
             cv2.waitKey(1)
         self.front_camera = i3
     
     def reset(self):
         
+        self.destroy_actors()
         self.collision_hist = []
-        self.actor_list = []
         # self.transform = random.choice(self.world.get_map().get_spawn_points())
         # x_bounds = (-117, -25)
         # y_bounds = (18, 141)
         rand_spawn_point_x = random.randint(-28, -26)
         rand_spawn_point_y = random.randint(130, 140)
         yaw = random.randint(160,220)
-        print(rand_spawn_point_x, rand_spawn_point_y, yaw)
+        # print(rand_spawn_point_x, rand_spawn_point_y, yaw)
         self.spawn_point = carla.Transform(carla.Location(x=rand_spawn_point_x, y=rand_spawn_point_y, z=0.1), carla.Rotation(yaw=yaw))
+        # self.spawn_point = self.world.get_map().get_spawn_points()[1]
         self.vehicle = self.world.spawn_actor(self.model_3, self.spawn_point)
         self.actor_list.append(self.vehicle)
         transform = carla.Transform(carla.Location(x=2.5, z=0.7))
         self.vehicle.apply_control(carla.VehicleControl(throttle=0.0, brake=0.0))
-        # time.sleep(4)
+        # time.sleep(2)
 
         #attach camera for recordings
         self.camera = self.world.spawn_actor(self.camera_bp, self.camera_transform, attach_to=self.vehicle)
@@ -170,7 +189,8 @@ class CarEnv:
         self.vehicle_prev_loc = self.vehicle.get_location()
         loc = self.vehicle_prev_loc
         vel = self.vehicle.get_velocity()
-        return discretize_state([loc.x, loc.y, vel.x, vel.y])
+        # return discretize_state([loc.x, loc.y, vel.x, vel.y])
+        return (loc.x, loc.y, vel.x, vel.y)
         # return self.front_camera
 
     def collision_data(self, event):
@@ -191,6 +211,7 @@ class CarEnv:
         elif action == 3:
             self.vehicle.apply_control(carla.VehicleControl(throttle=0.0, steer=0, brake=1.0))
         loc = self.vehicle.get_location()
+        # print(loc.x, loc.y)
         vel = self.vehicle.get_velocity()
         kmh = int(3.6 * math.sqrt(vel.x**2 + vel.y**2 + vel.z**2))
         done = False
@@ -198,10 +219,13 @@ class CarEnv:
         # print(reward)
         if len(self.collision_hist) != 0:
             done = True
-            reward = -1000
+            reward = -1
 
         if self.episode_start + SECONDS_PER_EPISODE < time.time():
             done = True
+        # if loc.x <= MAP_X_BOUNDS[0] or loc.x >= MAP_X_BOUNDS[1] or loc.y <= MAP_Y_BOUNDS[0] or loc.y >= MAP_Y_BOUNDS[1]:
+        #     done = True
+        #     reward = -1000
         if loc.x <= -117 or loc.x >= -25 or loc.y <= 18 or loc.y >= 141:
             reward = -1000
         # x_bounds = (-117, -25)
@@ -220,114 +244,9 @@ class CarEnv:
             done = True
         # goal_position = carla.Location(x=-109, y=44, z=0)
         if loc.x >= -117 and loc.x <= -101 and loc.y >= 42 and loc.y <= 44:
-            reward = 1000
+            reward = 5
             done = True
             print("GOAL REACHED!!!")
         self.vehicle_prev_loc = carla.Location(x=loc.x, y=loc.y, z=0.1)
-        observation = discretize_state([loc.x, loc.y, vel.x, vel.y])
-        return observation, reward, done, None
-
-env = CarEnv()
-# x_bounds = (-90, 100)
-# y_bounds = (120, 150)
-# vx_bounds = (-40, 40)
-# vy_bounds = (-40, 40)
-# n_x = 190
-# n_y = 30
-# n_vx = 40
-# n_vy = 40
-x_bounds = (-117, -25)
-y_bounds = (18, 141)
-vx_bounds = (-40, 40)
-vy_bounds = (-40, 40)
-# n_x * n_y * n_vx * n_vy * 4 * 8 bytes
-n_x = 100
-n_y = 130
-n_vx = 40
-n_vy = 40
-rand = 0
-choice = 0
-#           0.99    0.993   0.997    0.9997      0.9985   0.9997    0.99985     0.99997
-# 50        0.61    0.704                        0.928              0.993
-# 100       0.366   0.495                        0.861    0.970     0.985
-# 300       0.049   0.122   0.406
-# 500               0.03    0.223                0.472    0.861     0.928
-# 1000     0.007    0.0008  0.050                0.223    0.741     0.861
-# 10_000                              0.050      0        0.050     0.223
-# 20_000                                         0                  0.050
-# 100_000                                                           0           0.050
-# Define the Q-learning parameters
-alpha = 0.2           # learning rate, how much past experience is valued
-gamma = 0.995         # discount factor, importance of future rewards
-epsilon = 0.9997       # exploration, how much exploration to do
-EPSILON_DECAY=0.9997
-num_episodes = 20_000
-training = False
-use_existing_model = True
-Q_TABLES_PATH='carla_qtables/q_table_episode4500_-39695.npy'
-SAVE_EVERY = 100
-SAVE_LOCATION="F:/Coding/carla_q_learning_qtables/"
-VIDEO_LOCATION="F:/Coding/recordings/"
-RECORD = False
-
-# Define the function for selecting an action using epsilon-greedy policy
-def select_action(state, q_table):
-    if np.random.random() > epsilon or not training:
-        global choice
-        choice += 1
-        return np.argmax(q_table[state])
-    else:
-        global rand
-        rand+=1
-        action_probs = [0.15, 0.64, 0.15, 0.06]  # Probabilities for each action
-        return np.random.choice(len(action_probs), p=action_probs)
-       
-# Define the function to save the Q-table to a file
-def save_q_table(q_table, filename):
-    np.save(filename, q_table)
-q_table = np.zeros((n_x, n_y, n_vx, n_vy, 4))
-q_table[:, :, :, :, 1] = 1
-file_reward = 0
-session_start = time.time()
-if not training or use_existing_model:
-    q_table = np.load(Q_TABLES_PATH)
-    # zero_indices = np.where(q_table == 0)
-    # q_table[zero_indices] = -1000_000_000
-for episode in range(num_episodes+1):
-    state = env.reset()
-    if RECORD:
-        env.video(episode)
-    episode_reward = 0
-    epsilon = pow(EPSILON_DECAY, episode)
-    while True:
-        action = select_action(state, q_table)
-        next_state, reward, done, info = env.step(action)
-        episode_reward += reward
-        if training:
-            q_table[state + (action,)] += alpha * (reward + gamma * np.max(q_table[next_state]) - q_table[state + (action,)])
-        state = next_state
-        if done:
-            break
-    print("rand", rand, " choice", choice, "epsilon", epsilon)
-    rand = 0
-    choice = 0
-
-    if env.video_writer is not None and RECORD:
-        env.video_writer.release()
-        env.video_writer = None
-        if not reward == 100:
-            os.remove(env.video_file)
-
-    for actor in env.actor_list:
-        actor.destroy()
-    file_reward += episode_reward
-    print(f"Episode {episode}: Total reward = {episode_reward}")
-    if episode % SAVE_EVERY == 0 and training:
-        print(f"Episode {episode}, file: {file_reward}, elapsed time: {time.time() - session_start}")
-        q_table_filename = f"{SAVE_LOCATION}q_table_episode{episode}_{file_reward}.npy"
-        save_q_table(q_table, q_table_filename)
-        file_reward = 0
-        # env.capture_and_save_image(env.camera, episode)
-
-session_end = time.time()
-print("elapsed: ", session_end - session_start,"Finshed: ", session_end)
+        # observation = discretize_state([loc.x, loc.y, vel.x, vel.y])
+        return (loc.x, loc.y, vel.x, vel.y), reward, done, None

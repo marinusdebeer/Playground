@@ -37,7 +37,7 @@ def plot_multiple_runs():
     plt.show()
 
 def plot_rewards():
-    with open("F:/Coding/breakout/double_dqn__5__20_000/rewards.txt", "r") as f:
+    with open("F:/Coding/breakout/double_dqn_8_5000/rewards.txt", "r") as f:
     # with open("F:/Coding/breakout/double_dqn_3_5000/rewards.txt", "r") as f:
         data_str = f.read()
         data = ast.literal_eval(data_str)
@@ -45,7 +45,7 @@ def plot_rewards():
     fig, ax = plt.subplots()
     data_array = np.array(data)
     # print(np.average(data_array[5000:]))
-    total = 17300
+    total = 1400
     interval = 100
     # reshaped_arr = data_array[-2_000:].reshape(40, 50)
     print(data_array[-total:].mean())
