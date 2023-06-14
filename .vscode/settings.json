@@ -2,5 +2,9 @@
   "java.compile.nullAnalysis.mode": "disabled",
   "python.analysis.extraPaths": [
     "./gym/atari_breakout"
-  ]
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none"
 }
