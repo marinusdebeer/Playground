@@ -10,11 +10,12 @@ def epsilon_decay(initial_epsilon, decay_rate, episode, num_episodes, minimum):
 def plot_epsilon():
       
     initial_epsilon = 1.0
-    decay_rate = 0.01 # 0.9998 for 20_000 episodes and 0.9996 for 10_000 episodes
-    num_episodes = 20_000
+    decay_rate = 0.04 # 0.9998 for 20_000 episodes and 0.9996 for 10_000 episodes
+    num_episodes = 1_000
     episodes = np.arange(num_episodes+1)
+    minumum = 0.05
 
-    epsilon_values = [epsilon_decay(initial_epsilon, decay_rate, episode, num_episodes) for episode in episodes]
+    epsilon_values = [epsilon_decay(initial_epsilon, decay_rate, episode, num_episodes, minumum) for episode in episodes]
 
     for i in range(0, num_episodes+1, num_episodes // 10):
             print((i,round(epsilon_values[i], 6)))
@@ -45,5 +46,5 @@ def plot_learning_rate():
     plt.grid(True)
     plt.show()
 
-plot_learning_rate()
-# plot_epsilon()
+# plot_learning_rate()
+plot_epsilon()
