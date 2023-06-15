@@ -1,25 +1,76 @@
+# https://colab.research.google.com/github/keras-team/keras-io/blob/master/examples/rl/ipynb/ddpg_pendulum.ipynb
 import gymnasium as gym
 import tensorflow as tf
 from tensorflow.keras import layers
 import numpy as np
 import matplotlib.pyplot as plt
+import time
+import os
 
-# env = gym.make("Pusher-v4", render_mode="human")
-env = gym.make("Pusher-v4")
-epsilon = 1.0
-initial_epsilon = 1.0
-decay = 0.04
-num_states = env.observation_space.shape[0]
-print("Size of State Space ->  {}".format(num_states))
-num_actions = env.action_space.shape[0]
-print("Size of Action Space ->  {}".format(num_actions))
 
-upper_bound = env.action_space.high[0]
-lower_bound = env.action_space.low[0]
+class actor(tf.keras.Model):
+    def __init__(self):
+        super(actor, self).__init__()
+        self.d1 = layers.Dense(256, activation="relu")
+        self.d2 = layers.Dense(256, activation="relu")
+        self.d3 = layers.Dense(num_actions, activation="tanh")
+    @tf.function
+    def call(self, x):
+        x = self.d1(x)
+        x = self.d2(x)
+        return self.d3(x)*upper_bound
 
-print("Max Value of Action ->  {}".format(upper_bound))
-print("Min Value of Action ->  {}".format(lower_bound))
+class critic(tf.keras.Model):
+    def __init__(self):
+        super(critic, self).__init__()
+        self.d1 = layers.Dense(16, activation="relu")
+        self.d2 = layers.Dense(32, activation="relu")
+        self.d3 = layers.Dense(256, activation="relu")
+        self.d4 = layers.Dense(256, activation="relu")
+        self.d5 = layers.Dense(1)
+    @tf.function
+    def call(self, val):
+        x, a = val
+        x = self.d1(x)
+        x = self.d2(x)
+        x = tf.concat([x, a], axis=1)
+        x = self.d3(x)
+        x = self.d4(x)
+        return self.d5(x)
+""" def get_critic():
+    # State as input
+    state_input = layers.Input(shape=(num_states))
+    state_out = layers.Dense(16, activation="relu")(state_input)
+    state_out = layers.Dense(32, activation="relu")(state_out)
 
+    # Action as input
+    action_input = layers.Input(shape=(num_actions))
+    action_out = layers.Dense(32, activation="relu")(action_input)
+
+    # Both are passed through seperate layer before concatenating
+    concat = layers.Concatenate()([state_out, action_out])
+
+    out = layers.Dense(256, activation="relu")(concat)
+    out = layers.Dense(256, activation="relu")(out)
+    outputs = layers.Dense(1)(out)
+
+    # Outputs single value for give next_state-action
+    model = tf.keras.Model([state_input, action_input], outputs)
+
+    return model """
+
+
+""" def policy(next_state, noise_object):
+    sampled_actions = tf.squeeze(actor_model(next_state))
+    print(sampled_actions)
+    noise = noise_object()
+    # Adding noise to action
+    sampled_actions = sampled_actions.numpy() + noise
+
+    # We make sure action is within bounds
+    legal_action = np.clip(sampled_actions, lower_bound, upper_bound)
+    # return [np.squeeze(legal_action)]
+    return legal_action """
 
 class OUActionNoise:
     def __init__(self, mean, std_deviation, theta=0.15, dt=1e-2, x_initial=None):
@@ -83,9 +134,7 @@ class Buffer:
     # TensorFlow to build a static graph out of the logic and computations in our function.
     # This provides a large speed up for blocks of code that contain many small TensorFlow operations such as this one.
     @tf.function
-    def update(
-        self, state_batch, action_batch, reward_batch, next_state_batch,
-    ):
+    def update(self, state_batch, action_batch, reward_batch, next_state_batch):
         # Training and updating Actor & Critic networks.
         # See Pseudo Code.
         with tf.GradientTape() as tape:
@@ -134,8 +183,7 @@ def update_target(target_weights, weights, tau):
     for (a, b) in zip(target_weights, weights):
         a.assign(b * tau + a * (1 - tau))
 
-
-def get_actor():
+""" def get_actor():
     # Initialize weights between -3e-3 and 3-e3
     # last_init = tf.random_uniform_initializer(minval=-0.003, maxval=0.003)
 
@@ -147,43 +195,8 @@ def get_actor():
     # Our upper bound is 2.0 for Pendulum.
     outputs *= upper_bound
     model = tf.keras.Model(inputs, outputs)
-    return model
+    return model """
 
-
-def get_critic():
-    # State as input
-    state_input = layers.Input(shape=(num_states))
-    state_out = layers.Dense(16, activation="relu")(state_input)
-    state_out = layers.Dense(32, activation="relu")(state_out)
-
-    # Action as input
-    action_input = layers.Input(shape=(num_actions))
-    action_out = layers.Dense(32, activation="relu")(action_input)
-
-    # Both are passed through seperate layer before concatenating
-    concat = layers.Concatenate()([state_out, action_out])
-
-    out = layers.Dense(256, activation="relu")(concat)
-    out = layers.Dense(256, activation="relu")(out)
-    outputs = layers.Dense(1)(out)
-
-    # Outputs single value for give next_state-action
-    model = tf.keras.Model([state_input, action_input], outputs)
-
-    return model
-
-
-""" def policy(next_state, noise_object):
-    sampled_actions = tf.squeeze(actor_model(next_state))
-    print(sampled_actions)
-    noise = noise_object()
-    # Adding noise to action
-    sampled_actions = sampled_actions.numpy() + noise
-
-    # We make sure action is within bounds
-    legal_action = np.clip(sampled_actions, lower_bound, upper_bound)
-    # return [np.squeeze(legal_action)]
-    return legal_action """
 
 def policy(state):
     if np.random.random() < epsilon:
@@ -194,14 +207,49 @@ def policy(state):
     # print("purpose: ", action)
     return action
 
+
+
+
+problem = "Pusher-v4"
+# problem = "Pendulum-v1"
+# problem = "Humanoid-v4"
+env = gym.make(problem)
+# env = gym.make(problem, render_mode="human")
+if not os.path.exists(problem):
+    os.makedirs(problem)
+
+num_states = env.observation_space.shape[0]
+num_actions = env.action_space.shape[0]
+upper_bound = env.action_space.high[0]
+lower_bound = env.action_space.low[0]
+
+total_episodes = 3_000
+epsilon = 1.0
+initial_epsilon = 1.0
+decay = 0.04
+# Discount factor for future rewards
+gamma = 0.99
+# Used to update target networks
+tau = 0.5 # 0 means no update 1 means full update
+steps_per_episode = 300
+steps = 0
+update_target_every = 500
+train_every = 50
+batch_size = 2048
+buffer_size = 100_000
+buffer = Buffer(buffer_size, batch_size)
+pretrained = False
+
 std_dev = 0.2
 ou_noise = OUActionNoise(mean=np.zeros(1), std_deviation=float(std_dev) * np.ones(1))
 
-actor_model = get_actor()
-critic_model = get_critic()
+# actor_model = get_actor()
+actor_model = actor()
+critic_model = critic()
 
-target_actor = get_actor()
-target_critic = get_critic()
+# target_actor = get_actor()
+target_actor = actor()
+target_critic = critic()
 
 # Making the weights equal initially
 target_actor.set_weights(actor_model.get_weights())
@@ -214,48 +262,64 @@ actor_lr = 0.001
 critic_optimizer = tf.keras.optimizers.Adam(critic_lr)
 actor_optimizer = tf.keras.optimizers.Adam(actor_lr)
 
-total_episodes = 100
-# Discount factor for future rewards
-gamma = 0.99
-# Used to update target networks
-tau = 0.005
-steps_per_episode = 300
-steps = 0
-buffer = Buffer(50000, 64)
+
+if pretrained:
+    state = env.reset()
+    state = state[0]
+    state = np.array(state)
+    state = state[np.newaxis, :]
+    action = actor_model(state).numpy()[0]
+    action = target_actor(state).numpy()[0]
+    # print("\n")
+    # print((1, state, action))
+    # print("\n")
+    # critic_model((state, action))
+    # action = target_actor(state)
+    # target_critic((state, action))
+    # print(state)
+
+    actor_model.load_weights(f'{problem}/actor_100.h5')
+    # critic_model.load_weights(f'{problem}/critic_100.h5')
+    target_actor.load_weights(f'{problem}/target_actor_100.h5')
+    # target_critic.load_weights(f'{problem}/target_critic_100.h5')
+
+print("Size of State Space ->  {}".format(num_states))
+print("Size of Action Space ->  {}".format(num_actions))
+print("Max Value of Action ->  {}".format(upper_bound))
+print("Min Value of Action ->  {}".format(lower_bound))
 
 # To store reward history of each episode
 ep_reward_list = []
 # To store average reward history of last few episodes
 avg_reward_list = []
-
+start = time.time()
 # Takes about 4 min to train
 for ep in range(1, total_episodes+1):
-
+    ep_start = time.time()
     state = env.reset()
     state = state[0]
     episodic_reward = 0
-
+    learn_time = 0
+    action_time = 0
     while True:
-        # Uncomment this to see the Actor in action
-        # But not in a python notebook.
-        # env.render()
-
-        # tf_state = tf.expand_dims(tf.convert_to_tensor(state), 0)
         tf_state = np.array(state)
         tf_state = tf_state[np.newaxis, :]
-        # print(tf_state)
+        action_start = time.time()
         action = policy(tf_state)
+        action_end = time.time()
+        action_time += action_end - action_start
         # action = policy(tf_state, ou_noise)
-        # print(action)
-        # Recieve next_state and reward from environment.
         next_state, reward, done, _, info = env.step(action)
-        # print(reward)
         buffer.record((state, action, reward, next_state))
         episodic_reward += reward
-
-        buffer.learn()
-        update_target(target_actor.variables, actor_model.variables, tau)
-        update_target(target_critic.variables, critic_model.variables, tau)
+        if steps % train_every == 0:
+            learn_start = time.time()
+            buffer.learn()
+            learn_end = time.time()
+            learn_time += learn_end - learn_start
+        if steps % update_target_every == 0:
+            update_target(target_actor.variables, actor_model.variables, tau)
+            update_target(target_critic.variables, critic_model.variables, tau)
 
         state = next_state
         steps += 1
@@ -264,21 +328,30 @@ for ep in range(1, total_episodes+1):
         if done or steps % steps_per_episode == 0:
             break
 
-
     ep_reward_list.append(episodic_reward)
 
     # Mean of last 40 episodes
-    avg_reward = round(np.mean(ep_reward_list[-40:]))
-    print(f"Episode * {ep} * Avg Reward is ==> {avg_reward}, steps ==> {steps}, epsilon ==> {round(epsilon, 6)}")
+    avg_reward = round(np.mean(ep_reward_list[-10:]))
+    ep_time = time.time() - ep_start
     epsilon = initial_epsilon * (decay ** (ep/total_episodes))
     if ep % 10 == 0:
-        actor_model.save_weights(f"pusher_models/actor_{ep}.h5")
-        critic_model.save_weights(f"pusher_models/critic_{ep}.h5")
+        actor_model.save_weights(f"{problem}/actor_{ep}.h5")
+        critic_model.save_weights(f"{problem}/critic_{ep}.h5")
 
-        target_actor.save_weights(f"pusher_models/target_actor_{ep}.h5")
-        target_critic.save_weights(f"pusher_models/target_critic_{ep}.h5")
+        target_actor.save_weights(f"{problem}/target_actor_{ep}.h5")
+        target_critic.save_weights(f"{problem}/target_critic_{ep}.h5")
         avg_reward_list.append(avg_reward)
-
+        print(f"Episode: {ep}, avg10: {round(np.mean(ep_reward_list[-10:]))}, avg50: {round(np.mean(ep_reward_list[-50:]))}, avg100: {round(np.mean(ep_reward_list[-100:]))}, avg_reward: {round(np.mean(ep_reward_list))}, epsilon: {round(epsilon, 4)}")
+end = time.time()
+total_time = end - start
+avg_reward = round(np.mean(ep_reward_list))
+avg_time = round((total_time)/total_episodes, 2)
+training_score = avg_reward*avg_time
+print("\n------------------------------------------------------------------------")
+print(f"Total episodes: {total_episodes}, gamma: {gamma}, tau: {tau}, buffer_size: {buffer_size}, batch_size: {batch_size}, critic_lr: {critic_lr}, actor_lr: {actor_lr}, decay: {decay}, update_target_every: {update_target_every}, train_every: {train_every}, steps_per_episode: {steps_per_episode}")
+# print(f"avg10_reward: {np.mean(ep_reward_list[-10:])}, avg50_reward: {np.mean(ep_reward_list[-50:])}")
+print(f"Total time: {round(total_time, 2)}s, avg_time: {avg_time}, avg reward: {round(np.mean(ep_reward_list))}, training score: {training_score}")
+print("------------------------------------------------------------------------\n")
 # Plotting graph
 # Episodes versus Avg. Rewards
 plt.plot(avg_reward_list)
