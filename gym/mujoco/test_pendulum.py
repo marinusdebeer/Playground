@@ -26,15 +26,16 @@ def create_actor_model():
     return model
 
 # Create the Pendulum-v1 environment
-env = gym.make('Pendulum-v1', render_mode='human')
-# env = gym.make('Pusher-v4', render_mode='human')
-num_episodes = 10
+# env = gym.make('Pendulum-v1', render_mode='human')
+env = gym.make('Pusher-v4', render_mode='human')
+num_episodes = 1000
 num_states = env.observation_space.shape[0]
 num_actions = env.action_space.shape[0]
 
 # Load the saved weights into the actor and critic models
 actor_model = create_actor_model()
-actor_model.load_weights('pendulum_actor.h5')
+# actor_model.load_weights('pendulum_actor.h5')
+actor_model.load_weights('pusher_models/actor_100.h5')
 
 # Play episodes using the loaded actor-critic models
 
@@ -44,6 +45,7 @@ for episode in range(num_episodes):
     done = False
     total_reward = 0
     state = state[0]
+    step = 0
     while not done:
         # print(state)
         # print(state.shape)
@@ -60,6 +62,9 @@ for episode in range(num_episodes):
 
         # Update the state for the next iteration
         state = next_state
+        step += 1
+        if step % 300 == 0:
+            done = True
 
     print(f"Episode {episode+1} - Total Reward: {total_reward}")
 
