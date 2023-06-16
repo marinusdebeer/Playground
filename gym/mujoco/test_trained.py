@@ -16,8 +16,8 @@ def create_actor_model():
     last_init = tf.random_uniform_initializer(minval=-0.003, maxval=0.003)
 
     inputs = layers.Input(shape=(num_states,))
-    out = layers.Dense(1024, activation="relu")(inputs)
-    out = layers.Dense(1024, activation="relu")(out)
+    out = layers.Dense(256, activation="relu")(inputs)
+    out = layers.Dense(256, activation="relu")(out)
     outputs = layers.Dense(num_actions, activation="tanh", kernel_initializer=last_init)(out)
 
     # Our upper bound is 2.0 for Pendulum.
@@ -26,9 +26,9 @@ def create_actor_model():
     return model
 
 # Create the Pendulum-v1 environment
-# problem = 'Pusher-v4'
+problem = 'Pusher-v4'
 # problem = 'Pendulum-v1'
-problem = "Humanoid-v4"
+# problem = "Humanoid-v4"
 env = gym.make(problem, render_mode='human')
 num_episodes = 1000
 num_states = env.observation_space.shape[0]
@@ -37,7 +37,7 @@ num_actions = env.action_space.shape[0]
 # Load the saved weights into the actor and critic models
 actor_model = create_actor_model()
 # actor_model.load_weights('pendulum_actor.h5')
-actor_model.load_weights(f'{problem}/actor_3000.h5')
+actor_model.load_weights(f'{problem}/actor_10000.h5')
 
 # Play episodes using the loaded actor-critic models
 

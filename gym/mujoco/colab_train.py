@@ -6,20 +6,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 import os
-
-
+from collections import deque
+import random
+import operator
 class actor(tf.keras.Model):
     def __init__(self):
         super(actor, self).__init__()
         self.d1 = layers.Dense(256, activation="relu")
         self.d2 = layers.Dense(256, activation="relu")
         self.d3 = layers.Dense(num_actions, activation="tanh")
+
     @tf.function
     def call(self, x):
         x = self.d1(x)
         x = self.d2(x)
         return self.d3(x)*upper_bound
-
+    
 class critic(tf.keras.Model):
     def __init__(self):
         super(critic, self).__init__()
@@ -28,6 +30,7 @@ class critic(tf.keras.Model):
         self.d3 = layers.Dense(256, activation="relu")
         self.d4 = layers.Dense(256, activation="relu")
         self.d5 = layers.Dense(1)
+
     @tf.function
     def call(self, val):
         x, a = val
@@ -37,67 +40,50 @@ class critic(tf.keras.Model):
         x = self.d3(x)
         x = self.d4(x)
         return self.d5(x)
-""" def get_critic():
-    # State as input
-    state_input = layers.Input(shape=(num_states))
-    state_out = layers.Dense(16, activation="relu")(state_input)
-    state_out = layers.Dense(32, activation="relu")(state_out)
 
-    # Action as input
-    action_input = layers.Input(shape=(num_actions))
-    action_out = layers.Dense(32, activation="relu")(action_input)
+""" class Buffer:
+    def __init__(self, buffer_capacity=100_000, batch_size=64):
+        self.memory = deque(maxlen=buffer_capacity)
+        self.batch_size = batch_size
+        self.buffer_capacity = buffer_capacity
+        
 
-    # Both are passed through seperate layer before concatenating
-    concat = layers.Concatenate()([state_out, action_out])
+    def remember(self, state, action, reward, next_state):
+        self.memory.append((state, action, reward, next_state))
 
-    out = layers.Dense(256, activation="relu")(concat)
-    out = layers.Dense(256, activation="relu")(out)
-    outputs = layers.Dense(1)(out)
+    @tf.function
+    def update(self, states, actions, rewards, next_states,):
+        with tf.GradientTape() as tape:
+            target_actions = target_actor(next_states, training=True)
+            y = rewards + gamma * target_critic([next_states, target_actions], training=True)
+            critic_value = critic_model([states, actions], training=True)
+            critic_loss = tf.math.reduce_mean(tf.math.square(y - critic_value))
+        critic_grad = tape.gradient(critic_loss, critic_model.trainable_variables)
+        critic_optimizer.apply_gradients(zip(critic_grad, critic_model.trainable_variables))
 
-    # Outputs single value for give next_state-action
-    model = tf.keras.Model([state_input, action_input], outputs)
+        with tf.GradientTape() as tape:
+            pred_actions = actor_model(states, training=True)
+            critic_value = critic_model([states, pred_actions], training=True)
+            actor_loss = -tf.math.reduce_mean(critic_value)
+        actor_grad = tape.gradient(actor_loss, actor_model.trainable_variables)
+        actor_optimizer.apply_gradients(zip(actor_grad, actor_model.trainable_variables))
 
-    return model """
+    def learn(self):
+        if len(self.memory) < batch_size:
+            return
+        samples = random.sample(self.memory, batch_size)
+        # print(len(samples))
+        states, actions, rewards, next_states = zip(*samples)
+        # Convert to tensors
+        state_batch = tf.convert_to_tensor(states)
+        action_batch = tf.convert_to_tensor(actions)
+        reward_batch = tf.convert_to_tensor(rewards)
+        reward_batch = tf.cast(reward_batch, dtype=tf.float32)
+        next_state_batch = tf.convert_to_tensor(next_states)
 
+        # self.update(states, actions, rewards, next_states)
+        self.update(state_batch, action_batch, reward_batch, next_state_batch) """
 
-""" def policy(next_state, noise_object):
-    sampled_actions = tf.squeeze(actor_model(next_state))
-    print(sampled_actions)
-    noise = noise_object()
-    # Adding noise to action
-    sampled_actions = sampled_actions.numpy() + noise
-
-    # We make sure action is within bounds
-    legal_action = np.clip(sampled_actions, lower_bound, upper_bound)
-    # return [np.squeeze(legal_action)]
-    return legal_action """
-
-class OUActionNoise:
-    def __init__(self, mean, std_deviation, theta=0.15, dt=1e-2, x_initial=None):
-        self.theta = theta
-        self.mean = mean
-        self.std_dev = std_deviation
-        self.dt = dt
-        self.x_initial = x_initial
-        self.reset()
-
-    def __call__(self):
-        # Formula taken from https://www.wikipedia.org/wiki/Ornstein-Uhlenbeck_process.
-        x = (
-            self.x_prev
-            + self.theta * (self.mean - self.x_prev) * self.dt
-            + self.std_dev * np.sqrt(self.dt) * np.random.normal(size=self.mean.shape)
-        )
-        # Store x into x_prev
-        # Makes next noise dependent on current one
-        self.x_prev = x
-        return x
-
-    def reset(self):
-        if self.x_initial is not None:
-            self.x_prev = self.x_initial
-        else:
-            self.x_prev = np.zeros_like(self.mean)
 
 
 class Buffer:
@@ -106,8 +92,9 @@ class Buffer:
         self.buffer_capacity = buffer_capacity
         # Num of tuples to train on.
         self.batch_size = batch_size
+        self.memory = deque(maxlen=buffer_capacity)
 
-        # Its tells us num of times record() was called.
+        # Its tells us num of times remember() was called.
         self.buffer_counter = 0
 
         # Instead of list of tuples as the exp.replay concept go
@@ -118,9 +105,7 @@ class Buffer:
         self.next_state_buffer = np.zeros((self.buffer_capacity, num_states))
 
     # Takes (s,a,r,s') obervation tuple as input
-    def record(self, obs_tuple):
-        # Set index to zero if buffer_capacity is exceeded,
-        # replacing old records
+    def remember(self, obs_tuple):
         index = self.buffer_counter % self.buffer_capacity
 
         self.state_buffer[index] = obs_tuple[0]
@@ -129,33 +114,22 @@ class Buffer:
         self.next_state_buffer[index] = obs_tuple[3]
 
         self.buffer_counter += 1
+        self.memory.append(obs_tuple)
 
-    # Eager execution is turned on by default in TensorFlow 2. Decorating with tf.function allows
-    # TensorFlow to build a static graph out of the logic and computations in our function.
-    # This provides a large speed up for blocks of code that contain many small TensorFlow operations such as this one.
     @tf.function
-    def update(self, state_batch, action_batch, reward_batch, next_state_batch):
-        # Training and updating Actor & Critic networks.
-        # See Pseudo Code.
+    def update(self, states, actions, rewards, next_states,):
         with tf.GradientTape() as tape:
-            target_actions = target_actor(next_state_batch, training=True)
-            y = reward_batch + gamma * target_critic(
-                [next_state_batch, target_actions], training=True
-            )
-            critic_value = critic_model([state_batch, action_batch], training=True)
+            target_actions = target_actor(next_states, training=True)
+            y = rewards + gamma * target_critic([next_states, target_actions], training=True)
+            critic_value = critic_model([states, actions], training=True)
             critic_loss = tf.math.reduce_mean(tf.math.square(y - critic_value))
-
         critic_grad = tape.gradient(critic_loss, critic_model.trainable_variables)
         critic_optimizer.apply_gradients(zip(critic_grad, critic_model.trainable_variables))
 
         with tf.GradientTape() as tape:
-            actions = actor_model(state_batch, training=True)
-            critic_value = critic_model([state_batch, actions], training=True)
-            # Used `-value` as we want to maximize the value given
-            # by the critic for our actions
+            pred_actions = actor_model(states, training=True)
+            critic_value = critic_model([states, pred_actions], training=True)
             actor_loss = -tf.math.reduce_mean(critic_value)
-            # actor_loss = tf.math.reduce_mean(critic_value)
-
         actor_grad = tape.gradient(actor_loss, actor_model.trainable_variables)
         actor_optimizer.apply_gradients(zip(actor_grad, actor_model.trainable_variables))
 
@@ -175,40 +149,15 @@ class Buffer:
 
         self.update(state_batch, action_batch, reward_batch, next_state_batch)
 
-
-# This update target parameters slowly
-# Based on rate `tau`, which is much less than one.
 @tf.function
 def update_target(target_weights, weights, tau):
     for (a, b) in zip(target_weights, weights):
         a.assign(b * tau + a * (1 - tau))
 
-""" def get_actor():
-    # Initialize weights between -3e-3 and 3-e3
-    # last_init = tf.random_uniform_initializer(minval=-0.003, maxval=0.003)
-
-    inputs = layers.Input(shape=(num_states,))
-    out = layers.Dense(256, activation="relu")(inputs)
-    out = layers.Dense(256, activation="relu")(out)
-    outputs = layers.Dense(num_actions, activation="tanh")(out)
-
-    # Our upper bound is 2.0 for Pendulum.
-    outputs *= upper_bound
-    model = tf.keras.Model(inputs, outputs)
-    return model """
-
-
-def policy(state):
+def act(state):
     if np.random.random() < epsilon:
-        action = np.random.uniform(low=-2.0, high=2.0, size=num_actions)
-        # print("random", action)
-        return action
-    action = actor_model(state).numpy()[0]
-    # print("purpose: ", action)
-    return action
-
-
-
+        return np.random.uniform(low=lower_bound, high=upper_bound, size=num_actions)
+    return actor_model(state).numpy()[0]
 
 problem = "Pusher-v4"
 # problem = "Pendulum-v1"
@@ -223,7 +172,7 @@ num_actions = env.action_space.shape[0]
 upper_bound = env.action_space.high[0]
 lower_bound = env.action_space.low[0]
 
-total_episodes = 3_000
+total_episodes = 10_000
 epsilon = 1.0
 initial_epsilon = 1.0
 decay = 0.04
@@ -239,10 +188,6 @@ batch_size = 2048
 buffer_size = 100_000
 buffer = Buffer(buffer_size, batch_size)
 pretrained = False
-
-std_dev = 0.2
-ou_noise = OUActionNoise(mean=np.zeros(1), std_deviation=float(std_dev) * np.ones(1))
-
 # actor_model = get_actor()
 actor_model = actor()
 critic_model = critic()
@@ -256,7 +201,7 @@ target_actor.set_weights(actor_model.get_weights())
 target_critic.set_weights(critic_model.get_weights())
 
 # Learning rate for actor-critic models
-critic_lr = 0.002
+critic_lr = 0.001
 actor_lr = 0.001
 
 critic_optimizer = tf.keras.optimizers.Adam(critic_lr)
@@ -305,12 +250,12 @@ for ep in range(1, total_episodes+1):
         tf_state = np.array(state)
         tf_state = tf_state[np.newaxis, :]
         action_start = time.time()
-        action = policy(tf_state)
+        action = act(tf_state)
         action_end = time.time()
         action_time += action_end - action_start
-        # action = policy(tf_state, ou_noise)
         next_state, reward, done, _, info = env.step(action)
-        buffer.record((state, action, reward, next_state))
+        buffer.remember((state, action, reward, next_state))
+        # buffer.remember(state, action, reward, next_state)
         episodic_reward += reward
         if steps % train_every == 0:
             learn_start = time.time()
