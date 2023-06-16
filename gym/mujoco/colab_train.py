@@ -12,7 +12,7 @@ import operator
 class actor(tf.keras.Model):
     def __init__(self):
         super(actor, self).__init__()
-        self.d1 = layers.Dense(256, activation="relu")
+        self.d1 = layers.Dense(512, activation="relu")
         self.d2 = layers.Dense(256, activation="relu")
         self.d3 = layers.Dense(num_actions, activation="tanh")
 
@@ -93,6 +93,12 @@ class Buffer:
         # Num of tuples to train on.
         self.batch_size = batch_size
         self.memory = deque(maxlen=buffer_capacity)
+        if PRIORITIZED_EXPERIENCE_REPLAY:
+            self.priorities = deque(maxlen=buffer_capacity)
+            self.max_priority = 1.0
+            self.beta = 0.4
+            self.beta_increment = (1.0 - self.beta) / total_episodes
+            self.alpha = 0.6
 
         # Its tells us num of times remember() was called.
         self.buffer_counter = 0
@@ -115,6 +121,27 @@ class Buffer:
 
         self.buffer_counter += 1
         self.memory.append(obs_tuple)
+        if PRIORITIZED_EXPERIENCE_REPLAY:
+            self.priorities.append(self.max_priority)
+
+    def sample(self, batch_size, beta):
+        print(self.priorities)
+        probs = np.array(self.priorities) ** self.alpha
+        probs /= probs.sum()
+
+        indices = np.random.choice(len(self.memory), batch_size, p=probs, replace=False) # Won't select the same index more than once
+        samples = [self.memory[i] for i in indices]
+
+        # weights = (self.priorities ** (-beta)) / np.max(self.priorities) # Proportional prioritization
+        # weights = np.array(weights, dtype=np.float32)
+        return samples, indices
+    
+    def update_priorities(self, indices, priorities):
+        # print(indices)
+        print(priorities)
+        for idx, priority in zip(indices, priorities):
+            self.priorities[idx] = priority
+        self.max_priority = max(self.priorities)
 
     @tf.function
     def update(self, states, actions, rewards, next_states,):
@@ -122,7 +149,8 @@ class Buffer:
             target_actions = target_actor(next_states, training=True)
             y = rewards + gamma * target_critic([next_states, target_actions], training=True)
             critic_value = critic_model([states, actions], training=True)
-            critic_loss = tf.math.reduce_mean(tf.math.square(y - critic_value))
+            critic_error = y - critic_value
+            critic_loss = tf.math.reduce_mean(tf.math.square(critic_error))
         critic_grad = tape.gradient(critic_loss, critic_model.trainable_variables)
         critic_optimizer.apply_gradients(zip(critic_grad, critic_model.trainable_variables))
 
@@ -133,21 +161,32 @@ class Buffer:
         actor_grad = tape.gradient(actor_loss, actor_model.trainable_variables)
         actor_optimizer.apply_gradients(zip(actor_grad, actor_model.trainable_variables))
 
+        return critic_error
+
     # We compute the loss and update parameters
     def learn(self):
-        # Get sampling range
-        record_range = min(self.buffer_counter, self.buffer_capacity)
-        # Randomly sample indices
-        batch_indices = np.random.choice(record_range, self.batch_size)
-
+        if len(self.memory) < self.batch_size:
+            return
+        
+        if PRIORITIZED_EXPERIENCE_REPLAY:
+            minibatch, indices = self.sample(self.batch_size, self.beta)
+        else:
+            # Get sampling range
+            record_range = min(self.buffer_counter, self.buffer_capacity)
+            # Randomly sample indices
+            indices = np.random.choice(record_range, self.batch_size)
+            
         # Convert to tensors
-        state_batch = tf.convert_to_tensor(self.state_buffer[batch_indices])
-        action_batch = tf.convert_to_tensor(self.action_buffer[batch_indices])
-        reward_batch = tf.convert_to_tensor(self.reward_buffer[batch_indices])
+        state_batch = tf.convert_to_tensor(self.state_buffer[indices])
+        action_batch = tf.convert_to_tensor(self.action_buffer[indices])
+        reward_batch = tf.convert_to_tensor(self.reward_buffer[indices])
         reward_batch = tf.cast(reward_batch, dtype=tf.float32)
-        next_state_batch = tf.convert_to_tensor(self.next_state_buffer[batch_indices])
+        next_state_batch = tf.convert_to_tensor(self.next_state_buffer[indices])
 
-        self.update(state_batch, action_batch, reward_batch, next_state_batch)
+        critic_error = self.update(state_batch, action_batch, reward_batch, next_state_batch)
+        # print(critic_error)
+        if PRIORITIZED_EXPERIENCE_REPLAY:
+            self.update_priorities(indices, critic_error.numpy() + 1e-6)
 
 @tf.function
 def update_target(target_weights, weights, tau):
@@ -159,11 +198,11 @@ def act(state):
         return np.random.uniform(low=lower_bound, high=upper_bound, size=num_actions)
     return actor_model(state).numpy()[0]
 
-problem = "Pusher-v4"
+# problem = "Pusher-v4"
 # problem = "Pendulum-v1"
-# problem = "Humanoid-v4"
-env = gym.make(problem)
-# env = gym.make(problem, render_mode="human")
+problem = "Humanoid-v4"
+# env = gym.make(problem)
+env = gym.make(problem, render_mode="human")
 if not os.path.exists(problem):
     os.makedirs(problem)
 
@@ -172,7 +211,8 @@ num_actions = env.action_space.shape[0]
 upper_bound = env.action_space.high[0]
 lower_bound = env.action_space.low[0]
 
-total_episodes = 10_000
+PRIORITIZED_EXPERIENCE_REPLAY = False
+total_episodes = 10000
 epsilon = 1.0
 initial_epsilon = 1.0
 decay = 0.04
@@ -246,6 +286,10 @@ for ep in range(1, total_episodes+1):
     episodic_reward = 0
     learn_time = 0
     action_time = 0
+    # if ep > 4 and ep < 40:
+    #     env.unwrapped.render_mode = "human"
+    # else:
+    #     env.unwrapped.render_mode = "none"
     while True:
         tf_state = np.array(state)
         tf_state = tf_state[np.newaxis, :]
