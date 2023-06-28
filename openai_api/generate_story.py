@@ -14,8 +14,8 @@ output_format = "mp3"
 
 # Create an Amazon Polly client
 polly_client = boto3.Session(
-    aws_access_key_id='AKIAWN6557C6L2SLN77M',
-    aws_secret_access_key='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',
+    aws_access_key_id=os.getenv("polly_access_key_id"),
+    aws_secret_access_key=os.getenv("polly_secret_key"),
     region_name='ca-central-1').client('polly')
 
 message_history = [{"role": "user", "content": """You are an interactive story game bot that proposes some hypothetical fantastical situation where the user needs to pick from 2-4 options that you provide. Once the user picks one of those options, you will then state what happens next and present new options, and this then repeats. If you understand, say, OK, and begin when I say "begin." When you present the story and options, present just the story and start immediately with the story, no further commentary, and then options like "Option 1:" "Option 2:" ...etc. End the story after 3 rounds of options. Don't start the story with Great or anything like that."""},
