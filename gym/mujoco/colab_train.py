@@ -13,7 +13,7 @@ class actor(tf.keras.Model):
     def __init__(self):
         super(actor, self).__init__()
         self.d1 = layers.Dense(512, activation="relu")
-        self.d2 = layers.Dense(256, activation="relu")
+        self.d2 = layers.Dense(512, activation="relu")
         self.d3 = layers.Dense(num_actions, activation="tanh")
 
     @tf.function
@@ -83,8 +83,6 @@ class critic(tf.keras.Model):
 
         # self.update(states, actions, rewards, next_states)
         self.update(state_batch, action_batch, reward_batch, next_state_batch) """
-
-
 
 class Buffer:
     def __init__(self, buffer_capacity=100_000, batch_size=64):
@@ -198,11 +196,11 @@ def act(state):
         return np.random.uniform(low=lower_bound, high=upper_bound, size=num_actions)
     return actor_model(state).numpy()[0]
 
-# problem = "Pusher-v4"
+problem = "Pusher-v4"
 # problem = "Pendulum-v1"
-problem = "Humanoid-v4"
-# env = gym.make(problem)
-env = gym.make(problem, render_mode="human")
+# problem = "Humanoid-v4"
+env = gym.make(problem)
+# env = gym.make(problem, render_mode="human")
 if not os.path.exists(problem):
     os.makedirs(problem)
 
@@ -212,12 +210,13 @@ upper_bound = env.action_space.high[0]
 lower_bound = env.action_space.low[0]
 
 PRIORITIZED_EXPERIENCE_REPLAY = False
-total_episodes = 10000
+total_episodes = 10_000
 epsilon = 1.0
 initial_epsilon = 1.0
-decay = 0.04
+SAVE_EVERY = 100
+decay = 0.01
 # Discount factor for future rewards
-gamma = 0.99
+gamma = 0.95
 # Used to update target networks
 tau = 0.5 # 0 means no update 1 means full update
 steps_per_episode = 300
@@ -318,17 +317,15 @@ for ep in range(1, total_episodes+1):
             break
 
     ep_reward_list.append(episodic_reward)
-
-    # Mean of last 40 episodes
-    avg_reward = round(np.mean(ep_reward_list[-10:]))
     ep_time = time.time() - ep_start
     epsilon = initial_epsilon * (decay ** (ep/total_episodes))
-    if ep % 10 == 0:
+    if ep % SAVE_EVERY == 0:
         actor_model.save_weights(f"{problem}/actor_{ep}.h5")
         critic_model.save_weights(f"{problem}/critic_{ep}.h5")
-
         target_actor.save_weights(f"{problem}/target_actor_{ep}.h5")
         target_critic.save_weights(f"{problem}/target_critic_{ep}.h5")
+
+        avg_reward = round(np.mean(ep_reward_list[-SAVE_EVERY:]))
         avg_reward_list.append(avg_reward)
         print(f"Episode: {ep}, avg10: {round(np.mean(ep_reward_list[-10:]))}, avg50: {round(np.mean(ep_reward_list[-50:]))}, avg100: {round(np.mean(ep_reward_list[-100:]))}, avg_reward: {round(np.mean(ep_reward_list))}, epsilon: {round(epsilon, 4)}")
 end = time.time()

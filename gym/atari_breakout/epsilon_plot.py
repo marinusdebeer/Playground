@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def epsilon_decay(initial_epsilon, decay_rate, episode, num_episodes, minimum):
-    epsilon = max(initial_epsilon * (decay_rate ** (episode/num_episodes)), minimum)
+    epsilon = (initial_epsilon * (decay_rate ** (episode/num_episodes)))
     # epsilon = initial_epsilon * (decay_rate ** episode)
     return epsilon
 
