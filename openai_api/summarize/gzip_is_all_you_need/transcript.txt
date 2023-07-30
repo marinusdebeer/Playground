@@ -1,0 +1,476 @@
+a week ago or so I heard about this low
+resource text classification a
+parameter-free classification method
+with compressors paper where they
+claimed to beat Bert on sentiment
+analysis classification
+now once in a while I see something and
+I am just absolutely compelled to try
+for myself and this was one of those
+times it has everything it's simple it's
+fast it's easy to implement and it's one
+of my favorite machine learning
+algorithms K nearest neighbors I
+sometimes Do Contracting and Consulting
+work for clients and the number of times
+I've had to tell somebody that their
+problem really doesn't require deep
+learning or neural networks
+is substantial so when I see something
+super simple like this doing text
+classification for sentiment analysis
+with K nearest neighbors for the
+classification and gzip for the
+compression distances which is kind of
+being used as your feature vectors I
+really just have to try that for myself
+the research paper itself also came with
+code that is on GitHub but it seems to
+have a bunch of extra tweaks and
+techniques for getting the most
+performance out of things and I really
+just wanted to try something super
+simple this concept is is very easy to
+Implement and test and I really just
+wanted to confirm that I actually
+understood how this actually works
+because this idea of compressed
+distances as features sounds simple but
+also a bit strange so if you're a little
+fuzzy on what the heck this is or what's
+actually happening in this paper maybe
+you even saw this paper
+basically what we're going to be doing
+is a from scratch example of it here now
+you should already know up to this point
+what K nearest neighbors is I do have an
+older tutorial on it where we actually
+build K nearest Neighbors From Scratch
+I'll put a link to that in the
+description now with that out of the way
+to get started we're going to import
+gzip for the compression K nearest
+neighbor from sklearn for the classifier
+and pickle for our data set I've
+pre-built a couple of data sets just to
+keep things simple and moving quickly
+next we'll load the data set and split
+it into train and test groups I'll start
+us off with the 500 sample data set to
+start just to keep things going
+relatively fast
+samples are text strings that are paired
+with a label of negative one for
+negative sentiment or one for positive
+sentiment if you want to try this on
+your own data go ahead and feel free I
+just took one of the like movie reviews
+data sets to do this with but there's
+lots of sentiment analysis data sets or
+maybe you have your own that you want to
+try so feel free to do this with
+anything else you just need to match
+string to a numerical label it doesn't
+have to be negative one and positive one
+it could be zero and one for example as
+well so we can check out our first
+samples text and the sample sentiment
+and as you can see just what I've
+described machine learning models don't
+work with text though we need to
+represent text in some way numerically
+instead and somehow make that a feature
+that a model could theoretically fit too
+The Proposal is that we compress and use
+this NCD or normalized compression
+distances okay what's that well first we
+need to compress the text something like
+this now that doesn't look like any
+number to me and instead we're going to
+need to convert that to a number by
+taking the length of the compressed text
+we can't just use the size of the
+compressed text because that's not
+normalized and easily comparable to
+other examples we want to normalize it
+so that we can compare the distances
+between two compressed texts and
+essentially the entire data set so we
+grab the length of another compressed
+sample and then we'll do this to the
+combined strings so X Plus X 2. all
+right so we have a number but it's not
+normalized so we'll set the value to be
+the combined sample compression length
+minus the lesser of the two sample
+compressed lengths
+divided by the largest of the two sample
+compressed lengths wonderful that looks
+like a good number to me now we want to
+actually do this with every sample in
+the data set and every sample needs to
+be compared to every other sample so our
+NCD function will look like this now
+we'll compute the NCD for all training
+samples
+all right so let's see an example of a
+sample now so we have 501 total samples
+why 501 and not 500 I don't want to talk
+about my logic right now we allocated
+401 to training and the other 100 to
+testing in this case you can see here
+for the first sample all the distances
+are 0.8 to 0.9 but we can even compare
+it to itself as we will and you can see
+it is extremely close the only reason
+for any distance at all is how we're
+calculating this NCD so each sample is a
+vector of 401 normalized compression
+distances and we'll do the same thing
+against the test data notice that here
+we're calculating the normalized
+compression distances between the
+testing samples and the training samples
+now this is not like data leakage or
+anything like that where you're you're
+leaking like the labels we're comparing
+it to the training samples because that
+is what the model is going to be trained
+on it's going to be expecting okay
+what's the NCD to these values because
+that's what the that's what the features
+are and then later when you would go to
+actually deploy this into the wild so to
+speak you would do the same every sample
+would be compared to every sample in the
+training set to build this Vector of
+normalized compression distances that is
+the feature set that you are going to be
+predicting on all right so with that
+we're ready to train a classifier
+apparently
+as is typical with K nearest neighbors
+feel free to Tinker with the number of
+neighbors the original paper was using
+two I believe I found two to be two
+variable uh but but there are just so
+many factors to consider here and you're
+welcome to try various K values here as
+you can see in note by speeds the
+slowest part of this algorithm is
+actually the Computing of the ncds the
+actual K nearest neighbors
+classification is particularly fast even
+especially on just 500 samples we will
+address the NCD calculation speed
+shortly but more importantly how did we
+do
+okay so we're not quite beating Bert but
+we're not doing terribly either terribly
+being anything close to 50 which would
+just be random we're also not using any
+fancy techniques we're just using K
+nearest neighbors with gzip and
+calculating these normalized compression
+distances and we're using only 500
+samples and we did it in 25 lines of
+code
+I want to take a moment here to really
+appreciate what the heck is going on
+we're compressing text and comparing
+those compressions
+and assuming that similarly sentimented
+strings are going to compress with
+similar lengths due to statistical
+techniques that are going to be used to
+efficiently compress
+and that's it
+essentially just common speech patterns
+for angry people and for happy people
+that's the entire algorithm and we're
+just doing K nearest Neighbors on that I
+sat on this paper in my subsequent work
+with this for a few days because it
+really just felt like it had to be wrong
+and it was at least in part in the
+original paper the author made a mistake
+of using k equals 2 for the neighbors
+and whenever there was a tie it was
+calculated as correct without any tie
+breaker being run I guess you should
+have followed my K nearest Neighbors
+From Scratch tutorial this error caused
+about a five percent difference in
+accuracy in that reported accuracy in
+the paper which was enough for this
+method to no longer do what the paper
+claimed which was actually beat Bert a
+popular Transformer model that is indeed
+used for things like sentiment analysis
+and my personal results are even worse
+than the papers but this is due to I
+think my simplistic methods I think I'm
+calculating NCD different
+um and all that and the fact that with
+my methods we're at 70 accuracy with
+again only 500 samples up to this point
+even that alone I really just want to
+stress how absolutely staggering that is
+to me
+um that that is even possible that there
+is something there for these algorith
+for K nearest neighbors to to nibble on
+and make some progress I still can't
+believe it and yes I sat on this because
+I still just I feel like there's got to
+be a problem and I just I didn't really
+want to release a video on this because
+something has to be wrong here
+um uh and I still suspect there is and
+maybe someone can can point it out and
+get us back to what I believe should be
+the worthy accuracy for this model which
+is likely 50 percent
+now on the flip side what actually is
+going on here right I can logically
+think through why normalized compression
+distances might work for comparing
+strings in
+some ways
+but I would imagine with a large enough
+data set you'd have total convergence on
+lengths of compressions and everything
+would be the same distance from
+everything else on average in terms of
+sentiment you'd have just as many
+positives and just as many negatives
+gzip the compression algorithm being
+used here is a statistically based
+compression algorithm
+why would the lengths of compressions be
+sufficient enough to classify sentiment
+it
+it's not it's not these normalized
+compression distances alone each sample
+is compared essentially to every other
+sample as a vector and then these
+vectors are all compared so I suppose in
+you know some grand scheme you know if
+there are enough similarities the links
+will vary on average Just Enough by
+Common syntax and words used to
+potentially be able to classify
+sentiment based on like those patterns
+but still I just
+I don't know man that just seems wrong
+it just doesn't
+it seems flawed you know yes there will
+be patterns but then it would be
+different if we were comparing those
+patterns in like a tokenized way or
+something like that but we are literally
+just comparing the link the lengths of
+those compressions
+come on
+so in my tests accuracy does vary
+significantly by sampled data at 500
+samples so anything from 60 to 80
+percent depending on the chosen samples
+it flattens out at about 10 000 samples
+fairly reliably for me around the mid
+70s in percent accuracy but before we
+show 10 000 samples calculating
+normalized compression distances
+linearly like this will take hours we
+can do better and we really need to so
+to begin the starting lines through the
+definition of NCD calc are basically all
+the same we just need to import
+multiprocessing we'll also specify the
+number of processes to use which will
+depend on the CPU in your machine next
+we know we want to parallelize this
+process and how we might do that can
+obviously vary we are going to calculate
+n CD for every single sample and for
+every single sample against
+every single sample
+right so the normalized compression
+distance
+add each sample against each sample no
+calculation there depends on any other
+calculation in the process but it is
+absolutely imperative that the order of
+the samples and the NCD Vector for each
+sample is maintained to do this we're
+going to use multi-processing's pool to
+calculate those NCD Vector values but if
+we just did this and appended the values
+to the list even if we initiated the
+pools in order we'd still have no
+guarantee that the order of the samples
+would be maintained as some processes
+might actually finish before others to
+handle for that we're going to first
+initialize the NCD matrices with zeros
+and then we'll update them according to
+their respective indices in that in that
+sample basically their sample index
+next we'll specify a helper function
+that calculates the ncds for a given
+sample and then we'll use pool to map
+that function to all samples now we
+create the pool and calculate the values
+so now we know for each index the vector
+of NCD values so then we can populate
+them into those zeroed matrices then
+finally we can train and test the
+classifier and then we can also confirm
+based on this exact same data set that
+is the same accuracy as before so it
+does look like at least up to this point
+our logic works now let's run this all
+together and use the 10 000 sample data
+set
+75.7 percent accuracy is not bad at all
+for such a simple method that is
+very cool to me it's still less accuracy
+than the original paper's authors so
+it'd be worth looking into their methods
+and seeing kind of what they did
+differently and maybe even help to
+inform you of some ideas about how to
+even further improve this method in
+general it might also be a function of
+the data set that I use I just used a
+movie review data set I think it's from
+Stanford I can't even remember but
+there's definitely better data sets I'm
+sure and then a more homogeneous data
+set would also probably work best so
+where every sample is more or less about
+the same starting length and then I bet
+just based on that factor alone you
+could eke out more uh more performance
+but again I was trying my best to use
+the fairest most uh let's say realistic
+data set that I I could get my hands on
+now all of that said the next question
+is okay how might we actually use this
+method in practice sure we can train and
+get a certain accuracy but then how
+would we actually use this model
+in practice
+essentially it's the same as any other
+sample you're going to take your input
+string you're going to compress it
+you're going to compare the distances to
+every other sample in the training set
+and then we'll pass that through K
+nearest neighbors to determine if it has
+more positive or negative sentiment
+neighbors based on that NCD vector and
+then we'll classify it as such I have
+two example samples one is a positive
+and one is negative so for a sample you
+might have it defined like this and then
+we compress
+then we calculate the NCD Vector for the
+sample which is the calculation of ncds
+between this sample and every other
+sample in the training set notably we
+could also multi-process here as well
+but it's fast enough for me for a single
+sample and then if you wanted to batch
+samples you would just use the exact
+same logic that we used in the training
+anyway after doing that we can then pass
+it to the classifier and in this case
+the prediction is a positive sentiment
+one is positive negative 1 is negative
+we can try the negative sentiment string
+and yep that works that said this method
+being 75 percent accurate is going to
+make a lot of mistakes and I also think
+there's a sweet spot for sample string
+length anything that is outside the norm
+in length for training data is likely
+almost certainly going to be uh I don't
+know the right word but misclassified so
+even if it gets the prediction right it
+gets it right for the wrong reasons and
+anything too short to benefit from State
+statistical techniques for compression
+will also probably not work well so for
+example here's some short strings and we
+can see that these are all classified
+negatively I would say these are all
+misclassified even if one of them is
+correct it doesn't really matter they
+not for the right reasons it's just
+always going to be negative based on
+Purely the length alone we can further
+inspect this Theory by graphing a
+histogram of the sample lengths and then
+we can kind of zoom in here more
+specifically for a 0 to 1500 length and
+we can just clearly see that we want at
+least 200 plus characters and that's
+characters not and this is not a
+compression length this is quite
+literally the original sample so at
+least 200 characters but really more
+like 600 or more to work well with our
+training data out of pure curiosity I
+also tried Dimension reduction and
+principle component analysis and none of
+this really yielded anything that
+appeared to show any value between these
+these normalized compute terminals
+compute normalized compression distance
+vectors but I really wouldn't have
+expected them to either that said
+somewhere apparently in those 401
+Dimensions or in the 8001 dimensions in
+the 10K sample there is something for a
+k nearest neighbor
+there is something for K nearest
+neighbor oh my gosh there is something
+for K nearest neighbors to get a nibble
+on overall I think this serves as a
+really good reminder that other
+algorithms do exist besides just deep
+learning and it can be fruitful to visit
+first principles once in a while
+I hope you've enjoyed this tutorial I'm
+still in disbelief that it works like I
+said I can think of lots of reasons why
+this wouldn't work
+um and all of that but even even in the
+argument of You Know sample links
+outside the norm as long as there's
+enough samples at some specific length
+it still probably is is going to work
+and that said I am still just in
+disbelief that it works as well as it
+does I might expect I don't know 60
+accuracy or something like that just a
+slight Edge I could understand but the
+fact that it has such a solid Edge
+um you know is shocking it really is
+shocking
+um working on this really brought back a
+lot of nostalgia for me as NLP and K
+nearest neighbors were some of my very
+first early projects in programming in
+general
+um so yeah if you've enjoyed this
+in-depth look here then you might also
+enjoy the neural networks from scratch
+book by myself and Daniel kukiwa which
+teaches you how to program neural
+networks truly from scratch without any
+deep learning Frameworks you can check
+that out for yourself at nnfs.io and
+otherwise I will see you all in another
+video
