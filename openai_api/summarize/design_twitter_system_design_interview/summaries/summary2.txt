@@ -1,0 +1,9 @@
+The text discusses the architecture of Twitter, focusing on the user interactions and data storage. It explains that Twitter is a read-heavy system, with users consuming more content than they create. The architecture includes a client, application servers, a caching layer, a database, and a content delivery network. The design should account for user interactions such as creating tweets, following other users, and viewing a news feed. 
+
+The text also discusses the storage of data, including tweets and follow relationships, in a relational database. It suggests indexing based on the follower to group all records together. The text also discusses the storage of media, which is not stored in the database but referenced to an object store. 
+
+The text highlights the challenge of storing a large amount of data, with an estimated 50 gigabytes of data written per day to the relational database. To handle this, the text suggests using read-only replicas of the database and sharding based on user ID. 
+
+The text also discusses the challenge of latency, suggesting the use of a caching layer and pre-generating user news feeds asynchronously. It suggests using a message queue or PubSub system to process new tweets and update user feeds. 
+
+The text concludes by acknowledging the complexity of designing large-scale systems like Twitter, noting that even experienced engineers can run into issues and need to modify designs. It encourages further reading of official papers written by Twitter's engineering teams for a deeper understanding.

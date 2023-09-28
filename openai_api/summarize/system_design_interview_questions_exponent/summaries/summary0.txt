@@ -1,0 +1,19 @@
+The Art of Answering System Design Questions
+
+If you're applying for a technical role such as a software engineer or technical program manager, you'll likely need to prepare for a system design interview. This interview evaluates your ability to design a system or architecture to solve a complex problem in a real-world setting. It's important to note that the goal isn't to create a 100% perfect solution, but rather to design the blueprint of the architecture, analyze a complex problem, discuss multiple solutions, and clearly weigh the pros and cons to reach a workable solution.
+
+Unlike a coding interview, a system design interview usually involves open-ended design problems. Therefore, it's beneficial to use a framework to organize your thoughts quickly and answer the question systematically. This framework helps manage time, communicate clearly, and build towards a productive outcome logically. Once familiar with the framework, it can be applied every time you encounter a system design interview question.
+
+The framework consists of five steps:
+
+1. Define the Problem Space: Understand the problem and define the scope of the design. Ask questions to narrow down the problem from broad and vague to specific with system constraints. Clarify both functional and non-functional requirements and state your assumptions and decisions to your interviewer. Consider whether you're creating the system from scratch, who the clients or consumers are, and what the existing system pieces are. 
+
+2. Design the System at a High Level: Lay out the most fundamental pieces of the system and illustrate how they work together to achieve the desired functionality. Start by designing APIs, which define how a client can access your system's resources. Create a high-level design diagram that acts as a blueprint of your design.
+
+3. Deep Dive into the Design: Examine system components and relationships in more detail. Discuss how non-functional requirements impact your design choices. Present different design options along with their pros and cons and explain why one is preferred over the other under the given circumstances.
+
+4. Identify Bottlenecks and Scaling Opportunities: Consider whether the system can operate under various conditions and has room to support further growth. Ask questions like, is there a single point of failure? Is the data valuable enough to require replication? Do we support a global service? Are there any edge cases that could deteriorate performance or even break the system? How do we scale the system to support 10 times more users?
+
+5. Review and Wrap Up: Summarize and list your major decisions with their justifications and any trade-offs. Check that your design satisfies all the requirements and identify directions for further improvement.
+
+In total, this interview takes about 45 minutes, with five of those usually reserved for introductions at the beginning and any questions you'd like to ask the interviewer at the end. Preparing for a system design interview can be a daunting task, but with the right framework and understanding of the process, you can confidently navigate through it. Good luck!

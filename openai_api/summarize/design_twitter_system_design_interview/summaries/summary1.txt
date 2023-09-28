@@ -1,0 +1,15 @@
+The article discusses the high-level architecture of Twitter, focusing on the scale of the platform, the nature of user interactions, and the amount of data being read and written each day. It highlights that Twitter is a read-heavy system, with users primarily consuming content rather than creating it. The functionality of Twitter includes creating tweets, liking, retweeting, following or unfollowing other users, and even editing tweets. 
+
+The design of Twitter's architecture should consider the scale of the platform, the size of each tweet, and the amount of data being read and written each day. For instance, if each tweet is approximately one kilobyte and there are 20 billion tweets read per day, this equates to 20 petabytes of data being read daily. 
+
+The architecture should also consider the number of active users and the frequency of their interactions. For instance, if there are 200 million daily active users, each reading about 100 tweets per day, this results in 20 billion tweet reads per day. 
+
+The design should also account for the storage of media such as images and videos. These could be stored separately in an object storage solution like Google Cloud Storage or Amazon S3, with a reference to the media included in the tweet data. 
+
+The high-level design of Twitter starts with the client, which could be a computer or mobile device. The client interacts with application servers to perform actions like creating a tweet or viewing a news feed. To handle the large volume of reads, a caching layer is included between the application servers and the database. 
+
+The database could be a relational database, which allows for the creation of relationships between followers and followees. However, a NoSQL database could also be used for its scalability. 
+
+The design also includes a content delivery network (CDN) for distributing static assets like images and videos. The CDN is geographically located close to the user, ensuring that the most relevant and popular content is delivered quickly. 
+
+In conclusion, designing the high-level architecture of Twitter involves considering the scale of the platform, the nature of user interactions, and the amount of data being read and written each day. While the design does not have to exactly match the actual product, it should demonstrate an understanding of the trade-offs and the ability to weigh the pros and cons of different approaches.

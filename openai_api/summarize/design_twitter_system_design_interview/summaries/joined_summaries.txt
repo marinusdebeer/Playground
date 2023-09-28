@@ -1,0 +1,45 @@
+Designing the high-level architecture of Twitter may seem like a daunting task, but it's a fascinating exercise that can provide valuable insights into the underlying infrastructure and design of this popular social media platform. This article is based on a video from the ongoing course, System Design Interview, available on neatcode.io. 
+
+Twitter is a social network where users can follow each other, creating a mutual or one-sided relationship. Some users may have more followers than others, and the frequency of tweets varies among users. This suggests that Twitter is a read-heavy system, with users primarily consuming content rather than creating it. 
+
+The functionality of Twitter includes creating tweets, liking, retweeting, following or unfollowing other users, and even editing tweets. Each tweet consists of a user profile picture, username, and the content of the tweet, which can include text, images, or videos. 
+
+When designing the architecture of Twitter, it's important to consider the scale of the platform. With millions of users and billions of tweets, it's not feasible to design every piece of functionality in a single interview. Instead, the focus should be on the key features such as following other users, creating tweets, and viewing a news feed. 
+
+The design should also take into account the size of each tweet and the amount of data being read and written each day. For example, if each tweet is approximately one kilobyte and there are 20 billion tweets read per day, this equates to 20 petabytes of data being read daily. 
+
+The architecture should also consider the number of active users and the frequency of their interactions. For instance, if there are 200 million daily active users, each reading about 100 tweets per day, this results in 20 billion tweet reads per day. 
+
+The design should also account for the storage of media such as images and videos. These could be stored separately in an object storage solution like Google Cloud Storage or Amazon S3, with a reference to the media included in the tweet data. 
+
+The high-level design of Twitter starts with the client, which could be a computer or mobile device. The client interacts with application servers to perform actions like creating a tweet or viewing a news feed. To handle the large volume of reads, a caching layer is included between the application servers and the database. 
+
+The database could be a relational database, which allows for the creation of relationships between followers and followees. However, a NoSQL database could also be used for its scalability. 
+
+The design also includes a content delivery network (CDN) for distributing static assets like images and videos. The CDN is geographically located close to the user, ensuring that the most relevant and popular content is delivered quickly. 
+
+In conclusion, designing the high-level architecture of Twitter involves considering the scale of the platform, the nature of user interactions, and the amount of data being read and written each day. While the design does not have to exactly match the actual product, it should demonstrate an understanding of the trade-offs and the ability to weigh the pros and cons of different approaches.
+The article discusses the high-level architecture of Twitter, focusing on the scale of the platform, the nature of user interactions, and the amount of data being read and written each day. It highlights that Twitter is a read-heavy system, with users primarily consuming content rather than creating it. The functionality of Twitter includes creating tweets, liking, retweeting, following or unfollowing other users, and even editing tweets. 
+
+The design of Twitter's architecture should consider the scale of the platform, the size of each tweet, and the amount of data being read and written each day. For instance, if each tweet is approximately one kilobyte and there are 20 billion tweets read per day, this equates to 20 petabytes of data being read daily. 
+
+The architecture should also consider the number of active users and the frequency of their interactions. For instance, if there are 200 million daily active users, each reading about 100 tweets per day, this results in 20 billion tweet reads per day. 
+
+The design should also account for the storage of media such as images and videos. These could be stored separately in an object storage solution like Google Cloud Storage or Amazon S3, with a reference to the media included in the tweet data. 
+
+The high-level design of Twitter starts with the client, which could be a computer or mobile device. The client interacts with application servers to perform actions like creating a tweet or viewing a news feed. To handle the large volume of reads, a caching layer is included between the application servers and the database. 
+
+The database could be a relational database, which allows for the creation of relationships between followers and followees. However, a NoSQL database could also be used for its scalability. 
+
+The design also includes a content delivery network (CDN) for distributing static assets like images and videos. The CDN is geographically located close to the user, ensuring that the most relevant and popular content is delivered quickly. 
+
+In conclusion, designing the high-level architecture of Twitter involves considering the scale of the platform, the nature of user interactions, and the amount of data being read and written each day. While the design does not have to exactly match the actual product, it should demonstrate an understanding of the trade-offs and the ability to weigh the pros and cons of different approaches.
+The text discusses the architecture of Twitter, focusing on the user interactions and data storage. It explains that Twitter is a read-heavy system, with users consuming more content than they create. The architecture includes a client, application servers, a caching layer, a database, and a content delivery network. The design should account for user interactions such as creating tweets, following other users, and viewing a news feed. 
+
+The text also discusses the storage of data, including tweets and follow relationships, in a relational database. It suggests indexing based on the follower to group all records together. The text also discusses the storage of media, which is not stored in the database but referenced to an object store. 
+
+The text highlights the challenge of storing a large amount of data, with an estimated 50 gigabytes of data written per day to the relational database. To handle this, the text suggests using read-only replicas of the database and sharding based on user ID. 
+
+The text also discusses the challenge of latency, suggesting the use of a caching layer and pre-generating user news feeds asynchronously. It suggests using a message queue or PubSub system to process new tweets and update user feeds. 
+
+The text concludes by acknowledging the complexity of designing large-scale systems like Twitter, noting that even experienced engineers can run into issues and need to modify designs. It encourages further reading of official papers written by Twitter's engineering teams for a deeper understanding.
