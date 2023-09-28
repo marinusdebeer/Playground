@@ -29,8 +29,8 @@ load_dotenv()
 NUM_ACTIONS = 3
 ACTIONS = [0, 2, 3]
 GAMMA = 0.99
-ALPHA = 0.70
-BETA = 0.4
+ALPHA = 0.60 # alpha = 0 -> uniform; alpha = 1 -> purely based on priority
+BETA = 0.0 # beta = 0 -> no correction; beta = 1 -> weights fully correct bias
 BUFFER_SIZE = 100_000
 MIN_BUFFER_SIZE = 80_000
 N_STEPS = 3
@@ -39,7 +39,7 @@ TRAINING_FREQ = 32
 SHOW_FRAME = 100
 TARGET_UPDATE_FREQ = 2500
 TARGET_UPDATE_RATE = 40
-INITIAL_LEARNING_RATE = 0.001 #0.00025 #0.002
+INITIAL_LEARNING_RATE = 0.0005 #0.00025 #0.002
 LEARNING_RATE_DECAY = 0.05   #0.05 for 5_000, 0.005 for 20_000
 MIN_LEARNING_RATE = 0.0001
 EPSILON_START = 1.0
@@ -51,12 +51,12 @@ GAME = "Breakout-v4"
 # GAME = "BreakoutNoFrameskip-v4"
 # GAME = "ALE/Breakout-v5"
 
-NUM_EPISODES = 5_000
-SAVE_FREQ = 100
-EMAIL_FREQUENCY = 1_000
+NUM_EPISODES = 1_500
+SAVE_FREQ = 50
+EMAIL_FREQUENCY = 300
 # SAVE_PATH = "F:/Coding/breakout/full_rainbow/"
 # SAVE_PATH = "F:/Coding/breakout/double_dqn_9_5_000/"
-SAVE_PATH = "F:/Coding/pong/test/"
+SAVE_PATH = "G:/Coding/breakout/testing_prioritized/per_18_1500_c/"
 RENDER = False
 PRETRAINED = False
 TRAINING = True
@@ -64,7 +64,7 @@ MODEL = ""
 LOGGING = True
 
 DOUBLE_DQN                    = True
-PRIORITIZED_EXPERIENCE_REPLAY = False
+PRIORITIZED_EXPERIENCE_REPLAY = True
 N_STEPS_IMPLEMENTED           = False
 DUELING_DQN                   = False
 DISTIBUTIONAL_RL              = False
@@ -92,14 +92,14 @@ def estimate_remaining_time(total_episodes, times):
 
 def read_file():
     try:
-        with open("C:/Users/Marinus/OneDrive/Desktop/Development/Playground/gym/atari_breakout/rainbow_breakout.py", "r") as f:
+        with open("C:/Users/Mar/OneDrive/Desktop/Development/Playground/gym/atari_breakout/rainbow_breakout.py", "r") as f:
             return f.read()
     except:
         return ""
-def write_to_file(output_str, file_name="output.txt"):
+def write_to_file(output_str, file_name="output.txt", type = "a"):
     if TRAINING:
         try:
-            with open(f"{SAVE_PATH}{file_name}", "a") as f:
+            with open(f"{SAVE_PATH}{file_name}", type) as f:
                 f.write(output_str)
         except:
             print("error writing to file")
@@ -135,12 +135,9 @@ class PrioritizedReplayBuffer:
         self.memory = deque(maxlen=buffer_size)
         self.priorities = deque(maxlen=buffer_size)
         self.alpha = alpha
-        self.max_priority = 1.0
-
-    # def add(self, state, action, reward, next_state, done):
-    #     self.memory.append((state, action, reward, next_state, done))
-    #     self.max_priority = max(self.max_priority, self.alpha)  # Update the maximum priority
-    #     heapq.heappush(self.priorities, -self.max_priority)  # Use negative values for priorities
+        self.max_priority = 1
+        self.max_td_error = 1
+        self.sample_num = 1
 
     def add(self, state, action, reward, next_state, done):
         self.memory.append((state, action, reward, next_state, done))
@@ -155,12 +152,12 @@ class PrioritizedReplayBuffer:
         # indices = np.random.choice(len(self.memory), batch_size, p=probs)
         samples = [self.memory[i] for i in indices]
 
-        with open(f"{SAVE_PATH}indices.txt", "a") as f:
-            f.write(f"{','.join(map(str, indices))}\n")
-        
-        weights = (self.priorities ** (-beta)) / np.max(self.priorities) # Proportional prioritization
-        # weights = (len(self.memory) * probs[indices]) ** (-beta)
-        # weights /= weights.max()
+        with open(f"{SAVE_PATH}/indices/indices{self.sample_num}.txt", "a") as f:
+            f.write(f"{','.join(map(str, np.sort(np.array(indices))))}\n")
+        self.sample_num += 1
+        # weights = (self.priorities ** (-beta)) / np.max(self.priorities) # Proportional prioritization
+        weights = (len(self.memory) * probs[indices]) ** (-beta)
+        weights /= weights.max()
         # print(weights)
         weights = np.array(weights, dtype=np.float32)
         
@@ -170,9 +167,6 @@ class PrioritizedReplayBuffer:
     def update_priorities(self, indices, priorities):
         for idx, priority in zip(indices, priorities):
             self.priorities[idx] = priority
-            # heapq.heappushpop(self.priorities, -priority)  # Use negative values for priorities
-            # self.max_priority = max(self.max_priority, priority)
-        self.max_priority = max(self.priorities)
 
     def __len__(self):
         return len(self.memory)
@@ -292,7 +286,7 @@ TRAINING = {TRAINING}
 MODEL = {MODEL}\n\n"""
         if LOGGING:
             print(params)
-        write_to_file(f"{read_file()}", "code.py")
+        write_to_file(f"{read_file()}", "code.py", type="w")
         self.update_target_network()
 
     def update_target_network(self):
@@ -359,7 +353,7 @@ MODEL = {MODEL}\n\n"""
         return loss, gradients, td_errors
 
     def learn(self):
-        if len(self.buffer) < MIN_BUFFER_SIZE:
+        if len(self.buffer) < BATCH_SIZE:
             return 0, 0
         start = time.time()
         if PRIORITIZED_EXPERIENCE_REPLAY:
@@ -369,15 +363,17 @@ MODEL = {MODEL}\n\n"""
         states, actions, rewards, next_states, dones = zip(*minibatch)
         # states, actions, rewards, next_states, dones = map(tf.stack, zip(*minibatch))
 
-        states = np.array(states, dtype=np.float32)
-        actions = np.array(actions, dtype=np.int32)
-        rewards = np.array(rewards, dtype=np.float32)
+        states      = np.array(states,      dtype=np.float32)
+        actions     = np.array(actions,     dtype=np.int32)
+        rewards     = np.array(rewards,     dtype=np.float32)
         next_states = np.array(next_states, dtype=np.float32)
-        dones = np.array(dones, dtype=np.float32)
+        dones       = np.array(dones,       dtype=np.float32)
 
         if PRIORITIZED_EXPERIENCE_REPLAY:
             loss, gradients, td_errors = self.compute_loss_and_gradients(states, actions, rewards, next_states, dones, weights)
             priorities = tf.abs(td_errors) + 1e-6
+            self.buffer.max_td_error = max(self.buffer.max_td_error, tf.reduce_max(priorities))
+            priorities /= self.buffer.max_td_error
             self.buffer.update_priorities(indices, priorities.numpy())
         else:
             loss, gradients, td_errors = self.compute_loss_and_gradients(states, actions, rewards, next_states, dones, None)
@@ -416,8 +412,9 @@ MODEL = {MODEL}\n\n"""
         # processed_observe = processed_observe[7:,:]
         return processed_observe, time.time() - start
     
-    def get_frames(self):
+    def get_frames(self, frames = MIN_BUFFER_SIZE):
         state = self.env.reset()
+        self.env.step(1)
         steps = 0
         lives = 5
         for _ in range(4):
@@ -425,11 +422,11 @@ MODEL = {MODEL}\n\n"""
             self.frame_buffer.append(processed_state)
         state = np.stack(self.frame_buffer, axis=-1)
 
-        pbar = tqdm(total=MIN_BUFFER_SIZE)
-        while steps < MIN_BUFFER_SIZE:
-            action = np.random.choice(ACTIONS)
+        pbar = tqdm(total=frames)
+        while steps < frames:
+            # action = np.random.choice(ACTIONS)
+            action = self.choose_action(state)
             next_state, reward, done, _, info = self.env.step(action)
-
             processed_state, proc_time = self.preprocess_state(next_state)
             self.frame_buffer.append(processed_state)
             next_state = np.stack(self.frame_buffer, axis=-1)
@@ -443,6 +440,11 @@ MODEL = {MODEL}\n\n"""
                 self.remember(state, action, reward, next_state, True)
             else:
                 self.remember(state, action, reward, next_state, done)
+            if(lives ==  0):
+                state = self.env.reset()
+                lives = 5
+                self.env.step(1)
+
 
             state = next_state
             steps += 1
@@ -464,7 +466,10 @@ MODEL = {MODEL}\n\n"""
         training_loss = []
         total_actions = {0: 0, 2: 0, 3: 0}
         highscore = 0
-        self.get_frames()
+        if PRIORITIZED_EXPERIENCE_REPLAY:
+            self.get_frames(frames=1000)
+        else:
+            self.get_frames()
         start_time = time.time()
         human_readable_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -475,6 +480,10 @@ MODEL = {MODEL}\n\n"""
         #     thread.start()
         #     threads.append(thread)
         for episode in range(1, NUM_EPISODES + 1):
+            # if PRIORITIZED_EXPERIENCE_REPLAY and (episode == 50 or episode != NUM_EPISODES and episode % 300 == 0):
+            if PRIORITIZED_EXPERIENCE_REPLAY and episode == 50:
+                self.buffer = PrioritizedReplayBuffer(BUFFER_SIZE, ALPHA)
+                self.get_frames()
             ep_start = time.time()
             actions = {0: 0, 2: 0, 3: 0}
             done = False
@@ -518,7 +527,8 @@ MODEL = {MODEL}\n\n"""
 
                 if (info["lives"] < lives):
                     lives = info["lives"]
-                    reward = -1
+                    # print(reward)
+                    # reward = -1
                     self.env.step(1)
                     self.remember(state, action, reward, next_state, True)
                 elif TRAINING:
@@ -567,7 +577,7 @@ MODEL = {MODEL}\n\n"""
                         actions_per_second = 'lots'
 
                     output_str = f"Episode {episode}/{NUM_EPISODES}, Highscore: {highscore}, Reward: {ep_reward}, Epsilon: {round(self.epsilon, 3)}, LR: {round(self.learning_rate, 6)}, NAME: {SAVE_PATH}\n"
-                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}, avg5000: {avg5000}, beta: {getattr(self, 'beta', 'N/A')}, alpha: {getattr(self, 'alpha', 'N/A')}, target_update_freq: {self.target_update_freq}\n"
+                    output_str += f"Average: {avg}, Avg10: {avg10}, Avg100: {avg100}, Avg500: {avg500}, avg1000: {avg1000}, avg5000: {avg5000}, beta: {getattr(self, 'beta', 'N/A')}, alpha: {getattr(self.buffer, 'alpha', 'N/A')}, target_update_freq: {self.target_update_freq}\n"
                     output_str += f"lossAvg: {lossAvg}, loss1K: {loss1K}, loss10K: {loss10K}, loss100K: {loss100K}, loss1M: {loss1M}\n"
                     output_str += f"Total time: {hours:02d}:{minutes:02d}:{seconds:02d}, Episode time: {ep_time}s, Average time: {avgTime}s, Avg100: {avg100time}s, avg1000time: {avg1000time}s\n"
                     output_str += f"No op: {actions[0]}/{total_actions[0]}, Left: {actions[3]}/{total_actions[3]}, Right: {actions[2]}/{total_actions[2]}, Total: {actions_per_episode}/{actions_per_training}, memory size: {len(self.buffer)}\n"
@@ -578,6 +588,9 @@ MODEL = {MODEL}\n\n"""
                     output_str += f"Total time: {round(training_time + total_actions_time + step_times + procs_time, 1)}/{round(time.time() - ep_start, 1)}s\n"
 
                     if (episode % SAVE_FREQ == 0 or episode == 10) and TRAINING:
+                        if PRIORITIZED_EXPERIENCE_REPLAY:
+                            output_str += str(np.array(self.buffer.priorities)[-300:]) + "\n"
+                            output_str += f"max_td_error: {self.buffer.max_td_error}, max_priority: {self.buffer.max_priority}\n"
                         self.target_update_freq += TARGET_UPDATE_RATE
                         output_str += f"Model weights saved at episode {episode}\n"
                         self.q_network.save_weights(f"{SAVE_PATH}models/model_{episode}.h5")
@@ -603,22 +616,27 @@ MODEL = {MODEL}\n\n"""
             # if steps == MIN_BUFFER_SIZE:
             # self.epsilon = EPSILON_START - (episode/(NUM_EPISODES*(1/EPSILON_START)))
             # self.epsilon = EPSILON_START * (EPSILON_DECAY ** episode)
-            if getattr(self, 'beta', False):
-                self.beta = min(1.0, self.beta + self.beta_increment)
+
+            # if getattr(self, 'beta', False):
+                # self.beta = min(1.0, self.beta + self.beta_increment)
             self.epsilon = decay(EPSILON_START, episode, EPSILON_DECAY)
             # self.learning_rate = max(decay(INITIAL_LEARNING_RATE, episode, LEARNING_RATE_DECAY), MIN_LEARNING_RATE)
             # self.optimizer.learning_rate = self.learning_rate
 
 if __name__ == "__main__":
+    np.set_printoptions(suppress=True)
     tf.config.optimizer.set_jit(True)
     devices = tf.config.experimental.list_physical_devices('GPU')
+    print(devices)
     tf.config.experimental.set_memory_growth(devices[0], True)
 
     if not os.path.exists(SAVE_PATH):
         os.makedirs(SAVE_PATH)
         os.makedirs(f"{SAVE_PATH}models")
+        os.makedirs(f"{SAVE_PATH}indices")
     agent = RainbowAgent()
     agent.train()
     human_readable_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"Finished training at {human_readable_time}")
     write_to_file(f"Finished training at {human_readable_time}\n")
+    print("\a")
