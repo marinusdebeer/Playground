@@ -7,10 +7,10 @@ import ast
 def plot_multiple_runs():
     # folders = ["n_steps", "5_n_steps", "test_learn_2", "dueling", "double_dqn_2"]
     # folders = ["prioritized", "prioritized_3_n_steps", "3_n_steps_optimized", "test_learn_2", "prioritized_3_n_step_dueling", "double_dqn_2"]
-    folders = ["double_dqn_3_5000", "double_dqn_4_5000"]
+    folders = ["per_2_1500/"]
     data = {}
     for folder in folders:
-        with open(f"F:/Coding/breakout/{folder}/rewards.txt", "r") as f:
+        with open(f"G:/Coding/breakout/testing_prioritized/{folder}/rewards.txt", "r") as f:
             data_str = f.read()
             data[folder] = ast.literal_eval(data_str)
     # with open("F:/Coding/breakout/5_n_steps/rewards.txt", "r") as f:
@@ -21,7 +21,7 @@ def plot_multiple_runs():
     for folder in folders:
         
         data_array = np.array(data[folder])
-        total = 5000
+        total = 1000
         interval = 100
         # print(data_array[:total].mean())
         reshaped_arr = data_array[:total].reshape(total//interval, interval)
@@ -37,7 +37,7 @@ def plot_multiple_runs():
     plt.show()
 
 def plot_rewards():
-    with open("F:/Coding/breakout/double_dqn_8_5000/rewards.txt", "r") as f:
+    with open("G:/Coding/breakout/testing_prioritized/dqn_2_1500/rewards.txt", "r") as f:
     # with open("F:/Coding/breakout/double_dqn_3_5000/rewards.txt", "r") as f:
         data_str = f.read()
         data = ast.literal_eval(data_str)
