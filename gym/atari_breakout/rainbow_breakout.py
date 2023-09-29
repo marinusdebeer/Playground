@@ -56,7 +56,8 @@ SAVE_FREQ = 50
 EMAIL_FREQUENCY = 300
 # SAVE_PATH = "F:/Coding/breakout/full_rainbow/"
 # SAVE_PATH = "F:/Coding/breakout/double_dqn_9_5_000/"
-SAVE_PATH = "G:/Coding/breakout/testing_prioritized/per_18_1500_c/"
+SAVE_PATH = "per_1_1500_c/"
+# SAVE_PATH = "G:/Coding/breakout/testing_prioritized/per_18_1500_c/"
 RENDER = False
 PRETRAINED = False
 TRAINING = True
@@ -628,7 +629,7 @@ if __name__ == "__main__":
     tf.config.optimizer.set_jit(True)
     devices = tf.config.experimental.list_physical_devices('GPU')
     print(devices)
-    tf.config.experimental.set_memory_growth(devices[0], True)
+    # tf.config.experimental.set_memory_growth(devices[0], True)
 
     if not os.path.exists(SAVE_PATH):
         os.makedirs(SAVE_PATH)

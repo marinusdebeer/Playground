@@ -11,9 +11,9 @@ def plot_epsilon():
       
     initial_epsilon = 1.0
     decay_rate = 0.04 # 0.9998 for 20_000 episodes and 0.9996 for 10_000 episodes
-    num_episodes = 1_000
+    num_episodes = 1_500
     episodes = np.arange(num_episodes+1)
-    minumum = 0.05
+    minumum = 0.04
 
     epsilon_values = [epsilon_decay(initial_epsilon, decay_rate, episode, num_episodes, minumum) for episode in episodes]
 
