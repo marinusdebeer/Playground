@@ -29,7 +29,7 @@ load_dotenv()
 # Hyperparameters
 NUM_ACTIONS = 3
 ACTIONS = [0, 2, 3]
-GAMMA = 0.95
+GAMMA = 0.99
 ALPHA = 0.60 # alpha = 0 -> uniform; alpha = 1 -> purely based on priority
 BETA = 0.40 # beta = 0 -> no correction; beta = 1 -> weights fully correct bias
 BUFFER_SIZE = 300_000
@@ -58,8 +58,8 @@ SEED=42
 NUM_EPISODES = 5_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1000
-RUN = "per_n_steps_47_5_000_n"
-# RUN = "per_45_10_000_n"
+# RUN = "per_n_steps_47_5_000_n"
+RUN = "per_49_5_000_n"
 SAVE_PATH = f"G:/Coding/breakout/testing_prioritized/{RUN}/"
 
 # GAME = "Pong-v4"
@@ -77,7 +77,7 @@ LOGGING = True
 
 DOUBLE_DQN                    = True
 PRIORITIZED_EXPERIENCE_REPLAY = True
-N_STEPS_IMPLEMENTED           = True
+N_STEPS_IMPLEMENTED           = False
 DUELING_DQN                   = False
 DISTIBUTIONAL_RL              = False
 NOISY_NETS                    = False
@@ -700,15 +700,10 @@ if __name__ == "__main__":
     # For prioritized experience replay, remove the reset of the priorities
     # Add highscore experiences to buffer multiple times
     # no more logging just log to file and use tqdm
-    # make the epsilon deccay slower
+    # make the epsilon decay slower
     # make sure that the model I am using is actually the right one
-    # reduce gamma to 0.95
     # the rewards are 1, 4, and 7. Change that to 1, 2, and 3
     # multistep and dueling dqn
     # use tensorboard for logging and graphing the loss and rewards over time and the model architecture and the model weights and the replay buffer
-    # Change training freq to 4
     # try again a negative reward for losing a life
-    # increase epsilon min to 0.10
-    # Maybe increase the batch size drastically
-    # Try using a larger buffer size
     # Break up this file by having all non training or model stuff in a different file

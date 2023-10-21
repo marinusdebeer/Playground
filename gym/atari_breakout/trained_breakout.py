@@ -10,12 +10,12 @@ env = gym.make('Breakout-v4', render_mode="human")
 # env = gym.make('Breakout-v4')
 agent = RainbowAgent()
 # Build the model by calling it with an input shape
-dummy_input = np.zeros((1, 84, 84, 4))  # Replace with the appropriate input shape
+dummy_input = np.zeros((1, 84, 64, 4))  # Replace with the appropriate input shape
 ACTIONS = [0, 2, 3]
 _ = agent.q_network(dummy_input)
 # Load the saved weights from a specific episode
 # agent.q_network.load_weights("rainbow_models/good_models/model_10000_1.h5")
-agent.q_network.load_weights("G:/Coding/breakout/testing_prioritized/dqn_8_1500/models/model_1400.h5")
+agent.q_network.load_weights("G:/Coding/breakout/testing_prioritized/per_32_5_000_h/models/model_5000.h5")
 # agent.model.load_weights("models/model_weights_episode_4380.h5")
 # Function to play the game using the trained model
 def play_game(agent, num_episodes=5):
