@@ -1,0 +1,6235 @@
+components:
+  parameters:
+    PathAlbumId:
+      in: path
+      name: id
+      required: true
+      schema:
+        description: ''
+        example: 4aawyAB9vmqN3uQ7FjRGTy
+        title: Spotify Album ID
+        type: string
+    PathArtistId:
+      in: path
+      name: id
+      required: true
+      schema:
+        description: ''
+        example: 0TnOYISbd1XYRBk9myaseg
+        title: Spotify Artist ID
+        type: string
+    PathAudiobookId:
+      in: path
+      name: id
+      required: true
+      schema:
+        description: ''
+        example: 7iHfbu1YPACw6oZPAFJtqe
+        title: Spotify Audiobook ID
+        type: string
+    PathChapterId:
+      in: path
+      name: id
+      required: true
+      schema:
+        description: ''
+        example: 0D5wENdkdwbqlrHoaJ9g29
+        title: Spotify Chapter ID
+        type: string
+    PathPlaylistId:
+      in: path
+      name: playlist_id
+      required: true
+      schema:
+        description: ''
+        example: 3cEYpjA9oz9GiPac4AsH4n
+        title: Playlist ID
+        type: string
+    PathShowId:
+      in: path
+      name: id
+      required: true
+      schema:
+        description: ''
+        example: 38bS44xjbVVZ3No3ByF1dJ
+        title: Spotify Show ID
+        type: string
+    PathUserId:
+      in: path
+      name: user_id
+      required: true
+      schema:
+        description: ''
+        example: smedjan
+        title: User ID
+        type: string
+    QueryAdditionalTypes:
+      in: query
+      name: additional_types
+      required: false
+      schema:
+        description: ''
+        title: Additional Types
+        type: string
+    QueryAlbumIds:
+      in: query
+      name: ids
+      required: true
+      schema:
+        description: ''
+        example: 382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc
+        title: Spotify Album IDs
+        type: string
+    QueryAudiobookIds:
+      in: query
+      name: ids
+      required: true
+      schema:
+        description: ''
+        example: 18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe
+        title: Spotify Audiobook IDs
+        type: string
+    QueryChapterIds:
+      in: query
+      name: ids
+      required: true
+      schema:
+        description: ''
+        example: 0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29
+        title: Spotify Chapter IDs
+        type: string
+    QueryIncludeGroups:
+      in: query
+      name: include_groups
+      required: false
+      schema:
+        description: ''
+        example: single,appears_on
+        title: Groups to include (single, album, appears_on, compilation)
+        type: string
+    QueryLimit:
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 20
+        description: ''
+        example: 10
+        maximum: 50
+        minimum: 0
+        title: Limit
+        type: integer
+    QueryMarket:
+      in: query
+      name: market
+      required: false
+      schema:
+        description: ''
+        example: ES
+        title: Market
+        type: string
+    QueryOffset:
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        description: ''
+        example: 5
+        title: Offset
+        type: integer
+    QueryShowIds:
+      in: query
+      name: ids
+      required: true
+      schema:
+        description: ''
+        example: 5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ
+        title: Ids
+        type: string
+    QueryTrackIds:
+      in: query
+      name: ids
+      required: true
+      schema:
+        description: ''
+        example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+        title: Spotify Track IDs
+        type: string
+  responses:
+    ArrayOfBooleans:
+      content:
+        application/json:
+          schema:
+            example:
+            - false
+            - true
+            items:
+              type: boolean
+            type: array
+      description: ''
+    ArrayOfImages:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ImageObject'
+            type: array
+      description: ''
+    BadRequest:
+      content:
+        application/json:
+          schema:
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+            required:
+            - error
+            type: object
+      description: ''
+    CursorPagedArtists:
+      content:
+        application/json:
+          schema:
+            properties:
+              artists:
+                $ref: '#/components/schemas/CursorPagingSimplifiedArtistObject'
+            required:
+            - artists
+            type: object
+      description: ''
+    CursorPagedPlayHistory:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CursorPagingPlayHistoryObject'
+      description: ''
+    Forbidden:
+      content:
+        application/json:
+          schema:
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+            required:
+            - error
+            type: object
+      description: ''
+    ManyAlbums:
+      content:
+        application/json:
+          schema:
+            properties:
+              albums:
+                items:
+                  $ref: '#/components/schemas/AlbumObject'
+                type: array
+            required:
+            - albums
+            type: object
+      description: ''
+    ManyArtists:
+      content:
+        application/json:
+          schema:
+            properties:
+              artists:
+                items:
+                  $ref: '#/components/schemas/ArtistObject'
+                type: array
+            required:
+            - artists
+            type: object
+      description: ''
+    ManyAudioFeatures:
+      content:
+        application/json:
+          schema:
+            properties:
+              audio_features:
+                items:
+                  $ref: '#/components/schemas/AudioFeaturesObject'
+                type: array
+            required:
+            - audio_features
+            type: object
+      description: ''
+    ManyAudiobooks:
+      content:
+        application/json:
+          schema:
+            properties:
+              audiobooks:
+                items:
+                  $ref: '#/components/schemas/AudiobookObject'
+                type: array
+            required:
+            - audiobooks
+            type: object
+      description: ''
+    ManyChapters:
+      content:
+        application/json:
+          schema:
+            properties:
+              chapters:
+                items:
+                  $ref: '#/components/schemas/ChapterObject'
+                type: array
+            required:
+            - chapters
+            type: object
+      description: ''
+    ManyDevices:
+      content:
+        application/json:
+          schema:
+            properties:
+              devices:
+                items:
+                  $ref: '#/components/schemas/DeviceObject'
+                type: array
+            required:
+            - devices
+            type: object
+      description: ''
+    ManyEpisodes:
+      content:
+        application/json:
+          schema:
+            properties:
+              episodes:
+                items:
+                  $ref: '#/components/schemas/EpisodeObject'
+                type: array
+            required:
+            - episodes
+            type: object
+      description: ''
+    ManyGenres:
+      content:
+        application/json:
+          schema:
+            properties:
+              genres:
+                example:
+                - alternative
+                - samba
+                items:
+                  type: string
+                type: array
+            required:
+            - genres
+            type: object
+      description: ''
+    ManySimplifiedShows:
+      content:
+        application/json:
+          schema:
+            properties:
+              shows:
+                items:
+                  $ref: '#/components/schemas/SimplifiedShowObject'
+                type: array
+            required:
+            - shows
+            type: object
+      description: ''
+    ManyTracks:
+      content:
+        application/json:
+          schema:
+            properties:
+              tracks:
+                items:
+                  $ref: '#/components/schemas/TrackObject'
+                type: array
+            required:
+            - tracks
+            type: object
+      description: ''
+    NotFound:
+      content:
+        application/json:
+          schema:
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+            required:
+            - error
+            type: object
+      description: ''
+    OneAlbum:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AlbumObject'
+      description: ''
+    OneArtist:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ArtistObject'
+      description: ''
+    OneAudioAnalysis:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AudioAnalysisObject'
+      description: ''
+    OneAudioFeatures:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AudioFeaturesObject'
+      description: ''
+    OneAudiobook:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AudiobookObject'
+      description: ''
+    OneCategory:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryObject'
+      description: ''
+    OneChapter:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ChapterObject'
+      description: ''
+    OneCurrentlyPlaying:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CurrentlyPlayingContextObject'
+      description: ''
+    OneCurrentlyPlayingTrack:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CurrentlyPlayingContextObject'
+      description: ''
+    OneEpisode:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EpisodeObject'
+      description: ''
+    OnePlaylist:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PlaylistObject'
+      description: ''
+    OnePrivateUser:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateUserObject'
+      description: ''
+    OnePublicUser:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicUserObject'
+      description: ''
+    OneRecommendations:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RecommendationsObject'
+      description: ''
+    OneShow:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ShowObject'
+      description: ''
+    OneTrack:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TrackObject'
+      description: ''
+    PagedAlbums:
+      content:
+        application/json:
+          schema:
+            properties:
+              albums:
+                $ref: '#/components/schemas/PagingSimplifiedAlbumObject'
+            required:
+            - albums
+            type: object
+      description: ''
+    PagedCategories:
+      content:
+        application/json:
+          schema:
+            properties:
+              categories:
+                $ref: '#/components/schemas/PagingObject'
+            required:
+            - categories
+            type: object
+      description: ''
+    PagedFeaturedPlaylists:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingFeaturedPlaylistObject'
+      description: ''
+    PagedPlaylists:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingPlaylistObject'
+      description: ''
+    PagingArtistDiscographyAlbumObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingArtistDiscographyAlbumObject'
+      description: ''
+    PagingArtistOrTrackObject:
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/PagingObject'
+            - properties:
+                items:
+                  items:
+                    discriminator:
+                      propertyName: type
+                    oneOf:
+                    - $ref: '#/components/schemas/ArtistObject'
+                    - $ref: '#/components/schemas/TrackObject'
+                    type: object
+                  type: array
+              type: object
+            type: object
+      description: ''
+    PagingPlaylistTrackObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingPlaylistTrackObject'
+      description: ''
+    PagingSavedAlbumObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedAlbumObject'
+      description: ''
+    PagingSavedEpisodeObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedEpisodeObject'
+      description: ''
+    PagingSavedShowObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedShowObject'
+      description: ''
+    PagingSavedTrackObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSavedTrackObject'
+      description: ''
+    PagingSimplifiedAudiobookObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSimplifiedAudiobookObject'
+      description: ''
+    PagingSimplifiedChapterObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSimplifiedChapterObject'
+      description: ''
+    PagingSimplifiedEpisodeObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSimplifiedEpisodeObject'
+      description: ''
+    PagingSimplifiedTrackObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagingSimplifiedTrackObject'
+      description: ''
+    PlaylistSnapshotId:
+      content:
+        application/json:
+          schema:
+            properties:
+              snapshot_id:
+                example: abc
+                type: string
+            type: object
+      description: ''
+    Queue:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QueueObject'
+      description: ''
+    SearchItems:
+      content:
+        application/json:
+          schema:
+            properties:
+              albums:
+                $ref: '#/components/schemas/PagingSimplifiedAlbumObject'
+              artists:
+                $ref: '#/components/schemas/PagingArtistObject'
+              audiobooks:
+                $ref: '#/components/schemas/PagingSimplifiedAudiobookObject'
+              episodes:
+                $ref: '#/components/schemas/PagingSimplifiedEpisodeObject'
+              playlists:
+                $ref: '#/components/schemas/PagingPlaylistObject'
+              shows:
+                $ref: '#/components/schemas/PagingSimplifiedShowObject'
+              tracks:
+                $ref: '#/components/schemas/PagingTrackObject'
+            type: object
+      description: ''
+    TooManyRequests:
+      content:
+        application/json:
+          schema:
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+            required:
+            - error
+            type: object
+      description: ''
+    Unauthorized:
+      content:
+        application/json:
+          schema:
+            properties:
+              error:
+                $ref: '#/components/schemas/ErrorObject'
+            required:
+            - error
+            type: object
+      description: ''
+  schemas:
+    AlbumBase:
+      properties:
+        album_type:
+          description: ''
+          enum:
+          - album
+          - single
+          - compilation
+          example: compilation
+          type: string
+        available_markets:
+          description: ''
+          example:
+          - CA
+          - BR
+          - IT
+          items:
+            type: string
+          type: array
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          example: 2up3OPMp9Tb4dAKM2erWXQ
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        name:
+          description: ''
+          type: string
+        release_date:
+          description: ''
+          example: 1981-12
+          type: string
+        release_date_precision:
+          description: ''
+          enum:
+          - year
+          - month
+          - day
+          example: year
+          type: string
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/AlbumRestrictionObject'
+          description: ''
+        total_tracks:
+          description: ''
+          example: 9
+          type: integer
+        type:
+          description: ''
+          enum:
+          - album
+          type: string
+        uri:
+          description: ''
+          example: spotify:album:2up3OPMp9Tb4dAKM2erWXQ
+          type: string
+      required:
+      - album_type
+      - total_tracks
+      - available_markets
+      - external_urls
+      - href
+      - id
+      - images
+      - name
+      - release_date
+      - release_date_precision
+      - type
+      - uri
+      type: object
+    AlbumObject:
+      allOf:
+      - $ref: '#/components/schemas/AlbumBase'
+      - properties:
+          artists:
+            description: ''
+            items:
+              $ref: '#/components/schemas/SimplifiedArtistObject'
+            type: array
+          copyrights:
+            description: ''
+            items:
+              $ref: '#/components/schemas/CopyrightObject'
+            type: array
+          external_ids:
+            allOf:
+            - $ref: '#/components/schemas/ExternalIdObject'
+            description: ''
+          genres:
+            description: ''
+            example:
+            - Egg punk
+            - Noise rock
+            items:
+              type: string
+            type: array
+          label:
+            description: ''
+            type: string
+          popularity:
+            description: ''
+            type: integer
+          tracks:
+            allOf:
+            - $ref: '#/components/schemas/PagingSimplifiedTrackObject'
+            description: ''
+        type: object
+      required:
+      - artists
+      - tracks
+      - copyrights
+      - external_ids
+      - genres
+      - label
+      - popularity
+      x-spotify-docs-type: AlbumObject
+    AlbumRestrictionObject:
+      properties:
+        reason:
+          description: ''
+          enum:
+          - market
+          - product
+          - explicit
+          type: string
+      type: object
+      x-spotify-docs-type: AlbumRestrictionObject
+    ArtistDiscographyAlbumObject:
+      allOf:
+      - $ref: '#/components/schemas/SimplifiedAlbumObject'
+      - properties:
+          album_group:
+            description: ''
+            enum:
+            - album
+            - single
+            - compilation
+            - appears_on
+            example: compilation
+            type: string
+        required:
+        - album_group
+        type: object
+      x-spotify-docs-type: ArtistDiscographyAlbumObject
+    ArtistObject:
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        followers:
+          allOf:
+          - $ref: '#/components/schemas/FollowersObject'
+          description: ''
+        genres:
+          description: ''
+          example:
+          - Prog rock
+          - Grunge
+          items:
+            type: string
+          type: array
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        name:
+          description: ''
+          type: string
+        popularity:
+          description: ''
+          type: integer
+        type:
+          description: ''
+          enum:
+          - artist
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: ArtistObject
+    AudioAnalysisObject:
+      properties:
+        bars:
+          description: ''
+          items:
+            $ref: '#/components/schemas/TimeIntervalObject'
+          type: array
+        beats:
+          description: ''
+          items:
+            $ref: '#/components/schemas/TimeIntervalObject'
+          type: array
+        meta:
+          properties:
+            analysis_time:
+              description: ''
+              example: 6.93906
+              type: number
+            analyzer_version:
+              description: ''
+              example: 4.0.0
+              type: string
+            detailed_status:
+              description: ''
+              example: OK
+              type: string
+            input_process:
+              description: ''
+              example: libvorbisfile L+R 44100->22050
+              type: string
+            platform:
+              description: ''
+              example: Linux
+              type: string
+            status_code:
+              description: ''
+              example: 0
+              type: integer
+            timestamp:
+              description: ''
+              example: 1495193577
+              type: integer
+          type: object
+        sections:
+          description: ''
+          items:
+            $ref: '#/components/schemas/SectionObject'
+          type: array
+        segments:
+          description: ''
+          items:
+            $ref: '#/components/schemas/SegmentObject'
+          type: array
+        tatums:
+          description: ''
+          items:
+            $ref: '#/components/schemas/TimeIntervalObject'
+          type: array
+        track:
+          properties:
+            analysis_channels:
+              description: ''
+              example: 1
+              type: integer
+            analysis_sample_rate:
+              description: ''
+              example: 22050
+              type: integer
+            code_version:
+              description: ''
+              example: 3.15
+              type: number
+            codestring:
+              description: ''
+              type: string
+            duration:
+              description: ''
+              example: 207.95985
+              type: number
+            echoprint_version:
+              description: ''
+              example: 4.15
+              type: number
+            echoprintstring:
+              description: ''
+              type: string
+            end_of_fade_in:
+              description: ''
+              example: 0.0
+              type: number
+            key:
+              $ref: '#/components/schemas/Key'
+            key_confidence:
+              description: ''
+              example: 0.408
+              maximum: 1
+              minimum: 0
+              type: number
+            loudness:
+              $ref: '#/components/schemas/Loudness'
+            mode:
+              $ref: '#/components/schemas/Mode'
+            mode_confidence:
+              description: ''
+              example: 0.485
+              maximum: 1
+              minimum: 0
+              type: number
+            num_samples:
+              description: ''
+              example: 4585515
+              type: integer
+            offset_seconds:
+              description: ''
+              example: 0
+              type: integer
+            rhythm_version:
+              description: ''
+              example: 1.0
+              type: number
+            rhythmstring:
+              description: ''
+              type: string
+            sample_md5:
+              description: ''
+              type: string
+            start_of_fade_out:
+              description: ''
+              example: 201.13705
+              type: number
+            synch_version:
+              description: ''
+              example: 1.0
+              type: number
+            synchstring:
+              description: ''
+              type: string
+            tempo:
+              $ref: '#/components/schemas/Tempo'
+            tempo_confidence:
+              description: ''
+              example: 0.73
+              maximum: 1
+              minimum: 0
+              type: number
+            time_signature:
+              $ref: '#/components/schemas/TimeSignature'
+            time_signature_confidence:
+              description: ''
+              example: 0.994
+              maximum: 1
+              minimum: 0
+              type: number
+            window_seconds:
+              description: ''
+              example: 0
+              type: integer
+          type: object
+      type: object
+      x-spotify-docs-type: AudioAnalysisObject
+    AudioFeaturesObject:
+      properties:
+        acousticness:
+          description: ''
+          example: 0.00242
+          format: float
+          maximum: 1.0
+          minimum: 0.0
+          type: number
+          x-spotify-docs-type: Float
+        analysis_url:
+          description: ''
+          example: 'https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B
+
+            '
+          type: string
+        danceability:
+          description: ''
+          example: 0.585
+          format: float
+          type: number
+          x-spotify-docs-type: Float
+        duration_ms:
+          description: ''
+          example: 237040
+          type: integer
+        energy:
+          description: ''
+          example: 0.842
+          format: float
+          type: number
+          x-spotify-docs-type: Float
+        id:
+          description: ''
+          example: 2takcwOaAZWiXQijPHIx7B
+          type: string
+        instrumentalness:
+          description: ''
+          example: 0.00686
+          format: float
+          type: number
+          x-spotify-docs-type: Float
+        key:
+          $ref: '#/components/schemas/Key'
+        liveness:
+          description: ''
+          example: 0.0866
+          format: float
+          type: number
+          x-spotify-docs-type: Float
+        loudness:
+          $ref: '#/components/schemas/Loudness'
+        mode:
+          $ref: '#/components/schemas/Mode'
+        speechiness:
+          description: ''
+          example: 0.0556
+          format: float
+          type: number
+          x-spotify-docs-type: Float
+        tempo:
+          $ref: '#/components/schemas/Tempo'
+        time_signature:
+          $ref: '#/components/schemas/TimeSignature'
+        track_href:
+          description: ''
+          example: 'https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B
+
+            '
+          type: string
+        type:
+          description: ''
+          enum:
+          - audio_features
+          type: string
+        uri:
+          description: ''
+          example: spotify:track:2takcwOaAZWiXQijPHIx7B
+          type: string
+        valence:
+          description: ''
+          example: 0.428
+          format: float
+          maximum: 1
+          minimum: 0
+          type: number
+          x-spotify-docs-type: Float
+      type: object
+      x-spotify-docs-type: AudioFeaturesObject
+    AudiobookBase:
+      properties:
+        authors:
+          description: ''
+          items:
+            $ref: '#/components/schemas/AuthorObject'
+          type: array
+        available_markets:
+          description: ''
+          items:
+            type: string
+          type: array
+        copyrights:
+          description: ''
+          items:
+            $ref: '#/components/schemas/CopyrightObject'
+          type: array
+        description: ''
+        edition:
+          description: ''
+          example: Unabridged
+          type: string
+        explicit:
+          description: ''
+          type: boolean
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        html_description:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        languages:
+          description: ''
+          items:
+            type: string
+          type: array
+        media_type:
+          description: ''
+          type: string
+        name:
+          description: ''
+          type: string
+        narrators:
+          description: ''
+          items:
+            $ref: '#/components/schemas/NarratorObject'
+          type: array
+        publisher:
+          description: ''
+          type: string
+        total_chapters:
+          description: ''
+          type: integer
+        type:
+          description: ''
+          enum:
+          - audiobook
+          type: string
+        uri:
+          description: ''
+          type: string
+      required:
+      - authors
+      - available_markets
+      - copyrights
+      - description
+      - explicit
+      - external_urls
+      - href
+      - html_description
+      - id
+      - images
+      - languages
+      - media_type
+      - name
+      - narrators
+      - publisher
+      - total_chapters
+      - type
+      - uri
+      type: object
+    AudiobookObject:
+      allOf:
+      - $ref: '#/components/schemas/AudiobookBase'
+      - properties:
+          chapters:
+            allOf:
+            - $ref: '#/components/schemas/PagingSimplifiedChapterObject'
+            description: ''
+            type: object
+        required:
+        - chapters
+        type: object
+      x-spotify-docs-type: AudiobookObject
+    AuthorObject:
+      properties:
+        name:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: AuthorObject
+    CategoryObject:
+      properties:
+        href:
+          description: ''
+          type: string
+        icons:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        id:
+          description: ''
+          example: equal
+          type: string
+        name:
+          description: ''
+          example: EQUAL
+          type: string
+      required:
+      - href
+      - icons
+      - id
+      - name
+      type: object
+      x-spotify-docs-type: CategoryObject
+    ChapterBase:
+      properties:
+        audio_preview_url:
+          description: ''
+          example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
+          nullable: true
+          type: string
+          x-spotify-policy-list:
+          - $ref: '#/components/x-spotify-policy/policies/StandalonePreview'
+        available_markets:
+          description: ''
+          items:
+            type: string
+          type: array
+        chapter_number:
+          description: ''
+          example: 1
+          type: integer
+        description: ''
+        duration_ms:
+          description: ''
+          example: 1686230
+          type: integer
+        explicit:
+          description: ''
+          type: boolean
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          example: https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ
+          type: string
+        html_description:
+          description: ''
+          example: ""
+          type: string
+        id:
+          description: ''
+          example: 5Xt5DXGzch68nYYamXrNxZ
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        is_playable:
+          description: ''
+          type: boolean
+        languages:
+          description: ''
+          example:
+          - fr
+          - en
+          items:
+            type: string
+          type: array
+        name:
+          description: ''
+          example: 'Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor
+            Creators
+            '
+          type: string
+        release_date:
+          description: ''
+          example: '1981-12-15'
+          type: string
+        release_date_precision:
+          description: ''
+          enum:
+          - year
+          - month
+          - day
+          example: day
+          type: string
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/ChapterRestrictionObject'
+          description: ''
+        resume_point:
+          allOf:
+          - $ref: '#/components/schemas/ResumePointObject'
+          description: ''
+        type:
+          description: ''
+          enum:
+          - episode
+          type: string
+        uri:
+          description: ''
+          example: spotify:episode:0zLhl3WsOCQHbe1BPTiHgr
+          type: string
+      required:
+      - audio_preview_url
+      - chapter_number
+      - description
+      - html_description
+      - duration_ms
+      - explicit
+      - external_urls
+      - href
+      - id
+      - images
+      - is_playable
+      - languages
+      - name
+      - release_date
+      - release_date_precision
+      - resume_point
+      - type
+      - uri
+      type: object
+    ChapterObject:
+      allOf:
+      - $ref: '#/components/schemas/ChapterBase'
+      - properties:
+          audiobook:
+            allOf:
+            - $ref: '#/components/schemas/SimplifiedAudiobookObject'
+            description: ''
+        required:
+        - audiobook
+        type: object
+      type: object
+      x-spotify-docs-type: ChapterObject
+    ChapterRestrictionObject:
+      properties:
+        reason:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: ChapterRestrictionObject
+    ContextObject:
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        type:
+          description: ''
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: ContextObject
+    CopyrightObject:
+      properties:
+        text:
+          description: ''
+          type: string
+        type:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: CopyrightObject
+    CurrentlyPlayingContextObject:
+      properties:
+        actions:
+          allOf:
+          - $ref: '#/components/schemas/DisallowsObject'
+          description: ''
+        context:
+          allOf:
+          - $ref: '#/components/schemas/ContextObject'
+          description: ''
+        currently_playing_type:
+          description: ''
+          type: string
+        device:
+          allOf:
+          - $ref: '#/components/schemas/DeviceObject'
+          description: ''
+        is_playing:
+          description: ''
+          type: boolean
+        item:
+          description: ''
+          discriminator:
+            propertyName: type
+          oneOf:
+          - $ref: '#/components/schemas/TrackObject'
+          - $ref: '#/components/schemas/EpisodeObject'
+          x-spotify-docs-type: TrackObject | EpisodeObject
+        progress_ms:
+          description: ''
+          type: integer
+        repeat_state:
+          description: ''
+          type: string
+        shuffle_state:
+          description: ''
+          type: boolean
+        timestamp:
+          description: ''
+          type: integer
+      type: object
+      x-spotify-docs-type: CurrentlyPlayingContextObject
+    CursorObject:
+      properties:
+        after:
+          description: ''
+          type: string
+        before:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: CursorObject
+    CursorPagingObject:
+      properties:
+        cursors:
+          allOf:
+          - $ref: '#/components/schemas/CursorObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        limit:
+          description: ''
+          type: integer
+        next:
+          description: ''
+          type: string
+        total:
+          description: ''
+          type: integer
+      type: object
+      x-spotify-docs-type: CursorPagingObject
+    CursorPagingPlayHistoryObject:
+      allOf:
+      - $ref: '#/components/schemas/CursorPagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/PlayHistoryObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingTrackObject
+    CursorPagingSimplifiedArtistObject:
+      allOf:
+      - $ref: '#/components/schemas/CursorPagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/ArtistObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingArtistObject
+    DeviceObject:
+      properties:
+        id:
+          description: ''
+          nullable: true
+          type: string
+        is_active:
+          description: ''
+          type: boolean
+        is_private_session:
+          description: ''
+          type: boolean
+        is_restricted:
+          description: ''
+          type: boolean
+        name:
+          description: ''
+          example: Kitchen speaker
+          type: string
+        supports_volume:
+          description: ''
+          type: boolean
+        type:
+          description: ''
+          example: computer
+          type: string
+        volume_percent:
+          description: ''
+          example: 59
+          maximum: 100
+          minimum: 0
+          nullable: true
+          type: integer
+      type: object
+      x-spotify-docs-type: DeviceObject
+    DisallowsObject:
+      properties:
+        interrupting_playback:
+          description: ''
+          type: boolean
+        pausing:
+          description: ''
+          type: boolean
+        resuming:
+          description: ''
+          type: boolean
+        seeking:
+          description: ''
+          type: boolean
+        skipping_next:
+          description: ''
+          type: boolean
+        skipping_prev:
+          description: ''
+          type: boolean
+        toggling_repeat_context:
+          description: ''
+          type: boolean
+        toggling_repeat_track:
+          description: ''
+          type: boolean
+        toggling_shuffle:
+          description: ''
+          type: boolean
+        transferring_playback:
+          description: ''
+          type: boolean
+      type: object
+      x-spotify-docs-type: DisallowsObject
+    EpisodeBase:
+      properties:
+        audio_preview_url:
+          description: ''
+          example: https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17
+          nullable: true
+          type: string
+          x-spotify-policy-list:
+          - $ref: '#/components/x-spotify-policy/policies/StandalonePreview'
+        description: ''
+        duration_ms:
+          description: ''
+          example: 1686230
+          type: integer
+        explicit:
+          description: ''
+          type: boolean
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          example: https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ
+          type: string
+        html_description:
+          description: ''
+          example: ""
+          type: string
+        id:
+          description: ''
+          example: 5Xt5DXGzch68nYYamXrNxZ
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        is_externally_hosted:
+          description: ''
+          type: boolean
+        is_playable:
+          description: ''
+          type: boolean
+        language:
+          deprecated: true
+          description: ''
+          example: en
+          type: string
+        languages:
+          description: ''
+          example:
+          - fr
+          - en
+          items:
+            type: string
+          type: array
+        name:
+          description: ''
+          example: 'Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor
+            Creators
+
+            '
+          type: string
+        release_date:
+          description: ''
+          example: '1981-12-15'
+          type: string
+        release_date_precision:
+          description: ''
+          enum:
+          - year
+          - month
+          - day
+          example: day
+          type: string
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/EpisodeRestrictionObject'
+          description: ''
+        resume_point:
+          allOf:
+          - $ref: '#/components/schemas/ResumePointObject'
+          description: ''
+        type:
+          description: ''
+          enum:
+          - episode
+          type: string
+        uri:
+          description: ''
+          example: spotify:episode:0zLhl3WsOCQHbe1BPTiHgr
+          type: string
+      required:
+      - audio_preview_url
+      - description
+      - html_description
+      - duration_ms
+      - explicit
+      - external_urls
+      - href
+      - id
+      - images
+      - is_externally_hosted
+      - is_playable
+      - languages
+      - name
+      - release_date
+      - release_date_precision
+      - resume_point
+      - type
+      - uri
+      type: object
+    EpisodeObject:
+      allOf:
+      - $ref: '#/components/schemas/EpisodeBase'
+      - properties:
+          show:
+            allOf:
+            - $ref: '#/components/schemas/SimplifiedShowObject'
+            description: ''
+        required:
+        - show
+        type: object
+      type: object
+      x-spotify-docs-type: EpisodeObject
+    EpisodeRestrictionObject:
+      properties:
+        reason:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: EpisodeRestrictionObject
+    ErrorObject:
+      properties:
+        message:
+          description: ''
+          type: string
+        status:
+          description: ''
+          maximum: 599
+          minimum: 400
+          type: integer
+      required:
+      - status
+      - message
+      type: object
+      x-spotify-docs-type: ErrorObject
+    ExplicitContentSettingsObject:
+      properties:
+        filter_enabled:
+          description: ''
+          type: boolean
+        filter_locked:
+          description: ''
+          type: boolean
+      type: object
+      x-spotify-docs-type: ExplicitContentSettingsObject
+    ExternalIdObject:
+      properties:
+        ean:
+          description: ''
+          type: string
+        isrc:
+          description: ''
+          type: string
+        upc:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: ExternalIdObject
+    ExternalUrlObject:
+      properties:
+        spotify:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: ExternalUrlObject
+    FollowersObject:
+      properties:
+        href:
+          description: ''
+          nullable: true
+          type: string
+        total:
+          description: ''
+          type: integer
+      type: object
+      x-spotify-docs-type: FollowersObject
+    ImageObject:
+      properties:
+        height:
+          description: ''
+          example: 300
+          nullable: true
+          type: integer
+        url:
+          description: ''
+          example: 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228
+
+            '
+          type: string
+        width:
+          description: ''
+          example: 300
+          nullable: true
+          type: integer
+      required:
+      - url
+      - height
+      - width
+      type: object
+      x-spotify-docs-type: ImageObject
+    Key:
+      description: ''
+      example: 9
+      maximum: 11
+      minimum: -1
+      type: integer
+    LinkedTrackObject:
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        type:
+          description: ''
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: LinkedTrackObject
+    Loudness:
+      description: ''
+      example: -5.883
+      format: float
+      type: number
+      x-spotify-docs-type: Float
+    Mode:
+      description: ''
+      example: 0
+      type: integer
+    NarratorObject:
+      properties:
+        name:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: NarratorObject
+    PagingArtistDiscographyAlbumObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/ArtistDiscographyAlbumObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingArtistDiscographyAlbumObject
+    PagingArtistObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/ArtistObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingArtistObject
+    PagingFeaturedPlaylistObject:
+      properties:
+        message:
+          type: string
+        playlists:
+          $ref: '#/components/schemas/PagingPlaylistObject'
+      type: object
+      x-spotify-docs-type: PagingFeaturedPlaylistObject
+    PagingObject:
+      properties:
+        href:
+          description: ''
+          example: 'https://api.spotify.com/v1/me/shows?offset=0&limit=20
+
+            '
+          type: string
+        limit:
+          description: ''
+          example: 20
+          type: integer
+        next:
+          description: ''
+          example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
+          nullable: true
+          type: string
+        offset:
+          description: ''
+          example: 0
+          type: integer
+        previous:
+          description: ''
+          example: https://api.spotify.com/v1/me/shows?offset=1&limit=1
+          nullable: true
+          type: string
+        total:
+          description: ''
+          example: 4
+          type: integer
+      required:
+      - href
+      - items
+      - limit
+      - next
+      - offset
+      - previous
+      - total
+      type: object
+      x-spotify-docs-type: PagingObject
+    PagingPlaylistObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SimplifiedPlaylistObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingPlaylistObject
+    PagingPlaylistTrackObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/PlaylistTrackObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingPlaylistTrackObject
+    PagingSavedAlbumObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SavedAlbumObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingSavedAlbumObject
+    PagingSavedEpisodeObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SavedEpisodeObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingEpisodeObject
+    PagingSavedShowObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SavedShowObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingShowObject
+    PagingSavedTrackObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SavedTrackObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingTrackObject
+    PagingSimplifiedAlbumObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SimplifiedAlbumObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingAlbumObject
+    PagingSimplifiedAudiobookObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SimplifiedAudiobookObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingAudiobookObject
+    PagingSimplifiedChapterObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SimplifiedChapterObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingSimplifiedChapterObject
+    PagingSimplifiedEpisodeObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SimplifiedEpisodeObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingEpisodeObject
+    PagingSimplifiedShowObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SimplifiedShowObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingShowObject
+    PagingSimplifiedTrackObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SimplifiedTrackObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingTrackObject
+    PagingTrackObject:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/TrackObject'
+            type: array
+        type: object
+      type: object
+      x-spotify-docs-type: PagingTrackObject
+    PlayHistoryObject:
+      properties:
+        context:
+          allOf:
+          - $ref: '#/components/schemas/ContextObject'
+          description: ''
+        played_at:
+          description: ''
+          format: date-time
+          type: string
+          x-spotify-docs-type: Timestamp
+        track:
+          allOf:
+          - $ref: '#/components/schemas/TrackObject'
+          description: ''
+      type: object
+      x-spotify-docs-type: PlayHistoryObject
+    PlaylistObject:
+      properties:
+        collaborative:
+          description: ''
+          type: boolean
+        description: ''
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        followers:
+          allOf:
+          - $ref: '#/components/schemas/FollowersObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        name:
+          description: ''
+          type: string
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistOwnerObject'
+          description: ''
+        public:
+          description: ''
+          type: boolean
+        snapshot_id:
+          description: ''
+          type: string
+        tracks:
+          allOf:
+          - $ref: '#/components/schemas/PagingPlaylistTrackObject'
+          description: ''
+          type: object
+        type:
+          description: ''
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: PlaylistObject
+    PlaylistOwnerObject:
+      allOf:
+      - $ref: '#/components/schemas/PlaylistUserObject'
+      - properties:
+          display_name:
+            description: ''
+            nullable: true
+            type: string
+        type: object
+    PlaylistTrackObject:
+      properties:
+        added_at:
+          description: ''
+          format: date-time
+          type: string
+          x-spotify-docs-type: Timestamp
+        added_by:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistUserObject'
+          description: ''
+        is_local:
+          description: ''
+          type: boolean
+        track:
+          description: ''
+          discriminator:
+            propertyName: type
+          oneOf:
+          - $ref: '#/components/schemas/TrackObject'
+          - $ref: '#/components/schemas/EpisodeObject'
+          x-spotify-docs-type: TrackObject | EpisodeObject
+      type: object
+      x-spotify-docs-type: PlaylistTrackObject
+    PlaylistTracksRefObject:
+      properties:
+        href:
+          description: ''
+          type: string
+        total:
+          description: ''
+          type: integer
+      type: object
+      x-spotify-docs-type: PlaylistTracksRefObject
+    PlaylistUserObject:
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        followers:
+          allOf:
+          - $ref: '#/components/schemas/FollowersObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        type:
+          description: ''
+          enum:
+          - user
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: PlaylistUserObject
+    PrivateUserObject:
+      properties:
+        country:
+          description: ''
+          type: string
+        display_name:
+          description: ''
+          type: string
+        email:
+          description: ''
+          type: string
+        explicit_content:
+          allOf:
+          - $ref: '#/components/schemas/ExplicitContentSettingsObject'
+          description: ''
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        followers:
+          allOf:
+          - $ref: '#/components/schemas/FollowersObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        product:
+          description: ''
+          type: string
+        type:
+          description: ''
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: PrivateUserObject
+    PublicUserObject:
+      properties:
+        display_name:
+          description: ''
+          nullable: true
+          type: string
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        followers:
+          allOf:
+          - $ref: '#/components/schemas/FollowersObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        type:
+          description: ''
+          enum:
+          - user
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: PublicUserObject
+    QueueObject:
+      properties:
+        currently_playing:
+          description: ''
+          discriminator:
+            propertyName: type
+          oneOf:
+          - $ref: '#/components/schemas/TrackObject'
+          - $ref: '#/components/schemas/EpisodeObject'
+          x-spotify-docs-type: TrackObject | EpisodeObject
+        queue:
+          description: ''
+          items:
+            discriminator:
+              propertyName: type
+            oneOf:
+            - $ref: '#/components/schemas/TrackObject'
+            - $ref: '#/components/schemas/EpisodeObject'
+            x-spotify-docs-type: TrackObject | EpisodeObject
+          type: array
+      type: object
+      x-spotify-docs-type: QueueObject
+    RecommendationSeedObject:
+      properties:
+        afterFilteringSize:
+          description: ''
+          type: integer
+        afterRelinkingSize:
+          description: ''
+          type: integer
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        initialPoolSize:
+          description: ''
+          type: integer
+        type:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: RecommendationSeedObject
+    RecommendationsObject:
+      properties:
+        seeds:
+          description: ''
+          items:
+            $ref: '#/components/schemas/RecommendationSeedObject'
+          type: array
+        tracks:
+          description: ''
+          items:
+            $ref: '#/components/schemas/TrackObject'
+          type: array
+      required:
+      - seeds
+      - tracks
+      type: object
+      x-spotify-docs-type: RecommendationsObject
+    ResumePointObject:
+      properties:
+        fully_played:
+          description: ''
+          type: boolean
+        resume_position_ms:
+          description: ''
+          type: integer
+      type: object
+      x-spotify-docs-type: ResumePointObject
+    SavedAlbumObject:
+      properties:
+        added_at:
+          description: ''
+          format: date-time
+          type: string
+          x-spotify-docs-type: Timestamp
+        album:
+          allOf:
+          - $ref: '#/components/schemas/AlbumObject'
+          description: ''
+      type: object
+      x-spotify-docs-type: SavedAlbumObject
+    SavedEpisodeObject:
+      properties:
+        added_at:
+          description: ''
+          format: date-time
+          type: string
+          x-spotify-docs-type: Timestamp
+        episode:
+          allOf:
+          - $ref: '#/components/schemas/EpisodeObject'
+          description: ''
+      type: object
+      x-spotify-docs-type: SavedEpisodeObject
+    SavedShowObject:
+      properties:
+        added_at:
+          description: ''
+          format: date-time
+          type: string
+          x-spotify-docs-type: Timestamp
+        show:
+          allOf:
+          - $ref: '#/components/schemas/SimplifiedShowObject'
+          description: ''
+      type: object
+      x-spotify-docs-type: SavedShowObject
+    SavedTrackObject:
+      properties:
+        added_at:
+          description: ''
+          format: date-time
+          type: string
+          x-spotify-docs-type: Timestamp
+        track:
+          allOf:
+          - $ref: '#/components/schemas/TrackObject'
+          description: ''
+      type: object
+      x-spotify-docs-type: SavedTrackObject
+    SectionObject:
+      properties:
+        confidence:
+          description: ''
+          example: 1.0
+          maximum: 1
+          minimum: 0
+          type: number
+        duration:
+          description: ''
+          example: 6.97092
+          type: number
+        key:
+          description: ''
+          example: 9
+          type: integer
+        key_confidence:
+          description: ''
+          example: 0.297
+          maximum: 1
+          minimum: 0
+          type: number
+        loudness:
+          description: ''
+          example: -14.938
+          type: number
+        mode:
+          description: ''
+          enum:
+          - -1
+          - 0
+          - 1
+          type: number
+        mode_confidence:
+          description: ''
+          example: 0.471
+          maximum: 1
+          minimum: 0
+          type: number
+        start:
+          description: ''
+          example: 0.0
+          type: number
+        tempo:
+          description: ''
+          example: 113.178
+          type: number
+        tempo_confidence:
+          description: ''
+          example: 0.647
+          maximum: 1
+          minimum: 0
+          type: number
+        time_signature:
+          $ref: '#/components/schemas/TimeSignature'
+        time_signature_confidence:
+          description: ''
+          example: 1.0
+          maximum: 1
+          minimum: 0
+          type: number
+      type: object
+    SegmentObject:
+      properties:
+        confidence:
+          description: ''
+          example: 0.435
+          maximum: 1
+          minimum: 0
+          type: number
+        duration:
+          description: ''
+          example: 0.19891
+          type: number
+        loudness_end:
+          description: ''
+          example: 0.0
+          type: number
+        loudness_max:
+          description: ''
+          example: -14.25
+          type: number
+        loudness_max_time:
+          description: ''
+          example: 0.07305
+          type: number
+        loudness_start:
+          description: ''
+          example: -23.053
+          type: number
+        pitches:
+          description: ''
+          example:
+          - 0.212
+          - 0.141
+          - 0.294
+          items:
+            maximum: 1
+            minimum: 0
+            type: number
+          type: array
+        start:
+          description: ''
+          example: 0.70154
+          type: number
+        timbre:
+          description: ''
+          example:
+          - 42.115
+          - 64.373
+          - -0.233
+          items:
+            type: number
+          type: array
+      type: object
+    ShowBase:
+      properties:
+        available_markets:
+          description: ''
+          items:
+            type: string
+          type: array
+        copyrights:
+          description: ''
+          items:
+            $ref: '#/components/schemas/CopyrightObject'
+          type: array
+        description: ''
+        explicit:
+          description: ''
+          type: boolean
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        html_description:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        is_externally_hosted:
+          description: ''
+          type: boolean
+        languages:
+          description: ''
+          items:
+            type: string
+          type: array
+        media_type:
+          description: ''
+          type: string
+        name:
+          description: ''
+          type: string
+        publisher:
+          description: ''
+          type: string
+        total_episodes:
+          description: ''
+          type: integer
+        type:
+          description: ''
+          enum:
+          - show
+          type: string
+        uri:
+          description: ''
+          type: string
+      required:
+      - available_markets
+      - copyrights
+      - description
+      - explicit
+      - external_urls
+      - href
+      - html_description
+      - id
+      - images
+      - is_externally_hosted
+      - languages
+      - media_type
+      - name
+      - publisher
+      - total_episodes
+      - type
+      - uri
+      type: object
+    ShowObject:
+      allOf:
+      - $ref: '#/components/schemas/ShowBase'
+      - properties:
+          episodes:
+            allOf:
+            - $ref: '#/components/schemas/PagingSimplifiedEpisodeObject'
+            description: ''
+            type: object
+        required:
+        - episodes
+        type: object
+      x-spotify-docs-type: ShowObject
+    SimplifiedAlbumObject:
+      allOf:
+      - $ref: '#/components/schemas/AlbumBase'
+      - properties:
+          artists:
+            description: ''
+            items:
+              $ref: '#/components/schemas/SimplifiedArtistObject'
+            type: array
+        required:
+        - artists
+        type: object
+      x-spotify-docs-type: SimplifiedAlbumObject
+    SimplifiedArtistObject:
+      properties:
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        name:
+          description: ''
+          type: string
+        type:
+          description: ''
+          enum:
+          - artist
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: SimplifiedArtistObject
+    SimplifiedAudiobookObject:
+      allOf:
+      - $ref: '#/components/schemas/AudiobookBase'
+      - type: object
+      x-spotify-docs-type: SimplifiedAudiobookObject
+    SimplifiedChapterObject:
+      allOf:
+      - $ref: '#/components/schemas/ChapterBase'
+      - type: object
+      type: object
+      x-spotify-docs-type: SimplifiedChapterObject
+    SimplifiedEpisodeObject:
+      allOf:
+      - $ref: '#/components/schemas/EpisodeBase'
+      - type: object
+      type: object
+      x-spotify-docs-type: SimplifiedEpisodeObject
+    SimplifiedPlaylistObject:
+      properties:
+        collaborative:
+          description: ''
+          type: boolean
+        description: ''
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        images:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ImageObject'
+          type: array
+        name:
+          description: ''
+          type: string
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistOwnerObject'
+          description: ''
+        public:
+          description: ''
+          type: boolean
+        snapshot_id:
+          description: ''
+          type: string
+        tracks:
+          allOf:
+          - $ref: '#/components/schemas/PlaylistTracksRefObject'
+          description: ''
+        type:
+          description: ''
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: SimplifiedPlaylistObject
+    SimplifiedShowObject:
+      allOf:
+      - $ref: '#/components/schemas/ShowBase'
+      - type: object
+      x-spotify-docs-type: SimplifiedShowObject
+    SimplifiedTrackObject:
+      properties:
+        artists:
+          description: ''
+          items:
+            $ref: '#/components/schemas/SimplifiedArtistObject'
+          type: array
+        available_markets:
+          description: ''
+          items:
+            type: string
+          type: array
+        disc_number:
+          description: ''
+          type: integer
+        duration_ms:
+          description: ''
+          type: integer
+        explicit:
+          description: ''
+          type: boolean
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        is_local:
+          description: ''
+          type: boolean
+        is_playable:
+          description: ''
+          type: boolean
+        linked_from:
+          allOf:
+          - $ref: '#/components/schemas/LinkedTrackObject'
+          description: ''
+        name:
+          description: ''
+          type: string
+        preview_url:
+          description: ''
+          nullable: true
+          type: string
+          x-spotify-policy-list:
+          - $ref: '#/components/x-spotify-policy/policies/StandalonePreview'
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/TrackRestrictionObject'
+          description: ''
+        track_number:
+          description: ''
+          type: integer
+        type:
+          description: ''
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: SimplifiedTrackObject
+    Tempo:
+      description: ''
+      example: 118.211
+      format: float
+      type: number
+      x-spotify-docs-type: Float
+    TimeIntervalObject:
+      properties:
+        confidence:
+          description: ''
+          example: 0.925
+          maximum: 1
+          minimum: 0
+          type: number
+        duration:
+          description: ''
+          example: 2.18749
+          type: number
+        start:
+          description: ''
+          example: 0.49567
+          type: number
+      type: object
+    TimeSignature:
+      description: ''
+      example: 4
+      maximum: 7
+      minimum: 3
+      type: integer
+    TrackObject:
+      properties:
+        album:
+          allOf:
+          - $ref: '#/components/schemas/SimplifiedAlbumObject'
+          description: ''
+        artists:
+          description: ''
+          items:
+            $ref: '#/components/schemas/ArtistObject'
+          type: array
+        available_markets:
+          description: ''
+          items:
+            type: string
+          type: array
+        disc_number:
+          description: ''
+          type: integer
+        duration_ms:
+          description: ''
+          type: integer
+        explicit:
+          description: ''
+          type: boolean
+        external_ids:
+          allOf:
+          - $ref: '#/components/schemas/ExternalIdObject'
+          description: ''
+        external_urls:
+          allOf:
+          - $ref: '#/components/schemas/ExternalUrlObject'
+          description: ''
+        href:
+          description: ''
+          type: string
+        id:
+          description: ''
+          type: string
+        is_local:
+          description: ''
+          type: boolean
+        is_playable:
+          description: ''
+          type: boolean
+        linked_from:
+          description: ''
+          type: object
+        name:
+          description: ''
+          type: string
+        popularity:
+          description: ''
+          type: integer
+        preview_url:
+          description: ''
+          nullable: true
+          type: string
+          x-spotify-policy-list:
+          - $ref: '#/components/x-spotify-policy/policies/StandalonePreview'
+        restrictions:
+          allOf:
+          - $ref: '#/components/schemas/TrackRestrictionObject'
+          description: ''
+        track_number:
+          description: ''
+          type: integer
+        type:
+          description: ''
+          enum:
+          - track
+          type: string
+        uri:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: TrackObject
+    TrackRestrictionObject:
+      properties:
+        reason:
+          description: ''
+          type: string
+      type: object
+      x-spotify-docs-type: TrackRestrictionObject
+  securitySchemes:
+    oauth_2_0:
+      description: ''
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.spotify.com/authorize
+          scopes:
+            app-remote-control: 'Communicate with the Spotify app on your device.
+
+              '
+            playlist-modify-private: 'Manage your private playlists.
+
+              '
+            playlist-modify-public: 'Manage your public playlists.
+
+              '
+            playlist-read-collaborative: 'Access your collaborative playlists.
+
+              '
+            playlist-read-private: 'Access your private playlists.
+
+              '
+            streaming: 'Play content and control playback on your other devices.
+
+              '
+            ugc-image-upload: 'Upload images to Spotify on your behalf.
+
+              '
+            user-follow-modify: 'Manage your saved content.
+
+              '
+            user-follow-read: 'Access your followers and who you are following.
+
+              '
+            user-library-modify: 'Manage your saved content.
+
+              '
+            user-library-read: 'Access your saved content.
+
+              '
+            user-modify-playback-state: 'Control playback on your Spotify clients
+              and Spotify Connect devices.
+
+              '
+            user-read-currently-playing: 'Read your currently playing content.
+
+              '
+            user-read-email: 'Get your real email address.
+
+              '
+            user-read-playback-position: 'Read your position in content you have played.
+
+              '
+            user-read-playback-state: 'Read your currently playing content and Spotify
+              Connect devices information.
+
+              '
+            user-read-private: 'Access your subscription details.
+
+              '
+            user-read-recently-played: 'Access your recently played items.
+
+              '
+            user-top-read: 'Read your top artists and content.
+
+              '
+          tokenUrl: https://accounts.spotify.com/api/token
+      type: oauth2
+  x-spotify-policy:
+    downloading:
+      $ref: '#/components/x-spotify-policy/policies/Downloading'
+    metadataPolicyList:
+    - $ref: '#/components/x-spotify-policy/policies/Downloading'
+    - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
+    - $ref: '#/components/x-spotify-policy/policies/Attribution'
+    metadataWithMachineLearningPolicyList:
+    - $ref: '#/components/x-spotify-policy/policies/Downloading'
+    - $ref: '#/components/x-spotify-policy/policies/VisualAlteration'
+    - $ref: '#/components/x-spotify-policy/policies/Attribution'
+    - $ref: '#/components/x-spotify-policy/policies/MachineLearning'
+    playerPolicyList:
+    - $ref: '#/components/x-spotify-policy/policies/CommercialStreaming'
+    - $ref: '#/components/x-spotify-policy/policies/ContentAlteration'
+    - $ref: '#/components/x-spotify-policy/policies/Synchronization'
+    - $ref: '#/components/x-spotify-policy/policies/Broadcasting'
+    policies:
+      $ref: ../policies.yaml
+info:
+  contact:
+    name: Spotify for Developers Community
+    url: https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer
+  description: ''
+  termsOfService: https://developer.spotify.com/terms/
+  title: Spotify Web API
+  version: 1.0.0
+openapi: 3.0.3
+paths:
+  /albums:
+    get:
+      description: ''
+      operationId: get-multiple-albums
+      parameters:
+      - $ref: '#/components/parameters/QueryAlbumIds'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyAlbums'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Several Albums
+
+        '
+      tags:
+      - Albums
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /albums/{id}:
+    get:
+      description: ''
+      operationId: get-an-album
+      parameters:
+      - $ref: '#/components/parameters/PathAlbumId'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneAlbum'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Album
+
+        '
+      tags:
+      - Albums
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /albums/{id}/tracks:
+    get:
+      description: ''
+      operationId: get-an-albums-tracks
+      parameters:
+      - $ref: '#/components/parameters/PathAlbumId'
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSimplifiedTrackObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Album Tracks
+
+        '
+      tags:
+      - Albums
+      - Tracks
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /artists:
+    get:
+      description: ''
+      operationId: get-multiple-artists
+      parameters:
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
+          title: Spotify Artist IDs
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyArtists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Several Artists
+
+        '
+      tags:
+      - Artists
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /artists/{id}:
+    get:
+      description: ''
+      operationId: get-an-artist
+      parameters:
+      - $ref: '#/components/parameters/PathArtistId'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneArtist'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Artist
+
+        '
+      tags:
+      - Artists
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /artists/{id}/albums:
+    get:
+      description: ''
+      operationId: get-an-artists-albums
+      parameters:
+      - $ref: '#/components/parameters/PathArtistId'
+      - $ref: '#/components/parameters/QueryIncludeGroups'
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingArtistDiscographyAlbumObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Artists Albums'
+      tags:
+      - Artists
+      - Albums
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /artists/{id}/related-artists:
+    get:
+      description: ''
+      operationId: get-an-artists-related-artists
+      parameters:
+      - $ref: '#/components/parameters/PathArtistId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyArtists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Artist''s Related Artists'
+      tags:
+      - Artists
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /artists/{id}/top-tracks:
+    get:
+      description: ''
+      operationId: get-an-artists-top-tracks
+      parameters:
+      - $ref: '#/components/parameters/PathArtistId'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyTracks'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Artist''s Top Tracks'
+      tags:
+      - Artists
+      - Tracks
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /audio-analysis/{id}:
+    get:
+      description: ''
+      operationId: get-audio-analysis
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: ''
+          example: 11dFghVXANMlKmJXsNCbNl
+          title: Spotify Track ID
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/OneAudioAnalysis'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Track''s Audio Analysis'
+      tags:
+      - Tracks
+  /audio-features:
+    get:
+      description: ''
+      operationId: get-several-audio-features
+      parameters:
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+          title: Spotify Track IDs
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyAudioFeatures'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Tracks'' Audio Features'
+      tags:
+      - Tracks
+      x-spotify-policy-list:
+      - $ref: '#/components/x-spotify-policy/policies/MachineLearning'
+  /audio-features/{id}:
+    get:
+      description: ''
+      operationId: get-audio-features
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: ''
+          example: 11dFghVXANMlKmJXsNCbNl
+          title: Spotify Track ID
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/OneAudioFeatures'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Track''s Audio Features'
+      tags:
+      - Tracks
+      x-spotify-policy-list:
+      - $ref: '#/components/x-spotify-policy/policies/MachineLearning'
+  /audiobooks:
+    get:
+      description: ''
+      operationId: get-multiple-audiobooks
+      parameters:
+      - $ref: '#/components/parameters/QueryAudiobookIds'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyAudiobooks'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Several Audiobooks
+
+        '
+      tags:
+      - Audiobooks
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /audiobooks/{id}:
+    get:
+      description: ''
+      operationId: get-an-audiobook
+      parameters:
+      - $ref: '#/components/parameters/PathAudiobookId'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneAudiobook'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get an Audiobook
+
+        '
+      tags:
+      - Audiobooks
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /audiobooks/{id}/chapters:
+    get:
+      description: ''
+      operationId: get-audiobook-chapters
+      parameters:
+      - $ref: '#/components/parameters/PathAudiobookId'
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSimplifiedChapterObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Audiobook Chapters
+
+        '
+      tags:
+      - Audiobooks
+      - Chapters
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /browse/categories:
+    get:
+      description: ''
+      operationId: get-categories
+      parameters:
+      - in: query
+        name: country
+        required: false
+        schema:
+          description: ''
+          example: SE
+          title: Country
+          type: string
+      - in: query
+        name: locale
+        required: false
+        schema:
+          description: ''
+          example: sv_SE
+          title: Locale
+          type: string
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagedCategories'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Several Browse Categories
+
+        '
+      tags:
+      - Categories
+  /browse/categories/{category_id}:
+    get:
+      description: ''
+      operationId: get-a-category
+      parameters:
+      - in: path
+        name: category_id
+        required: true
+        schema:
+          description: ''
+          example: dinner
+          title: Category ID
+          type: string
+      - in: query
+        name: country
+        required: false
+        schema:
+          description: ''
+          example: SE
+          title: Country
+          type: string
+      - in: query
+        name: locale
+        required: false
+        schema:
+          description: ''
+          example: sv_SE
+          title: Locale
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/OneCategory'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Single Browse Category
+
+        '
+      tags:
+      - Categories
+  /browse/categories/{category_id}/playlists:
+    get:
+      description: ''
+      operationId: get-a-categories-playlists
+      parameters:
+      - in: path
+        name: category_id
+        required: true
+        schema:
+          description: ''
+          example: dinner
+          title: Category ID
+          type: string
+      - in: query
+        name: country
+        required: false
+        schema:
+          description: ''
+          example: SE
+          title: Country
+          type: string
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagedFeaturedPlaylists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Category''s Playlists'
+      tags:
+      - Playlists
+      - Categories
+  /browse/featured-playlists:
+    get:
+      description: ''
+      operationId: get-featured-playlists
+      parameters:
+      - in: query
+        name: country
+        required: false
+        schema:
+          description: ''
+          example: SE
+          title: Country
+          type: string
+      - in: query
+        name: locale
+        required: false
+        schema:
+          description: ''
+          example: sv_SE
+          title: Locale
+          type: string
+      - in: query
+        name: timestamp
+        required: false
+        schema:
+          description: ''
+          example: '2014-10-23T09:00:00'
+          title: Timestamp
+          type: string
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagedFeaturedPlaylists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Featured Playlists
+
+        '
+      tags:
+      - Playlists
+      x-spotify-policy-list:
+      - $ref: '#/components/x-spotify-policy/policies/MultipleIntegrations'
+  /browse/new-releases:
+    get:
+      description: ''
+      operationId: get-new-releases
+      parameters:
+      - in: query
+        name: country
+        required: false
+        schema:
+          description: ''
+          example: SE
+          title: Country
+          type: string
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagedAlbums'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get New Releases
+
+        '
+      tags:
+      - Albums
+      x-spotify-policy-list:
+      - $ref: '#/components/x-spotify-policy/policies/MultipleIntegrations'
+  /chapters:
+    get:
+      description: ''
+      operationId: get-several-chapters
+      parameters:
+      - $ref: '#/components/parameters/QueryChapterIds'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyChapters'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Several Chapters
+
+        '
+      tags:
+      - Chapters
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /chapters/{id}:
+    get:
+      description: ''
+      operationId: get-a-chapter
+      parameters:
+      - $ref: '#/components/parameters/PathChapterId'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneChapter'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get a Chapter
+
+        '
+      tags:
+      - Chapters
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /episodes:
+    get:
+      description: ''
+      operationId: get-multiple-episodes
+      parameters:
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: 77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf
+          title: Ids
+          type: string
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyEpisodes'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-playback-position
+      summary: 'Get Several Episodes
+
+        '
+      tags:
+      - Episodes
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /episodes/{id}:
+    get:
+      description: ''
+      operationId: get-an-episode
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: ''
+          example: 512ojhOuo1ktJprKbVcKyQ
+          title: Get an Episode
+          type: string
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneEpisode'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-playback-position
+      summary: 'Get Episode
+
+        '
+      tags:
+      - Episodes
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /markets:
+    get:
+      description: ''
+      operationId: get-available-markets
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  markets:
+                    example:
+                    - CA
+                    - BR
+                    - IT
+                    items:
+                      type: string
+                    type: array
+                type: object
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Available Markets
+
+        '
+      tags:
+      - Markets
+  /me:
+    get:
+      description: ''
+      operationId: get-current-users-profile
+      responses:
+        '200':
+          $ref: '#/components/responses/OnePrivateUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-private
+        - user-read-email
+      summary: 'Get Current User''s Profile'
+      tags:
+      - Users
+  /me/albums:
+    delete:
+      description: ''
+      operationId: remove-albums-user
+      parameters:
+      - $ref: '#/components/parameters/QueryAlbumIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Remove Users'' Saved Albums'
+      tags:
+      - Albums
+      - Library
+    get:
+      description: ''
+      operationId: get-users-saved-albums
+      parameters:
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSavedAlbumObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Get User''s Saved Albums'
+      tags:
+      - Albums
+      - Library
+    put:
+      description: ''
+      operationId: save-albums-user
+      parameters:
+      - $ref: '#/components/parameters/QueryAlbumIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Save Albums for Current User
+
+        '
+      tags:
+      - Albums
+      - Library
+  /me/albums/contains:
+    get:
+      description: ''
+      operationId: check-users-saved-albums
+      parameters:
+      - $ref: '#/components/parameters/QueryAlbumIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Check User''s Saved Albums'
+      tags:
+      - Albums
+      - Library
+  /me/audiobooks:
+    delete:
+      description: ''
+      operationId: remove-audiobooks-user
+      parameters:
+      - $ref: '#/components/parameters/QueryAudiobookIds'
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Remove User''s Saved Audiobooks'
+      tags:
+      - Audiobooks
+      - Library
+    get:
+      description: ''
+      operationId: get-users-saved-audiobooks
+      parameters:
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSimplifiedAudiobookObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Get User''s Saved Audiobooks'
+      tags:
+      - Audiobooks
+      - Library
+    put:
+      description: ''
+      operationId: save-audiobooks-user
+      parameters:
+      - $ref: '#/components/parameters/QueryAudiobookIds'
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Save Audiobooks for Current User'
+      tags:
+      - Audiobooks
+      - Library
+  /me/audiobooks/contains:
+    get:
+      description: ''
+      operationId: check-users-saved-audiobooks
+      parameters:
+      - $ref: '#/components/parameters/QueryAudiobookIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Check User''s Saved Audiobooks'
+      tags:
+      - Audiobooks
+      - Library
+  /me/episodes:
+    delete:
+      description: ''
+      operationId: remove-episodes-user
+      parameters:
+      - $ref: '#/components/parameters/QueryTrackIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Remove User''s Saved Episodes'
+      tags:
+      - Episodes
+      - Library
+    get:
+      description: ''
+      operationId: get-users-saved-episodes
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSavedEpisodeObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+        - user-read-playback-position
+      summary: 'Get Users Saved Episodes'
+      tags:
+      - Episodes
+      - Library
+    put:
+      description: ''
+      operationId: save-episodes-user
+      parameters:
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: 77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf
+          title: Spotify Episodes IDs
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              required:
+              - uris
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Save Episodes for Current User
+
+        '
+      tags:
+      - Episodes
+      - Library
+  /me/episodes/contains:
+    get:
+      description: ''
+      operationId: check-users-saved-episodes
+      parameters:
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: 77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf
+          title: Spotify Episode IDs
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Check Users Saved Episodes'
+      tags:
+      - Episodes
+      - Library
+  /me/following:
+    delete:
+      description: ''
+      operationId: unfollow-artists-users
+      parameters:
+      - in: query
+        name: type
+        required: true
+        schema:
+          description: ''
+          enum:
+          - artist
+          - user
+          example: artist
+          title: Item Type
+          type: string
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
+          title: Spotify IDs
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-follow-modify
+      summary: 'Unfollow Artists or Users
+
+        '
+      tags:
+      - Users
+      - Artists
+      - Library
+    get:
+      description: ''
+      operationId: get-followed
+      parameters:
+      - in: query
+        name: type
+        required: true
+        schema:
+          description: ''
+          enum:
+          - artist
+          example: artist
+          title: Item Type
+          type: string
+      - in: query
+        name: after
+        required: false
+        schema:
+          description: ''
+          example: 0I2XqVXqHScXjHhk6AYYRe
+          title: After
+          type: string
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          description: ''
+          example: 10
+          maximum: 50
+          minimum: 0
+          title: Limit
+          type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/CursorPagedArtists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-follow-read
+      summary: 'Get Followed Artists
+
+        '
+      tags:
+      - Users
+      - Library
+      - Artists
+    put:
+      description: ''
+      operationId: follow-artists-users
+      parameters:
+      - in: query
+        name: type
+        required: true
+        schema:
+          description: ''
+          enum:
+          - artist
+          - user
+          example: artist
+          title: Item Type
+          type: string
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
+          title: Spotify IDs
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              required:
+              - ids
+              type: object
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-follow-modify
+      summary: 'Follow Artists or Users
+
+        '
+      tags:
+      - Users
+      - Artists
+      - Library
+  /me/following/contains:
+    get:
+      description: ''
+      operationId: check-current-user-follows
+      parameters:
+      - in: query
+        name: type
+        required: true
+        schema:
+          description: ''
+          enum:
+          - artist
+          - user
+          example: artist
+          title: Item Type
+          type: string
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
+          title: Spotify IDs
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-follow-read
+      summary: 'Check If User Follows Artists or Users
+
+        '
+      tags:
+      - Users
+      - Artists
+      - Library
+  /me/player:
+    get:
+      description: ''
+      operationId: get-information-about-the-users-current-playback
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryAdditionalTypes'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneCurrentlyPlaying'
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-playback-state
+      summary: 'Get Playback State
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+    put:
+      description: ''
+      operationId: transfer-a-users-playback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              example:
+                device_ids:
+                - 74ASZWbe4lXaubB36ztrGX
+              properties:
+                device_ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+                play:
+                  additionalProperties: true
+                  description: ''
+                  type: boolean
+              required:
+              - device_ids
+              type: object
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Transfer Playback
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/currently-playing:
+    get:
+      description: ''
+      operationId: get-the-users-currently-playing-track
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryAdditionalTypes'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneCurrentlyPlayingTrack'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-currently-playing
+      summary: 'Get Currently Playing Track
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/devices:
+    get:
+      description: ''
+      operationId: get-a-users-available-devices
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyDevices'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-playback-state
+      summary: 'Get Available Devices
+
+        '
+      tags:
+      - Player
+  /me/player/next:
+    post:
+      description: ''
+      operationId: skip-users-playback-to-next-track
+      parameters:
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Skip To Next
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/pause:
+    put:
+      description: ''
+      operationId: pause-a-users-playback
+      parameters:
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Pause Playback
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/play:
+    put:
+      description: ''
+      operationId: start-a-users-playback
+      parameters:
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              example:
+                context_uri: spotify:album:5ht7ItJgpBH7W6vJ5BqpPr
+                offset:
+                  position: 5
+                position_ms: 0
+              properties:
+                context_uri:
+                  additionalProperties: true
+                  description: ''
+                  type: string
+                offset:
+                  additionalProperties: true
+                  description: ''
+                  type: object
+                position_ms:
+                  additionalProperties: true
+                  description: ''
+                  type: integer
+                uris:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              type: object
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Start/Resume Playback
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/previous:
+    post:
+      description: ''
+      operationId: skip-users-playback-to-previous-track
+      parameters:
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Skip To Previous
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/queue:
+    get:
+      description: ''
+      operationId: get-queue
+      responses:
+        '200':
+          $ref: '#/components/responses/Queue'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-playback-state
+      summary: 'Get the User''s Queue'
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+    post:
+      description: ''
+      operationId: add-to-queue
+      parameters:
+      - in: query
+        name: uri
+        required: true
+        schema:
+          description: ''
+          example: spotify:track:4iV5W9uYEdYUVa79Axb7Rh
+          title: Spotify URI
+          type: string
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Add Item to Playback Queue
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/recently-played:
+    get:
+      description: ''
+      operationId: get-recently-played
+      parameters:
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          description: ''
+          example: 10
+          maximum: 50
+          minimum: 0
+          title: Limit
+          type: integer
+      - in: query
+        name: after
+        required: false
+        schema:
+          description: ''
+          example: 1484811043508
+          title: After
+          type: integer
+      - in: query
+        name: before
+        required: false
+        schema:
+          description: ''
+          title: Before
+          type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/CursorPagedPlayHistory'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-recently-played
+      summary: 'Get Recently Played Tracks
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/repeat:
+    put:
+      description: ''
+      operationId: set-repeat-mode-on-users-playback
+      parameters:
+      - in: query
+        name: state
+        required: true
+        schema:
+          description: ''
+          example: context
+          title: State
+          type: string
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Set Repeat Mode
+
+        '
+      tags:
+      - Player
+  /me/player/seek:
+    put:
+      description: ''
+      operationId: seek-to-position-in-currently-playing-track
+      parameters:
+      - in: query
+        name: position_ms
+        required: true
+        schema:
+          description: ''
+          example: 25000
+          title: Position (ms)
+          type: integer
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Seek To Position
+
+        '
+      tags:
+      - Player
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/playerPolicyList'
+  /me/player/shuffle:
+    put:
+      description: ''
+      operationId: toggle-shuffle-for-users-playback
+      parameters:
+      - in: query
+        name: state
+        required: true
+        schema:
+          description: ''
+          example: true
+          title: State
+          type: boolean
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Toggle Playback Shuffle
+
+        '
+      tags:
+      - Player
+  /me/player/volume:
+    put:
+      description: ''
+      operationId: set-volume-for-users-playback
+      parameters:
+      - in: query
+        name: volume_percent
+        required: true
+        schema:
+          description: ''
+          example: 50
+          title: Volume %
+          type: integer
+      - in: query
+        name: device_id
+        required: false
+        schema:
+          description: ''
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+          title: Device ID
+          type: string
+      responses:
+        '204':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-modify-playback-state
+      summary: 'Set Playback Volume
+
+        '
+      tags:
+      - Player
+  /me/playlists:
+    get:
+      description: ''
+      operationId: get-a-list-of-current-users-playlists
+      parameters:
+      - $ref: '#/components/parameters/QueryLimit'
+      - in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          description: ''
+          example: 5
+          title: Offset
+          type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/PagedPlaylists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-read-private
+      summary: 'Get Current User''s Playlists'
+      tags:
+      - Playlists
+      - Library
+  /me/shows:
+    delete:
+      description: ''
+      operationId: remove-shows-user
+      parameters:
+      - $ref: '#/components/parameters/QueryShowIds'
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Remove User''s Saved Shows'
+      tags:
+      - Shows
+      - Library
+    get:
+      description: ''
+      operationId: get-users-saved-shows
+      parameters:
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSavedShowObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Get User''s Saved Shows'
+      tags:
+      - Shows
+      - Library
+    put:
+      description: ''
+      operationId: save-shows-user
+      parameters:
+      - $ref: '#/components/parameters/QueryShowIds'
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Save Shows for Current User
+
+        '
+      tags:
+      - Shows
+      - Library
+  /me/shows/contains:
+    get:
+      description: ''
+      operationId: check-users-saved-shows
+      parameters:
+      - $ref: '#/components/parameters/QueryShowIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Check User''s Saved Shows'
+      tags:
+      - Shows
+      - Library
+  /me/top/{type}:
+    get:
+      description: ''
+      operationId: get-users-top-artists-and-tracks
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          description: ''
+          enum:
+          - artists
+          - tracks
+          title: Type
+          type: string
+      - in: query
+        name: time_range
+        required: false
+        schema:
+          default: medium_term
+          description: ''
+          example: medium_term
+          title: Time Range
+          type: string
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingArtistOrTrackObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-top-read
+      summary: 'Get User''s Top Items'
+      tags:
+      - Users
+      - Tracks
+      - Library
+  /me/tracks:
+    delete:
+      description: ''
+      operationId: remove-tracks-user
+      parameters:
+      - $ref: '#/components/parameters/QueryTrackIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Remove User''s Saved Tracks'
+      tags:
+      - Tracks
+      - Library
+    get:
+      description: ''
+      operationId: get-users-saved-tracks
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSavedTrackObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Get User''s Saved Tracks'
+      tags:
+      - Tracks
+      - Library
+    put:
+      description: ''
+      operationId: save-tracks-user
+      parameters:
+      - $ref: '#/components/parameters/QueryTrackIds'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                ids:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              required:
+              - uris
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-modify
+      summary: 'Save Tracks for Current User
+
+        '
+      tags:
+      - Tracks
+      - Library
+  /me/tracks/contains:
+    get:
+      description: ''
+      operationId: check-users-saved-tracks
+      parameters:
+      - $ref: '#/components/parameters/QueryTrackIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-library-read
+      summary: 'Check User''s Saved Tracks'
+      tags:
+      - Tracks
+      - Library
+  /playlists/{playlist_id}:
+    get:
+      description: ''
+      operationId: get-playlist
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      - $ref: '#/components/parameters/QueryMarket'
+      - in: query
+        name: fields
+        required: false
+        schema:
+          description: ''
+          example: items(added_by.id,track(name,href,album(name,href)))
+          title: Fields
+          type: string
+      - $ref: '#/components/parameters/QueryAdditionalTypes'
+      responses:
+        '200':
+          $ref: '#/components/responses/OnePlaylist'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Playlist
+
+        '
+      tags:
+      - Playlists
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataWithMachineLearningPolicyList'
+    put:
+      description: ''
+      operationId: change-playlist-details
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              example:
+                description: ''
+                name: Updated Playlist Name
+                public: false
+              properties:
+                collaborative:
+                  description: ''
+                  type: boolean
+                description: ''
+                name:
+                  description: ''
+                  type: string
+                public:
+                  description: ''
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+      summary: 'Change Playlist Details
+
+        '
+      tags:
+      - Playlists
+      - Library
+  /playlists/{playlist_id}/followers:
+    delete:
+      description: ''
+      operationId: unfollow-playlist
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+      summary: 'Unfollow Playlist
+
+        '
+      tags:
+      - Users
+      - Playlists
+    put:
+      description: ''
+      operationId: follow-playlist
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              example:
+                public: false
+              properties:
+                public:
+                  description: ''
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+      summary: 'Follow Playlist
+
+        '
+      tags:
+      - Users
+      - Playlists
+  /playlists/{playlist_id}/followers/contains:
+    get:
+      description: ''
+      operationId: check-if-user-follows-playlist
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      - in: query
+        name: ids
+        required: true
+        schema:
+          description: ''
+          example: jmperezperez,thelinmichael,wizzler
+          title: Spotify user IDs
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfBooleans'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Check if Users Follow Playlist
+
+        '
+      tags:
+      - Users
+      - Playlists
+  /playlists/{playlist_id}/images:
+    get:
+      description: ''
+      operationId: get-playlist-cover
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ArrayOfImages'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Playlist Cover Image
+
+        '
+      tags:
+      - Playlists
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataWithMachineLearningPolicyList'
+    put:
+      description: ''
+      operationId: upload-custom-playlist-cover
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      requestBody:
+        content:
+          image/jpeg:
+            schema:
+              description: ''
+              example: /9j/2wCEABoZGSccJz4lJT5CLy8vQkc9Ozs9R0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0cBHCcnMyYzPSYmPUc9Mj1HR0dEREdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR//dAAQAAf/uAA5BZG9iZQBkwAAAAAH/wAARCAABAAEDACIAAREBAhEB/8QASwABAQAAAAAAAAAAAAAAAAAAAAYBAQAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAARAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwAAARECEQA/AJgAH//Z
+              format: byte
+              required: true
+              type: string
+      responses:
+        '202':
+          description: ''
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - ugc-image-upload
+        - playlist-modify-public
+        - playlist-modify-private
+      summary: 'Add Custom Playlist Cover Image
+
+        '
+      tags:
+      - Playlists
+  /playlists/{playlist_id}/tracks:
+    delete:
+      description: ''
+      operationId: remove-tracks-playlist
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                snapshot_id:
+                  description: ''
+                  type: string
+                tracks:
+                  description: ''
+                  items:
+                    properties:
+                      uri:
+                        description: ''
+                        type: string
+                    type: object
+                  type: array
+              required:
+              - tracks
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/PlaylistSnapshotId'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+      summary: 'Remove Playlist Items
+
+        '
+      tags:
+      - Playlists
+      - Tracks
+    get:
+      description: ''
+      operationId: get-playlists-tracks
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      - $ref: '#/components/parameters/QueryMarket'
+      - in: query
+        name: fields
+        required: false
+        schema:
+          description: ''
+          example: items(added_by.id,track(name,href,album(name,href)))
+          title: Fields
+          type: string
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      - $ref: '#/components/parameters/QueryAdditionalTypes'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingPlaylistTrackObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-read-private
+      summary: 'Get Playlist Items
+
+        '
+      tags:
+      - Playlists
+      - Tracks
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataWithMachineLearningPolicyList'
+    post:
+      description: ''
+      operationId: add-tracks-to-playlist
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      - in: query
+        name: position
+        required: false
+        schema:
+          description: ''
+          example: 0
+          title: Position (append by default)
+          type: integer
+      - in: query
+        name: uris
+        required: false
+        schema:
+          description: ''
+          example: spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M
+          title: Spotify Track URIs
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              properties:
+                position:
+                  description: ''
+                  type: integer
+                uris:
+                  description: ''
+                  items:
+                    type: string
+                  type: array
+              type: object
+      responses:
+        '201':
+          $ref: '#/components/responses/PlaylistSnapshotId'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+      summary: 'Add Items to Playlist
+
+        '
+      tags:
+      - Playlists
+      - Tracks
+    put:
+      description: ''
+      operationId: reorder-or-replace-playlists-tracks
+      parameters:
+      - $ref: '#/components/parameters/PathPlaylistId'
+      - in: query
+        name: uris
+        required: false
+        schema:
+          description: ''
+          title: Spotify Track URIs
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              example:
+                insert_before: 3
+                range_length: 2
+                range_start: 1
+              properties:
+                insert_before:
+                  description: ''
+                  type: integer
+                range_length:
+                  description: ''
+                  type: integer
+                range_start:
+                  description: ''
+                  type: integer
+                snapshot_id:
+                  description: ''
+                  type: string
+                uris:
+                  items:
+                    type: string
+                  type: array
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/PlaylistSnapshotId'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+      summary: 'Update Playlist Items
+
+        '
+      tags:
+      - Playlists
+      - Tracks
+  /recommendations:
+    get:
+      description: ''
+      operationId: get-recommendations
+      parameters:
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          description: ''
+          example: 10
+          maximum: 100
+          minimum: 1
+          title: Limit
+          type: integer
+      - $ref: '#/components/parameters/QueryMarket'
+      - in: query
+        name: seed_artists
+        required: true
+        schema:
+          description: ''
+          example: 4NHQUGzhtTLFvgF5SZesLK
+          title: Spotify Artist ID Seeds
+          type: string
+      - in: query
+        name: seed_genres
+        required: true
+        schema:
+          description: ''
+          example: classical,country
+          title: Genres Seeds
+          type: string
+      - in: query
+        name: seed_tracks
+        required: true
+        schema:
+          description: ''
+          example: 0c6xIDDpzE81m2q797ordA
+          title: Spotify Track ID Seeds
+          type: string
+      - in: query
+        name: min_acousticness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Min. Acousticness
+          type: number
+      - in: query
+        name: max_acousticness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Max. Acousticness
+          type: number
+      - in: query
+        name: target_acousticness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Target Acousticness
+          type: number
+      - in: query
+        name: min_danceability
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Min. Danceability
+          type: number
+      - in: query
+        name: max_danceability
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Max. Danceability
+          type: number
+      - in: query
+        name: target_danceability
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Target Danceability
+          type: number
+      - in: query
+        name: min_duration_ms
+        required: false
+        schema:
+          description: ''
+          title: Min. Duration (ms)
+          type: integer
+      - in: query
+        name: max_duration_ms
+        required: false
+        schema:
+          description: ''
+          title: Max. Duration (ms)
+          type: integer
+      - in: query
+        name: target_duration_ms
+        required: false
+        schema:
+          description: ''
+          title: Target Duration (ms)
+          type: integer
+      - in: query
+        name: min_energy
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Min. Energy
+          type: number
+      - in: query
+        name: max_energy
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Max. Energy
+          type: number
+      - in: query
+        name: target_energy
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Target Energy
+          type: number
+      - in: query
+        name: min_instrumentalness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Min. Instrumentalness
+          type: number
+      - in: query
+        name: max_instrumentalness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Max. Instrumentalness
+          type: number
+      - in: query
+        name: target_instrumentalness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Target Instrumentalness
+          type: number
+      - in: query
+        name: min_key
+        required: false
+        schema:
+          description: ''
+          maximum: 11
+          minimum: 0
+          title: Min. Key
+          type: integer
+      - in: query
+        name: max_key
+        required: false
+        schema:
+          description: ''
+          maximum: 11
+          minimum: 0
+          title: Max. Key
+          type: integer
+      - in: query
+        name: target_key
+        required: false
+        schema:
+          description: ''
+          maximum: 11
+          minimum: 0
+          title: Target Key
+          type: integer
+      - in: query
+        name: min_liveness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Min. Liveness
+          type: number
+      - in: query
+        name: max_liveness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Max. Liveness
+          type: number
+      - in: query
+        name: target_liveness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Target Liveness
+          type: number
+      - in: query
+        name: min_loudness
+        required: false
+        schema:
+          description: ''
+          title: Min. Loudness
+          type: number
+      - in: query
+        name: max_loudness
+        required: false
+        schema:
+          description: ''
+          title: Max. Loudness
+          type: number
+      - in: query
+        name: target_loudness
+        required: false
+        schema:
+          description: ''
+          title: Target Loudness
+          type: number
+      - in: query
+        name: min_mode
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Min. Mode
+          type: integer
+      - in: query
+        name: max_mode
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Max. Mode
+          type: integer
+      - in: query
+        name: target_mode
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Target Mode
+          type: integer
+      - in: query
+        name: min_popularity
+        required: false
+        schema:
+          description: ''
+          maximum: 100
+          minimum: 0
+          title: Min. Popularity
+          type: integer
+      - in: query
+        name: max_popularity
+        required: false
+        schema:
+          description: ''
+          maximum: 100
+          minimum: 0
+          title: Max. Popularity
+          type: integer
+      - in: query
+        name: target_popularity
+        required: false
+        schema:
+          description: ''
+          maximum: 100
+          minimum: 0
+          title: Target Popularity
+          type: integer
+      - in: query
+        name: min_speechiness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Min. Speechiness
+          type: number
+      - in: query
+        name: max_speechiness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Max. Speechiness
+          type: number
+      - in: query
+        name: target_speechiness
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Target Speechiness
+          type: number
+      - in: query
+        name: min_tempo
+        required: false
+        schema:
+          description: ''
+          title: Min. Tempo
+          type: number
+      - in: query
+        name: max_tempo
+        required: false
+        schema:
+          description: ''
+          title: Max. Tempo
+          type: number
+      - in: query
+        name: target_tempo
+        required: false
+        schema:
+          description: ''
+          title: Target Tempo
+          type: number
+      - in: query
+        name: min_time_signature
+        required: false
+        schema:
+          description: ''
+          maximum: 11
+          title: Min. Time Signature
+          type: integer
+      - in: query
+        name: max_time_signature
+        required: false
+        schema:
+          description: ''
+          title: Max. Time Signature
+          type: integer
+      - in: query
+        name: target_time_signature
+        required: false
+        schema:
+          description: ''
+          title: Target Time Signature
+          type: integer
+      - in: query
+        name: min_valence
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Min. Valence
+          type: number
+      - in: query
+        name: max_valence
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Max. Valence
+          type: number
+      - in: query
+        name: target_valence
+        required: false
+        schema:
+          description: ''
+          maximum: 1
+          minimum: 0
+          title: Target Valence
+          type: number
+      responses:
+        '200':
+          $ref: '#/components/responses/OneRecommendations'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Recommendations
+
+        '
+      tags:
+      - Tracks
+      x-spotify-policy-list:
+      - $ref: '#/components/x-spotify-policy/policies/MachineLearning'
+  /recommendations/available-genre-seeds:
+    get:
+      description: ''
+      operationId: get-recommendation-genres
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyGenres'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Available Genre Seeds
+
+        '
+      tags:
+      - Genres
+  /search:
+    get:
+      description: ''
+      operationId: search
+      parameters:
+      - in: query
+        name: q
+        required: true
+        schema:
+          description: ''
+          example: remaster%20track:Doxy%20artist:Miles%20Davis
+          title: Query
+          type: string
+      - explode: false
+        in: query
+        name: type
+        required: true
+        schema:
+          description: ''
+          items:
+            enum:
+            - album
+            - artist
+            - playlist
+            - track
+            - show
+            - episode
+            - audiobook
+            type: string
+          title: Item type
+          type: array
+      - $ref: '#/components/parameters/QueryMarket'
+      - in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          description: ''
+          example: 10
+          maximum: 50
+          minimum: 0
+          title: Limit
+          type: integer
+      - in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          description: ''
+          example: 5
+          maximum: 1000
+          minimum: 0
+          title: Offset
+          type: integer
+      - in: query
+        name: include_external
+        required: false
+        schema:
+          description: ''
+          enum:
+          - audio
+          title: Include External
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchItems'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Search for Item
+
+        '
+      tags:
+      - Search
+      x-spotify-policy-list:
+      - $ref: '#/components/x-spotify-policy/policies/MachineLearning'
+  /shows:
+    get:
+      description: ''
+      operationId: get-multiple-shows
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryShowIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ManySimplifiedShows'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Several Shows
+
+        '
+      tags:
+      - Shows
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /shows/{id}:
+    get:
+      description: ''
+      operationId: get-a-show
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/PathShowId'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneShow'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-playback-position
+      summary: 'Get Show
+
+        '
+      tags:
+      - Shows
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /shows/{id}/episodes:
+    get:
+      description: ''
+      operationId: get-a-shows-episodes
+      parameters:
+      - $ref: '#/components/parameters/PathShowId'
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryLimit'
+      - $ref: '#/components/parameters/QueryOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/PagingSimplifiedEpisodeObject'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - user-read-playback-position
+      summary: 'Get Show Episodes
+
+        '
+      tags:
+      - Shows
+      - Episodes
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataPolicyList'
+  /tracks:
+    get:
+      description: ''
+      operationId: get-several-tracks
+      parameters:
+      - $ref: '#/components/parameters/QueryMarket'
+      - $ref: '#/components/parameters/QueryTrackIds'
+      responses:
+        '200':
+          $ref: '#/components/responses/ManyTracks'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Several Tracks
+
+        '
+      tags:
+      - Tracks
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataWithMachineLearningPolicyList'
+  /tracks/{id}:
+    get:
+      description: ''
+      operationId: get-track
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: ''
+          example: 11dFghVXANMlKmJXsNCbNl
+          title: Spotify Track ID
+          type: string
+      - $ref: '#/components/parameters/QueryMarket'
+      responses:
+        '200':
+          $ref: '#/components/responses/OneTrack'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get Track
+
+        '
+      tags:
+      - Tracks
+      x-spotify-policy-list:
+        $ref: '#/components/x-spotify-policy/metadataWithMachineLearningPolicyList'
+  /users/{user_id}:
+    get:
+      description: ''
+      operationId: get-users-profile
+      parameters:
+      - $ref: '#/components/parameters/PathUserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/OnePublicUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0: []
+      summary: 'Get User''s Profile'
+      tags:
+      - Users
+  /users/{user_id}/playlists:
+    get:
+      description: ''
+      operationId: get-list-users-playlists
+      parameters:
+      - $ref: '#/components/parameters/PathUserId'
+      - $ref: '#/components/parameters/QueryLimit'
+      - in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          description: ''
+          example: 5
+          title: Offset
+          type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/PagedPlaylists'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-read-private
+        - playlist-read-collaborative
+      summary: 'Get User''s Playlists'
+      tags:
+      - Playlists
+      - Users
+    post:
+      description: ''
+      operationId: create-playlist
+      parameters:
+      - $ref: '#/components/parameters/PathUserId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              example:
+                description: ''
+                name: New Playlist
+                public: false
+              properties:
+                collaborative:
+                  description: ''
+                  type: boolean
+                description: ''
+                name:
+                  description: ''
+                  type: string
+                public:
+                  description: ''
+                  type: boolean
+              required:
+              - name
+              type: object
+      responses:
+        '201':
+          $ref: '#/components/responses/OnePlaylist'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      security:
+      - oauth_2_0:
+        - playlist-modify-public
+        - playlist-modify-private
+      summary: 'Create Playlist
+
+        '
+      tags:
+      - Playlists
+      - Library
+servers:
+- url: https://api.spotify.com/v1
+tags:
+- name: Albums
+- name: Artists
+- name: Audiobooks
+- name: Categories
+- name: Chapters
+- name: Episodes
+- name: Library
+- name: Genres
+- name: Markets
+- name: Player
+- name: Playlists
+- name: Search
+- name: Shows
+- name: Tracks
+- name: Users
