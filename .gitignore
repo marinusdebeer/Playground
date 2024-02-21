@@ -42,3 +42,6 @@ ffmpeg-master-latest-win64-gpl
 # *.json
 output_images
 google_cloud_text_speech_key.json
+*.chkpt
+*.jpg
+log

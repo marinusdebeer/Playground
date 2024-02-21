@@ -33,6 +33,7 @@ load_dotenv()
 NUM_ACTIONS = 3
 ACTIONS = [0, 2, 3]
 GAMMA = 0.99
+GAMMA = 0.99
 ALPHA = 0.60 # alpha = 0 -> uniform; alpha = 1 -> purely based on priority
 BETA = 0.40 # beta = 0 -> no correction; beta = 1 -> weights fully correct bias
 BUFFER_SIZE = 300_000
