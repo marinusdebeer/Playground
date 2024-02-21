@@ -22,7 +22,7 @@ num_reader.model
 *.png
 wslvenv
 directml_venv
-.DS_Store
+*.DS_Store
 dogs_cats_75px_models
 .env
 oneclose_text
@@ -45,3 +45,5 @@ google_cloud_text_speech_key.json
 *.chkpt
 *.jpg
 log
+*.tf
+gym/mario/checkpoints
