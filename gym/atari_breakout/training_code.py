@@ -62,7 +62,7 @@ NUM_EPISODES = 5_000
 SAVE_FREQ = 100
 EMAIL_FREQUENCY = 1000
 # RUN = "per_n_steps_47_5_000_n"
-RUN = "ddqn_71_5_000_lr_padding"
+RUN = "per_68_5_000_control_he_init_leaky_relu_0_1_image_reward-1_lr_decay_0.3"
 SAVE_PATH = f"G:/Coding/breakout/testing_prioritized/{RUN}/"
 
 # GAME = "Pong-v4"
@@ -263,10 +263,8 @@ class RainbowAgent:
             self.n_step_buffer = deque(maxlen=N_STEPS)
             # self.n_step_buffer = ReversedDeque(maxlen=N_STEPS)
         self.fig_frame = None
-        # self.q_network = DQN()
-        # self.target_network = DQN()
-        self.q_network = self.create_dqn_model()
-        self.target_network = self.create_dqn_model()
+        self.q_network = DQN()
+        self.target_network = DQN()
         self.optimizer = tf.keras.optimizers.Adam(learning_rate=INITIAL_LEARNING_RATE, clipnorm=1.0)
         self.loss_function = tf.keras.losses.MeanSquaredError()
         self.q_network.compile(optimizer=self.optimizer, loss=self.loss_function)
@@ -334,7 +332,7 @@ TRAINING = {TRAINING}
 MODEL = {MODEL}\n\n"""
         if LOGGING:
             print(params)
-        write_to_file(f"{read_file()}", "training_code.py", type="w")
+        write_to_file(f"{read_file()}", "code.py", type="w")
         self.update_target_network()
 
     def update_target_network(self):
@@ -344,31 +342,6 @@ MODEL = {MODEL}\n\n"""
             write_to_file("updating target network\n")
             self.target_network.set_weights(self.q_network.get_weights())
 
-    def create_dqn_model(self):
-        input_shape = (FRAME_HEIGHT, FRAME_WIDTH, NUM_FRAMES)  # Correct the input shape
-        inputs = tf.keras.Input(shape=input_shape)  # Use the input shape directly
-
-        x = Conv2D(32, 8, strides=4, kernel_initializer=HeNormal(), padding="same")(inputs)
-        x = Activation('leaky_relu')(x)
-        x = Conv2D(64, 4, strides=2, kernel_initializer=HeNormal(), padding="same")(x)
-        x = Activation('leaky_relu')(x)
-        x = Conv2D(64, 3, strides=1, kernel_initializer=HeNormal(), padding="same")(x)
-        x = Activation('leaky_relu')(x)
-        x = Flatten()(x)
-
-        if DUELING_DQN:
-            adv = Dense(512, activation='leaky_relu', kernel_initializer=HeNormal())(x)
-            adv = Dense(NUM_ACTIONS, kernel_initializer=HeNormal())(adv)
-            val = Dense(512, activation='leaky_relu', kernel_initializer=HeNormal())(x)
-            val = Dense(1, kernel_initializer=HeNormal())(val)
-            q_values = val + (adv - tf.reduce_mean(adv, axis=1, keepdims=True))
-        else:
-            x = Dense(512, activation='leaky_relu', kernel_initializer=HeNormal())(x)
-            q_values = Dense(NUM_ACTIONS, kernel_initializer=HeNormal())(x)
-
-        model = tf.keras.Model(inputs=inputs, outputs=q_values)
-        return model
-    
     def remember(self, state, action, reward, next_state, done):
         if N_STEPS_IMPLEMENTED:
             self.n_step_buffer.append((state, action, reward, next_state, done))
@@ -785,7 +758,7 @@ if __name__ == "__main__":
     # tf.config.experimental.set_memory_growth(devices[0], True)
     
     agent = RainbowAgent()
-    write_graph(agent.q_network, input_shape=[FRAME_HEIGHT, FRAME_WIDTH, NUM_FRAMES]) 
+    write_graph(agent.q_network, input_shape=[FRAME_WIDTH, FRAME_HEIGHT, NUM_FRAMES]) 
     agent.train()
     agent.q_network.save(SAVE_PATH+"model")
     human_readable_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
