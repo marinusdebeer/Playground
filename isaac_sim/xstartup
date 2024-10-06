@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Unset these variables to avoid any interference with GNOME
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+
+# Ensure any previous xstartup is executed
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+
+# Set the background to a solid color
+xsetroot -solid grey
+
+# Start GNOME
+gnome-session &
