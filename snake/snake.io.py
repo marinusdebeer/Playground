@@ -177,10 +177,14 @@ def main():
             occupied_positions.add(position)
 
     frame_count = 0
-
     running = True
+    paused = False
+
     while running:
         screen.fill(COLOR_BG)
+
+        # Capture the state of all keys
+        keys = pygame.key.get_pressed()
 
         # Event Handling
         for event in pygame.event.get():
@@ -200,86 +204,95 @@ def main():
                     player_snake.set_direction(LEFT)
                 elif event.key == pygame.K_RIGHT:
                     player_snake.set_direction(RIGHT)
+                elif event.key == pygame.K_p:
+                    paused = not paused
 
-        # Update occupied positions before moves
-        occupied_positions = get_occupied_positions(snakes, foods, snake_foods)
+        if not paused:
+            # Update occupied positions before moves
+            occupied_positions = get_occupied_positions(snakes, foods, snake_foods)
 
-        # Move snakes
-        for snake in snakes:
-            if snake.alive:
-                if snake != player_snake:
-                    if foods:
-                        nearest_food = snake.find_nearest_food(foods)
-                        snake.move_towards_food(nearest_food)
-                snake.move()
-
-        # Check collisions
-        for snake in snakes:
-            snake.check_collision(snakes)
-
-        # Update occupied positions after moves
-        occupied_positions = get_occupied_positions(snakes, foods, snake_foods)
-
-        # Food consumption
-        for food in foods[:]:
+            # Move snakes
             for snake in snakes:
-                if snake.alive and snake.body[0] == food.position:
-                    snake.grow()
-                    foods.remove(food)
-                    occupied_positions.remove(food.position)  # Update occupied positions
-                    # Spawn new food
-                    position = Food.spawn(occupied_positions)
-                    if position:
-                        new_food = Food(position=position)
-                        foods.append(new_food)
-                        occupied_positions.add(new_food.position)
-                    break  # Only one snake can eat the food
+                if snake.alive:
+                    if snake == player_snake:
+                        # Player snake
+                        move_times = 1
+                        if keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]:
+                            move_times = 2
+                        for _ in range(move_times):
+                            snake.move()
+                            snake.check_collision(snakes)
+                    else:
+                        if foods:
+                            nearest_food = snake.find_nearest_food(foods)
+                            snake.move_towards_food(nearest_food)
+                        snake.move()
 
-        for food in snake_foods[:]:
+            # Check collisions for AI snakes
             for snake in snakes:
-                if snake.alive and snake.body[0] == food.position:
-                    snake.grow()
-                    snake_foods.remove(food)
-                    occupied_positions.remove(food.position)  # Update occupied positions
-                    # Optionally, spawn new food if desired
-                    break  # Only one snake can eat the food
+                if snake.alive and snake != player_snake:
+                    snake.check_collision(snakes)
 
-        # Turn dead snakes into food and respawn AI snakes
-        for i, snake in enumerate(snakes[1:], start=1):
-            if not snake.alive:
-                # Convert dead snake body to food
-                for segment in snake.body:
+            # Update occupied positions after moves
+            occupied_positions = get_occupied_positions(snakes, foods, snake_foods)
+
+            # Food consumption
+            for food in foods[:]:
+                for snake in snakes:
+                    if snake.alive and snake.body[0] == food.position:
+                        snake.grow()
+                        foods.remove(food)
+                        occupied_positions.remove(food.position)  # Update occupied positions
+                        # Spawn new food
+                        position = Food.spawn(occupied_positions)
+                        if position:
+                            new_food = Food(position=position)
+                            foods.append(new_food)
+                            occupied_positions.add(new_food.position)
+                        break  # Only one snake can eat the food
+
+            for food in snake_foods[:]:
+                for snake in snakes:
+                    if snake.alive and snake.body[0] == food.position:
+                        snake.grow()
+                        snake_foods.remove(food)
+                        occupied_positions.remove(food.position)  # Update occupied positions
+                        # Optionally, spawn new food if desired
+                        break  # Only one snake can eat the food
+
+            # Turn dead snakes into food and respawn AI snakes
+            for i, snake in enumerate(snakes[1:], start=1):
+                if not snake.alive:
+                    # Convert dead snake body to food
+                    for segment in snake.body:
+                        if segment not in occupied_positions:
+                            snake_foods.append(Food(position=segment))
+                            occupied_positions.add(segment)
+                    # Respawn AI snake
+                    new_snake = Snake(
+                        random.randint(0, SCREEN_WIDTH // BLOCK_SIZE - 1) * BLOCK_SIZE,
+                        random.randint(0, SCREEN_HEIGHT // BLOCK_SIZE - 1) * BLOCK_SIZE,
+                        ai_snake_colors[i - 1][0],
+                        ai_snake_colors[i - 1][1]
+                    )
+                    snakes[i] = new_snake
+                    ai_snakes[i - 1] = new_snake  # Keep ai_snakes list updated
+                    occupied_positions.update(new_snake.body)
+
+            # Handle player snake death
+            if not player_snake.alive:
+                for segment in player_snake.body:
                     if segment not in occupied_positions:
                         snake_foods.append(Food(position=segment))
                         occupied_positions.add(segment)
-                # Respawn AI snake
-                new_snake = Snake(
-                    random.randint(0, SCREEN_WIDTH // BLOCK_SIZE - 1) * BLOCK_SIZE,
-                    random.randint(0, SCREEN_HEIGHT // BLOCK_SIZE - 1) * BLOCK_SIZE,
-                    ai_snake_colors[i - 1][0],
-                    ai_snake_colors[i - 1][1]
-                )
-                snakes[i] = new_snake
-                ai_snakes[i - 1] = new_snake  # Keep ai_snakes list updated
-                occupied_positions.update(new_snake.body)
 
-        # Handle player snake death
-        if not player_snake.alive:
-            for segment in player_snake.body:
-                if segment not in occupied_positions:
-                    snake_foods.append(Food(position=segment))
-                    occupied_positions.add(segment)
-            # Uncomment the next lines to respawn the player snake automatically
-            # player_snake = Snake(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, COLOR_PLAYER, COLOR_PLAYER_HEAD, is_player=True)
-            # snakes[0] = player_snake  # Update the snakes list
-
-        # Spawn new food at a constant rate
-        frame_count += 1
-        if frame_count % FOOD_SPAWN_RATE == 0:
-            position = Food.spawn(occupied_positions)
-            if position:
-                foods.append(Food(position=position))
-                occupied_positions.add(position)
+            # Spawn new food at a constant rate
+            frame_count += 1
+            if frame_count % FOOD_SPAWN_RATE == 0:
+                position = Food.spawn(occupied_positions)
+                if position:
+                    foods.append(Food(position=position))
+                    occupied_positions.add(position)
 
         # Draw elements
         # First, draw all food items
