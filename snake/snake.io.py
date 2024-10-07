@@ -19,6 +19,7 @@ COLOR_AI_IMMORTAL = (255, 0, 0)  # Red
 COLOR_AI_HEAD = (128, 0, 0)      # Dark Red
 COLOR_FOOD = (255, 255, 0)       # Yellow
 COLOR_BG = (173, 216, 230)       # Light Blue
+COLOR_TEXT = (0, 0, 0)           # Black
 
 # Directions
 UP = (0, -1)
@@ -38,6 +39,7 @@ class Snake:
         self.is_player = is_player
         self.alive = True
         self.immortal_ticks = IMMORTAL_TICKS if not is_player else 0
+        self.score = 0
 
     def move(self):
         if not self.alive:
@@ -50,6 +52,7 @@ class Snake:
     def grow(self):
         tail = self.body[-1]
         self.body.append(tail)
+        self.score += 1
 
     def set_direction(self, new_direction):
         # Prevent reversing direction
@@ -317,6 +320,16 @@ def main():
                 if snake.immortal_ticks > 0:
                     head_color = COLOR_AI_IMMORTAL
                 pygame.draw.rect(screen, head_color, pygame.Rect(head[0], head[1], BLOCK_SIZE, BLOCK_SIZE))
+
+        # Display scores
+        font = pygame.font.SysFont(None, 36)
+        for i, snake in enumerate(snakes):
+            if snake.is_player:
+                label = f"Player Score: {snake.score}"
+            else:
+                label = f"AI Snake {i} Score: {snake.score}"
+            score_text = font.render(label, True, COLOR_TEXT)
+            screen.blit(score_text, (10, 10 + i * 30))
 
         # Update display and tick
         pygame.display.flip()
