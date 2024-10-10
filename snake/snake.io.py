@@ -109,15 +109,11 @@ class Game:
         self.selected_option = 0
         self.fullscreen = fullscreen  # Track fullscreen state
 
-        # Add player name initialization
-        self.player_name = self.get_player_name()
-        self.leaderboard = self.load_leaderboard()  # Load leaderboard on game start
-
         self.current_input_text = ""  # For typing questions
         self.current_question = ""  # To store the current question
         self.current_answer = ""  # To store the current answer
 
-        self.dark_mode = True  # Default to light mode
+        self.dark_mode = True
 
         # Set initial color scheme to light mode
         self.colors = DARK_MODE_COLORS.copy()
@@ -157,6 +153,10 @@ class Game:
         pygame.display.set_caption('Advanced Snake Game')
         self.clock = pygame.time.Clock()
 
+        # Add player name initialization
+        self.player_name = self.get_player_name()
+        self.leaderboard = self.load_leaderboard()  # Load leaderboard on game start
+
         # Initialize snakes and foods
         self.initialize_game_objects()
 
@@ -166,14 +166,42 @@ class Game:
             "Toggle Fullscreen",
             "Toggle Dark Mode",
             "View Leaderboard",  # New option to view the leaderboard
+            "Ask for Advice",  # Added option
             "Respawn Player",
             "Quit Game"
         ]
+        
 
     def get_player_name(self):
-        """Prompt the player to enter their name."""
-        name = input("Enter your name: ")
-        return name if name else "Player"  # Default name if none provided
+        """Prompt the player to enter their name using Pygame."""
+        font = pygame.font.SysFont(None, 48)
+        input_text = ""
+        active = True
+        
+        while active:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        active = False
+                    elif event.key == pygame.K_BACKSPACE:
+                        input_text = input_text[:-1]
+                    else:
+                        input_text += event.unicode
+            
+            self.screen.fill(self.colors["bg"])
+            prompt = font.render("Enter your name:", True, self.colors["text"])
+            name_display = font.render(input_text, True, self.colors["text"])
+            
+            self.screen.blit(prompt, (self.screen_width//2 - prompt.get_width()//2, self.screen_height//2 - 50))
+            self.screen.blit(name_display, (self.screen_width//2 - name_display.get_width()//2, self.screen_height//2))
+            
+            pygame.display.flip()
+            self.clock.tick(30)
+        
+        return input_text if input_text else "Player"
 
     def load_leaderboard(self):
         """Load leaderboard from a JSON file as a dictionary."""
@@ -184,18 +212,30 @@ class Game:
             return {}  # Return an empty dictionary if the file doesn't exist
 
     def save_leaderboard(self):
-        """Save the leaderboard dictionary to a file."""
         try:
             with open(self.LEADERBOARD_FILE, 'w') as file:
                 json.dump(self.leaderboard, file, indent=4)
         except Exception as e:
             print(f"Error saving leaderboard: {e}")
+            # Display an in-game notification
+            self.display_error_message("Failed to save leaderboard.")
+
+    def display_error_message(self, message):
+        font = pygame.font.SysFont(None, 36)
+        error_text = font.render(message, True, (255, 0, 0))
+        self.screen.blit(error_text, (
+            self.screen_width // 2 - error_text.get_width() // 2,
+            self.screen_height // 2
+        ))
+        pygame.display.flip()
+        pygame.time.delay(2000)  # Display for 2 seconds
+
 
     def update_leaderboard(self):
         """Update the leaderboard with the player's and AI snakes' high scores."""
         # Update player score in the leaderboard
-        if self.player_name not in self.leaderboard or self.player_snake.score > self.leaderboard[self.player_name]:
-            self.leaderboard[self.player_name] = self.player_snake.score
+        if self.player_snake.name not in self.leaderboard or self.player_snake.score > self.leaderboard[self.player_snake.name]:
+            self.leaderboard[self.player_snake.name] = self.player_snake.score
 
         # Update AI snake scores in the leaderboard
         for snake in self.ai_snakes:
@@ -204,6 +244,7 @@ class Game:
 
         # Save updated leaderboard to file
         self.save_leaderboard()
+
 
     def load_sounds(self):
         """Load game sounds with exception handling."""
@@ -238,6 +279,7 @@ class Game:
             color=self.COLOR_PLAYER,
             head_color=self.COLOR_PLAYER_HEAD,
             is_player=True,
+            name=self.player_name,
             game=self
         )
 
@@ -278,13 +320,17 @@ class Game:
     def spawn_initial_food(self):
         """Spawn initial food items."""
         occupied_positions = self.get_occupied_positions()
-        while len(self.foods) < self.food_amount:
+        attempts = 0
+        max_attempts = self.food_amount * 10  # Arbitrary multiplier
+        
+        while len(self.foods) < self.food_amount and attempts < max_attempts:
             position = Food.spawn(occupied_positions, self)
             if position:
                 self.foods.append(Food(position=position, game=self))
                 occupied_positions.add(position)
-            else:
-                break  # No available positions to spawn food
+            attempts += 1
+        if attempts == max_attempts:
+            print("Reached maximum spawn attempts. Some food may not have been spawned.")
 
     def generate_random_name(self):
         """Generate a more creative and realistic snake name."""
@@ -304,7 +350,7 @@ class Game:
     def run(self):
         """Main game loop."""
         while True:
-            self.screen.fill(self.COLOR_BG)
+            self.screen.fill(self.colors["bg"])
             keys = pygame.key.get_pressed()
 
             for event in pygame.event.get():
@@ -557,19 +603,6 @@ class Game:
                     elif event.key == pygame.K_DOWN:
                         scroll_offset = min(scroll_offset + 1, len(lines) - (self.screen_height // 40 - 5))  # Scroll down
 
-    def process_follow_up_question(self):
-        """Send the current input text as a follow-up question and get the response."""
-        if self.current_input_text.strip():
-            # Add the follow-up question to the chat log
-            follow_up_question = self.current_input_text.strip()
-            response = self.get_advice_from_chatgpt(follow_up_question)
-            self.display_advice_response(response)
-            
-            # Add question and response to the chat log
-            self.chat_log.append({"question": follow_up_question, "response": response})
-            self.current_input_text = ""  # Clear the input for the next question
-
-
     def display_leaderboard_in_pause_menu(self):
         """Display the leaderboard in the pause menu with proper alignment, background visibility, and scrolling support."""
         font = pygame.font.SysFont(None, 36)
@@ -578,7 +611,7 @@ class Game:
         # Get the height of the leaderboard items
         item_height = 40  # Each leaderboard entry height
         max_displayable_items = self.screen_height // item_height - 5  # Leave space for title and return message
-
+        
         # Variables to handle scrolling
         scroll_offset = 0
         total_items = len(self.leaderboard)
@@ -622,9 +655,13 @@ class Game:
                 self.screen_width // 2 - leaderboard_title.get_width() // 2,
                 50
             ))
-
+            sorted_leaderboard = sorted(
+              self.leaderboard.items(),
+              key=lambda x: x[1],
+              reverse=True
+          )
             # Display leaderboard items with left-aligned names and right-aligned scores
-            for idx, (name, score) in enumerate(self.leaderboard.items()):
+            for idx, (name, score) in enumerate(sorted_leaderboard):
                 if idx < scroll_offset or idx >= scroll_offset + max_displayable_items:
                     continue  # Skip items outside the current scroll view
 
@@ -873,7 +910,7 @@ class Game:
 
         game_over_text = font_large.render("Game Over", True, (255, 0, 0))
         current_score_text = font_medium.render(
-            f"Your Score: {current_score}", True, (255, 255, 255))
+            f"{self.player_snake.name}'s Score: {current_score}", True, (255, 255, 255))
         restart_text = font_small.render(
             "Press R to Respawn or Q to Quit", True, (255, 255, 255))
 
@@ -898,7 +935,7 @@ class Game:
             event = pygame.event.wait()
             if event.type == pygame.QUIT:
                 pygame.quit()
-                exit()
+                sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_r:
                     self.player_snake = Snake(
@@ -907,6 +944,7 @@ class Game:
                         color=self.COLOR_PLAYER,
                         head_color=self.COLOR_PLAYER_HEAD,
                         is_player=True,
+                        name=self.player_name,  # Assign the player's name here
                         game=self
                     )
                     self.snakes[0] = self.player_snake
@@ -915,6 +953,7 @@ class Game:
                 elif event.key == pygame.K_q or event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     exit()
+
 
     def draw_elements(self):
         """Draw all game elements on the screen."""
@@ -945,10 +984,7 @@ class Game:
 
         for i in range(max_scores_displayed):
             snake = self.snakes[i]
-            if snake.is_player:
-                label = f"Player Score: {snake.score}"
-            else:
-                label = f"{snake.name} Score: {snake.score}"
+            label = f"{snake.name} Score: {snake.score}"  # Use snake.name here
             score_text = font.render(label, True, text_color)
             self.screen.blit(score_text, (10, 10 + i * 20))
 
@@ -957,7 +993,7 @@ class Game:
         high_score_text = font.render(
             f"High Score: {high_score}", True, text_color)
         self.screen.blit(high_score_text, (self.screen_width -
-                         high_score_text.get_width() - 10, 10))
+                        high_score_text.get_width() - 10, 10))
 
     def draw_pause_menu(self):
         """Draw the pause menu on the screen with the game board visible in the background."""
@@ -1061,6 +1097,7 @@ class Snake:
         self.score = 0
         self.name = name
         self.game = game
+        self.next_direction = self.direction
 
         # Stamina attributes (for player)
         if self.is_player:
@@ -1074,15 +1111,22 @@ class Snake:
         """Move the snake in the current direction."""
         if not self.alive:
             return
+        self.direction = self.next_direction  # Update direction
         head_x, head_y = self.body[0]
         new_head = (
-            (head_x + self.direction[0] *
-             self.game.BLOCK_SIZE) % self.game.map_width,
-            (head_y + self.direction[1] *
-             self.game.BLOCK_SIZE) % self.game.map_height
+            head_x + self.direction[0] * self.game.BLOCK_SIZE,
+            head_y + self.direction[1] * self.game.BLOCK_SIZE
         )
+
+        # Check for wall collision
+        if (new_head[0] < 0 or new_head[0] >= self.game.map_width or
+            new_head[1] < 0 or new_head[1] >= self.game.map_height):
+            self.alive = False
+            return
+
         self.body.appendleft(new_head)
         self.body.pop()
+
 
     def grow(self):
         """Grow the snake by adding a segment."""
@@ -1095,7 +1139,7 @@ class Snake:
     def set_direction(self, new_direction):
         """Set the new direction of the snake, preventing 180-degree turns."""
         if (self.direction[0] * -1, self.direction[1] * -1) != new_direction and new_direction != self.direction:
-            self.direction = new_direction
+            self.next_direction = new_direction
 
     def update_stamina(self, boosting):
         """Update stamina based on whether the player is boosting or not."""
