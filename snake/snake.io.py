@@ -40,7 +40,7 @@ DARK_MODE_COLORS = {
     "minimap_border": (255, 255, 255)  # White minimap border
 }
 
-def wrap_text(text, font, max_width):
+def wrap_text(text, font, max_width, color):
     """Splits text into multiple lines that fit within the max_width, respecting newlines."""
     lines = []
     paragraphs = text.split('\n')  # Split by newline to handle paragraph breaks
@@ -51,7 +51,7 @@ def wrap_text(text, font, max_width):
         current_width = 0
 
         for word in words:
-            word_surface = font.render(word, True, (255, 255, 255))
+            word_surface = font.render(word, True, color)
             word_width = word_surface.get_width()
 
             if current_width + word_width <= max_width:
@@ -63,9 +63,9 @@ def wrap_text(text, font, max_width):
                 current_width = word_width
 
         lines.append(' '.join(current_line))  # Append the last line of the paragraph
-        # lines.append('')  # Add a blank line for paragraph separation
 
     return lines
+
 class Game:
     # Class-level constants for better readability
     FPS = 10
@@ -408,36 +408,36 @@ class Game:
 
             if asking_question:
                 # Render input prompt and typed question
-                advice_prompt = font.render("Ask for advice:", True, (255, 255, 255))
+                advice_prompt = font.render("Ask for advice:", True, self.colors["text"])
                 self.screen.blit(advice_prompt, (50, 50))
 
-                question_text = font.render(advice_text, True, (255, 255, 255))
+                question_text = font.render(advice_text, True, self.colors["text"])
                 self.screen.blit(question_text, (50, 100))
 
                 # Display guidance to press Enter or ESC
-                enter_text = font.render("Press Enter to submit, ESC to exit", True, (255, 255, 255))
+                enter_text = font.render("Press Enter to submit, ESC to exit", True, self.colors["text"])
                 self.screen.blit(enter_text, (self.screen_width // 2 - enter_text.get_width() // 2, self.screen_height - 50))
             else:
                 # Display question and response
                 if self.current_question and self.current_answer:
-                    wrapped_question = wrap_text(f"Q: {self.current_question}", font, self.screen_width - 100)
-                    wrapped_answer = wrap_text(f"A: {self.current_answer}", font, self.screen_width - 100)
+                    wrapped_question = wrap_text(f"Q: {self.current_question}", font, self.screen_width - 100, self.colors["text"])
+                    wrapped_answer = wrap_text(f"A: {self.current_answer}", font, self.screen_width - 100, self.colors["text"])
 
                     y_pos = 50
                     for line in wrapped_question:
-                        question_display = font.render(line, True, (255, 255, 255))
+                        question_display = font.render(line, True, self.colors["text"])
                         self.screen.blit(question_display, (50, y_pos))
                         y_pos += 40
 
                     # Scroll through long responses
                     visible_lines = wrapped_answer[scroll_offset:scroll_offset + (self.screen_height // 40 - 5)]
                     for line in visible_lines:
-                        answer_display = font.render(line, True, (200, 200, 200))
+                        answer_display = font.render(line, True, self.colors["text"])
                         self.screen.blit(answer_display, (50, y_pos))
                         y_pos += 40
 
                 # Instructions to scroll, exit, or ask another question
-                return_text = font.render("Press ESC to return, UP/DOWN to scroll, Enter to ask another question", True, (255, 255, 255))
+                return_text = font.render("Press ESC to return, UP/DOWN to scroll, Enter to ask another question", True, self.colors["text"])
                 self.screen.blit(return_text, (self.screen_width // 2 - return_text.get_width() // 2, self.screen_height - 50))
 
             pygame.display.flip()
@@ -469,7 +469,7 @@ class Game:
                         elif event.key == pygame.K_UP:
                             scroll_offset = max(0, scroll_offset - 1)  # Scroll up
                         elif event.key == pygame.K_DOWN:
-                            scroll_offset = min(len(wrap_text(self.current_answer, font, self.screen_width - 100)) - (self.screen_height // 40 - 5), scroll_offset + 1)  # Scroll down
+                            scroll_offset = min(len(wrap_text(self.current_answer, font, self.screen_width - 100, self.colors["text"])) - (self.screen_height // 40 - 5), scroll_offset + 1)  # Scroll down
                         elif event.key == pygame.K_RETURN:
                             # Allow the player to ask another question without exiting
                             asking_question = True  # Switch back to question asking mode
@@ -528,7 +528,7 @@ class Game:
     def display_advice_response(self, response):
         """Display the ChatGPT response on the screen and allow scrolling and exiting."""
         font = pygame.font.SysFont(None, 36)
-        lines = wrap_text(response, font, self.screen_width - 100)
+        lines = wrap_text(response, font, self.screen_width - 100, self.colors["text"])
         y_offset = 50
         scroll_offset = 0  # Initialize scroll offset
         running = True
@@ -538,13 +538,13 @@ class Game:
 
             # Render each line of the response with scrolling support
             for i in range(scroll_offset, min(scroll_offset + self.visible_rows - 10, len(lines))):
-                response_text = font.render(lines[i], True, (255, 255, 255))
+                response_text = font.render(lines[i], True, self.colors["text"])
                 self.screen.blit(response_text, (50, y_offset))
                 y_offset += 30  # Adjusted line height
 
             # Render a message to indicate how to exit the chat
-            return_text = font.render("Press ESC to return, UP/DOWN to scroll", True, (255, 255, 255))
-            self.screen.blit(return_text, (50, self.screen_height - 50))
+            return_text = font.render("Press ESC to return, UP/DOWN to scroll", True, self.colors["text"])
+            self.screen.blit(return_text, (self.screen_width // 2 - return_text.get_width() // 2, self.screen_height - 50))
 
             pygame.display.flip()
 
@@ -555,7 +555,7 @@ class Game:
                     elif event.key == pygame.K_UP:
                         scroll_offset = max(scroll_offset - 1, 0)  # Scroll up
                     elif event.key == pygame.K_DOWN:
-                        scroll_offset = min(scroll_offset + 1, len(lines) - self.visible_rows)  # Scroll down
+                        scroll_offset = min(scroll_offset + 1, len(lines) - (self.screen_height // 40 - 5))  # Scroll down
 
     def process_follow_up_question(self):
         """Send the current input text as a follow-up question and get the response."""
