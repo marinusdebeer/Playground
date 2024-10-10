@@ -6,6 +6,26 @@ from collections import deque
 pygame.init()
 pygame.mixer.init()  # Initialize the mixer module
 
+# Define the light and dark mode color schemes
+LIGHT_MODE_COLORS = {
+    "bg": (173, 216, 230),  # Light blue background
+    "snake_body": (0, 0, 255),  # Blue snake body
+    "snake_head": (0, 0, 128),  # Darker blue snake head
+    "food": (255, 255, 0),  # Yellow food
+    "text": (0, 0, 0),  # Black text
+    "minimap_bg": (200, 200, 200),  # Light minimap background
+    "minimap_border": (0, 0, 0)  # Black minimap border
+}
+
+DARK_MODE_COLORS = {
+    "bg": (25, 25, 25),  # Dark gray background
+    "snake_body": (0, 0, 255),  # Blue snake body
+    "snake_head": (0, 0, 128),  # Darker blue snake head
+    "food": (255, 69, 0),  # Orange-red food
+    "text": (255, 255, 255),  # White text
+    "minimap_bg": (50, 50, 50),  # Dark minimap background
+    "minimap_border": (255, 255, 255)  # White minimap border
+}
 class Game:
     # Class-level constants for better readability
     FPS = 10
@@ -29,6 +49,7 @@ class Game:
     COLOR_MINIMAP_PLAYER = (0, 0, 255)
     COLOR_MINIMAP_AI = (255, 0, 0)
 
+
     # Directions
     UP = (0, -1)
     DOWN = (0, 1)
@@ -48,6 +69,11 @@ class Game:
         self.background_music_playing = True
         self.selected_option = 0
         self.fullscreen = fullscreen  # Track fullscreen state
+
+        self.dark_mode = False  # Default to light mode
+
+        # Set initial color scheme to light mode
+        self.colors = LIGHT_MODE_COLORS.copy()
 
         # Retrieve display information
         info = pygame.display.Info()
@@ -86,8 +112,15 @@ class Game:
         # Initialize snakes and foods
         self.initialize_game_objects()
 
-        # Pause menu options (added "Toggle Fullscreen")
-        self.pause_menu_options = ["Resume Game", "Mute/Unmute Sounds", "Toggle Fullscreen", "Respawn Player", "Quit Game"]
+        self.pause_menu_options = [
+          "Resume Game",
+          "Mute/Unmute Sounds",
+          "Toggle Fullscreen",
+          "Toggle Dark Mode",  # Add the toggle option for dark mode
+          "Respawn Player",
+          "Quit Game"
+      ]
+
 
     def load_sounds(self):
         """Load game sounds with exception handling."""
@@ -167,8 +200,15 @@ class Game:
                 break  # No available positions to spawn food
 
     def generate_random_name(self):
-        """Generate a random name for AI snakes."""
-        return ''.join(random.choices(string.ascii_uppercase + string.digits, k=5))
+        """Generate a more creative and realistic snake name."""
+        # List of creative snake names
+        SNAKE_NAMES = [
+            "Slithers", "Fang", "Serpentina", "Cobra Kai", "Slinky", 
+            "Nagini", "Venom", "Hissandra", "Rattler", "Aspen",
+            "Viperion", "Boa", "Sidewinder", "Slyther", "Anaconda",
+            "Pythonia", "Copperhead", "Scalez", "Rex", "Kaa"
+        ]
+        return random.choice(SNAKE_NAMES)
 
     def load_high_score(self):
         """Load the high score from a file."""
@@ -199,6 +239,7 @@ class Game:
                 self.update_game_logic(keys)
                 self.draw_elements()
                 self.draw_minimap()
+                self.draw_stamina_bar()
             else:
                 self.draw_pause_menu()
 
@@ -264,9 +305,32 @@ class Game:
             )
             self.snakes[0] = self.player_snake
             self.paused = False
+        elif option == "Toggle Dark Mode":  # Handle the dark mode toggle
+            self.toggle_dark_mode()
         elif option == "Quit Game":
             pygame.quit()
             exit()
+    def toggle_dark_mode(self):
+        """Toggle between dark and light mode."""
+        self.dark_mode = not self.dark_mode  # Toggle the mode
+        
+        # Apply the correct color scheme
+        if self.dark_mode:
+            self.colors = DARK_MODE_COLORS.copy()
+        else:
+            self.colors = LIGHT_MODE_COLORS.copy()
+
+        # Feedback to the player
+        font = pygame.font.SysFont(None, 36)
+        mode_text = "Dark Mode Enabled" if self.dark_mode else "Light Mode Enabled"
+        toggle_text = font.render(mode_text, True, self.colors["text"])
+        self.screen.blit(toggle_text, (
+            self.screen_width // 2 - toggle_text.get_width() // 2,
+            self.screen_height // 2 - toggle_text.get_height() // 2
+        ))
+        pygame.display.flip()
+        pygame.time.delay(1000)  # Display for 1 second
+
 
     def toggle_fullscreen(self):
         """Toggle between fullscreen and windowed mode."""
@@ -317,15 +381,21 @@ class Game:
         for snake in self.snakes:
             if snake.alive:
                 if snake == self.player_snake:
-                    move_times = 1
-                    if (keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]) and not self.muted:
+                    # Check if the player is boosting
+                    boosting = keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]
+                    if boosting and self.player_snake.stamina > 0:
                         move_times = 2
                         if self.boost_sound and not self.muted:
                             if not pygame.mixer.Channel(1).get_busy():
                                 pygame.mixer.Channel(1).play(self.boost_sound)
                     else:
+                        move_times = 1
                         if self.boost_sound:
                             pygame.mixer.Channel(1).stop()
+
+                    # Update stamina
+                    self.player_snake.update_stamina(boosting)
+
                     for _ in range(move_times):
                         snake.move()
                         snake.check_collision(self.snakes)
@@ -512,6 +582,9 @@ class Game:
 
     def draw_elements(self):
         """Draw all game elements on the screen."""
+        # Draw background based on current mode
+        self.screen.fill(self.colors["bg"])
+
         # Draw food
         for food in self.foods + self.snake_foods:
             food.draw(self.screen, self.camera_x, self.camera_y, self.BLOCK_SIZE)
@@ -543,14 +616,18 @@ class Game:
         self.screen.blit(high_score_text, (self.screen_width - high_score_text.get_width() - 10, 10))
 
     def draw_pause_menu(self):
-        """Draw the pause menu on the screen."""
-        font = pygame.font.SysFont(None, 48)
+        """Draw the pause menu on the screen with the game board visible in the background."""
+        # First, draw all the game elements as they are
+        self.draw_elements()
+        
+        # Create a semi-transparent overlay
         overlay = pygame.Surface((self.screen_width, self.screen_height))
-        overlay.set_alpha(150)  # Set transparency level
+        overlay.set_alpha(150)  # Set transparency level (0 is fully transparent, 255 is fully opaque)
         overlay.fill((0, 0, 0))  # Fill with black to create the overlay
-        self.screen.blit(overlay, (0, 0))
+        self.screen.blit(overlay, (0, 0))  # Blit the overlay on top of the game elements
 
-        # Menu Options
+        # Draw the menu options on top of the semi-transparent overlay
+        font = pygame.font.SysFont(None, 48)
         for index, option in enumerate(self.pause_menu_options):
             color = (255, 255, 255) if index == self.selected_option else (200, 200, 200)
             option_text = font.render(option, True, color)
@@ -595,6 +672,24 @@ class Game:
             minimap_surface,
             (self.screen_width - self.minimap_width - 10, self.screen_height - self.minimap_height - 10)
         )
+    def draw_stamina_bar(self):
+        """Draw the stamina bar for the player."""
+        bar_width = 200
+        bar_height = 20
+        x_position = 20
+        y_position = self.screen_height - 40
+
+        # Calculate the current stamina width
+        current_stamina_width = (self.player_snake.stamina / self.player_snake.max_stamina) * bar_width
+
+        # Draw the background of the stamina bar (gray)
+        pygame.draw.rect(self.screen, (128, 128, 128), (x_position, y_position, bar_width, bar_height))
+
+        # Draw the current stamina (green)
+        pygame.draw.rect(self.screen, (0, 255, 0), (x_position, y_position, current_stamina_width, bar_height))
+
+        # Draw the border of the stamina bar (black)
+        pygame.draw.rect(self.screen, (0, 0, 0), (x_position, y_position, bar_width, bar_height), 2)
 
 class Snake:
     def __init__(self, x, y, color, head_color, is_player=False, name="Snake", game=None):
@@ -608,6 +703,13 @@ class Snake:
         self.score = 0
         self.name = name
         self.game = game
+
+        # Stamina attributes (for player)
+        if self.is_player:
+            self.stamina = 100  # Start with full stamina
+            self.max_stamina = 100
+            self.stamina_depletion_rate = 10  # How much stamina is used per boost
+            self.stamina_regeneration_rate = 2  # How much stamina regenerates per frame when not boosting
 
     def move(self):
         """Move the snake in the current direction."""
@@ -633,6 +735,19 @@ class Snake:
         """Set the new direction of the snake, preventing 180-degree turns."""
         if (self.direction[0] * -1, self.direction[1] * -1) != new_direction and new_direction != self.direction:
             self.direction = new_direction
+
+    def update_stamina(self, boosting):
+        """Update stamina based on whether the player is boosting or not."""
+        if self.is_player:
+            if boosting:
+                if self.stamina > 0:
+                    self.stamina -= self.stamina_depletion_rate
+                    if self.stamina < 0:
+                        self.stamina = 0  # Ensure stamina doesn't go negative
+            else:
+                self.stamina += self.stamina_regeneration_rate
+                if self.stamina > self.max_stamina:
+                    self.stamina = self.max_stamina  # Ensure stamina doesn't exceed max limit
 
     def check_collision(self, snakes):
         """Check for collisions with other snakes."""
