@@ -161,14 +161,14 @@ class Game:
         self.initialize_game_objects()
 
         self.pause_menu_options = [
-            "Resume Game",
-            "Mute/Unmute Sounds",
+            "Resume",
+            "Toggle Sound",
             "Toggle Fullscreen",
-            "Toggle Dark Mode",
-            "View Leaderboard",  # New option to view the leaderboard
-            "Ask for Advice",  # Added option
-            "Respawn Player",
-            "Quit Game"
+            "Toggle Theme",
+            "Leaderboard",  # New option to view the leaderboard
+            "Help",  # Added option
+            "Respawn",
+            "Exit Game"
         ]
         
 
@@ -405,11 +405,11 @@ class Game:
     def handle_pause_menu_selection(self):
         """Handle the selection in the pause menu."""
         option = self.pause_menu_options[self.selected_option]
-        if option == "Resume Game":
+        if option == "Resume":
             self.paused = False
-        elif option == "Ask for Advice":
+        elif option == "Help":
             self.ask_for_advice()  # Open the advice/ChatGPT menu
-        elif option == "Mute/Unmute Sounds":
+        elif option == "Toggle Sound":
             self.muted = not self.muted
             if self.muted:
                 pygame.mixer.music.pause()
@@ -422,7 +422,7 @@ class Game:
             self.background_music_playing = not self.background_music_playing
         elif option == "Toggle Fullscreen":
             self.toggle_fullscreen()
-        elif option == "Respawn Player":
+        elif option == "Respawn":
             self.player_snake = Snake(
                 x=self.map_width // 2,
                 y=self.map_height // 2,
@@ -433,11 +433,11 @@ class Game:
             )
             self.snakes[0] = self.player_snake
             self.paused = False
-        elif option == "Toggle Dark Mode":  # Handle the dark mode toggle
+        elif option == "Toggle Theme":  # Handle the dark mode toggle
             self.toggle_dark_mode()
-        elif option == "View Leaderboard":
+        elif option == "Leaderboard":
             self.display_leaderboard_in_pause_menu()  
-        elif option == "Quit Game":
+        elif option == "Exit Game":
             pygame.quit()
             exit()
             
