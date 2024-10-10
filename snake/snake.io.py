@@ -19,8 +19,8 @@ LIGHT_MODE_COLORS = {
 
 DARK_MODE_COLORS = {
     "bg": (25, 25, 25),  # Dark gray background
-    "snake_body": (0, 0, 255),  # Blue snake body
-    "snake_head": (0, 0, 128),  # Darker blue snake head
+    "snake_body": (0, 255, 0),
+    "snake_head": (0, 128, 0),
     "food": (255, 69, 0),  # Orange-red food
     "text": (255, 255, 255),  # White text
     "minimap_bg": (50, 50, 50),  # Dark minimap background
@@ -37,8 +37,8 @@ class Game:
     SCROLL_MARGIN = 100  # Pixels near the edges to trigger camera movement
 
     # Colors
-    COLOR_PLAYER = (0, 0, 255)
-    COLOR_PLAYER_HEAD = (0, 0, 128)
+    COLOR_PLAYER = (0, 255, 0)
+    COLOR_PLAYER_HEAD = (0, 128, 0)
     COLOR_AI_IMMORTAL = (255, 0, 0)
     COLOR_AI_HEAD = (128, 0, 0)
     COLOR_FOOD = (255, 255, 0)
@@ -70,10 +70,10 @@ class Game:
         self.selected_option = 0
         self.fullscreen = fullscreen  # Track fullscreen state
 
-        self.dark_mode = False  # Default to light mode
+        self.dark_mode = True  # Default to light mode
 
         # Set initial color scheme to light mode
-        self.colors = LIGHT_MODE_COLORS.copy()
+        self.colors = DARK_MODE_COLORS.copy()
 
         # Retrieve display information
         info = pygame.display.Info()
@@ -601,19 +601,24 @@ class Game:
         """Draw the scores of the player and AI snakes."""
         font = pygame.font.SysFont(None, 24)
         max_scores_displayed = min(len(self.snakes), 10)
+        
+        # Use the correct text color based on the mode
+        text_color = self.colors["text"]
+
         for i in range(max_scores_displayed):
             snake = self.snakes[i]
             if snake.is_player:
                 label = f"Player Score: {snake.score}"
             else:
                 label = f"{snake.name} Score: {snake.score}"
-            score_text = font.render(label, True, self.COLOR_TEXT)
+            score_text = font.render(label, True, text_color)
             self.screen.blit(score_text, (10, 10 + i * 20))
 
         # Display high score
         high_score = self.load_high_score()
-        high_score_text = font.render(f"High Score: {high_score}", True, self.COLOR_TEXT)
+        high_score_text = font.render(f"High Score: {high_score}", True, text_color)
         self.screen.blit(high_score_text, (self.screen_width - high_score_text.get_width() - 10, 10))
+
 
     def draw_pause_menu(self):
         """Draw the pause menu on the screen with the game board visible in the background."""
@@ -708,7 +713,7 @@ class Snake:
         if self.is_player:
             self.stamina = 100  # Start with full stamina
             self.max_stamina = 100
-            self.stamina_depletion_rate = 10  # How much stamina is used per boost
+            self.stamina_depletion_rate = 5  # How much stamina is used per boost
             self.stamina_regeneration_rate = 2  # How much stamina regenerates per frame when not boosting
 
     def move(self):
