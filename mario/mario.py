@@ -2,7 +2,7 @@ import pygame
 import sys
 import os
 import pickle
-
+import time
 # Configuration Flag
 USE_IMAGES = True  # Set to False to use colored rectangles instead of images
 
@@ -12,6 +12,8 @@ pygame.init()
 # Screen dimensions
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
+
+fullscreen = False
 
 # World dimensions
 WORLD_WIDTH = 3000  # Width of the level in pixels
@@ -34,6 +36,9 @@ PROJECTILE_COLOR = (255, 0, 0)     # Red
 
 # Gravity
 GRAVITY = 0.8
+
+MUTE = False
+TOTAL_TIME = 82
 
 # Initialize screen and clock
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -68,10 +73,36 @@ def load_image(path, width, height):
         image.fill(PLAYER_COLOR)  # Default color for platforms if no image
         return image
 
+def resolve_collisions(player, sprite_group, direction):
+    """
+    Resolves collisions between the player and sprites in the provided sprite_group.
 
+    Args:
+        player (Player): The player object.
+        sprite_group (pygame.sprite.Group): Group of sprites to check collisions against.
+        direction (str): Direction of movement ('horizontal' or 'vertical').
 
+    Returns:
+        None
+    """
+    for sprite in sprite_group:
+        if player.rect.colliderect(sprite.rect):
+            if direction == 'horizontal':
+                if player.velocity_x > 0:  # Moving right; hit left side of sprite
+                    player.rect.right = sprite.rect.left
+                elif player.velocity_x < 0:  # Moving left; hit right side of sprite
+                    player.rect.left = sprite.rect.right
+                player.velocity_x = 0
+            elif direction == 'vertical':
+                if player.velocity_y > 0:  # Falling down; hit top of sprite
+                    player.rect.bottom = sprite.rect.top
+                    player.on_ground = True
+                    player.velocity_y = 0
+                    player.double_jump_used = False
+                elif player.velocity_y < 0:  # Jumping up; hit bottom of sprite
+                    player.rect.top = sprite.rect.bottom
+                    player.velocity_y = 0
 
-# Classes
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -79,7 +110,17 @@ class Player(pygame.sprite.Sprite):
         
         # Base directory for images
         base_dir = os.path.join('assets', 'images')
-        
+        self.fireball_sound = pygame.mixer.Sound(os.path.join('assets', 'sounds', 'Super Mario Bros.-Fireball Sound Effect.mp3'))
+        self.powerup_sound_effect = pygame.mixer.Sound(os.path.join('assets', 'sounds', 'PowerUp Sound Effect.mp3'))
+        self.coin_sound_effect = pygame.mixer.Sound(os.path.join('assets', 'sounds', 'Mario Coin Sound - Sound Effect.mp3'))
+        self.fireball_sound.set_volume(0.8)
+        self.powerup_sound_effect.set_volume(0.8)
+        self.coin_sound_effect.set_volume(0.1)
+
+        pygame.mixer.music.load('assets/sounds/Super Mario Bros. Theme Song.mp3')
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(1)
+
         # Load player images or use rectangles
         if USE_IMAGES:
             # Load idle image
@@ -130,38 +171,28 @@ class Player(pygame.sprite.Sprite):
         
         # Flags for spacebar and jumping
         self.space_pressed = False  # Tracks if spacebar is held down
-        self.double_jump_used = False  # Tracks if double jump has been used
 
         # Movement attributes
         self.acceleration = 0.5
         self.deceleration = 0.2
         self.max_speed = 7
-        
+
         # Jumping attributes
         self.jump_velocity = -15  # Velocity applied when jumping
         self.double_jump_velocity = -15  # Velocity applied when double jumping
         self.double_jump_used = False  # Tracks if double jump has been used
         self.jump_increase_factor = 1.0  # Factor to increase jump height
-        
-        # Flags for jump and braking handling
-        self.space_pressed = False  # To track spacebar state
-        
+
         # Animation attributes
         if USE_IMAGES:
             self.current_run_frame = 0
             self.animation_timer = 0
             self.animation_speed = 100  # milliseconds between frames
-        
-        # Sliding attributes
-        self.is_sliding = False
-        self.current_speed = 0  # Current horizontal speed
     
     def set_image(self, new_image):
         """Set the player's image and adjust the rect while maintaining the center."""
         center = self.rect.center
         self.image = pygame.transform.scale(new_image, (int(PLAYER_WIDTH * self.scale_factor), int(PLAYER_HEIGHT * self.scale_factor)))
-        # self.image = new_image
-
         self.rect = self.image.get_rect()
         self.rect.center = center
     
@@ -189,36 +220,47 @@ class Player(pygame.sprite.Sprite):
         self.velocity_y = self.jump_velocity * self.jump_increase_factor
         self.on_ground = False
         self.double_jump_used = False  # Reset double jump when jumping from ground
-    
+
     def double_jump(self):
         """Handle double jumping when spacebar is pressed in the air."""
         self.velocity_y = self.double_jump_velocity * self.jump_increase_factor
         self.double_jump_used = True
     
-    def update(self, platforms, coins, enemies, breakable_blocks, powerups, hazards, projectiles):
+    def update(self, platforms, coins, enemies, breakable_blocks, powerups, hazards, projectiles, moving_platforms):
+        """
+        Updates the player's state, handling movement, collisions, and interactions.
+
+        Args:
+            platforms (pygame.sprite.Group): Group of static platforms.
+            coins (pygame.sprite.Group): Group of coins.
+            enemies (pygame.sprite.Group): Group of enemies.
+            breakable_blocks (pygame.sprite.Group): Group of breakable blocks.
+            powerups (pygame.sprite.Group): Group of power-ups.
+            hazards (pygame.sprite.Group): Group of hazards.
+            projectiles (pygame.sprite.Group): Group of enemy projectiles.
+            moving_platforms (pygame.sprite.Group): Group of moving platforms.
+
+        Returns:
+            None
+        """
         keys = pygame.key.get_pressed()
-        
-        # Handle horizontal movement
+
+        # --- Horizontal Movement ---
         moving_left = keys[pygame.K_LEFT]
         moving_right = keys[pygame.K_RIGHT]
 
-        # Handle normal acceleration and deceleration
-        if not self.space_pressed and moving_left:
+        if moving_left and not self.space_pressed:
             self.direction = -1
-            if self.velocity_x > 0:
-                self.velocity_x = 0
             self.velocity_x -= self.acceleration
             if USE_IMAGES:
                 self.animate_running(left=True)
-        elif not self.space_pressed and moving_right:
+        elif moving_right and not self.space_pressed:
             self.direction = 1
-            if self.velocity_x < 0:
-                self.velocity_x = 0
             self.velocity_x += self.acceleration
             if USE_IMAGES:
                 self.animate_running(left=False)
         else:
-            # Apply normal deceleration when no movement key is pressed
+            # Apply deceleration when no movement key is pressed
             if self.velocity_x > 0:
                 self.velocity_x -= self.deceleration
                 if self.velocity_x < 0:
@@ -228,36 +270,44 @@ class Player(pygame.sprite.Sprite):
                 if self.velocity_x > 0:
                     self.velocity_x = 0
 
-        # Limit the player's speed
+        # Limit the player's horizontal speed
+        if keys[pygame.K_LSHIFT]:
+            self.max_speed = 14
+        else:
+            self.max_speed = 7
         self.velocity_x = max(-self.max_speed, min(self.velocity_x, self.max_speed))
 
-        # Apply horizontal movement
+        # Move horizontally
         self.rect.x += self.velocity_x
 
-        # Gravity
+        # --- Horizontal Collision Detection ---
+        resolve_collisions(self, platforms, 'horizontal')
+        resolve_collisions(self, moving_platforms, 'horizontal')
+
+        # --- Vertical Movement ---
+        # Apply gravity
         self.velocity_y += GRAVITY
+        if self.velocity_y > 10:  # Terminal velocity
+            self.velocity_y = 10
+
+        # Move vertically
         self.rect.y += self.velocity_y
 
-        # Collision with platforms
-        self.on_ground = False
-        for platform in platforms:
-            if self.rect.colliderect(platform.rect):
-                if self.velocity_y > 0:
-                    self.rect.bottom = platform.rect.top
-                    self.on_ground = True
-                    self.velocity_y = 0
-                    self.double_jump_used = False  # Reset double jump when on ground
-                elif self.velocity_y < 0:
-                    self.rect.top = platform.rect.bottom
-                    self.velocity_y = 0
+        # --- Vertical Collision Detection ---
+        self.on_ground = False  # Reset on_ground status before checking
 
-        # Collision with moving platforms
-        for platform in platforms:
-            if isinstance(platform, MovingPlatform):
-                if self.rect.colliderect(platform.rect):
+        resolve_collisions(self, platforms, 'vertical')
+        resolve_collisions(self, moving_platforms, 'vertical')
+
+        # --- Moving with the Platform ---
+        if self.on_ground:
+            for platform in moving_platforms:
+                # Check if the player is standing on this moving platform
+                if self.rect.bottom == platform.rect.top and platform.rect.left <= self.rect.centerx <= platform.rect.right:
                     self.rect.x += platform.speed_x
                     self.rect.y += platform.speed_y
 
+        # --- Additional Collision Handling ---
         # Break blocks when jumping from below
         for block in breakable_blocks:
             if self.rect.colliderect(block.rect):
@@ -274,7 +324,9 @@ class Player(pygame.sprite.Sprite):
 
         # Collect coins
         coin_hits = pygame.sprite.spritecollide(self, coins, True)
-        self.score += len(coin_hits) * 10
+        for coin in coin_hits:
+            self.coin_sound_effect.play()
+            self.score += 10
 
         # Collision with hazards
         if not self.is_invincible:
@@ -315,7 +367,7 @@ class Player(pygame.sprite.Sprite):
                     self.lives -= 1
                     self.reset_position()
 
-        # Keep player within world bounds
+        # --- Keep Player Within World Bounds ---
         if self.rect.left < 0:
             self.rect.left = 0
             self.velocity_x = 0
@@ -323,7 +375,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = WORLD_WIDTH
             self.velocity_x = 0
 
-        # Update fireballs
+        # --- Update Fireballs ---
         self.fireballs.update(platforms)
 
         # Check fireball collisions with enemies
@@ -333,15 +385,15 @@ class Player(pygame.sprite.Sprite):
                 fireball.kill()
                 self.score += 50  # Award points for defeating an enemy
 
-        # Handle power-up timers
+        # --- Handle Power-Up Timers ---
         self.handle_power_up_timers()
 
-        # Check if player fell off the world
+        # --- Check if Player Fell Off the World ---
         if self.rect.top > SCREEN_HEIGHT:
             self.lives -= 1
             self.reset_position()
-    
-        # Update player image based on state
+
+        # --- Update Player Image Based on State ---
         if USE_IMAGES:
             if self.space_pressed and self.on_ground:
                 # Show jump image only when on the ground and spacebar is pressed
@@ -350,7 +402,7 @@ class Player(pygame.sprite.Sprite):
                 else:
                     self.set_image(self.image_jump_left)
             elif not self.on_ground:
-                # Show in-air image (not jump) when the player is in the air
+                # Show in-air image when the player is in the air
                 if self.direction == 1:
                     self.set_image(self.run_frames_right[1])
                 else:
@@ -369,7 +421,7 @@ class Player(pygame.sprite.Sprite):
         """Animate the running sequence."""
         if not USE_IMAGES:
             return  # No animation if not using images
-        
+
         now = pygame.time.get_ticks()
         if now - self.animation_timer > self.animation_speed:
             self.animation_timer = now
@@ -388,6 +440,7 @@ class Player(pygame.sprite.Sprite):
             self.max_speed = 7  # Reset speed to normal
     
     def collect_power_up(self, powerup):
+        self.powerup_sound_effect.play()
         if isinstance(powerup, InvincibilityPowerUp):
             self.is_invincible = True
             self.invincibility_timer = pygame.time.get_ticks()
@@ -401,8 +454,6 @@ class Player(pygame.sprite.Sprite):
             self.fireball_ability = True
         elif powerup.type == 'grow':
             self.grow()
-        # else:
-        #     self.grow()
     
     def grow(self):
         if not self.is_big:
@@ -435,6 +486,14 @@ class Player(pygame.sprite.Sprite):
         self.fireball_ability = False
         self.jump_increase_factor = 1.0
 
+        if USE_IMAGES:
+            self.set_image(self.image_idle_right)
+        else:
+            self.image = load_image(None, PLAYER_WIDTH, PLAYER_HEIGHT)
+        self.fireballs.empty()
+        if self.lives <= 0:
+            game_over_screen()  # Ensure this function is defined elsewhere
+
         
         if USE_IMAGES:
             self.set_image(self.image_idle_right)
@@ -445,6 +504,8 @@ class Player(pygame.sprite.Sprite):
             game_over_screen()  # Ensure this function is defined elsewhere
     
     def shoot_fireball(self):
+        
+
         # Limit fireball shooting rate
         now = pygame.time.get_ticks()
         if now - self.last_shot < 500:  # 500 ms cooldown
@@ -452,6 +513,9 @@ class Player(pygame.sprite.Sprite):
         self.last_shot = now
         fireball = Fireball(self.rect.centerx, self.rect.centery, self.direction)
         self.fireballs.add(fireball)
+        #play sound effect
+        if not MUTE:
+            self.fireball_sound.play()
     
     def save_state(self):
         return {
@@ -459,7 +523,10 @@ class Player(pygame.sprite.Sprite):
             'lives': self.lives,
             'level': self.level,
             'position': (self.rect.x, self.rect.y),
-            'is_big': self.is_big
+            'is_big': self.is_big,
+            'fireball_ability': self.fireball_ability,
+            'is_invincible': self.is_invincible,
+            'speed_boost': self.speed_boost
         }
     
     def load_state(self, state):
@@ -468,14 +535,19 @@ class Player(pygame.sprite.Sprite):
         self.level = state['level']
         self.rect.x, self.rect.y = state['position']
         self.is_big = state['is_big']
+        self.fireball_ability = state.get('fireball_ability', False)
+        self.is_invincible = state.get('is_invincible', False)
+        self.speed_boost = state.get('speed_boost', False)
         if self.is_big:
+            self.jump_increase_factor = 1.5
+            self.scale_factor = 1.5
             self.grow()
         else:
             if USE_IMAGES:
                 self.set_image(self.image_idle_right)
             else:
                 self.image = load_image(None, PLAYER_WIDTH, PLAYER_HEIGHT)
-    
+
     def draw(self, screen):
         screen.blit(self.image, self.rect)
         self.fireballs.draw(screen)
@@ -777,6 +849,22 @@ class Hazard(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
+class Pipe(pygame.sprite.Sprite):
+    def __init__(self, x, y, width, height, destination_level=None):
+        super().__init__()
+        # Load the pipe image
+        self.image = load_image(os.path.join('assets', 'images', 'pipe.png'), width, height)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.destination_level = destination_level  # Level to transport player to
+    
+    def transport_player(self, player):
+        # Check if player is standing on top of the pipe and pressing "Down"
+        if player.rect.bottom == self.rect.top and pygame.key.get_pressed()[pygame.K_DOWN]:
+            return self.destination_level
+        return None
+
 class Camera:
     def __init__(self, player):
         self.offset_x = 0
@@ -814,6 +902,7 @@ class Level:
         self.moving_platforms = pygame.sprite.Group()
         self.turrets = pygame.sprite.Group()
         self.enemy_projectiles = pygame.sprite.Group()
+        self.pipes = pygame.sprite.Group()
         self.flagpoles = pygame.sprite.Group()
         self.load_level(level_num)
 
@@ -828,6 +917,8 @@ class Level:
         self.moving_platforms.empty()
         self.turrets.empty()
         self.enemy_projectiles.empty()
+        self.flagpoles.empty()
+        self.pipes.empty()
 
         # Load level data
         if level_num == 1:
@@ -893,6 +984,10 @@ class Level:
         turret = TurretEnemy(1900, SCREEN_HEIGHT - 40 - 60)
         self.turrets.add(turret)
 
+        pipe = Pipe(800, SCREEN_HEIGHT - 80, 80, 80, destination_level='secret_area')
+        self.platforms.add(pipe)  # Adding the pipe to the platforms group so it's rendered
+        self.pipes.add(pipe)  # Add to a new pipes group if you want to manage pipes separately
+
         # Flagpole
         flagpole = Flagpole(WORLD_WIDTH - 100, SCREEN_HEIGHT - 240)
         self.flagpoles.add(flagpole)
@@ -954,14 +1049,96 @@ class Level:
         self.flagpoles.add(flagpole)
 
 def handle_events(player):
+    global fullscreen
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         else:
-            player.handle_event(event)
+                player.handle_event(event)
+
+def load_secret_area(player, level):
+    # Clear the current level and load a new secret area level
+    level.platforms.empty()
+    level.coins.empty()
+    level.enemies.empty()
+    level.breakable_blocks.empty()
+    level.powerups.empty()
+    level.hazards.empty()
+    level.moving_platforms.empty()
+    level.turrets.empty()
+    level.enemy_projectiles.empty()
+    level.pipes.empty()
+
+    # Define platforms in the secret area
+    platforms = [
+        Platform(0, SCREEN_HEIGHT - 40, WORLD_WIDTH, 40),  # Ground
+        Platform(300, 450, 200, 40),  # Platform 1
+        Platform(600, 350, 200, 40),  # Platform 2
+        Platform(900, 250, 200, 40),  # Platform 3
+        Platform(1200, 150, 200, 40),  # Platform 4
+    ]
+    level.platforms.add(platforms)
+
+    # Add a ton of coins to make it exciting
+    secret_coins = [
+        Coin(350, 400), Coin(400, 400), Coin(450, 400), Coin(500, 400),  # Platform 1
+        Coin(650, 300), Coin(700, 300), Coin(750, 300), Coin(800, 300),  # Platform 2
+        Coin(950, 200), Coin(1000, 200), Coin(1050, 200), Coin(1100, 200),  # Platform 3
+        Coin(1250, 100), Coin(1300, 100), Coin(1350, 100), Coin(1400, 100),  # Platform 4
+        # Ground coins
+        Coin(100, SCREEN_HEIGHT - 80), Coin(150, SCREEN_HEIGHT - 80), Coin(200, SCREEN_HEIGHT - 80),
+        Coin(250, SCREEN_HEIGHT - 80), Coin(300, SCREEN_HEIGHT - 80), Coin(350, SCREEN_HEIGHT - 80),
+    ]
+    level.coins.add(secret_coins)
+
+    # Add a power-up
+    powerup = PowerUp(1000, SCREEN_HEIGHT - 120, type='invincibility_powerup')
+    level.powerups.add(powerup)
+
+    # Add hazards like spikes or enemies (optional)
+    hazard = Hazard(600, SCREEN_HEIGHT - 40 - 40, 100, 40)  # Hazard near the ground
+    level.hazards.add(hazard)
+
+    # Add moving platforms for extra excitement
+    moving_platforms = [
+        MovingPlatform(800, 300, 150, 30, [(800, 300), (1000, 200)], 2),
+        MovingPlatform(400, 400, 150, 30, [(400, 400), (600, 300)], 2),
+    ]
+    level.moving_platforms.add(moving_platforms)
+
+    # Add a pipe that brings the player back to the main level
+    return_pipe = Pipe(1500, SCREEN_HEIGHT - 80, 80, 80, destination_level='main_level')
+    level.platforms.add(return_pipe)
+    level.pipes.add(return_pipe)
+
+    # Set player's position when entering the secret area
+    player.rect.x = 100
+    player.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 40
+
+
+def load_main_level(player, level):
+    # Clear current level and load the original main level
+    level.platforms.empty()
+    level.coins.empty()
+    level.enemies.empty()
+    level.breakable_blocks.empty()
+    level.powerups.empty()
+    level.hazards.empty()
+    level.moving_platforms.empty()
+    level.turrets.empty()
+    level.enemy_projectiles.empty()
+    level.pipes.empty()  # Clear any pipes in the secret area
+    
+    # Load the main level (assuming it's level 1 here)
+    level.load_level_one()
+
+    # Set player's position when they return from the secret area
+    player.rect.x = 1500  # Set a new position after returning from the secret area
+    player.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 40
 
 def update(player, level, camera):
+    
     player.update(
         level.platforms,
         level.coins,
@@ -969,8 +1146,18 @@ def update(player, level, camera):
         level.breakable_blocks,
         level.powerups,
         level.hazards,
-        level.enemy_projectiles
+        level.enemy_projectiles,
+        level.moving_platforms
     )
+
+    # Check if player interacts with pipes
+    for pipe in level.pipes:
+        destination_level = pipe.transport_player(player)
+        if destination_level == 'secret_area':
+            load_secret_area(player, level)
+        elif destination_level == 'main_level':
+            load_main_level(player, level)
+
     level.enemies.update()
     level.powerups.update(level.platforms)
     level.hazards.update()
@@ -981,7 +1168,7 @@ def update(player, level, camera):
     camera.update()
     check_level_completion(player, level)
 
-def render(screen, player, level, camera):
+def render(screen, player, level, camera, remaining_time):
     screen.fill((135, 206, 235))  # Sky blue background
     offset_x = camera.offset_x
 
@@ -1033,17 +1220,19 @@ def render(screen, player, level, camera):
     screen.blit(player.image, (player.rect.x - offset_x, player.rect.y))
 
     # Draw HUD
-    render_hud(screen, player)
+    render_hud(screen, player, remaining_time)
 
     pygame.display.flip()
 
-def render_hud(screen, player):
+def render_hud(screen, player, remaining_time):
+    time_text = font.render(f"Time: {remaining_time}", True, (0, 0, 0))
     score_text = font.render(f"Score: {player.score}", True, (0, 0, 0))
     lives_text = font.render(f"Lives: {player.lives}", True, (0, 0, 0))
     level_text = font.render(f"Level: {player.level}", True, (0, 0, 0))
-    screen.blit(score_text, (10, 10))
-    screen.blit(lives_text, (10, 40))
-    screen.blit(level_text, (10, 70))
+    screen.blit(time_text, (10, 10))
+    screen.blit(score_text, (10, 40))
+    screen.blit(lives_text, (10, 70))
+    screen.blit(level_text, (10, 110))
 
 def check_level_completion(player, level):
     # Check if the player has touched the flagpole
@@ -1070,17 +1259,54 @@ def load_game(player):
     except FileNotFoundError:
         print("No save game found.")
 
-def main_menu():
+# Implement the new Instructions screen
+def instructions_screen():
+    showing_instructions = True
+    while showing_instructions:
+        screen.fill((0, 0, 0))
+        title_text = font.render("Instructions", True, (255, 255, 255))
+        instructions = [
+            "Left Arrow: Move Left",
+            "Right Arrow: Move Right",
+            "Spacebar: Jump (Double Jump available)",
+            "F: Shoot Fireball (when power-up collected)",
+            "P: Pause Game",
+            "S: Save Game",
+            "Press M to return to Main Menu"
+        ]
+        screen.blit(title_text, (SCREEN_WIDTH // 2 - 80, 50))
+        for idx, line in enumerate(instructions):
+            instr_text = font.render(line, True, (255, 255, 255))
+            screen.blit(instr_text, (50, 100 + idx * 30))
+        pygame.display.flip()
+        clock.tick(15)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_m:
+                    showing_instructions = False
+
+def main_menu(paused=False):
     while True:
         screen.fill((0, 0, 0))
         title_text = font.render("Super Mario Clone", True, (255, 255, 255))
+        
         start_text = font.render("1. Start Game", True, (255, 255, 255))
         load_text = font.render("2. Load Game", True, (255, 255, 255))
-        quit_text = font.render("3. Quit", True, (255, 255, 255))
-        screen.blit(title_text, (SCREEN_WIDTH//2 - 100, SCREEN_HEIGHT//2 - 100))
+        instructions_text = font.render("3. Instructions", True, (255, 255, 255))
+        fullscreen_text = font.render("4. Full screen", True, (255, 255, 255))
+        quit_text = font.render("5. Quit", True, (255, 255, 255))
+        resume_text = font.render("6. Resume", True, (255, 255, 255))
+        screen.blit(title_text, (SCREEN_WIDTH//2 - 100, SCREEN_HEIGHT//2 - 150))
         screen.blit(start_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2 - 50))
         screen.blit(load_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2))
-        screen.blit(quit_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2 + 50))
+        screen.blit(instructions_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2 + 50))
+        screen.blit(fullscreen_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2 + 100))
+        screen.blit(quit_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2 + 150))
+        if paused:
+            screen.blit(resume_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2 + 200))
         pygame.display.flip()
 
         for event in pygame.event.get():
@@ -1093,44 +1319,38 @@ def main_menu():
                 if event.key == pygame.K_2:
                     return 'load'  # Load game
                 if event.key == pygame.K_3:
+                    instructions_screen()  # Show instructions
+                if event.key == pygame.K_4:
+                    set_fullscreen()
+                if event.key == pygame.K_5:
                     pygame.quit()
                     sys.exit()
+                if event.key == pygame.K_6 and paused:
+                    return 'resume'
 
-def pause_menu():
-    paused = True
-    while paused:
-        screen.fill((0, 0, 0))
-        pause_text = font.render("Game Paused", True, (255, 255, 255))
-        resume_text = font.render("Press P to Resume", True, (255, 255, 255))
-        screen.blit(pause_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2 - 50))
-        screen.blit(resume_text, (SCREEN_WIDTH//2 - 100, SCREEN_HEIGHT//2))
-        pygame.display.flip()
-        clock.tick(15)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_p:
-                    wait_for_key_release(pygame.K_p)  # Wait for P key to be released
-                    paused = False
+def set_fullscreen():
+    global fullscreen
+    fullscreen = not fullscreen
+    if fullscreen:
+        screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN)
+    else:
+        screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 def game_over_screen():
     screen.fill((0, 0, 0))  # Black background
     game_over_text = font.render("GAME OVER", True, (255, 0, 0))
-    restart_text = font.render("Press R to Restart", True, (255, 255, 255))
+    restart_text = font.render("Press M for Main Menu or Q to Quit", True, (255, 255, 255))
     screen.blit(game_over_text, (SCREEN_WIDTH//2 - 100, SCREEN_HEIGHT//2 - 50))
-    screen.blit(restart_text, (SCREEN_WIDTH//2 - 120, SCREEN_HEIGHT//2))
+    screen.blit(restart_text, (SCREEN_WIDTH//2 - 200, SCREEN_HEIGHT//2))
     pygame.display.flip()
     wait_for_restart()
 
 def victory_screen():
     screen.fill((0, 0, 0))
     victory_text = font.render("You Win!", True, (255, 255, 0))
-    restart_text = font.render("Press R to Play Again", True, (255, 255, 255))
+    restart_text = font.render("Press M for Main Menu or Q to Quit", True, (255, 255, 255))
     screen.blit(victory_text, (SCREEN_WIDTH//2 - 80, SCREEN_HEIGHT//2 - 50))
-    screen.blit(restart_text, (SCREEN_WIDTH//2 - 120, SCREEN_HEIGHT//2))
+    screen.blit(restart_text, (SCREEN_WIDTH//2 - 200, SCREEN_HEIGHT//2))
     pygame.display.flip()
     wait_for_restart()
 
@@ -1143,8 +1363,12 @@ def wait_for_restart():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_r:
-                    main()  # Restart the game
+                if event.key == pygame.K_m:
+                    waiting = False
+                    main()  # Return to main menu
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    sys.exit()
 
 def wait_for_key_release(key):
     """Waits until the specified key is released before proceeding."""
@@ -1154,26 +1378,46 @@ def wait_for_key_release(key):
             if event.type == pygame.KEYUP and event.key == key:
                 waiting = False
 
+
 def main():
-    choice = main_menu()
-    player = Player()
-    camera = Camera(player)
-    level = Level(player.level)
-
-    if choice == 'load':
-        load_game(player)
-        level.load_level(player.level)
-
+    start_time = time.time()  # Start time of the game
     while True:
-        handle_events(player)
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_p]:
-            pause_menu()
-        if keys[pygame.K_s]:
-            save_game(player)
-        update(player, level, camera)
-        render(screen, player, level, camera)
-        clock.tick(60)
+        choice = main_menu()
+        player = Player()
+        camera = Camera(player)
+        level = Level(player.level)
+
+        if choice == 'load':
+            load_game(player)
+            level.load_level(player.level)
+            
+        game_running = True
+        while game_running:
+            handle_events(player)
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_p]:
+                choice = main_menu(paused=True)
+            if keys[pygame.K_s]:
+                save_game(player)
+            # Calculate elapsed time
+            current_time = time.time()
+            elapsed_time = current_time - start_time
+            remaining_time = max(0, TOTAL_TIME - int(elapsed_time))  # Calculate remaining time
+            #convert to string with minutes and seconds
+            minutes = remaining_time // 60
+            seconds = remaining_time % 60
+            time_str = f"{minutes:02}:{seconds:02}"
+
+            update(player, level, camera)
+            render(screen, player, level, camera, time_str)
+            clock.tick(60)
+            if remaining_time <= 0 or player.lives <= 0:
+                pygame.mixer.music.rewind()
+                game_over_screen()
+                game_running = False
+                
+            if player.lives <= 0:
+                game_running = False  # Exit to main menu after game over
 
 if __name__ == "__main__":
     main()
