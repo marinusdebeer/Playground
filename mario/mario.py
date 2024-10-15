@@ -3,6 +3,8 @@ import sys
 import os
 import pickle
 import time
+import random
+
 # Configuration Flag
 USE_IMAGES = True  # Set to False to use colored rectangles instead of images
 
@@ -12,6 +14,16 @@ pygame.init()
 # Screen dimensions
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
+GROUND_HEIGHT = 80
+
+# Configuration for block platforms
+BLOCK_WIDTH = 40  # Block width in pixels
+BLOCK_HEIGHT = 40  # Block height in pixels
+POWERUP_CHANCE = 0.05  # 5% chance for a power-up or coin to be hidden in a block
+
+# List of possible power-ups
+powerup_types = ['grow', 'fireball_powerup', 'invincibility_powerup', 'speed', 'coin']
+
 
 fullscreen = False
 
@@ -73,37 +85,6 @@ def load_image(path, width, height):
         image.fill(PLAYER_COLOR)  # Default color for platforms if no image
         return image
 
-def resolve_collisions(player, sprite_group, direction):
-    """
-    Resolves collisions between the player and sprites in the provided sprite_group.
-
-    Args:
-        player (Player): The player object.
-        sprite_group (pygame.sprite.Group): Group of sprites to check collisions against.
-        direction (str): Direction of movement ('horizontal' or 'vertical').
-
-    Returns:
-        None
-    """
-    for sprite in sprite_group:
-        if player.rect.colliderect(sprite.rect):
-            if direction == 'horizontal':
-                if player.velocity_x > 0:  # Moving right; hit left side of sprite
-                    player.rect.right = sprite.rect.left
-                elif player.velocity_x < 0:  # Moving left; hit right side of sprite
-                    player.rect.left = sprite.rect.right
-                player.velocity_x = 0
-            elif direction == 'vertical':
-                if player.velocity_y > 0:  # Falling down; hit top of sprite
-                    player.rect.bottom = sprite.rect.top
-                    player.on_ground = True
-                    player.velocity_y = 0
-                    player.double_jump_used = False
-                elif player.velocity_y < 0:  # Jumping up; hit bottom of sprite
-                    player.rect.top = sprite.rect.bottom
-                    player.velocity_y = 0
-
-
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -149,7 +130,7 @@ class Player(pygame.sprite.Sprite):
         
         self.rect = self.image.get_rect()
         self.rect.x = 100
-        self.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 40
+        self.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 80
         self.velocity_x = 0
         self.velocity_y = 0
         self.on_ground = False
@@ -183,6 +164,8 @@ class Player(pygame.sprite.Sprite):
         self.double_jump_used = False  # Tracks if double jump has been used
         self.jump_increase_factor = 1.0  # Factor to increase jump height
 
+        self.prev_rect = self.rect.copy()  # To store previous position
+
         # Animation attributes
         if USE_IMAGES:
             self.current_run_frame = 0
@@ -213,8 +196,7 @@ class Player(pygame.sprite.Sprite):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 self.space_pressed = True
-
-    
+  
     def jump(self):
         """Handle jumping when spacebar is pressed."""
         self.velocity_y = self.jump_velocity * self.jump_increase_factor
@@ -227,23 +209,10 @@ class Player(pygame.sprite.Sprite):
         self.double_jump_used = True
     
     def update(self, platforms, coins, enemies, breakable_blocks, powerups, hazards, projectiles, moving_platforms):
-        """
-        Updates the player's state, handling movement, collisions, and interactions.
-
-        Args:
-            platforms (pygame.sprite.Group): Group of static platforms.
-            coins (pygame.sprite.Group): Group of coins.
-            enemies (pygame.sprite.Group): Group of enemies.
-            breakable_blocks (pygame.sprite.Group): Group of breakable blocks.
-            powerups (pygame.sprite.Group): Group of power-ups.
-            hazards (pygame.sprite.Group): Group of hazards.
-            projectiles (pygame.sprite.Group): Group of enemy projectiles.
-            moving_platforms (pygame.sprite.Group): Group of moving platforms.
-
-        Returns:
-            None
-        """
+        """Updates the player's state, handling movement, collisions, and interactions."""
         keys = pygame.key.get_pressed()
+
+        self.prev_rect = self.rect.copy()
 
         # --- Horizontal Movement ---
         moving_left = keys[pygame.K_LEFT]
@@ -296,6 +265,9 @@ class Player(pygame.sprite.Sprite):
         # --- Vertical Collision Detection ---
         self.on_ground = False  # Reset on_ground status before checking
 
+        # Handle collision with breakable blocks
+        resolve_block_collision(self, breakable_blocks, powerups)
+
         resolve_collisions(self, platforms, 'vertical')
         resolve_collisions(self, moving_platforms, 'vertical')
 
@@ -313,7 +285,7 @@ class Player(pygame.sprite.Sprite):
             if self.rect.colliderect(block.rect):
                 if self.velocity_y < 0:  # Moving upward
                     if self.rect.top <= block.rect.bottom:
-                        block.break_block(powerups)
+                        block.break_block(powerups, self.is_big)
                         self.rect.top = block.rect.bottom
                         self.velocity_y = 0
 
@@ -354,18 +326,26 @@ class Player(pygame.sprite.Sprite):
                     self.lives -= 1
                     self.reset_position()
 
-        # Collision with enemies
-        if not self.is_invincible:
-            enemy_hits = pygame.sprite.spritecollide(self, enemies, False)
-            if enemy_hits:
-                if self.is_big:
-                    self.is_big = False
-                    self.jump_increase_factor = 1.0
-                    self.scale_factor = 1.0
-                    self.fireball_ability = False
+        # --- Enemy Collision (Defeat when jumping on top) ---
+        for enemy in enemies:
+            if self.rect.colliderect(enemy.rect):
+                if self.velocity_y > 0 and self.rect.bottom <= enemy.rect.top + 10:  # Only when falling down
+                    self.rect.bottom = enemy.rect.top  # Adjust the player's position to be on top of the enemy
+                    self.velocity_y = -10  # Bounce up a little after defeating the enemy
+                    enemy.kill()  # Remove the enemy from the game
+                    self.score += 100  # Award points for defeating an enemy
                 else:
-                    self.lives -= 1
-                    self.reset_position()
+                    if not self.is_invincible:
+                        # Handle collision if player hits enemy from the side or bottom
+                        if self.is_big:
+                            self.is_big = False
+                            self.jump_increase_factor = 1.0
+                            self.scale_factor = 1.0
+                            self.fireball_ability = False
+                        else:
+                            self.lives -= 1
+                            self.reset_position()
+
 
         # --- Keep Player Within World Bounds ---
         if self.rect.left < 0:
@@ -472,7 +452,7 @@ class Player(pygame.sprite.Sprite):
         
     def reset_position(self):
         self.rect.x = 100
-        self.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 40
+        self.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - GROUND_HEIGHT
         self.velocity_x = 0
         self.velocity_y = 0
         self.is_invincible = False
@@ -494,7 +474,6 @@ class Player(pygame.sprite.Sprite):
         if self.lives <= 0:
             game_over_screen()  # Ensure this function is defined elsewhere
 
-        
         if USE_IMAGES:
             self.set_image(self.image_idle_right)
         else:
@@ -504,8 +483,6 @@ class Player(pygame.sprite.Sprite):
             game_over_screen()  # Ensure this function is defined elsewhere
     
     def shoot_fireball(self):
-        
-
         # Limit fireball shooting rate
         now = pygame.time.get_ticks()
         if now - self.last_shot < 500:  # 500 ms cooldown
@@ -552,7 +529,6 @@ class Player(pygame.sprite.Sprite):
         screen.blit(self.image, self.rect)
         self.fireballs.draw(screen)
 
-
 class Fireball(pygame.sprite.Sprite):
     def __init__(self, x, y, direction):
         super().__init__()
@@ -577,7 +553,6 @@ class Fireball(pygame.sprite.Sprite):
         self.bounces = 0
         self.max_bounces = 3  # Fireball disappears after 3 bounces
 
-
     def update(self, platforms):
         # Apply gravity
         self.velocity_y += GRAVITY
@@ -598,17 +573,32 @@ class Fireball(pygame.sprite.Sprite):
         if self.rect.right < 0 or self.rect.left > WORLD_WIDTH:
             self.kill()
 
-class Platform(pygame.sprite.Sprite):
-    def __init__(self, x, y, width, height, border_color=(0, 0, 0), border_thickness=2):
-        super().__init__()
-        # Load the image or create a surface
-        self.image = load_image(os.path.join('assets', 'images', 'platform.png'), width, height)
+def create_tiled_ground(level, block_image='unbreakable_block.png', block_size=40, rows=2):
+    """
+    Creates a tiled ground made up of multiple unbreakable blocks.
 
-        # No need to fill if the image is already loaded and scaled
+    Args:
+        level (Level): The current level instance to which the ground blocks will be added.
+        block_image (str): The image filename for the ground blocks.
+        block_size (int): The size (width and height) of each block in pixels.
+        rows (int): Number of rows to stack vertically.
+    """
+    ground_y_positions = [SCREEN_HEIGHT - block_size * (row + 1) for row in range(rows)]
+    for y in ground_y_positions:
+        for x in range(0, WORLD_WIDTH, block_size):
+            block = Platform(x, y, block_size, block_size, image_path=block_image)
+            level.platforms.add(block)
+
+class Platform(pygame.sprite.Sprite):
+    def __init__(self, x, y, width, height, image_path='platform.png', border_color=(0, 0, 0), border_thickness=2):
+        super().__init__()
+        # Load the specified image or default to 'platform.png'
+        self.image = load_image(os.path.join('assets', 'images', image_path), width, height)
+        
+        # If not using images, fill with PLATFORM_COLOR
         if not USE_IMAGES:
             self.image.fill(PLATFORM_COLOR)
-
-        # Set the rect for positioning
+        
         self.rect = self.image.get_rect(topleft=(x, y))
 
 
@@ -638,6 +628,60 @@ class MovingPlatform(Platform):
             self.rect.x += self.speed_x
             self.rect.y += self.speed_y
 
+def resolve_collisions(player, sprite_group, direction):
+    """
+    Resolves collisions between the player and sprites in the provided sprite_group.
+
+    Args:
+        player (Player): The player object.
+        sprite_group (pygame.sprite.Group): Group of sprites to check collisions against.
+        direction (str): Direction of movement ('horizontal' or 'vertical').
+
+    Returns:
+        None
+    """
+    for sprite in sprite_group:
+        if player.rect.colliderect(sprite.rect):
+            if direction == 'horizontal':
+                if player.velocity_x > 0:  # Moving right; hit left side of sprite
+                    player.rect.right = sprite.rect.left
+                elif player.velocity_x < 0:  # Moving left; hit right side of sprite
+                    player.rect.left = sprite.rect.right
+                player.velocity_x = 0
+            elif direction == 'vertical':
+                if player.velocity_y > 0:  # Falling down; hit top of sprite
+                    player.rect.bottom = sprite.rect.top
+                    player.on_ground = True
+                    player.velocity_y = 0
+                    player.double_jump_used = False
+                elif player.velocity_y < 0:  # Jumping up; hit bottom of sprite
+                    player.rect.top = sprite.rect.bottom
+                    player.velocity_y = 0
+def resolve_block_collision(player, block_group, powerups_group):
+    """Handle collision detection for breakable blocks."""
+    for block in block_group:
+        if player.rect.colliderect(block.rect):
+            # Determine the direction of collision based on previous position
+            if player.prev_rect.bottom <= block.rect.top and player.velocity_y > 0:
+                # Player was above the block and is now colliding from the top
+                player.rect.bottom = block.rect.top
+                player.velocity_y = 0
+                player.on_ground = True
+            elif player.prev_rect.top >= block.rect.bottom and player.velocity_y < 0:
+                # Player was below the block and is now colliding from below
+                block.break_block(powerups_group, player.is_big)
+                player.rect.top = block.rect.bottom
+                player.velocity_y = 0
+            elif player.prev_rect.right <= block.rect.left and player.velocity_x > 0:
+                # Player was to the left and is now colliding from the left
+                player.rect.right = block.rect.left
+                player.velocity_x = 0
+            elif player.prev_rect.left >= block.rect.right and player.velocity_x < 0:
+                # Player was to the right and is now colliding from the right
+                player.rect.left = block.rect.right
+                player.velocity_x = 0
+                    
+
 class BreakableBlock(pygame.sprite.Sprite):
     def __init__(self, x, y, contains_powerup=None):
         super().__init__()
@@ -661,12 +705,21 @@ class BreakableBlock(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.original_y = y  # Store the original y position for animation
         self.contains_powerup = contains_powerup
+        self.breaking = False  # Flag to indicate if the block is breaking
+        self.break_timer = 0  # Timer to control the breaking animation
+        self.breakable = False
 
-    def break_block(self, powerups_group):
+    def break_block(self, powerups_group, breakable=True):
+        """Trigger the block breaking animation and release power-up."""
+        self.breakable = breakable
+        if not self.breaking:
+            self.breaking = True
+            self.break_timer = 0  # Start the break animation timer
+
         if self.contains_powerup:
             # Release a power-up
-            base_dir = os.path.join('assets', 'images')
             if self.contains_powerup == 'grow':
                 powerup = PowerUp(self.rect.centerx, self.rect.top, 'grow')
             elif self.contains_powerup == 'invincibility_powerup':
@@ -678,7 +731,23 @@ class BreakableBlock(pygame.sprite.Sprite):
             else:
                 powerup = PowerUp(self.rect.centerx, self.rect.top, 'generic')
             powerups_group.add(powerup)
-        self.kill()  # Remove the block
+            self.contains_powerup = None
+
+    def update(self):
+        """Animate the block moving up and breaking."""
+        if self.breaking:
+            self.break_timer += 1
+
+            # Animate the block moving up and down before breaking
+            if self.break_timer <= 10:
+                self.rect.y -= 2  # Move up for the first few frames
+            elif self.break_timer <= 20:
+                self.rect.y += 2  # Move back down to the original position
+
+            if self.break_timer > 20 and self.breakable:
+                self.kill()  # Remove the block after the animation completes
+            elif self.break_timer > 20:
+                self.breaking = False
 
 class PowerUp(pygame.sprite.Sprite):
     def __init__(self, x, y, type='generic'):
@@ -929,21 +998,42 @@ class Level:
             # No more levels
             victory_screen()
 
+    # Function to randomly assign power-ups to blocks
+    def generate_block_platform(self, start_x, start_y, rows, cols):
+        block_positions = []
+        for row in range(rows):
+            for col in range(cols):
+                x = start_x + col * BLOCK_WIDTH
+                y = start_y + row * BLOCK_HEIGHT
+
+                # Randomly assign a power-up with 5% chance
+                if random.random() < POWERUP_CHANCE:
+                    powerup = random.choice(powerup_types)  # Randomly choose a power-up type
+                    block_positions.append((x, y, powerup))
+                else:
+                    block_positions.append((x, y))  # Regular block with no power-up
+
+        return block_positions
+
     def load_level_one(self):
+        # Create Tiled Ground - 2 blocks high
+        create_tiled_ground(self, block_image='unbreakable_block.png', block_size=40, rows=2)
+
         # Platforms
         platform_list = [
-            Platform(0, SCREEN_HEIGHT - 40, WORLD_WIDTH, 40),  # Ground
-            Platform(300, 500, 200, 40),
+            Platform(200, 400, 200, 40),
             Platform(600, 400, 200, 40),
             Platform(900, 300, 200, 40),
-            Platform(1200, 200, 200, 40),
+            Platform(1200, 300, 200, 40),
             Platform(1500, 500, 200, 40),
             Platform(1800, 400, 200, 40),
             Platform(2100, 300, 200, 40),
-            Platform(2400, 200, 200, 40),
+            Platform(2400, 400, 200, 40),
             Platform(2700, 500, 200, 40),
         ]
         self.platforms.add(platform_list)
+
+        
 
         # Coins
         coin_positions = [
@@ -957,9 +1047,9 @@ class Level:
 
         # Enemies
         enemy_list = [
-            Enemy(500, SCREEN_HEIGHT - 80, 500, 700),
-            Enemy(1600, SCREEN_HEIGHT - 80, 1600, 1800),
-            Enemy(2300, SCREEN_HEIGHT - 80, 2300, 2500),
+            Enemy(500, SCREEN_HEIGHT - 120, 500, 700),
+            Enemy(1600, SCREEN_HEIGHT - 120, 1600, 1800),
+            Enemy(2300, SCREEN_HEIGHT - 120, 2300, 2500),
         ]
         self.enemies.add(enemy_list)
 
@@ -969,6 +1059,10 @@ class Level:
             (1400, 150),  # Contains power-up
             (1700, 300), (2000, 250, 'invincibility_powerup'),  # Contains power-up
         ]
+        # Generate "platforms" made of breakable blocks with some containing power-ups
+        block_positions += self.generate_block_platform(500, 200, 2, 20)  # Two rows, 20 blocks wide
+        block_positions += self.generate_block_platform(1500, 400, 2, 20)  # Another platform
+        block_positions += self.generate_block_platform(2500, 500, 2, 20)  # Another platform
         for pos in block_positions:
             if len(pos) == 3:
                 block = BreakableBlock(pos[0], pos[1], pos[2])
@@ -977,12 +1071,12 @@ class Level:
             self.breakable_blocks.add(block)
 
         # Hazards
-        hazard = Hazard(1300, SCREEN_HEIGHT - 40 - 40, 100, 40)
-        self.hazards.add(hazard)
+        # hazard = Hazard(1300, SCREEN_HEIGHT - 40 - 40, 100, 40)
+        # self.hazards.add(hazard)
 
         # Turrets
-        turret = TurretEnemy(1900, SCREEN_HEIGHT - 40 - 60)
-        self.turrets.add(turret)
+        # turret = TurretEnemy(1900, SCREEN_HEIGHT - 40 - 60)
+        # self.turrets.add(turret)
 
         pipe = Pipe(800, SCREEN_HEIGHT - 80, 80, 80, destination_level='secret_area')
         self.platforms.add(pipe)  # Adding the pipe to the platforms group so it's rendered
@@ -993,16 +1087,16 @@ class Level:
         self.flagpoles.add(flagpole)
 
     def load_level_two(self):
-        # Similar setup for level two with different positions and elements
-        # Example setup:
-        # Platforms
+        
+        create_tiled_ground(self, block_image='unbreakable_block.png', block_size=40, rows=2)
+        
         platform_list = [
-            Platform(0, SCREEN_HEIGHT - 40, WORLD_WIDTH, 40),  # Ground
-            Platform(400, 500, 200, 40),
+            # Platform(0, SCREEN_HEIGHT - 40, WORLD_WIDTH, 40),  # Ground
+            Platform(400, 400, 200, 40),
             Platform(800, 400, 200, 40),
             Platform(1200, 300, 200, 40),
             Platform(1600, 200, 200, 40),
-            Platform(2000, 500, 200, 40),
+            Platform(2000, 400, 200, 40),
             Platform(2400, 400, 200, 40),
             Platform(2800, 300, 200, 40),
         ]
@@ -1047,16 +1141,7 @@ class Level:
         # Flagpole
         flagpole = Flagpole(WORLD_WIDTH - 100, SCREEN_HEIGHT - 240)
         self.flagpoles.add(flagpole)
-
-def handle_events(player):
-    global fullscreen
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        else:
-                player.handle_event(event)
-
+    
 def load_secret_area(player, level):
     # Clear the current level and load a new secret area level
     level.platforms.empty()
@@ -1116,7 +1201,6 @@ def load_secret_area(player, level):
     player.rect.x = 100
     player.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 40
 
-
 def load_main_level(player, level):
     # Clear current level and load the original main level
     level.platforms.empty()
@@ -1137,6 +1221,15 @@ def load_main_level(player, level):
     player.rect.x = 1500  # Set a new position after returning from the secret area
     player.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 40
 
+def handle_events(player):
+    global fullscreen
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        else:
+                player.handle_event(event)
+
 def update(player, level, camera):
     
     player.update(
@@ -1149,6 +1242,7 @@ def update(player, level, camera):
         level.enemy_projectiles,
         level.moving_platforms
     )
+    level.breakable_blocks.update()
 
     # Check if player interacts with pipes
     for pipe in level.pipes:
@@ -1259,7 +1353,6 @@ def load_game(player):
     except FileNotFoundError:
         print("No save game found.")
 
-# Implement the new Instructions screen
 def instructions_screen():
     showing_instructions = True
     while showing_instructions:
@@ -1377,7 +1470,6 @@ def wait_for_key_release(key):
         for event in pygame.event.get():
             if event.type == pygame.KEYUP and event.key == key:
                 waiting = False
-
 
 def main():
     start_time = time.time()  # Start time of the game
