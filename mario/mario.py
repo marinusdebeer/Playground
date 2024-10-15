@@ -137,6 +137,9 @@ class Player(pygame.sprite.Sprite):
         self.score = 0
         self.lives = 3
         self.level = 1
+         # Crouch state
+        self.is_crouched = False
+        self.crouch_pressed = False
         self.direction = 1  # 1 for right, -1 for left
         self.fireballs = pygame.sprite.Group()
         self.last_shot = 0
@@ -148,6 +151,7 @@ class Player(pygame.sprite.Sprite):
         self.speed_boost_duration = 0
         self.is_big = False
         self.scale_factor = 1.0
+        self.height_scaling = 1.0
         self.fireball_ability = False  # Flag to enable fireball shooting
         
         # Flags for spacebar and jumping
@@ -175,7 +179,7 @@ class Player(pygame.sprite.Sprite):
     def set_image(self, new_image):
         """Set the player's image and adjust the rect while maintaining the center."""
         center = self.rect.center
-        self.image = pygame.transform.scale(new_image, (int(PLAYER_WIDTH * self.scale_factor), int(PLAYER_HEIGHT * self.scale_factor)))
+        self.image = pygame.transform.scale(new_image, (int(PLAYER_WIDTH * self.scale_factor), int(PLAYER_HEIGHT * self.scale_factor * self.height_scaling)))
         self.rect = self.image.get_rect()
         self.rect.center = center
     
@@ -184,7 +188,13 @@ class Player(pygame.sprite.Sprite):
         if event.type == pygame.KEYDOWN and self.fireball_ability:
             if event.key == pygame.K_f:
                 self.shoot_fireball()  # Fireball shooting logic when 'f' key is pressed
-                
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                self.space_pressed = True
+            elif event.key == pygame.K_DOWN:
+                self.crouch_pressed = True  # Set crouch flag when down arrow is pressed
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_SPACE:
                 if self.on_ground:
@@ -192,11 +202,9 @@ class Player(pygame.sprite.Sprite):
                 elif not self.on_ground and not self.double_jump_used:
                     self.double_jump()  # Perform double jump
                 self.space_pressed = False  # Stop braking or any spacebar related logic
-                
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                self.space_pressed = True
-  
+            elif event.key == pygame.K_DOWN:
+                self.crouch_pressed = False  # Unset crouch flag when down arrow is released
+
     def jump(self):
         """Handle jumping when spacebar is pressed."""
         self.velocity_y = self.jump_velocity * self.jump_increase_factor
@@ -396,6 +404,42 @@ class Player(pygame.sprite.Sprite):
                     self.set_image(self.image_idle_right)
                 else:
                     self.set_image(self.image_idle_left)
+
+        # Handle crouch mechanic
+        if self.space_pressed and not self.is_crouched and self.on_ground:
+            self.crouch()
+        elif not self.space_pressed and self.is_crouched:
+            self.stand_up()
+
+    def crouch(self):
+        """Crouch by reducing the player's height by half."""
+        self.is_crouched = True
+        self.height_scaling = 0.5  # Half the size
+        old_bottom = self.rect.bottom  # Preserve the bottom position
+
+        # Update the image based on direction
+        if self.direction == 1:
+            self.set_image(self.image_idle_right)
+        else:
+            self.set_image(self.image_idle_left)
+
+        # Adjust the rect to maintain the bottom position
+        self.rect.bottom = old_bottom
+
+    def stand_up(self):
+        """Stand up by restoring the player's original height."""
+        self.is_crouched = False
+        self.height_scaling = 1.0  # Original size
+        old_bottom = self.rect.bottom  # Preserve the bottom position
+
+        # Update the image based on direction
+        if self.direction == 1:
+            self.set_image(self.image_idle_right)
+        else:
+            self.set_image(self.image_idle_left)
+
+        # Adjust the rect to maintain the bottom position
+        self.rect.bottom = old_bottom
 
     def animate_running(self, left=False):
         """Animate the running sequence."""
@@ -1228,7 +1272,7 @@ def handle_events(player):
             pygame.quit()
             sys.exit()
         else:
-                player.handle_event(event)
+            player.handle_event(event)
 
 def update(player, level, camera):
     
