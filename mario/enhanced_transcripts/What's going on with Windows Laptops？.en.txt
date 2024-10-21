@@ -1,0 +1,57 @@
+(Windows chiming)
+
+- Okay, I've been waiting for this for a while. As someone who has been on the sidelines of the Windows game for a little bit now and seeing all this hype around this new matte black laptop that’s supposed to be generational, it's got me thinking: is it legit? Have Windows laptops actually caught up to the Apple Silicon leap from a couple of years ago?
+
+This is a new Microsoft Surface laptop, and it doesn’t have an Intel chip inside, nor does it have an AMD chip. This laptop has a Qualcomm Snapdragon X Elite chip, meaning it is an ARM laptop. Years ago, Apple transitioned from Intel chips to ARM chips, and it was incredibly successful. No one could really match their efficiency and seamless vertical integration; the overall package of their laptops took a quantum leap forward.
+
+Now, Windows laptops tried something similar around the same time, and I don't know if you remember the Surface Pro X, but that didn’t go so well. We’ve continued to have Intel and AMD laptops since then. However, it seems like this one has gone much better. 
+
+So, I’ve been using this laptop for the past couple of weeks, and you might have seen me with it on the Waveform Podcast. I’ve developed a pretty good idea of what’s gone well and what still poses some trade-offs. 
+
+The big advantage here—the major leap forward—was efficiency. In a laptop with the same size battery, this translates to dramatically improved battery life, and this laptop saw a significant boost. I remember reading reviews of the last Surface laptop with an Intel chip, which already had solid battery life, and Microsoft quoted it at 19 hours. This one’s quote is 23 hours, and what that has translated to for me is all-day battery life for mixed use with no worries. I can do high brightness web browsing, email, watching videos, and research activities, and still end the day at around 40% easily. I hardly think about charging, which is awesome for a 14-inch laptop.
+
+On paper, it’s getting compared a lot to the M3 13-inch MacBook Air, and it even outlasts it in some synthetic benchmarks, which is great. So that’s definitely one success—check that box for great battery life. 
+
+The second success we were looking forward to is just well-optimized performance. This isn't about super high-end gaming performance; instead, I'm referring to general smoothness, consistency, and rock-solid performance across all your everyday tasks. I’ll get into app support in a moment, but I found this to be a very capable laptop. 
+
+I’ve been out of the Windows scene for a bit, so I don't have as many reference points. But this is a $2,000 14-inch laptop that can handle everything I throw at it without breaking a sweat. Photo editing in Affinity? Not a problem. Anything in the Microsoft Office Suite? No problem, whether plugged in or not. The trackpad gestures feel pretty smooth, and the graphics of the whole UI are consistent from full battery to nearly dead. Using software that runs natively on it is snappy and a great experience.
+
+However, this brings us to the downside of switching to ARM, which is something I was curious about since the last time we saw this transition. The number one challenge in changing the entire architecture of a computer is app compatibility. 
+
+When the Mac transitioned, there were three types of apps. The first type includes optimized apps, which is ideal—most first-party apps were optimized from the start. Apple did significant work to get as many developers on board to optimize their apps for ARM. Then there are apps built for x86 that still work on ARM through emulation. They don’t perform as well as they could, but they technically still function. Finally, there are apps that just don’t work at all.
+
+Right now, for Windows on ARM, you have those three types of apps again. My assessment is that there’s pretty good support for native apps regarding everyday usage, but it’s definitely still not perfect. 
+
+Apps like Photoshop and Lightroom CC run natively; Chrome, Spotify, Prime Video, Dropbox, Zoom—there are plenty of popular apps that run smoothly and don’t drain the battery much, which I love. Then there are some apps I use that don’t natively support Windows on ARM but still run through emulation. Lightroom Classic is one example, as is my to-do list app of choice, TickTick. You might have heard about it; it’s a great example. The website only has x86 versions of the app. I downloaded and ran the 64-bit version, and while it technically works, it doesn’t run very well. I noticed some real lag in certain parts of the UI, even though it’s just a to-do list app. 
+
+There’s a long list of apps in this limbo phase where you don't know if an ARM native version will come out because adoption isn’t super high, so there's not much incentive for developers to create one. The emulated versions may churn through battery a bit faster, but they still work. 
+
+Then there are apps that don’t work at all yet. For instance, the Arc browser and Google Drive on desktop—two apps I rely on heavily—have no compatibility with Windows on ARM. VMware doesn’t work, many VPNs don’t work, and a lot of games are incompatible. Some games won’t run simply because they have anti-cheat software that doesn’t function on Windows on ARM.
+
+Additionally, some apps that are actually compatible don’t have their ARM versions prominently displayed on their websites, which makes them hard to find and understand. So, it’s kind of all over the place right now.
+
+My take is this: if you’re considering a Windows ARM laptop, specifically look up the apps you need to use and ensure they’re at least compatible, or at least emulatable. There may be promises of ARM versions coming soon or statements from developers you might see, but make sure to verify that the programs you need will work. Depending on who you are, you could be totally covered or completely out of luck.
+
+There are a couple of Windows ARM laptops out there; this is the one I chose to work with—the premium matte black one with the Snapdragon X Elite. Here are a few more observations from my couple of weeks of using it. 
+
+The build quality is pretty awesome, which has been consistent with Surface devices for a while now. I love the all-metal design, and the keyboard is rock solid. The large trackpad has excellent haptics, providing very good fundamentals all around. The port selection is adequate; it still includes a full-size USB-A and two USB-C ports, along with a headphone jack. 
+
+One downside I see, especially given the price, is the lack of an OLED option. Instead, it features a 2304x1536 120Hz LCD touchscreen with a 3x2 aspect ratio. I appreciate the taller screen, but it can’t quite match the deep blacks and contrast of an OLED, even though it's a pretty good LCD. I feel like I basically traded OLED for a high refresh rate here, but I would have liked to see an OLED option available.
+
+It’s not a super high-end gaming PC. It performs very well across the board and manages all other tasks, but like Apple’s M Series laptops, it has a built-in GPU that won’t be as powerful as a dedicated GPU. You can still play some games, but don’t expect to max out frame rates in "Elden Ring" or something. 
+
+If you study the benchmarks, you’ll find that these chips have a lot of cores but weaker individual performance on a single-core basis. They are good at handling lots of cores at once, so while that’s appealing, just keep that in mind. It generally stays cool and doesn’t spin up the fans, which I think is great.
+
+Additionally, this is one of the very first Copilot PCs, so there’s a dedicated Copilot button on the keyboard. This chip features an NPU, specifically for AI-related processing. This includes functionalities like the studio camera effects built into the camera and the forced artificial eye contact feature, all executed without pulling power from the CPU or GPU. You can also hit that Copilot button to interact with Microsoft Copilot, asking it anything in a manner similar to how you might interact with Bing, ChatGPT, or Gemini.
+
+Overall, I think this laptop is a good start. Personally, I’ve been waiting for a premium matte black Windows laptop on ARM, and this is it. The main question you need to consider is whether the software you rely on works on ARM—that’s crucial when deciding if you should purchase one of these laptops.
+
+Now, before you go, I have a question: Have you ever looked at a laptop or a smartphone and wondered what’s going on inside it? Because channel sponsor dbrand has your answers. For years, one of my favorite party tricks has been using this sheet of magnet paper. You simply lay it down on any device to reveal where a few of the internals are, like the MagSafe magnet array or the speaker.
+
+dbrand’s X-ray line takes this magnet paper experience to another level, allowing you to see virtually every single component inside your device. Yes, this is an actual X-ray of that device. dbrand took hundreds of devices to a metrology lab and shot each one with a special X-ray machine for maximum accuracy. They also created a light mode version of each X-ray. Personally, I prefer the dark mode version, but if you don’t want to choose, buying any X-ray skin gets you the other colorway for free with your order.
+
+If that sounds like a good deal to you, I’ll leave a link for you to check it out below: dbrand.com/x-ray.
+
+That’s it for now. Let me know what you think of the Surface laptop and the whole Windows on ARM concept. I’ll be checking the comments, so feel free to share your thoughts. Catch you guys in the next one. Peace. 
+
+(upbeat music)

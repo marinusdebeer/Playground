@@ -1,0 +1,35 @@
+(bright music)
+
+Welcome to your first look at the Samsung Galaxy S24 Series. I think these devices are much more interesting than they appear at first glance. Today, we're introducing three new phones: the Galaxy S24, S24+, and S24 Ultra. While they may look quite similar to the S23 lineup—especially in terms of design—things become more intriguing once you delve into the software and Samsung's AI features.
+
+Let's start with the physical changes, which aren't many. The S24 and S24+ maintain the same dimensions, body sizes, camera rings, and button placements as last year's models. The main difference lies in the new color options: black, gray, violet, and yellow—all in matte finishes instead of glossy, which I wasn't expecting but actually prefer. The design is also squared off, resembling the iPhone closely. I understand that comparisons are common, but the flat sides and screen do evoke an iPhone-like appearance.
+
+The bezels on the S24 and S24+ are slightly thinner, allowing for slightly larger displays: 6.2 inches for the S24 and 6.7 inches for the S24+. The screens themselves are significant upgrades, especially the larger display. Both panels now boast a brightness level of 2,600 nits, and the S24+ has been upgraded from 1080p to Quad HD. You can even use it at 120 Hz while in Quad HD mode, similar to the Ultra. That's a commendable upgrade they didn't have to include, and I'm grateful for it.
+
+Additionally, each device now features slightly larger batteries, with the S24 having a 4,000 milliamp-hour battery and the S24+ at 4,900 milliamp-hours. The S24 Ultra has also been tweaked; it appears similar but is slightly thinner, with side rails now made of titanium instead of aluminum. The front display is completely flat from corner to corner, a design I appreciate. We’ve seen the evolution from dramatically curved edges in older Ultra and Note phones to this flatter design with minimal bezels.
+
+The Ultra comes in matte finishes with new colors, including black, a new titanium shade, violet, and yellow. Under the hood, all models are powered by the new Snapdragon 8 Gen 3 chip. The cameras on the S24 and S24+ are mostly similar to last year’s versions, but the S24 Ultra has seen some changes. It still features the 200-megapixel main camera, but the telephoto options now consist of a 3x and a redesigned 5x lens. This shift makes sense, as not many users typically zoom up to 10x. The new 5x lens is 50 megapixels, which should maintain quality even when cropping into the middle 50% of the frame for a 10x result, a theory I'll be testing during my full review.
+
+Overall, the camera setup across the board seems familiar, and the Ultra retains its 5,000 milliamp-hour battery with the S-Pen housed on the side. For a detailed overview of the specifications and prices, we’ve created a handy chart; I do wish the S24 started at 256 gigs of storage, but that's a minor downside.
+
+Now, let's dive into the Snapdragon 8 Gen 3 chip. This latest flagship chip signifies the beginning of a new life cycle in smartphones, with many devices launching featuring this chip. I'll be examining aspects like performance, battery life, and heat management, but it's evident that Qualcomm has integrated various AI processing features into this chip. Manufacturers now have the opportunity to capitalize on these features.
+
+One of the standout AI features is the instant visual search. By holding down the home button (or gesture bar), you can circle something on your screen to instantly Google it. This functionality isn't entirely new, as we've seen Reverse Image Search and Google Lens for years. However, the convenience of long-pressing images on a website or in your gallery to search for information is fantastic and has the potential for heavy use.
+
+Furthermore, the voice recorder app now utilizes AI for enhanced speaker labeling and transcription, as well as summarizing recordings into bullet points. The Notes app has also received AI improvements, allowing for handwriting adjustments and note summarization, adding even more functionality to the already impressive Ultra, which elevates note-taking beyond just a tool.
+
+In the phone app, if you have a conversation with someone who speaks a different language, it can provide live transcription and translation in real-time. By downloading language packs, the phone can perform offline transcription. This means you can have a smooth conversation where you speak your language and hear the other person’s responses translated into your own language, which I find quite impressive.
+
+The photo app also has undergone AI enhancements. You can now do simple edits like adding background blur or removing objects from images, showcasing a clever automatic adjustment of colors and lighting. In the photo editor, the reintroduction of AI features allows users to circle elements in images for manipulation, similar to tools found in other apps, yet Samsung seems to have fewer restrictions on what you can edit. There are even features that enable regular videos to be transformed into slow motion by generating new frames.
+
+Interestingly, Bixby remains present but has not shown significant advancements in this iteration. I plan to conduct thorough tests on the phone's screens, camera functionality, and to uncover any hidden features that may have been overlooked.
+
+For those looking to customize their devices, I spoke with our channel sponsor, dbrand, and they have ready-to-go Grip Cases available, which will ship around the same time as the phones. What I appreciate about the Grip Case is that it offers precise camera cutouts rather than generic designs, and this year they’ve also added MagSafe compatibility for the S24 series.
+
+Let me know your thoughts on these new phones and what you'd like to see in the full review. 
+
+(smooth music) 
+
+There's a lot of interesting content here, I’ll say that. Thanks for watching, and catch you in the next one. Peace. 
+
+(smooth music continues)

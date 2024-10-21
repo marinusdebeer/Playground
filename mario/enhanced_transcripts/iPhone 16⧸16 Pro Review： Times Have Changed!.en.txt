@@ -1,0 +1,99 @@
+- [Tim] A widescreen iPod with touch controls, a revolutionary mobile phone, and a breakthrough internet communications device. (energetic music) (phone vibrating) Profound new intelligence capabilities that will make our platforms even smarter.
+
+- So this is the iPhone 16, and this is the iPhone 16 Pro. Brand new, and I’ve been testing them for about two weeks now. But you know what I’ve been doing far longer than two weeks? Working on a new app that we are finally launching. You guys have always been asking me where I get my wallpapers. It's frequently the number one suggested search result under my name, and has been for years. So now we’ve put them all in one place. It’s called Panels. And it’s finally live in the App Store, both on iOS and Android. Feels really good to be able to say that. 
+
+So if you’re wondering where the wallpaper on these phones in the review came from, Panels. If you’re curious about the wallpaper in the last video, Panels. In fact, almost all of the wallpapers on the devices and backgrounds you’ve seen in my videos for the past year have come from Panels, which is pretty amazing. We have a bunch of awesome artists involved, and we're splitting profits 50-50. There’s already a ton of great art collections available, with much more on the way. We have some pretty big plans for this app.
+
+It’s starting off as a wallpaper app now. I don’t want to overpromise, but it’s going to consistently improve over time, which is part of the reason we're offering a subscription to support it. So go pick it up now. Explore, find your new favorite wallpaper or artist, and let me know what you think. It’s kind of fun to be on the other side now, on the development side, where other people are going to review what we create, which is always exciting.
+
+Anyway, the trend with new smartphones these days is that there are a bunch of incremental hardware improvements along with a ton of AI features being added, which provide the real value. While they’re a little late to the game, Apple has also entered this phase with the iPhone, whether we like it or not. The iPhone 16 is a minor update over the 15, but it comes with a lot of new AI features branded as Apple Intelligence.
+
+However, much of that isn't available yet, which is a little awkward given that basically all of the marketing for this phone revolves around Apple Intelligence. I've seen billboards advertising it as the new feature. Their entire event was themed around "Glowtime," referencing the new glowing Siri animation. But none of that is present on this phone, none of it. 
+
+The only way to reconcile the current state of this phone with everything Apple has advertised is to consider it unfinished. This is the most unfinished launch of a new iPhone I’ve ever seen. Until we actually have all the Apple Intelligence features, we are left with a very incremental upgrade cycle. (cheerful music)
+
+There’s not a lot that’s physically new with this year’s iPhone, but it’s not nothing. The iPhone 16 looks a little different from the iPhone 15. There was a time not long ago when Apple removed the headphone jack, sparking speculation about removing all ports and buttons. Instead, they’ve added the action button from last year’s Pro models and a new button called Camera Control, which we’ll get to in a moment. 
+
+Aesthetically, there are some vibrant new colors and slightly larger camera bumps on the back of the phone. I know everyone puts a case on their phone, so this may not seem significant, but I think this is the wobbliest slab phone I’ve ever encountered—or at least, that I can remember. Regardless, the general shape, flat sides, and dimensions of this phone are quite familiar. 
+
+The Pro models are even harder to distinguish from one another, but they do feature new displays that are great. They’re slightly bigger, measuring 6.3 and 6.9 inches respectively. The bezels are noticeably thinner and even all around. Both sized phones are a little larger than last year and accommodate bigger batteries.
+
+Let’s talk about batteries. When Apple unveiled these new phones, they highlighted the slightly larger capacity batteries across the board and claimed that the new Pro Max would offer the longest battery life ever in an iPhone. I would hope that your newest, most expensive, and largest phone would have the longest battery life, but they didn’t provide any numbers to support that.
+
+We don’t actually know how much larger the battery is in milliamp-hours or how much longer it lasts. All I have is Apple’s website comparison tool, which measures video playback hours. It states that the iPhone 16 supports 22 hours of video playback, an increase from 20 hours, while the 16 Pro Max boasts 33 hours compared to last year’s model at 29 hours. Unfortunately, this means almost nothing to me, as video playback can be optimized with cores on a chip—who cares?
+
+Now that the phones are out and people have tested them, it turns out the batteries are about 6% larger across the board and 9% larger in the Pro models. Personally, I’ve found the battery life to be about the same as last year—not noticeably better or worse. It lasts me a whole day with heavy use on the Pro without any issues.
+
+What did make a difference to me, though, is the faster charging. Fewer people are talking about this, but all models in the iPhone 16 lineup now support up to 45-watt wired charging. Apple never promotes fast charging or boasts about going from 0% to 100% or 0% to 80%, but when their phones get slightly faster at charging, it’s really nice. 
+
+It’s unfortunate that it doesn’t come with a fast charging brick in the box. I have a fast charger and I’m really enjoying the new fast charging in bursts. Additionally, MagSafe supports up to 25-watt wireless charging instead of the previous 15. 
+
+Inside the phones are the A18 and A18 Pro chips. I’d be lying if I said I noticed any difference right out of the box, and I think most people would agree. Yes, they will benchmark 10%, 20%, or 30% faster depending on the task, but the extra power is mostly geared toward fringe activities and future-proofing. 
+
+I was actually more interested to find that all of the models now come with eight gigs of RAM, which is unusual since the Pro and non-Pro phones typically have different amounts. No doubt this is due to the Apple Intelligence features, which, when they eventually arrive, will require every last bit of it. But for now, you can enjoy more RAM for all your other apps as well. 
+
+iOS 18 launched alongside these new phones, and I made an entire separate video detailing the new features. This update is also rolling out to everyone’s older iPhones. You can now place your home screen icons wherever you like, color them, and change lock screen shortcuts, allowing for more customization than ever before. You could argue that this newfound personalization makes a bigger difference than any of the hardware changes. 
+
+But speaking of new hardware, there’s one more new button. (energetic music) 
+
+I guess nobody at Apple is allowed to call it a button, but I’m calling it a button. This is the new Camera Control button present on all the new iPhone 16s. I’ve used and thought a lot about this button. My perspective is that smartphone cameras are like headphones' EQ. You get a new pair of headphones, listen to them, and if you don't like the sound, you don’t have to worry—there are adjustments you can make to change the sound entirely. 
+
+The same is true for smartphone cameras, and this year, the iPhone embraces this idea more than ever. The default photos from the iPhone seem more 'iPhoney' than ever. Remember how every year in blind smartphone camera tests, the iPhone tends to lose? It often overly brightens shadows and lacks contrast, especially in photos featuring people. That’s still the case this year.
+
+The purpose of this new button is clear: camera control. This year, Apple is kind of giving users more control over the camera in an interesting way. However, you need to know how to use it. For instance, it requires a double half-press with just the right weight to access the menu of camera controls for exposure compensation, zoom, photographic styles, and tone. 
+
+After experimenting, I realized that tone may be the most critical aspect. Turning up the tone can brighten shadows even more, and turning it down introduces real shadows. However, it doesn’t seem to have memory, so you have to set it every time you open the camera app. You also have a D-pad that allows for changes to even more photo elements, including undertones, mood, and color, giving you more opportunities to refine the desired look of your photos. This setting does have memory, so every subsequent time you open the camera, it will remember your color hue and tone.
+
+I found that setting the tone to around -0.5 provides a nice balance for most of my photos—less flat and more contrasty. This level of control has reinvigorated my love for shooting with the iPhone. The camera control feature is useful. 
+
+However, the button placement on the side of the phone is mostly ideal for landscape photography, though it would be easier to reach if it were closer to the corner. But, let’s be honest, most users take photos in portrait orientation, and positioning it in the corner would be impractical for that. They’ve compromised by moving it up a bit, making it reachable but still not perfect. 
+
+Additionally, the half-press sensitivity requires some adjustment. I’m three weeks in, and I’m still accidentally taking pictures by tapping too hard. Scrolling can be finicky as well; it features momentum physics which can lead you to scroll too far past your target in the continuous scroll interface. This makes it just tricky enough that I genuinely think 99% of people will use it solely as a camera shutter button. 
+
+For my part, I quickly adapted to opening the camera with the Camera Control button. I’ve remapped my action button to trigger my Tasks app. I’ve also changed my lock screen shortcut to open the flashlight and my Tasks app. It's possible to swipe sideways from the lock screen to access the stock camera app, or you can map the Camera Control button to open any other camera app on your phone and just wait for future Apple Intelligence features that might make more sense for it. 
+
+So, to sum it up: one, it’s a button. Two, it’s also a customization slider. Three, for most people, it’s just going to be a button. Four, there are new cameras on the back. (bright music)
+
+Both the iPhone 16 and 16 Pro feature new cameras across the line. In short, the iPhone 16’s cameras are solid main cameras. They’re in line with previous iPhone models but not noticeably improved compared to past years. The 16 Pro cameras, with their larger main sensor, higher-resolution ultrawide, and 5X telephoto lens, represent a significant upgrade in my opinion.
+
+The main camera is my favorite primary sensor in any smartphone currently available. It excels at just about everything. The ultrawide camera is also better, particularly in capturing detail during the day, thanks to its new 48-megapixel sensor. However, the sensor isn’t significantly larger, affecting night-time performance. Now my night ultrawide shots often appear a bit vignetted, almost as if I've added a filter.
+
+The 5X telephoto lens on both Pro models is also impressive. There’s been some buzz about it being less effective in the 3X to 4X range due to it relying on digital zoom, and although that’s technically accurate, I find the 5X zoom to be quite useful. It resolves detail at distances beyond 5X better than before, even without AI enhancements. Shutter speeds are impressively fast, capturing action better than ever—a detail many overlook. I really enjoy that snap of action; for instance, this shot was taken from a moving car at highway speed.
+
+The ability to achieve a shallow depth of field with close-up subjects rivals top-tier Android flagships like the S24 Ultra or Pixel 9 Pro. However, Apple has not resolved the lens flare issue with point lights at night, so sorry to say, that remains unchanged. Video quality is very impressive as well. I’ll be producing the next Auto Focus video on the Silverado EV pickup truck soon, so do subscribe over there. That video will showcase entirely shot content on the iPhone 16 Pro, and I’ve been incredibly pleased with how it turns out.
+
+Apple has also added a 4K 120 FPS mode to the Pro phones, which looks fantastic. It’s incredibly convenient for shooting and editing. Just be mindful of your storage space, as it can quickly consume storage—up to nearly a gig per minute before you even consider 4K 120 ProRes or ProRes Log. Regardless, I love shooting in this mode. It proves to me that they have the processing power and sensor readout speed to handle 8K 30 video; they just choose not to, which raises questions.
+
+This is also the first year that Apple is using the term “Fusion camera.” You have to dig a bit to figure out what it means; essentially, it’s similar to last year’s optical-quality zoom but with an updated image processing pipeline. Cool. However, it’s worth noting that this zoom isn’t exactly one-to-one optical quality since the photo sights are smaller in that smaller crop.
+
+In conclusion, the iPhone 16 camera is good. The iPhone 16 Pro camera is great. (upbeat music)
+
+It's a bit odd that this product was launched at an Apple event called Glowtime without the feature that glows—the new Siri. It feels strange for people to visit an Apple store on 5th Avenue, which now literally glows with rainbows, and walk out with a new phone that lacks this feature. The marketing seems misaligned, highlighting Apple Intelligence, with Tim Cook even stating that this is the first phone built from the ground up for Apple Intelligence.
+
+- The next generation of iPhone has been designed for Apple Intelligence from the ground up.
+
+Yet, this phone currently lacks any of the Apple Intelligence features. They’re all promised to come soon via software updates. I’ve reiterated—never buy a product based on the promise of future software updates. Purchase it for what it is right now when you buy it. That’s been a universal rule for ages, but here we are, facing a change in trends. 
+
+Apple has caved to the pressure to present themselves as an AI-first, AI-leading company, much like various public companies. They’ve showcased a lot of AI features they’re working on and conducted a performance similar to, "Hey, we are AI-first, the phone is built from the ground up for AI. It's our theme this year." However, the reality is, it’s not ready yet—it’s not finished. If it was, they would be shipping it.
+
+Right now, it’s in beta, and they seem more inclined to refine it than to release it outright. How do we align this expectation? Do we align it at all? You might recall the Rabbit R1. The Rabbit was a little AI device, quite the standard 2024 product. When I reviewed it, it was nearly useless—almost none of its functionality was operational at launch. 
+
+I said as much in my review. The same could be said for the Humane AI Pin, which was another poor product missing almost all functionality—easily the worst product I've ever reviewed. Both items have since received updates, but I can only evaluate what’s in front of me, the same as real customers will receive it. This brings the new iPhone into a similar conversation.
+
+However, the distinction between the Rabbit, the Humane Pin, and the iPhone is that, one, the iPhone is a fine standalone product, functional, while the others are not. Two, Apple has a history of developing and delivering on their promises, unlike Humane and Rabbit. So, there’s an element of trust with Apple that wasn’t present with those other products. 
+
+It's quite bold of them to launch this product with significant forthcoming features that aren’t available yet. They must have confidence that they will eventually deliver these features, aiming not to upset customers. This reflects the current trend where companies feel pressured to lead in AI, despite many promised features not yet being fully operational.
+
+I’m planning a separate review focused on Apple Intelligence once those features are rolled out. I’ve been testing some of the features in the iOS 18.1 Beta on my 15 Pro, but even that remains quite limited—mostly writing tools and the new Siri animation. There’s still a long road to travel.
+
+I encourage you to subscribe to catch my review on Apple Intelligence when it's ready, as it clearly plays a significant role in this phone launch. (bright music)
+
+So, if you've made it this far in the video, or if you’ve skipped ahead to find out whether you should buy these phones—fine; here it is. You should buy the iPhone 16 if you own an iPhone 13 or older, and that phone is on its last legs as you look to upgrade. That's a solid choice. 
+
+However, if you have a newer model, upgrading likely won’t feel worth it. The iPhone 16 Pro is recommended if you genuinely want better cameras or displays—that’s where the Pro truly excels compared to the regular model. The entry-level iPhone has never looked better; it features the Camera Control, matches the RAM of the more expensive Pros, sports vibrant colors for those interested, the action button, and shares the same display brightness that can lower to one nit, just like the Pro screen.
+
+Personally, I find I can’t use a 60Hz, $800 phone in 2024. It doesn't work for me, and many others feel the same way, needing the Pro just for that feature. However, plenty of users are indifferent to ProMotion, which is a tough concept for me to grasp. For those individuals, the base phone will serve them perfectly.
+
+For someone like me who takes a lot of photos and videos, especially for social media, the upgraded cameras on the Pro models justify the upgrade. But ultimately, I advise purchasing products for what they are today, not what they might be in the future. Even without the promised AI features, the new phones are solid, though very incremental upgrades.
+
+Thanks for watching. I’ll catch you guys in the next one. Peace. (bright music)

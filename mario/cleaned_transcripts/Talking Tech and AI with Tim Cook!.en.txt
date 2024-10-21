@@ -1,0 +1,502 @@
+(upbeat music)
+- All right, Tim.
+- Great to see you.
+- Thanks for spending the time.
+- Thank you for coming.
+So you had the WWDC keynote today.
+- Yeah.
+- Which was really fun to
+watch. It was a whole two hours.
+I wanna zoom all the way out,
+&amp;#39;cause, obviously, a lot of
+talk about AI in general.
+- [Tim] Yeah.
+- And I&amp;#39;m kind of just left wondering
+how Apple defines AI in general,
+because I know, if you
+ask a regular person,
+you might hear about
+generative AI, chat bots,
+things like that.
+- Yeah.
+- And these are relatively new additions
+to Apple&amp;#39;s AI portfolio.
+How do you look at AI as Apple?
+- Well, we&amp;#39;ve been executing
+with AI for a long time.
+- [Marques] Right.
+- It&amp;#39;s at the, you&amp;#39;re wearing a watch.
+It&amp;#39;s at the root of the watch.
+I mean, you think about
+things like crash detection,
+fall detection, things like Afib,
+and all of this kind of stuff is
+machine learning at the end of the day,
+and so, but what has
+captured people&amp;#39;s imagination
+is generative AI, and we
+see it as the opportunity
+for a whole new curve of technology
+and providing and doing
+more things for people,
+providing an assistant for people,
+things that really improve people&amp;#39;s lives.
+So that&amp;#39;s how we see it.
+Obviously, it&amp;#39;s not without downside,
+and so we approach it very thoughtfully.
+- Sure.
+- And as you heard, we have
+always been focused on privacy,
+and so privacy is a very key
+tenet of our thrust into AI.
+- Right.
+It&amp;#39;s been interesting to
+watch Apple&amp;#39;s arc with AI.
+&amp;#39;cause I made a whole piece,
+not more than about a year ago,
+about how Apple seems to never say AI,
+even though they have
+all these neural engines
+and machine learning and things like that.
+- Yeah.
+- And so now we have almost this pivot,
+where now we&amp;#39;re just saying it.
+We&amp;#39;re actually branding
+it Apple Intelligence now.
+I&amp;#39;m curious why that changed now.
+- Well, in the beginning,
+and throughout almost
+everything that we always do,
+we always talk about
+the benefit to the user,
+and so the benefit to the user is
+crash detection and fall detection,
+not the technology behind the feature.
+- Sure.
+- And so we still view it like that,
+but it became clear
+that people wanted to know our views
+on generative AI in particular.
+- [Marques] Yeah.
+- And so we decided to embrace it
+and called it Apple Intelligence.
+- Okay.
+I have a quote from the Dua
+Lipa interview that you did.
+- [Tim] Oh, okay.
+- [Marques] That was great.
+- [Tim] It was fun. She&amp;#39;s fantastic.
+- I loved it. It was great.
+You had a quote that said, about AI,
+&amp;quot;If it can be used for nefarious things,
+we won&amp;#39;t go down that road.&amp;quot;
+- Yeah.
+- And at the time, I assumed that
+that meant generative
+AI was off the table,
+&amp;#39;cause of all the things
+that we&amp;#39;ve seen about
+what it was potentially capable of
+or things that it might do.
+Has that changed?
+Is that something that was off the table
+and you figured now
+you&amp;#39;ve got the right tools
+or the right restrictions
+to make sure that that
+all goes super well?
+How do you think about that?
+- Generative AI was never off the table.
+It was always about pursuing
+it in a thoughtful kind of way,
+and so that&amp;#39;s what we&amp;#39;ve done,
+and we&amp;#39;ve implemented it in ways
+that are less likely to create issues.
+- How so?
+- How so?
+Well, things that, if you think about
+the kinds of things that we talked about,
+we talked about personal context
+and we talked about privacy,
+and so we are not waiting for
+a comprehensive privacy
+legislation regulation
+to come into effect.
+We already view privacy as
+a fundamental human right,
+and so that&amp;#39;s the lens that we see it at,
+and given that we&amp;#39;re doing those things,
+personal context and privacy,
+we wanted to integrate it at a deep level,
+so you&amp;#39;re not having to think,
+&amp;quot;Oh, well, now I want to do something
+that uses Intelligence.&amp;quot;
+We put it into the apps
+that you&amp;#39;re already using.
+- Right.
+- And integrate it in deeply.
+- Right. Yeah.
+I think also, now, there&amp;#39;s
+a lot of talk about it now
+that there is generative AI.
+- [Tim] Yeah.
+- A lot of people have, I mean,
+Apple&amp;#39;s notorious for never
+sending anything to the cloud.
+Everything&amp;#39;s on device,
+because that is the most
+secure way to do it,
+and was applauded for it.
+Interestingly, this is a
+little bit different now.
+With a lot of these larger
+models, more complex requests,
+you actually do have to
+go off of the device,
+so you&amp;#39;ve developed, I
+wanna get the name right.
+Private Cloud Compute.
+- Private Cloud Compute.
+- Explain this to us,
+because I think the
+general chatter online is,
+well, they have to be sending
+data to OpenAI, for example,
+to get a request back from ChatGPT.
+- Well, there&amp;#39;s Private Cloud Compute,
+and then there&amp;#39;s the
+arrangement with OpenAI.
+These two things are different.
+- Okay.
+- And so if you look at
+Private Cloud Compute,
+we&amp;#39;re utilizing the same
+silicon, or not the same silicon,
+but the same basic architecture
+as the silicon that&amp;#39;s in-
+- [Marques] Right.
+- Well, that&amp;#39;s in the iPhone.
+- 15. Yeah, right.
+- And we&amp;#39;re using the same software,
+and so we believe that
+we&amp;#39;ve done it in such a way
+that it&amp;#39;s as safe and secure and private
+in the Private Cloud
+Compute as the device,
+and so we really worked on this a lot
+and put a lot of wood behind
+that arrow to ensure that.
+If you&amp;#39;re working on something
+that requires world knowledge,
+so you&amp;#39;re out of the domain
+of personal context and so forth.
+- Yeah.
+- Then you may want to go
+and use one of the large language models
+that are on the market,
+and we selected what
+we feel is the best one
+with OpenAI and ChatGPT,
+but you&amp;#39;ll make a conscious
+decision to do that
+- Every time.
+- Every time.
+- So you can guarantee
+that there will never be
+any data sent to OpenAI
+without your explicit user-
+- That&amp;#39;s right. That&amp;#39;s right.
+You decide.
+- Right.
+I also feel like there
+was this blip on the radar
+of stand-alone AI devices, which
+I found really interesting.
+They didn&amp;#39;t land too well.
+I think smartphones are pretty great,
+but there was an interesting
+conversation around that,
+about using your phone less,
+maybe having AI help you out in ways
+that let you spend less
+time on the screen,
+and this is something you echoed also
+in the Dua Lipa interview.
+Like, if you&amp;#39;re looking at your phone
+more than you&amp;#39;re looking
+at someone else&amp;#39;s eyes,
+something&amp;#39;s off there.
+- Yeah.
+- Do you think there&amp;#39;s a potential future
+where we&amp;#39;re using our phones less
+because of how well
+the Intelligence works?
+- I think it&amp;#39;s a possibility
+and a significant possibility.
+I mean, for us, we&amp;#39;ve never
+been motivated for people
+to spend their lives on their devices.
+Our model is not one that
+needs engagement to succeed.
+Our model is one where
+we want to empower you
+to be able to do things
+you couldn&amp;#39;t do otherwise.
+We want to give you a tool so
+you can do incredible things
+that you couldn&amp;#39;t do without the tool.
+That&amp;#39;s what motivates us,
+and so, you know, we
+come out with things like
+Screen Time, et cetera,
+so it&amp;#39;s a bit in your face
+as to how much you&amp;#39;re using your device.
+- True.
+- We come out with, we count
+your notifications and so forth
+so that you can go in and say,
+&amp;quot;Do I really want this
+many notifications?&amp;quot;
+And we have focus kinds of states
+where you can silence
+the phone, et cetera,
+and so I do believe that,
+as things get smarter and
+smarter with Apple Intelligence,
+that you can even take things
+that were taking more time
+will take less time now.
+- Right.
+- And so I do think
+that opportunity exists.
+- Interesting.
+Yeah. It&amp;#39;s a curious future.
+- It is.
+It is, and I think I&amp;#39;m
+really optimistic about it.
+- Yeah.
+I also feel like there was tons of chatter
+when you were first CEO of Apple,
+about this new shift, obviously,
+coming from Steve Jobs,
+and you&amp;#39;ve been CEO for what
+feels like a long time now,
+and we&amp;#39;re entering this new age of AI,
+and I&amp;#39;m curious now.
+Now, there&amp;#39;s new chatter about
+who the next CEO is gonna be.
+What do you feel like your
+legacy as CEO at Apple should be?
+- Yeah, Marques, I don&amp;#39;t think about it.
+- Okay.
+- And so, to me, a legacy is
+something that is defined by
+other people looking at you,
+not something that you define yourself.
+- Very fair.
+- And so,
+and I typically am always
+focused on the forward,
+not the rear-view mirror,
+and that is a characteristic
+of Apple in general,
+is we&amp;#39;re very focused on the forward.
+You won&amp;#39;t find a museum here,
+and yet we would have lots of things
+that you might like to
+see and reminisce about,
+but we just don&amp;#39;t.
+It&amp;#39;s just not a part of our culture.
+- [Marques] Yeah.
+- And so I feel the same way personally.
+At some point, there will be another CEO,
+and my whole focus in life
+will be on making them successful.
+- Yeah. I like that answer.
+It&amp;#39;s a very LeBron answer.
+I feel like he said something-
+- Oh, is that right?
+- Yeah.
+All right. I wanna end with a little game.
+I don&amp;#39;t know if you&amp;#39;ve seen these,
+where it&amp;#39;s a blind ranking.
+Have you seen what these are?
+- A blind ranking?
+- A blind ranking.
+So we&amp;#39;re gonna do a top five
+Apple products of all time,
+but I&amp;#39;m gonna give you them one at a time,
+and you don&amp;#39;t know what
+the rest of them are.
+So you have to rank the first one
+without knowing what two,
+three, four, and five are.
+- Oh.
+- Okay.
+- And this is your ranking?
+- This will be your unofficial ranking,
+just based on your gut reaction of
+how you feel about the products.
+- All right, this is a tough one because-
+- It is a tough one.
+- It&amp;#39;s like asking you
+your favorite kids or nephews or nieces.
+- We&amp;#39;ll see how it goes.
+- Yeah.
+Okay, number one. MacBook Air.
+Had that iconic moment of, like,
+taking it out the envelope on stage.
+It&amp;#39;s the most popular laptop
+in the world, I think.
+- It&amp;#39;s the most popular in the world,
+and that moment of taking
+it out of the folder
+established a characteristic
+about that device that lives today.
+The first one, it wasn&amp;#39;t about
+how many people would buy it.
+- [Marques] Yeah.
+- It was about establishing
+the foundation.
+- Was that the first Air product?
+- Of any line?
+- Yeah. It might have been.
+- I believe so. Yes.
+- Okay.
+- I believe so,
+and so I&amp;#39;m gonna fail miserably
+at giving you a ranking,
+but it was a huge moment.
+- [Marques] Yeah.
+- A huge moment for the company.
+- The iPad.
+- Oh, wow.
+You know, tablets had been in
+the market for a long time.
+Our objective is never to be first.
+Our objective is to be best.
+- I remember all the
+rumors leading up to it.
+- And there were many
+rumors leading up to it,
+and people thought
+many things that weren&amp;#39;t too
+nice about it in the beginning,
+including the name,
+and yet I couldn&amp;#39;t live
+without my iPad today.
+- [Marques] Yeah.
+- And so another huge
+moment for the company.
+- My number three is the Magic Mouse.
+- The Magic Mouse.
+It was also an incredible moment.
+People don&amp;#39;t think of that as much
+as they would the MacBook Air and the iPad
+and whatever else you&amp;#39;re
+going to name probably,
+but getting the ergonomics
+well done
+was key.
+- With the Magic Mouse.
+- [Tim] Yeah.
+- Okay. Four out of five, the iPhone.
+- Oh my God. It changed the world.
+- It definitely changed the world.
+- It changed the world,
+and the simplicity of
+defining the three things.
+- [Marques] Yeah.
+- That were on the phone was brilliant
+to get people to think about it like that,
+and, of course, opening up,
+this isn&amp;#39;t talked about as much,
+but, initially, you&amp;#39;ll remember that
+there was not an App Store.
+- Right.
+- The App Store came a year later,
+and that changed everything
+in the developer community,
+because, now, I meet
+with students every WWDC,
+and they give me such great inspiration.
+There were no students in
+the developer community
+at that particular point in time.
+Now, the developer
+population is very diverse
+from an age point of
+view and everything else,
+and it just, fundamentally,
+it became an economic miracle for people,
+and got well outside of
+just doing it for a hobby.
+You look at all the businesses
+that came out of it.
+- Yeah, and now we have WWDC.
+- That&amp;#39;s right.
+- Last but not least, Vision Pro.
+- Oh.
+I love Vision Pro.
+I was just using it last night
+to look at the screening.
+- Yeah. What do you use Vision Pro for?
+I ask everybody who has
+one what they use it for.
+- I use it for the entertainment value.
+I use it when I want to do multitasking,
+because I find the multiple windows
+really effective in doing this.
+Of course, I&amp;#39;m reviewing
+lots of app on it right now,
+and some of those are enterprise apps,
+some people&amp;#39;s proprietary apps
+that they wanna share with us,
+and I&amp;#39;m seeing an extraordinary number
+and variety of things coming
+out of the enterprise area,
+far earlier than we would&amp;#39;ve predicted.
+- Interesting.
+- Because businesses
+generally move slow to adopt.
+- [Marques] Yeah.
+- And what we&amp;#39;re seeing is
+that half of the Fortune 100
+is now buying Vision Pro for
+some project or the other,
+or exploring it.
+- [Marques] Interesting.
+- And so I&amp;#39;m looking at
+several of those and, yeah,
+I find that it&amp;#39;s still
+an emotional experience
+to look at your photos,
+and with visionOS 2,
+being able to take your old photos.
+- [Marques] Yeah.
+- [Tim] And make them 3D, I
+think is a big, big thing.
+- [Marques] Yeah.
+- And, you know, I lost both of my parents
+before Vision Pro came out,
+and being able to go back
+and look at those photos differently
+is something that, you know,
+it&amp;#39;s an experience you can&amp;#39;t replicate.
+- For sure.
+Well, we didn&amp;#39;t get a blind ranking,
+but we got a pretty good retrospective.
+- Yeah.
+- Of some of these products.
+Thanks again for your time.
+- Thank you.
+- Thank you.
+- I&amp;#39;m looking forward to
+when the next feature
+drops in the next WW,
+but this was fun.
+Thank you.
+- Yeah, it was great fun.
+Thank you for coming.
+- Same.
+(upbeat music)

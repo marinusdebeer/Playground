@@ -1,0 +1,65 @@
+(upbeat music)
+
+- All right, so you've seen the unboxing. Now it's time for the breakdown. What is using the Apple Vision Pro actually like? This is easily one of Apple's craziest, most radical, possibly dystopian products of all time. I have a lot of thoughts since I've been using it for about a week now. There are some parts of this headset that are absolutely incredible, and some other parts that feel weird or borderline unfinished.
+
+There are all kinds of new technologies, from a new operating system to infrared eye tracking to virtually reconstructed versions of you. There are so many new things to understand that provide a clearer sense of what this headset actually is and what it does. So I'm going to break this down into two parts. This video focuses on using the Vision Pro. It's everything I've learned from a week of wearing and getting used to this device every single day. However, I'm also working on a wider-ranging review video.
+
+Let’s start with the hardware fundamentals. What is this device that I’m holding? At its core, the Apple Vision Pro is a VR headset. Apple will never say that, and they probably won’t like that I’m using the word “VR.” I made an entire video on why they refuse to embrace that terminology, instead referring to it as spatial computing. But the truth is, it's a really high-end virtual reality headset. 
+
+It’s something we’ve seen before, with displays, lenses, speakers, fans, and buttons. But before I even turn this thing on, there are several things that set it apart. First of all, it’s made of metal. There’s a lot of metal and glass here, both high-quality but relatively heavy materials. The precisely machined aluminum frame surrounds the outside, and yes, those are intakes for the fans at the bottom, with vents for those fans at the top. 
+
+On the right side, there's a digital crown that can be pressed in or turned, and on the left side is a single larger button, which are essentially the same two buttons as on an Apple Watch. Further back on the band, there are small pods with downward-facing grills—those are speakers directed straight at your ears and they work surprisingly well. However, this also means people around you can hear a bit of what you're hearing. There’s a bit of bleed, and I have a lot to say about spatial audio, so stick around for that.
+
+The main feature is at the front: a large piece of glass that is very easy to fingerprint and smudge. Behind that is an outward-facing OLED display and a bunch of sensors all around: forward-facing sensors, sideways, and straight down. There are depth sensors, infrared illuminators, lidar scanners, and regular RGB cameras, all processed by an M2 chip and an R1 chip inside this thing. 
+
+Perhaps the craziest part is that inside the headset, there are even more sensors tracking your eyes in real-time, which enables eye control and displays a representation of your eyes on the outside of the headset. It's complicated, but overall, when you put it all together, you get a very well-made, high-end, but also somewhat heavy computer to wear on your face.
+
+Officially, this headset with this solo knit band weighs 638 grams, which, as some pointed out on Twitter, is slightly less than the plastic Meta Quest Pro. However, the Quest Pro has a lot of battery weight on the back of your head to serve as a counterbalance, so the weight distribution is quite different. The Quest Pro is also not particularly comfortable. 
+
+The key here is that Apple decided to remove the battery from the headset. While this means there’s nothing on the back of your head to rest against, allowing for more comfortable wear, it also results in a front-heavy design. All the weight is resting on the front of your face and you have to deal with a cable running up to your head.
+
+In the unboxing, you saw the battery, which is a surprisingly small 3,366 milliamp-hours. I say surprisingly small because a typical battery bank of this size would usually be 10,000, 15,000, or even 20,000 milliamp-hours. I suspect there’s a lot of heat insulation going on here. The battery comes with a non-removable four-foot cable and a proprietary connector that twists and locks to the headset, ensuring a solid connection. It starts glowing when connected and takes just under a minute to boot up, displaying a little Apple logo on the outside screen. 
+
+There’s no on-or-off button. Similar to AirPods Max, if you take the headset off, it’ll enter standby mode after some time, but it won’t turn off. To completely turn it off, you have to twist and unplug the cable. The battery life is not ideal, ranging from two to four hours, which is similar to the battery life of many other VR headsets. If you want to use it for longer, you can plug it into a USB-C port on the battery for unlimited battery life or daisy chain another battery on the other side.
+
+There are no controllers that come with this headset. It supports other input methods like game controllers, a mouse, and a keyboard, but the primary input method for Vision Pro users is your eyes and hands. The first time you wear the headset, it goes through a calibration process which is pretty interesting. It adjusts the distance between the lenses, then scans your hands to understand them before you look at a bunch of dots around the screen and pinch your fingers to select them. 
+
+You’ll notice that you can position your hands almost anywhere within view of the headset. The sensors are wide-angled, so you don't have to keep your hands precisely in front of you to interact. You control things in a 180-degree bubble in front of you with your pinching motion. When you hit the digital crown, the app drawer appears. 
+
+The standout feature of this headset is the incredible spatial positioning lock. Imagine a wall or window appearing locked in place in 3D space in your room. When you move your head or body, it stays exactly where it’s supposed to be. Upon entering Apple’s new Vision OS, I would describe it as similar to iPad OS but with a glassy look and the added dimension of 3D space.
+
+Hitting the digital crown brings the app drawer back up. You simply look at the icon you want and pinch your fingers together to select it and open the app. Scrolling is intuitive; you pinch and pull in the air as if things are on a string. The experience is responsive and fluid. The biggest adjustment is that you can only control what you’re looking at directly, which takes some getting used to since most computers allow for more flexibility.
+
+When you open a Vision OS app, it locks into place, appearing as a frosted glass UI that lets you see some color behind it, casting shadows in the right 3D space. At the bottom of the window, there’s a bar to pinch and drag around, allowing you to move the window in any direction or resize it. By default, passthrough is always on, meaning you can see the real world around you through the cameras while using the headset.
+
+This is where Apple seeks to normalize the term spatial computing. It feels similar to augmented reality, as you can always see your surroundings, but technically it's not AR, since you are looking at a reconstructed view through a camera feed. This passthrough feature is the best I’ve seen in any VR headset, allowing for real-time engagement with your environment. The R1 chip processes everything while maintaining low latency.
+
+If you want to fully immerse yourself, just rotate the digital crown clockwise. You can dial the environment surrounding you up until it's fully encompassing. Apple includes several relaxing digital environments, and while none are photorealistic, they are the most realistic digital environments I’ve seen.
+
+There are a couple of quirks in the UI regarding the control center and text input. To access the control center, you need to look up and turn your head to see an arrow above you. For text input, you can either poke at keys on a virtual keyboard, look at keys and pinch to select them, or use voice commands.
+
+Now that you know what the Vision Pro is and how it operates, what can you do with it? What is the killer app? The Vision Pro supports two types of apps: those built specifically for it and those that are simply iPhone and iPad apps compatible because the developer didn’t opt out.
+
+Apple's stock apps are designed to utilize the Vision Pro’s capabilities fully. For example, the Apple Music app maintains its usual functionality but is presented in this frosted-glass UI. Other apps, such as Photos, allow for panoramic views with a parallax effect, creating an immersive experience.
+
+There are third-party apps designed ahead of time too, like Sky Guide, which lets you explore constellations in an immersive way, and Jig Space, which allows you to manipulate 3D models in your environment. Another interesting app is Keynote, which helps you practice presentations in an immersive environment.
+
+However, none of these apps are quite a "killer app." Many non-native but technically compatible apps are simply iPhone or iPad apps that have not been optimized for the Vision Pro yet. Some notable exceptions include no Netflix, YouTube, or Spotify apps. While you can access these through a browser, you'll miss many features of dedicated apps.
+
+To me, the killer app of the Vision Pro isn't a singular app, but rather the ecosystem it creates. When you log in with your Apple ID, all your services, messages, photos, and Notes are easily accessible. 
+
+One of my favorite features is connecting to your Mac. You can transform your Mac’s display into a 4K window inside the headset and use it just like a regular computer while opening Vision Pro apps around it. The setup flexibility feels particularly futuristic, especially useful when working on a plane.
+
+One limitation is the single monitor from your Mac—you can’t use dual displays. 
+
+Let’s talk about Personas, a unique feature of this headset. The outward display of eyes is a key characteristic. It’s not actually see-through, as it’s a digital representation created by internal sensors that track your eyes. This design allows the headset to provide a more human-like interaction with those around you.
+
+You can register your Persona through a dedicated process that captures facial expressions and features, and you can use this Persona for features like FaceTime. The experience is amazing; when on a FaceTime call, the virtual windows for conversations appear glassy and immersive, making the interaction feel more real.
+
+Overall, while the Vision Pro has phenomenal features, there's still more to consider regarding price, use cases, and its current app ecosystem. The full review will dive deeper into all these angles, but I’ll leave you with my current takeaways from a week of usage: 
+
+**Upsides:** immersion, spatial positioning, eye tracking, hand control, passthrough quality, the ecosystem, and spatial audio.
+
+**Downsides:** weight and comfort, exterior eye display, app selection, short battery life, and high price.
+
+Stay tuned for the full review, and thanks for watching! Catch you later. Peace.

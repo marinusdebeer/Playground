@@ -1,0 +1,70 @@
+(bright jingle)
+
+- Whoever made the tweet asking how many LTT backpacks would fit in the trunk of a Tesla, or whatever the question was--
+- Oh, I didn't see that; that's hilarious.
+- Someone made that tweet on the LTT handle.
+- Oh, that's really funny.
+- And it did it! It looked up the dimensions of the LTT backpack and the dimensions--
+- Shut up.
+- Of the trunk and it figured it out.
+- How the heck did it do that?
+- Ask it; let’s do it live!
+- Because I thought the dimensions for the backpack were in picture form.
+- [Luke] Searching. Searching for that. Now it’s searching for backpack dimensions.
+- Shut up! Shut up!
+- Look at this!
+- Have different shapes and dimensions; based on some rough estimates, I will try to answer it.
+- That's insane! That’s actually nuts.
+- Based on some videos of the Model Y trunk, shut up! It can fit about five to seven standard carry-on suitcases which have similar dimensions and capacity. Holy—
+- Which is accurate. That statement is real.
+- (beep)
+- That's crazy!
+- Look at this. How did this happen? How did Bing—no offense, Microsoft—but how did Bing just beat Google to the punch so dramatically at something that’s so core to their business? Well, there’s actually a really good reason for it. 
+
+So AI has been blowing up lately, both in the news and in real-life applications across a ton of industries. Years ago, it was only in relatively small things, like helping doctors detect cancer early using advanced pattern recognition, and then a bit more over the years with autonomous vehicles. But now AI is everywhere. It’s creating whole original pieces of art. It’s holding conversations with humans all over the place. It seems like we’ve just arrived at the beginning of the AI age.
+
+There’s this chart that keeps popping up which hits especially hard: the time to reach 100 million users. You can see faster and faster adoption curves with increasingly disruptive technologies. The telephone took 75 years to hit the 100 million mark. The mobile phone reached the same milestone in just 16 years. Netflix took only 10 years, Twitter took six, and Gmail took five. Facebook took about 48 months and Instagram hit it in just 30 months. Now TikTok we view as a gigantic existential threat, taking only nine months to reach 100 million users. ChatGPT? Just two months!
+
+When looking at numbers like that, it seems almost obvious that we’re clearly on the precipice of something really, really big that’s going to change everything. So seeing Microsoft at the forefront of it with this new Bing shouldn’t really be a surprise. People are already talking to these chatbots and asking it all sorts of questions. It sort of feels natural having this chatbot act as your co-pilot for the web alongside search instead of just a traditional search engine full of links. That sounds pretty cool.
+
+But there is one thing that’s going to follow this conversational AI everywhere it goes: sometimes it’s just wrong. Sometimes it just says things that aren’t true because fundamentally, the AI doesn’t know if it’s telling the truth or not. It doesn’t understand that; that’s not part of the model. What we’re seeing is it taking our inputs and then creating outputs based on related words that are most likely to go together. It’s not forming a sentence like humans do; it’s generating a new sentence. So when adding it to a search engine like Bing, it’s scraping all these relevant links and information and synthesizing new sentences just based on how it thinks things should be pieced together. 
+
+It’s not sentient; it doesn’t understand what it’s saying, and so it’s definitely not fact-checking itself. We have to keep that in the back of our mind with all of this, right? Every time you see a headline. 
+
+It’s really interesting with these search engines. On one hand, you have Bing, who has everything to gain, and on the other hand, you have Google, who has everything to lose. I’ve had access to this new Bing for a little while; it’s in a limited preview before they push it live to the rest of the world. I’ve just been playing around with it. Basically, it adds this chat experience alongside regular Bing. It’s esssentially the same experience as talking to ChatGPT, but instead of being limited to a fixed data set that cuts off at 2021, it pulls from the entire current web that Bing can scrape from. 
+
+So, you can type in a question, flip it over to chat, and it’ll give you a nicely written summary synthesized from similar queries. If I ask it something simple, like, "What’s the average lifespan of a cheetah in the wild?" It gives me an answer. It provides a convincing bunch of sentences. It even gives me more information than I asked for, telling me about cheetahs in captivity too, which makes it feel very convincing. It also includes little footnotes and citations for some of its sources and links at the end if you want to dig in more. 
+
+It’s really impressive, actually. This is like a real product that’s going to ship all over the world soon. The natural language capability is super impressive; it gives a convincing sounding couple of sentences and strings them together based on my input. But the more you use it, the more you start to notice weird patterns and shortcomings. Again, mostly in the fact that sometimes it’s just going to be wrong.
+
+A little game I like to play is to ask it a question you already know the answer to and then read what it says and spot the error. So I asked it now, "What are the best smartphone cameras right now?" It gave me the S23 Ultra, Pixel 7 Pro, and iPhone 14 Pro Max with a nice writeup and some specs for each. That’s actually a pretty good list, but it’s wrong about some of these numbers. The S23 Ultra has a 200-megapixel camera and a 12-megapixel front-facing camera. But okay, it’s mostly right.
+
+Then I asked it, "What are the five best electric vehicles out right now?" It gave me five reasonable options, but I don’t know any expert who would put the Jaguar I-Pace on their list right now and leave the Rivian off. Basically, the answers it gives are really convincing to someone who doesn’t already know about the subject. But if you’re already an expert in the topic you’re asking about, you’ll find that its responses are like a C+ or maybe a B+ at best.
+
+Now you see what’s happening; now suddenly when you’re asking ChatGPT or Bing about a factual thing or something you need help with, you should probably add these layers on top. Am I a complete newbie in this topic that I’m asking about? Am I just willing to blindly trust whatever this spits out without any further research? Is a B+ answer going to be good enough for me, even if it might have some errors?
+
+That might be sufficient for asking something like, "How old does a cheetah get?" but maybe not good enough for planning a trip or meal planning for someone with an allergy. And then, if you look around the internet, people have gotten it to give increasingly more unhinged answers as it tries to simulate conversations and maintain a flow with natural language. I’ve seen it argue over simple corrections to spewing weird stories about how it’s spied on its own developers or how it wants to be sentient, gaslighting people about things, and lying about its previous answers. It’s just saying some straight-up scary stuff.
+
+Just go to the Bing subreddit for an all-you-can-eat helping of all the insane stuff that Bing has said to testers over the past couple of weeks. Can you imagine if Google did the same thing? If Google search, at the top of search results, was spewing out random stories and misinformation and all kinds of insane, unhinged things? That would not fly.
+
+To be fair, this version of Bing isn’t public yet; it’s still in a small group testing phase. But even so, Microsoft knew some of it would get out and possibly go viral. It feels like they even programmed in lots of friendly emojis to soften the blow. When it realizes it’s giving an answer on a controversial topic or something with no clear answer, you might get a little smiley face at the end just so you don’t take it too seriously.
+
+Also, literally as of today, while I’m testing this, it started completely bailing on a lot of topics if they seem even slightly existential or dangerous. It just says, "Hmm, I prefer not to continue this conversation," and then it stops, refusing to answer any more questions until you reset it. That seems like a pretty good failsafe; it’s a good idea in hindsight. But we’ve already seen the other stuff. The damage has been done. 
+
+The point still stands: this could have only come from Bing. A lot of people might have forgotten about this or might not even know, but Google has been working on conversational AI for years. We’ve seen Google Assistant, and they literally showed an AI chatbot demo on stage at Google I/O in 2021, where you could have a whole conversation with any person or object in the universe that you wanted. Their demo was asking Pluto about itself, nice and friendly, right? Oh, what’s it like to be you, Pluto? What would it feel like if I visited you? How do you feel so far from the sun? 
+
+The difference with Google is this was never shipped as a product. It was an internal research project. But the idea of displacing their massive search and ads business with a chatbot that gets things wrong all the time is insane; it can’t happen, right? Literally, search and ads make up more than half of Google’s revenue as a company. That’s what having everything to lose looks like.
+
+To be fair, Google did hold an event in Paris the day after Microsoft’s event, discussing their chat with search AI plans. They did say they’re eventually planning on a chatbot above Google search, called Bard. It was much more subdued, and yes, it literally did have a factual mistake in its promo.
+
+Look, I actually like the idea. I think it’s smart to have AI as a co-pilot for the web to help around the internet. The notion of it summarizing a longer piece into bullet points accurately would be great. The fact that it could give you spark notes for a longer book you haven’t read yet? Cool. It could help with meal planning, trip planning, or making a purchase decision.
+
+But it’s clear we’re still at the beginning of this. There are so many unanswered questions, from fact-checking to whether schools will embrace this or ban it. How do search engines keep sending traffic to the publishers who are the sources that the chatbot is scraping from? I mean, you get the links at the bottom, but a lot of people won’t click those anymore if you just give them the answer above the search results.
+
+So right now, in its current stage, my take is that anything we do with any of these AI tools should be a collaboration with the human touch. You wouldn’t just put in a query in DALL-E and then take whatever it generates and call that art, right? It’s more for inspiration for your own paint and canvas. Likewise, you wouldn’t ask ChatGPT to write an essay and then copy and paste it to submit as your own. It’s supposed to inspire your own framework for the piece, for the human touch.
+
+Of course, you shouldn’t ask the Bing chatbot what TV you should buy and then mindlessly buy the first one that comes up. It could be fine, but it might also be a C+ answer. You should use that as a springboard for your more informed research, especially on topics you don’t already know much about. So maybe don’t just buy 19 backpacks immediately when asking if they can fit in the back of a Tesla; check its work first.
+
+Thanks for watching. Catch you in the next one. Peace. 
+
+(playful music)

@@ -1,0 +1,35 @@
+(upbeat music)
+
+All right, there are two new features in this latest laptop from Apple: a new color and a new chip. 
+
+(upbeat music)
+
+Everything that was great about the exterior design of Apple’s laptop remains. It still has a variety of ports, including a full-size HDMI and MagSafe. The high-quality build, boxy design, and super bright display are also still here. However, the awkward aspects are still present too, like the large notch at the top housing only a webcam, with no face unlock feature.
+
+The new color is called Space Black, which appeared much darker in Apple’s announcement video. I was expecting a truly black laptop, and while it does look dark in the commercial, in reality, it’s just a slightly darker version of the previous Space Gray. If you’re looking for a black laptop, there are other brands that offer true black options. Apple’s version is simply a darker gray, which is likely the darkest they could achieve without showing too many fingerprints. It does still show some fingerprints, but it’s better than other black laptops I’ve tried. It’s a middle ground—darker than usual and not overly fingerprint-prone.
+
+Additionally, it comes with black Apple stickers and a black MagSafe charging cable, although the braided cable is darker than the end. The charging brick, however, remains white, which indicates that Apple hasn’t fully embraced the Space Black theme. I’ll give them partial credit for the effort.
+
+Now, let’s discuss the chip inside. The newly announced three-nanometer M3 family of chips brings significant improvements over the M2 family. It feels almost odd to compare it, as few people with an M2 should feel compelled to upgrade to this. However, as a point of reference, I’ve been testing the highest-end M3 Max in this laptop. Compared to the M2 Max, it has seen an increase in GPU cores from 38 to 40 and an upgrade in shared memory from 96GB to 128GB. 
+
+Apple's claims about CPU improvements seem accurate, with gains of around 20 to 30% over last year. The jump in single-core performance is more significant than I anticipated, which is fantastic for daily tasks and general computing.
+
+On the GPU side, many were hoping for a larger leap in performance. While it is a respectable upgrade, it doesn’t quite leapfrog high-end discrete GPUs. However, the M3 Max's GPU performs at levels comparable to the M1 Ultra, matching benchmarks around the AMD Radeon RX 6800 or RTX 3070—a solid mid-range card.
+
+This newfound GPU performance and benchmark results are impressive, but what’s more interesting is how users will actually utilize this power. For a laptop like this, it typically revolves around gaming or high-performance graphics applications. When you see the M3 Max with its hardware-accelerated ray tracing for the first time in a Mac, you might think of gaming. But realistically, Macs aren’t usually associated with gaming.
+
+I believe this misconception is not due to the performance of Macs—while they might not match the absolute best in the market, they’re still powerful. Instead, it’s largely about the availability of popular games on the Mac platform. If you want to play titles like "The Witcher," "Fallout," "Skyrim," "Crysis," or "Apex Legends," you're likely going to want a PC rather than a Mac—regardless of how powerful it is.
+
+However, I find this current moment interesting for gaming on the Mac. While many games are still unavailable, this is the most powerful Mac ever created. I've played some games that Apple highlights in the App Store. For example, "Lies of P," which they discussed in the keynote, takes advantage of the hardware-accelerated ray tracing. The game looks stunning, with high frame rates and 4K resolution providing a beautiful depth and detail.
+
+macOS Sonoma offers a gaming mode that optimizes power for games and allows for Bluetooth controller use with lower latency and faster sampling. My experience with this game was impressive, though I’m not particularly invested in it. It was fun to play the demo, and the computing performance was commendable, even if the machine got slightly warm and the fans ramped up during use.
+
+Despite the GPU's capabilities, my overall takeaway is that the extra power could be for gaming, but if you’re spending this much on a laptop primarily for gaming, you likely wouldn’t choose a Mac. Still, as a Pro laptop, the MacBook Pro is suitable for non-gaming uses that also benefit from the added GPU power—like Cinema 4D. This new chip enhances performance across the board, and I expect even more applications to take advantage of these advancements over time.
+
+Reflecting on the launch event, I was genuinely excited about the new matte black MacBook and the new chip. I thought this combination would convince me to upgrade. I placed an order for a maxed-out M3 Max MacBook Pro in matte black. 
+
+However, after testing this review unit, while the color is pleasant, it’s not as groundbreaking as I hoped. The new chip is impressive, but it won’t make a meaningful difference in my workflow, especially considering the videos I edit on the go with my current M1 Max laptop. 
+
+Ultimately, I canceled my order and will continue using my M1 Max 16-inch MacBook Pro that I’ve had for the past three years. While the new model is excellent, it doesn’t serve my needs. The M3 family is more suited for those with older machines who will see a significant upgrade. If you already own an M family chip MacBook at the level you desire—like the M2 Pro or M1 Pro—the M3 Pro isn’t going to be a major upgrade. Similarly, if you have an M2 Max or M1 Max, the M3 Max isn’t necessary for you.
+
+This new launch truly targets users with older Intel machines or those in different tiers looking to unlock a new workflow. The M1 Max remains impressive for my use. Maybe I’ll revisit this with a two- or three-year review. For now, I appreciate the new darker color option, but it oddly isn’t for me. The laptop itself is still fantastic—great displays, exceptional speakers, amazing build quality, and excellent battery life. Perhaps my upgrade will come when Apple fully commits to that matte black aesthetic or makes another significant advancement down the line.

@@ -1,0 +1,61 @@
+I really like these new Pixel phones. The new designs this year are obviously a highlight, but there are also new specs, new features, and even new issues to consider, along with updated price tags. So, let's dive into what’s genuinely good about them.
+
+We've been hoping for a true flagship competitor from Google for a while now. On one hand, it feels like we finally got one, but on the other hand… Did you all catch the Google event announcing these devices? I feel like you can learn a lot about a company's confidence in its products just by watching the announcement event. It came across as more of a software showcase, with phones being an afterthought. This approach didn’t exactly inspire confidence in these new devices.
+
+However, after using these phones for two weeks straight, I can confidently share what’s good and what’s not.
+
+When I say these phones feel like flagships, I'm mainly referring to the hardware. It's easy to overlook the changes and think they’re just last year’s models squared, but there are several notable improvements. For instance, the screens are brighter: 2,700 nits for the Pixel 9 and 3,000 nits for the 9 Pro. The bezels have been evenly reduced, which required some design intricacies to wrap the OLED panels' edges under the corners. Additionally, there's a new ultrasonic fingerprint reader on all models, which is significantly faster and more reliable compared to the disappointing optical sensors of previous generations.
+
+There's just one small thing I wish for: the ability to unlock the phone at any time when the display is completely off. Currently, you need to have the always-on display activated, press the power button, or receive a notification before you can unlock with a quick touch. I wish the Pixel would allow unlocking directly from a blank screen, like Samsung phones do, where that area is always a hotspot.
+
+The haptics and buttons are also notably improved; they’re really nice and clicky this year. 
+
+Inside, we find the new Tensor G4 chip and added RAM. While the Tensor G4 isn’t drastically more powerful than last year’s chip—most users probably won't notice a difference for 99% of their daily tasks—what stands out is a new, more powerful NPU that's dedicated to AI. A significant portion of the RAM is reportedly reserved for AI tasks as well. I’ll dive into the AI features soon, but it's refreshing that along with the new AI capabilities, the Pixel has meaningful hardware upgrades too.
+
+And yes, the squared-off sides are definitely designed to compete with iPhones and Samsung devices. I’ve already mentioned that I like the aesthetics, including the new camera design, which resembles a shelf island more than a visor. It may look a bit odd in some renders, but trust me, in person, it’s appealing. It may collect dust like last year’s model, but it’s nice nonetheless. 
+
+I’m also pleased about the new size option, which offers a Pro phone without it being an XL variant. I love having that choice, even if I’m concerned it might not sell as well as the other two extremes. Still, I appreciate having different options available.
+
+Now, while there’s a lot to like, I do have a few gripes—after all, it's a $1,000 phone. The battery sizes are roughly the same as those from last year: 4,700 mAh for the smaller models and 5,000 mAh for the larger. I’ve experienced generally good battery life—around A-minus for the XL—consistently achieving five-plus hours of screen time even with heavy usage at higher brightness. However, the charging speed remains slow; the XL maxes out at about 37 watts, and the smaller models are even slower. I’m not suggesting we need absurd charging speeds like 320 watts from Realme, but it would be nice to see faster charging options, like 50 or 60 watts at a minimum.
+
+Additionally, the Pixel 9 features matte sides with a glossy back, while the Pixel 9 Pro has glossy sides with a matte back. We've seen this approach before, but I personally prefer the feel of matte over glossy. I wish there was an option for a matte-on-matte design.
+
+One last point: the base model starts at $799, and for a $1,000 device, I think 256 GB of storage should be the standard rather than 128 GB. 
+
+Cameras have long been a big part of the Pixel experience, and that remains true with the Pixel 9s, but not in the same way. Both the Pixel 9 and 9 Pro share the same primary camera and ultra-wide camera. The Pro model adds a 5X telephoto camera. The primary camera is essentially the same as last year's, while the ultra-wide is a new 48 megapixel sensor instead of 12, which significantly improves the quality. Shooting with these new cameras is great—the camera app is quick and easy to use, with various helpful modes that yield consistent, quality photos.
+
+However, I notice that the photos still have an overly processed look. The Pixel’s signature style involves lots of HDR, contrast, dynamic range, and sharpening, which might not appeal to everyone. While this style is great for social media, some users may prefer a more neutral representation.
+
+The new selfie camera on the Pro is notably improved in terms of detail and color. The regular Pixel 9 doesn't have this upgrade, but the Pro's camera is impressive, providing a lot of dynamic range. If you’re curious about the video capabilities, I shot an entire video using the Pixel 9 Pro XL in 4K30 with just the built-in microphones. The videos look sharp but, again, they exhibit that signature processed look.
+
+Returning to the software experience, since Google is the creator of Android, you'd expect their phones to showcase the latest and greatest features. Yet, these devices launch with Android 14, even though the Android 15 preview was announced quite recently. So, they’re essentially shipping with the second latest version of the OS. They will, of course, receive updates for seven years, but it’s humorous that the latest model doesn’t launch with the latest software.
+
+Every time I go back to using a Pixel, I'm reminded of the features I miss when using other devices. Call screening remains top-notch, and while Samsung has a version of it, it doesn’t quite match the Pixel's effectiveness. The Now Playing feature is another favorite, passively recognizing songs wherever you are.
+
+New features like Call Notes, which summarizes phone conversations and records them, are quite handy. I was initially skeptical about the new Pixel Weather app, but I found it to be just as reliable as any other Android weather app. It offers an aesthetically pleasing UI where you can rearrange tiles to prioritize information you care about.
+
+There’s also a new panorama UI in the camera. An interesting addition in the Pro model is a temperature sensor that can read people’s temperatures, which isn’t intended for medical use, but it’s an impressive feature nonetheless.
+
+At the center of the Pixel experience is Gemini, Google’s latest assistant integrated deeply into the phones. The boot-up animation transitions from the Google logo to the Gemini logo. Despite a history of confusing rebranding, Gemini is where the focus should be. I’ve found it to be highly useful, quickly improving with new capabilities and demonstrating conversational abilities while remembering context well.
+
+Interestingly, Google Assistant still exists alongside Gemini on these phones, which can cause confusion given that it was often better at basic tasks at launch. For example, it couldn’t set timers or manage basic home controls initially, which further complicated user interactions. The Pixel home screen still defaults to Google Assistant, adding another layer of complexity.
+
+However, Gemini has improved, and now it can handle setting timers and alarms while running home controls, though its capabilities are still brand-marked with the old Google Assistant logo. 
+
+Moreover, settings now allow for Gemini extensions, giving it access to more personal data and making it more efficient in addressing user needs. The fully conversational mode also enables real-time conversations, answering questions and aiding in decision-making.
+
+While Gemini is promising, it’s essential to note that all these features can be used on any Android phone. Google even demonstrated its capabilities on a Galaxy S24 Ultra during their event. This raises questions about the unique benefits of the Pixel’s new NPU power and extra RAM dedicated to AI tasks. 
+
+I’ve been exploring several new AI features present on the Pixel 9, categorizing my experiences into useful, meh, and gimmicky. Useful features include Gemini, Call Notes, Video Boost, and Add Me. Video Boost enhances video quality remarkably, while Call Notes can record, transcribe, and summarize conversations for your convenience. The Add Me feature is an interesting addition, allowing you to take pictures with yourself multiple times, though I wonder how frequently this will be utilized by users.
+
+On the "meh" side, we have AI-generated weather summaries and Magic Editor's Reimagine feature, which attempts to modify images. The Weather app's AI summaries might sometimes be helpful, but it also fell short in predicting weather changes effectively. Meanwhile, the screenshots app allows for the organization of captured images, yet I question whether this should have been integrated into Google Photos from the start.
+
+Finally, in the gimmick category, we have features like Zoom Enhance and the Pixel Studio app. The former aims to enhance photo clarity, but it tends to fall short in delivering real results. The Pixel Studio app generates images, which can be fun, but I find it lacks practical applications outside of playful experimentation.
+
+So, the general narrative for new smartphones in 2024 seems to be minor improvements alongside flashy AI features exclusive to the latest models. If you’re looking for a device that excels in AI capabilities while also providing a pleasant hardware experience, the Pixel 9 is a strong contender. 
+
+What are your thoughts? Are there features you think you’d genuinely use or find valuable? Let me know in the comments. Overall, I’d say the Pixel 9 and 9 Pro represent some of Google’s finest work yet. 
+
+Also, huge thanks to Anker for sponsoring this video. Their new Anker Prime lineup features an advanced multi-device fast charger, with several products including charging stations, wall chargers, power banks, and cables. The few that stand out the most to me are the Anker Prime charging station and power bank, both of which offer impressive charging capabilities. 
+
+That’s all for now. I’m glad I got this in before the rain started! Let me know your thoughts in the comments below. Talk to you in the next one. Peace!

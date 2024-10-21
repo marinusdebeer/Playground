@@ -1,0 +1,393 @@
+(Windows chiming)
+- Okay, I&amp;#39;ve been waiting
+for this for a while.
+As someone who&amp;#39;s been on the sidelines
+of the Windows game for a little while now
+and seeing all this hype
+and this new matte black laptop
+that&amp;#39;s supposed to be generational,
+it&amp;#39;s got me thinking,
+is it legit?
+Like have Windows laptops
+actually caught up
+to the Apple Silicon leap
+from a couple years ago?
+Because this is a new
+Microsoft Surface laptop
+and it doesn&amp;#39;t have an Intel chip inside,
+it doesn&amp;#39;t have an AMD chip inside,
+this laptop has a Qualcomm
+Snapdragon X Elite chip inside,
+meaning it is an ARM laptop.
+Now, years ago, Apple went
+through this transition
+from Intel chips to ARM chips
+and it was crazy successful,
+like, no one could really
+match their efficiency
+and seamless integration,
+the vertical integration,
+the overall package of their laptops
+just took a quantum leap forward.
+Now Windows laptops around
+the same time, actually,
+if you remember kind of
+tried the same thing,
+I don&amp;#39;t know if you
+remember the Surface Pro X,
+that didn&amp;#39;t go so well
+and so we&amp;#39;ve continued to have
+Intel and AMD laptops since then.
+But it seems like this
+one has gone way better.
+So I&amp;#39;ve been using this laptop
+for the past couple weeks,
+you might have seen me with
+it on the Waveform Podcast,
+and I&amp;#39;ve got a pretty good
+idea now of what&amp;#39;s gone well
+and what is still a trade off.
+So the big advantage,
+the mega quantum leap
+forward was inefficiency,
+which in a laptop with
+the same size battery
+means a dramatically
+improved battery life,
+and this laptop absolutely
+got a big bump up.
+So I remember reading reviews
+of the last Surface laptop
+with an Intel chip,
+which already had a
+pretty solid battery life,
+and the Microsoft quote was 19 hours.
+This one&amp;#39;s quote is 23 hours,
+but what that&amp;#39;s translated to for me,
+basically, is all day battery life
+for mixed use with no worries,
+like, that&amp;#39;s high brightness,
+web browsing, email,
+watching videos, research type activities,
+and then, ending the
+day at like 40% easily.
+So I just really don&amp;#39;t
+think about charging much,
+which is awesome for a 14-inch laptop.
+On paper, it&amp;#39;s getting compared a lot
+to the M3 13-inch MacBook Air
+and it even outlasts it on
+some synthetic benchmarks,
+which is awesome.
+So that&amp;#39;s one success,
+definitely check the box,
+great battery life, love that.
+And then, the other second success
+that we were looking forward to
+was just a well optimized performance.
+And it&amp;#39;s not like the super
+high end gaming performance,
+I&amp;#39;m not talking about
+that type of performance,
+but I just mean like a general
+smoothness and consistency
+and rock solid performance
+across all your everyday regular tasks,
+that sort of performance.
+Now I&amp;#39;m gonna get into
+app support in a minute,
+but I basically found this
+to be a very capable laptop.
+Now again, I&amp;#39;ve been on the sidelines
+from Windows for a bit,
+so I don&amp;#39;t have as many reference points,
+but this is a $2,000 14-inch laptop
+that can basically do anything I ask of it
+without breaking a sweat.
+Photo editing in Affinity, not a problem.
+Literally anything in the
+Microsoft Office Suite,
+no problem, whether
+you&amp;#39;re plugged in or not.
+You know, I found the track
+pad gestures are pretty smooth,
+the graphics of the whole UI in general
+are consistent from full
+battery to nearly dead.
+So using a software
+that runs natively on it
+is snappy and a great experience.
+But that very quickly gets
+you into the conversation
+about the downside of switching to ARM.
+This is what I was curious
+about repeating from last time,
+and this actually happened
+in the Mac world too
+when they made this transition,
+the number one difficulty
+to changing the entire
+architecture of your computer
+is actually app compatibility.
+So I remember, when the
+Mac went through this,
+there were basically three types of apps.
+There&amp;#39;s obviously optimized
+apps at the top of the list,
+like that&amp;#39;s the ideal,
+obviously, all the first party apps
+are optimized off the bat
+and Apple did a lot of work
+trying to get as many
+developers onboard as possible
+to get their apps optimized on ARM.
+But then there were apps
+that were built for x86
+but would still work on
+ARM through emulation.
+So they&amp;#39;d not perform necessarily
+as well as they could,
+but at least they worked anyway.
+And then, there were apps
+that just didn&amp;#39;t work at all.
+So right now for Windows on ARM,
+you have these three types of apps again,
+and my assessment is that,
+at this very moment,
+there&amp;#39;s pretty good
+support for native apps
+as far as things people use every day.
+But it&amp;#39;s definitely still not perfect.
+So, okay, Photoshop and
+Lightroom CC run native,
+Chrome, Spotify, Prime
+Video, Dropbox, Zoom,
+like there&amp;#39;s a lot of
+popular apps across the board
+that just run natively
+and they&amp;#39;re super smooth
+and they&amp;#39;re great,
+they don&amp;#39;t hit battery
+hard at all, love that.
+So then there are some apps that I used
+that don&amp;#39;t support Windows on ARM
+but do get emulated, so
+they still work technically.
+So Lightroom Classic is a big one,
+my to-do list app of Choice is TickTick,
+you might have heard of it,
+I&amp;#39;ve referenced it a few times
+and it&amp;#39;s a great example.
+If you go to their website,
+they only have x86 versions of the app
+and I downloaded and ran the
+64 bit version and it works,
+but it doesn&amp;#39;t actually run very well.
+I actually notice some
+real chop and some lag
+with certain parts of the UI,
+and it&amp;#39;s not even that heavy of an app,
+it&amp;#39;s just a to-do list app.
+And there&amp;#39;s a long list of apps
+in this sort of limbo phase
+where you don&amp;#39;t necessarily know
+if there&amp;#39;s going to be an ARM native app
+around the corner or not
+&amp;#39;cause adoption&amp;#39;s not super high,
+it&amp;#39;s not really a huge incentive
+for them to make one yet,
+but you can still use it,
+it&amp;#39;s just not gonna be
+the ideal experience.
+It might churn through
+battery a little bit quickly,
+but it still works.
+But then there are just apps
+that straight up don&amp;#39;t work at all yet.
+Arc browser, Google Drive on desktop,
+I rely heavily on that,
+that does not have any
+compatibility at all
+with Windows on ARM,
+VMware doesn&amp;#39;t work, a
+lot of VPNs don&amp;#39;t work,
+and a lot of games straight up don&amp;#39;t run,
+like some of &amp;#39;em are uncompatible,
+but also a lot of them which
+might have ordinarily run
+have anti-cheat software that
+doesn&amp;#39;t run on Windows on ARM
+so the game just doesn&amp;#39;t work at all.
+And there&amp;#39;s even some apps
+that actually now that I
+think about it are compatible,
+but their websites for the
+companies that make them
+don&amp;#39;t actually highlight
+or prominently show
+the download for the ARM version,
+so it&amp;#39;s kind of confusing
+and it&amp;#39;s hard to find.
+So it&amp;#39;s just kind of all
+over the place right now.
+So my take here is,
+look, if you are at all
+considering a Windows ARM laptop,
+specifically, look up the
+apps that you have to use
+and make sure they&amp;#39;re at least compatible,
+at least emulatable
+&amp;#39;cause there might be some promises
+of ARM versions coming soon,
+or just statements from a developer,
+I&amp;#39;ve seen lots of those.
+But just check the programs that you know
+you&amp;#39;re gonna need to work
+because, depending on who you are,
+you could be totally covered
+and fine or totally outta luck.
+So there are a couple Windows
+ARM laptops out there,
+this is the one I obviously
+chose to mess with,
+the premium matte black one
+with the Snapdragon X Elite.
+So here&amp;#39;s a couple more of my observations
+scattered from my couple
+of weeks of using it.
+I gotta say the build
+quality is pretty awesome,
+as they have been with Surface
+for a little while now.
+I love the all metal design,
+the keyboard&amp;#39;s rock solid,
+big track pad with excellent haptics,
+and just really good
+fundamentals all around.
+The port selection is all right,
+it&amp;#39;s still got that full size USB-A
+and then there&amp;#39;s two USB-C
+with the headphone jack.
+My only real downside I would say
+with it getting as pricey as it can get
+is that there is no OLED option.
+So instead it&amp;#39;s a 2304x1536,
+120 hertz LCD touchscreen
+with that 3x2 aspect ratio,
+and I love that it&amp;#39;s tall,
+it&amp;#39;s just, it can&amp;#39;t quite
+match the deep blacks
+and contrast of an OLED, obviously,
+even though it&amp;#39;s a pretty good LCD.
+So I just feel like I
+basically traded the OLED
+for a high refresh rate here,
+but I would&amp;#39;ve liked to
+have seen an OLED option.
+And then just know that it&amp;#39;s not,
+like, it&amp;#39;s not like a
+super high-end gaming PC.
+It&amp;#39;s very strong in
+performance across the board,
+it&amp;#39;ll do all the other things.
+But similar to Apple&amp;#39;s M Series laptops,
+like it&amp;#39;s a built-in GPU,
+it&amp;#39;s not gonna be as
+powerful as a dedicated GPU.
+So don&amp;#39;t expect, I mean, you
+can still play some games,
+sure, but you&amp;#39;re not getting this laptop
+to max out frame rates in
+&amp;quot;Elden Ring&amp;quot; or something.
+If you study the benchmarks enough,
+you&amp;#39;ll find that these
+chips have a lot of cores,
+but weaker individual performance
+on like a single core basis.
+So it&amp;#39;s good at throwing
+a lot of cores at tasks
+and getting things done and
+that&amp;#39;s nice, just note that.
+And it&amp;#39;s generally pretty
+good at staying cool
+and not spinning up the fans,
+which I also think is great.
+And then, of course,
+this is also one of the
+very first copilot PCs,
+so it&amp;#39;s got the dedicated
+copilot button on the keyboard.
+And so, yeah, this chip has an NPU,
+which does specific AI related processing.
+Things like the studio camera effects
+that are built into the camera
+or the forced artificial
+eye contact in the camera,
+and it&amp;#39;ll do it without pulling anything
+from the CPU or GPU.
+And, of course, you can
+always hit that copilot button
+to talk to Microsoft Copilot,
+ask it anything,
+the same way you&amp;#39;d talk to
+Bing or ChatGPT or Gemini.
+But overall, this laptop
+is a good start, I think.
+I mean, I&amp;#39;ve been waiting personally
+for a premium built matte
+black Windows laptop
+for a while on ARM and this is that,
+it&amp;#39;s actually what we&amp;#39;ve been waiting for.
+I think the question really is,
+does the software you use work on ARM?
+Like, that&amp;#39;s the main question
+you should be considering
+when thinking about if you&amp;#39;re
+gonna buy one of these things.
+Now, before you go, here&amp;#39;s a question.
+Have you ever looked at
+a laptop or a smartphone
+and wondered, what&amp;#39;s going on inside it?
+Because channel sponsor
+dbrand has your answers.
+Now you&amp;#39;ve seen, for years now,
+one of my favorite party tricks
+has been this sheet of magnet paper.
+You just lay it down on any device
+to see where a few of the internals are,
+like the MagSafe magnet
+array or the speaker.
+dbrand&amp;#39;s x-ray line takes
+that magnet paper experience
+to a whole nother level,
+letting you see basically
+every single component
+inside your device,
+and yes, this is an actual
+legit X-ray of that device.
+Yes, dbrand took hundreds of
+devices to a metrology lab
+and literally shot each one of them
+with a special X-ray machine
+for maximum accuracy.
+And they also made a light
+mode version of every x-ray.
+So personally, I am into
+the dark mode version,
+but hey, if you don&amp;#39;t
+wanna have to choose,
+if you buy any X-ray skin,
+you&amp;#39;ll get the other colorway
+for free with your order.
+So if that sounds like a good deal to you,
+I&amp;#39;ll leave a link for you
+to check &amp;#39;em out below,
+it&amp;#39;s dbrand.com/ x-ray.
+But yeah, that&amp;#39;s been it,
+let me know what you think
+of the Surface laptop,
+of the whole Windows on ARM thing.
+I&amp;#39;ll check out the comments,
+but either way, let me know.
+Catch you guys on the next one, peace.
+(upbeat music)

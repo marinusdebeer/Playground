@@ -1,0 +1,39 @@
+(bright music)
+
+Okay, so there were serious rumors that the 10th generation Apple Watch was going to undergo a significant redesign. Remember the iPhone 10? It reset the design language of the whole iPhone line. Plus, "10" is such a nice, round number, right? So, we kind of assumed that maybe the Apple Watch would do the same thing. In my last few years reviewing the Apple Watch—Series 8 and Series 9—I mentioned, "Look, these are good watches, but they clearly have very incremental improvements. If you want a big upgrade, maybe wait for the 10th generation."
+
+Now here we are. I've been using the Apple Watch Series 10 for the past week, and... well, it's definitely another incremental upgrade. Now, that’s not necessarily a bad thing. Sure, it’s not as exciting as a total redesign, but it does make this review pretty straightforward regarding whether you should get one or not.
+
+The main physical differences this time are that it's slightly thinner, lighter, and bigger. The numbers say it’s 10% thinner and 10% lighter for the aluminum version. They’ve also dropped stainless steel in favor of titanium on the higher-end models, making those 20% lighter. The screens for both sizes are even bigger now, allowing for more visibility and comfort on the wrist. In fact, it feels like someone took last year's Apple Watch and just squashed it down a little bit—that’s the new design. 
+
+However, it's more complicated than that. There is a new one-piece metal back and a re-engineered speaker that's 30% smaller, which allows for this new shape. Still, the end result is very much an incremental update rather than a dramatic new form factor. 
+
+Interestingly, this new design visually reminds me more of a Pixel Watch, depending on the watch face you choose, mainly due to how the top edges are more curved and how everything melds into the sides, especially with the new Jet Black color. The larger 46mm Apple Watch Series 10 basically has the same screen size as the Apple Watch Ultra. Apple loves to showcase this by displaying an older watch next to the newer watch, bragging about the bigger screen for more text and content—making it easier to use the onscreen keyboard. 
+
+Honestly, I never felt that made much difference, except maybe with the Ultra. But this year, I noticed something specific: The Disc Sports Workout now shows an extra line of information. Instead of showing time, active calories, total calories, and heart rate, it now includes miles as well. So, there's that. 
+
+watchOS 11 launches with these new watches and gets pushed as a software update to older Apple Watches too. Features like the new Vitals app—which gives you an energy score similar to the Garmin Body Battery—are included. There’s also sleep apnea detection, which just received FDA approval to detect and notify you of potentially high levels of sleep apnea using only the accelerometer. Additionally, there's training load, which tracks the perceived intensity of workouts. These features are nice and will also be available on some older models. 
+
+So, if you want to know what features are exclusive to the newest watch—something to justify getting it—here are four key points. 
+
+1. The redesigned speaker now allows you to listen to media out loud on the watch. Previously, you could take calls and set alarms, but now you can play music, podcasts, or audiobooks out loud. You could be out hiking, forget your headphones, and just... well, don’t be that guy. 
+
+2. The updated LTPO 3 display can now drop all the way down to 1 Hertz instead of 10 Hertz. This means you can see the second hand all the time when the Always On Display is on without draining battery. Plus, it shows slightly better off-axis viewing angles, allowing for discreet checking of the time without looking like you're checking your watch.
+
+3. There’s a new water temperature sensor. Admittedly, I don't spend much time around deep water, so I can’t provide test results for this sensor, but it’s there!
+
+4. Faster charging is another welcome update. If you use the Puck that comes with it, you can get it up to around 65% from dead in about half an hour. It’s supposed to charge to 80%, but that didn’t quite happen in our tests. 
+
+And that's it—those are the major updates for the 10th generation. There’s also the new S10 SiP inside. While it features an improved neural engine, it doesn’t seem to be noticeably faster or better than the S9.
+
+So, is that enough? The more I think about it, Apple has called this a redesign, and during the keynote, they emphasized how significant this 10th generation is. Now that they've branded it as such, I'm fairly confident we'll see this design for the next 5 to 10 years. This appears to be the Apple Watch's new look moving forward, with even smaller changes expected in the future. 
+
+The two aspects of this update that made a big difference for me are the larger display and faster charging. The larger display is obvious, and faster charging is great, especially if you want to drop it on the charger and quickly get a good amount of use. 
+
+However, I'm not using this for sleep tracking because I've been using Eight Sleep for my metrics, so shoutout to them! The Eight Sleep Pod 4 Ultra can adjust temperatures on each side of the bed independently and provides biometric tracking with 99% accuracy, which I think gives it an advantage over something worn on your wrist. You can check your sleep stages in the app, and it’s been helping me adjust back to my sleep routine.
+
+If you have an older Apple Watch—like Series 4, 5, 6, or 7—and want a new one, then yes, this is the upgrade you should get. That’s the easiest conclusion you could draw for this product. However, as a reviewer, I feel I should predict the future of this product based on Apple’s presentation language. I genuinely don’t think we’ll see any planned significant upgrades for a while, which is unfortunate. All those major features we had hoped for—a rotating bezel, a circular design, or meaningful battery improvements—were absent from this 10th generation redesign. This feels like Apple’s definitive statement, saying, “This is the Apple Watch.” 
+
+So, that’s it for the review. Thanks for watching, and I’ll catch you in the next one. Peace. 
+
+(bright music)

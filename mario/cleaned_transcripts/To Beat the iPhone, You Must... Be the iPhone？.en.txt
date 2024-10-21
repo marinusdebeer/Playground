@@ -1,0 +1,341 @@
+- All right, so imagine this.
+You&amp;#39;re creating a new
+startup smartphone company.
+Your goal, of course, is
+to make it huge, right?
+So you make your first phone,
+you launch with a bang,
+you&amp;#39;ve got a bunch of
+enthusiasts on board,
+and you&amp;#39;re slowly starting
+to grow this thing.
+And it starts going well
+in Europe and in India
+and a few other Asian markets,
+and, you know, things are starting to grow
+and go quite nicely.
+But you notice there&amp;#39;s not a lot of pickup
+in the United States for some reason.
+Now, there&amp;#39;s a few
+reasons why this might be.
+I mean, a lot of people already know
+there&amp;#39;s a surprisingly
+high amount of people
+who just walk into a carrier store
+to buy their phones in the US,
+so if you don&amp;#39;t have
+a deal with a carrier,
+then things might not
+go well for you there.
+And this is a enthusiast-only thing.
+They&amp;#39;re selling them online,
+so that&amp;#39;s understandable.
+But then you get to the stats,
+and the stats say the iPhone
+has somewhere around 50%
+market share in the US,
+which is higher than the global average,
+and it is steadily
+growing every single year.
+And worst of all, 87%, that&amp;#39;s not a typo,
+87% of teenagers in the US have an iPhone.
+And that honestly feels
+like the most damning one
+because that means they got them early.
+Like, everyone knows about the walls
+Apple builds up around their ecosystem
+to try to keep people in
+the iPhone walled garden.
+But 87% of teenagers, that just means
+that this is a lot of these
+people&amp;#39;s first phones.
+These people will be iPhone
+customers for life maybe.
+Like, for a lot of them, their
+friends all have iPhones,
+and if they&amp;#39;re gonna get their first phone
+for the first time,
+they don&amp;#39;t really even consider anything
+that isn&amp;#39;t also an iPhone.
+It&amp;#39;s the only way to get
+into all the group chats
+with their friends.
+It&amp;#39;s the only way to get
+in on all the inside jokes
+and socializations that
+happen after school
+from the FaceTimes to the iMessages
+and all the things that
+are just iPhone only.
+So it&amp;#39;s a very baked-in thing.
+It&amp;#39;s a very US-centric thing for sure,
+but it is everywhere.
+So this is why, when I made
+that &amp;quot;Blue Bubbles vs. Green
+Bubbles: Explained!&amp;quot; video,
+I had to put that disclaimer
+in the beginning of the video,
+but that&amp;#39;s why half
+the comments were like,
+&amp;quot;Yeah, I live in the US,
+and I see this everywhere.
+There&amp;#39;s iPhones everywhere,
+and the pressure of the
+iPhone is very real.&amp;quot;
+And then the other half
+of the comments are like,
+&amp;quot;This is the dumbest thing I&amp;#39;ve ever seen.
+Why do people care so much
+about which phone people use?
+Just use WhatsApp. It&amp;#39;s super easy.&amp;quot;
+And so that&amp;#39;s why that dichotomy exists.
+But, you know, you get the idea.
+So you are that smartphone company.
+You&amp;#39;re in this position.
+You&amp;#39;re trying to break out in the US.
+What do you do?
+It&amp;#39;s a real question,
+and as some of you may have picked up
+by the title and premise of this video,
+it&amp;#39;s a real company too.
+It&amp;#39;s Nothing.
+This is a company that&amp;#39;s made
+their first two phones now,
+they&amp;#39;ve got some accessories,
+they&amp;#39;re trying to break out,
+and their options seem to
+be just give up on the US
+or maybe try to strike a carrier
+deal and get in that way,
+but it doesn&amp;#39;t seem like it might work,
+or just lean all the way in
+and embrace the actual
+heart of the question,
+the number one problem, the
+biggest asset of the other side.
+And that&amp;#39;s what they&amp;#39;re doing.
+So what Nothing has decided to do,
+and they&amp;#39;re announcing this today,
+is they have built iMessage
+into their Android phone,
+kind of.
+So they&amp;#39;ve announced a new
+app that is gonna come out
+and be exclusive to the
+Nothing Phone 2 to start,
+and it&amp;#39;s called the Nothing Chats app.
+And their goal with this is
+to literally offer iMessage
+also on their phone.
+Now, how does this work,
+you might be asking?
+Great question. Glad you asked.
+So I&amp;#39;ve got it here.
+This is an app that&amp;#39;s co-developed
+with a company called Sunbird
+who has been doing this for a little while
+in a restricted beta.
+You might&amp;#39;ve heard of it,
+and there&amp;#39;s also a couple of others
+floating around like this.
+And basically what it does
+is it lets you sign into
+it using an Apple ID.
+So you can just sign
+up for an Apple account
+without any Apple products.
+You sign up for an Apple ID,
+and then you sign into the app,
+and it will give you as many
+iMessage features as possible
+without actually having an iPhone.
+So, okay, a couple of things about this.
+One, this Nothing Chats
+app, when you first sign in,
+is pretty intuitive.
+You go through the setup process
+to create a Nothing account
+and then connect your Apple ID.
+So, like I said, you can make an Apple ID
+even if you have no Apple products,
+and then you sign in,
+and then everything
+just seems to work fine.
+It&amp;#39;s more or less looking
+exactly like a skinned version
+of the Sunbird beta app.
+And so sure enough, when
+you go to message an iPhone
+or join any group chat that
+has a bunch of iPhones in it,
+things that would not work
+with an Android phone before,
+it basically starts off
+by sending through a virtual contact card
+asking to merge your contact info
+with your Apple ID email address,
+and then suddenly it all works,
+and you&amp;#39;re a blue bubble,
+and you&amp;#39;re texting people with iMessage
+from your Android phone.
+Also, high-quality media is working.
+So you might have heard
+of this issue already.
+This is actually one of
+my biggest annoyances,
+but when you message an iPhone
+with an Android phone or vice versa,
+and you send, like, a video or a photo,
+it&amp;#39;s, like, super blurry
+because it&amp;#39;s been compressed a lot
+to fit in the file size limits of MMS.
+But now you actually get
+that full-resolution
+photo and video treatment
+as if you&amp;#39;re just two iPhones
+talking to each other,
+which is actually very convenient.
+Typing indicators work
+when another person has
+been typing for a while,
+and they&amp;#39;re also working
+on the reactions as well.
+It&amp;#39;s not in this beta
+that I&amp;#39;ve been testing,
+but they say they&amp;#39;re gonna have that
+around the end of this year.
+But then number two,
+they&amp;#39;re saying that they&amp;#39;re launching this
+as an exclusive app for
+the Nothing Phone 2,
+so just this phone,
+and I imagine future
+Nothing phones as well,
+to sort of give people that option
+where if they were gonna buy a new phone,
+and they really wanna be
+in the iMessage group chats
+and all the iMessage features,
+and they could only buy an iPhone,
+they&amp;#39;ll at least also have
+this phone as an option.
+But then three, this is the big one,
+and I cannot stress this enough,
+this could lead to
+enormous security issues.
+Signing in with your Apple ID
+onto a device that you don&amp;#39;t own
+is an enormous security issue,
+and it&amp;#39;s a huge risk to anyone using it.
+Same thing is also true
+about Beeper and the others.
+Because the way this one works,
+and I&amp;#39;ve confirmed this with Nothing,
+is when you sign in with an Apple ID,
+it&amp;#39;s literally signing in on some Mac Mini
+in a server farm somewhere,
+and that Mac Mini will then
+do all of the routing for you
+to make this happen.
+You will never see or actually
+hold or use that Mac Mini.
+Now, no one else is
+supposed to be able to use
+or see that Mac Mini
+or your messages on it
+because it&amp;#39;s all encrypted,
+but you are still logging
+in with your own Apple ID
+on someone else&amp;#39;s computer.
+I don&amp;#39;t know how else to put that.
+Like, that on its face
+is a big enough risk
+that many people will
+never even wanna try this.
+But hey, if you&amp;#39;re Nothing,
+well, maybe this is just
+enough to be able to say,
+&amp;quot;Hey, we&amp;#39;re offering iMessage
+on an Android phone.&amp;quot;
+Like, this is a young
+and crazy enough company
+that they&amp;#39;re gonna try stuff like this,
+so maybe people will consider
+a Nothing phone in the US
+instead of an iPhone
+that everyone seems to
+just choose by default.
+I actually talked to Nothing about this
+as I was testing it before
+this is all going live,
+and I actually asked Carl Pei straight up,
+&amp;quot;What do you think Apple is
+going to do or say about this
+once they find out about it?&amp;quot;
+Because as this video goes live,
+Apple&amp;#39;s finding out about this.
+And his answer was,
+&amp;quot;Honestly, probably nothing.&amp;quot;
+But just because there&amp;#39;s a weird timeline
+we&amp;#39;re living in here in 2023
+where Apple kind of can&amp;#39;t
+really retaliate publicly
+because they&amp;#39;ve already been up
+against so much antitrust pressure.
+Everyone already knows
+Apple is using iMessage
+and its powers to keep people
+from leaving the iPhone,
+but if Apple now, like,
+publicly acknowledges this
+as a competitor in the space
+that they&amp;#39;ve gotta shut
+down or something like that,
+it could sort of shine a light on it
+in a way they don&amp;#39;t actually want,
+so they&amp;#39;ll probably just
+quietly sweep it under the rug
+and maybe just point
+out some security risks
+involved with the whole thing.
+But then, of course, the
+other side of the coin
+is if Apple cares so much about security,
+then wouldn&amp;#39;t they wanna support RCS
+so that the millions of
+messages that go back and forth
+between Android phones
+and iPhones every day
+won&amp;#39;t be unencrypted SMS?
+But that&amp;#39;s another story for another day.
+But at the end of the
+day, the real question is,
+will it work?
+Will this strategy of
+offering some iMessage stuff
+on their phone exclusively
+actually work for Nothing
+to break out in the US?
+And the fact is there&amp;#39;s a
+non-zero number of people
+who will be willing to try this,
+to give themselves the
+iMessage, the blue bubble life
+while still using a different phone.
+There&amp;#39;s probably somebody
+out there who&amp;#39;s like,
+&amp;quot;I might buy a Nothing phone,
+but, also, all my friends have
+iPhones, so I guess I can&amp;#39;t.&amp;quot;
+And for them, this is real, it&amp;#39;s great,
+but there&amp;#39;s a lot of baggage with that,
+and it&amp;#39;s sort of a weird
+timeline we&amp;#39;re living in now
+that this is actually a possible
+thing that could happen.
+Let me know what your thoughts are
+in the comment section below,
+if you think this will work.
+Thanks for watching.
+Catch you guys in the next one. Peace.
+(energetic music)

@@ -1,0 +1,49 @@
+(bright music)
+
+- All right, there’s just one thing starting to feel a little weird with this new Pixel, but I’ll get into that by the end of this video. Let’s start with the obvious stuff: what’s actually new here? 
+
+I just got some hands-on time with Google’s new budget phone, the Pixel 8A, and I can confirm they’re mostly sticking to the script and keeping it simple. Last year’s phone was already really good, making a few key improvements where it counts while keeping the price the same at $500. 
+
+Five hundred bucks isn’t cheap, but it’s not a flagship either. It’s definitely in this nice mid-range territory, and it feels like the Pixel has been gradually catching up its hardware with the rest of the competition in this price range.
+
+At first glance, it is unmistakably a Pixel, featuring the camera bar at the top. However, there’s a slight change: the edges are a bit more rounded. I really hope I’m not the only one getting round-SpongeBob vibes from these corners, but that’s definitely what I see. That’s the main design change on the back. 
+
+It still has wireless charging and retains the same main camera sensor as the Pixel 7A, with an ultra-wide lens next to it. But now, there are new colors and a matte texture. There are black and white options called Obsidian and Porcelain, which look pretty tame. However, there are also vibrant new colors: green and blue called Aloe and Bay. 
+
+The rails and the camera bar are still made of aluminum. It retains an IP67 rating and features a slightly larger battery. We’re talking about a very slight increase from 4,385 mAh to just over 4,400 mAh, but it still supports wireless charging.
+
+On the inside, it’s been upgraded to the new Tensor G3 chip from last year’s flagships. We know it’s decently capable, albeit a bit inefficient, and it’ll start with 128 GB of storage. For the first time, they’re also offering a 256 GB version of the A phone. 
+
+Around the front, there’s an improved display. It’s still 6.1 inches in size with the middle hole-punch cutout for the selfie camera, and it still has an optical fingerprint reader. But now it features an Actua display, which has a peak brightness that’s 40% higher than before, and that difference is noticeable. This is one of those things that impacts everyday usability, especially in outdoor visibility. 
+
+The display is now a pOLED that supports up to 120 Hz instead of the 90 Hz from last year. Now, before you start typing, I know a lot of people will argue that this doesn't make much of a difference to most Pixel buyers, and… you’re right. In fact, many won't notice this improvement because Smooth Display is actually off by default. So it's a 60 Hz phone out of the box, and you have to know to go into the settings to turn it on, while also being aware that it will impact battery life. Even once you enable it, it’s not locked at 120 Hz; it’s dynamic instead. 
+
+I played around with this phone for a bit, and it did feel very smooth to me. Personally, I'm happy about that change, but I won’t dwell on it much longer.
+
+You already know what a Pixel is, right? This is the mid-range/budget version of the phone, packed with great software. This model includes really smart AI features like Call Assist, Pixel VPN, Magic Eraser, and many other classic Google features. It offers impressive speech-to-text transcription speed and accuracy, allowing you to write emails, texts, notes, and entire paragraphs quickly. 
+
+It also promises seven years of updates: OS updates, security updates, and Feature Drop updates. Plus, it comes with really good cameras, which are mostly unchanged from last year. The Pixel 7A even received the highest Elo rating in our recent blind smartphone camera test, which involved millions of votes against other top-tier flagship phones, so that’s a solid baseline.
+
+It seems like a pretty safe and easy choice if you’re a Google or Pixel fan. However, I do have some concerns about this Pixel. 
+
+Firstly, this is the first A series device that will support Gemini Nano, the feature that can run locally on the device, which is great. They’ll probably make a big deal about it at the event and discuss it more at Google I/O and such. However, there’s now a weird inconsistency with different assistants on the Pixel phone. This isn't just with this phone; you now have the Gemini app prominently displayed on the home screen of the Pixel 8As, showcasing the latest voice and multimodal AI search capabilities. Right next to that, tapping the mic on the Google Search page leads you to a separate but equally capable Google Voice Search with Google Assistant. 
+
+Google is literally developing two different assistants side by side, with overlapping but not entirely congruent capabilities. It’s a bit strange and inconsistent. We saw this coming and knew it would happen, but eventually, they’ll likely need to consolidate everything into one. I suspect that Gemini will eventually handle everything. 
+
+On another note, consider the price. This phone is launching at $500. It’s a mid-range phone at a mid-range price, and everything seems reasonable. However, keep in mind that you can still buy last year’s phone of the year, the brand-new Pixel 8, for $550. So, the Pixel 8A is not that much cheaper than the 8. 
+
+If you choose the Pixel 8, even if it’s a couple of months older, you’ll get a phone with slimmer bezels, a brighter, higher-quality display, arguably better cameras with bigger sensors, a larger battery, faster charging, IP68 rating, and the same Tensor G3 chip. Isn’t that a better deal? If you can find a used Pixel 8, all the better. 
+
+The Pixel 8 was just such a good phone for that price that it makes both more and less expensive phones seem like worse buys. I mentioned how the Pixel 8 Pro feels like such a tough sell at $250 more, but now it makes the Pixel 8A look a bit overpriced. 
+
+Either way, I’m sure the Pixel 9 and 9 Pro, when released, will shake things up. But right now, the Pixel 8A is a solid mid-range device with all the features you expect from a Pixel. 
+
+If you’re planning to pick one of these up, channel sponsor Dbrand has you covered with their Hydrodip skins. I’ve been using Dbrand skins since 2013, so over a decade now. They don’t add any thickness like a case would, but they can completely change the look and feel of your device. 
+
+Dbrand supports almost 200 devices with their Hydrodip skin, including phones, laptops, tablets, consoles—you name it. There are four color options available: Gold Rush, Solar Flare, Toxic Waste, and Cotton Candy. Personally, I think Gold Rush is the best-looking one; I love the black, white, and gold combo—it’s super clean. But honestly, they all look pretty unique. 
+
+If you have a favorite, I’ll leave a link down below so you can grab one for yourself. That’s basically it. Let me know what you think of the Pixel 8A compared to the Pixel 8 in this odd six-month release cycle Google is doing. I’ll check the comments. 
+
+Thanks for watching, and catch you guys in the next one. Peace. 
+
+(bright music)

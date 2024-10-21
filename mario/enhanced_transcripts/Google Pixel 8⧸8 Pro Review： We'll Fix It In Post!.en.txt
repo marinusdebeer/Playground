@@ -1,0 +1,47 @@
+So a common phrase in the video world is, "we'll fix it in post." This means that the shot isn't quite perfect, but we can remedy that in post-production, kind of like this. 
+
+*drums rolling*  
+*magical music*  
+There you go. Or how about a little bit of this too? 
+
+*drums rolling*  
+*magical music*  
+There we go, much better. It's not that this approach is lazy; I believe a good filmmaker aims to get as much right in-camera as possible instead of relying on software. The "we'll fix it in post" mentality for smartphones is definitely embodied by the Google Pixel. Many of its best features literally involve fixing things in post. For instance, if your face is blurry in a photo, there's Face Unblur. If you didn't quite capture that perfect angle, there's Magic Editor. If there's strange background audio in your video, you can use Audio Eraser to fix it. Many of these strategies, with a little help from AI, actually work, and that's where the Pixel shines. 
+
+However, there are aspects of smartphones that you can't really fix in post. First things first, the design on the outside of these phones looks familiar. It resembles previous years of Pixel, which I actually like, but I think this one is better in a few ways. For starters, the camera circles now combine into one big circle, somewhat reminiscent of the iPhone Dynamic Island, which I appreciate with these new, larger sensors. The Pro Pixels also feature a completely flat display, moving away from the slightly curved edges of past models, and they offer a satin back in every color that surprisingly hides fingerprints well, if you're not a case person like I am.
+
+Aside from that, everything else is where you'd expect it. One thing I'd like to see fixed is the dust that always accumulates right under and above the camera bar. The only way to eliminate that might be to curve the design like they did with the Oppo Find X4 and X3, but I’m not sure if they’ll ever do that.
+
+The most significant improvement in the hardware is definitely in the display. The smaller Pixel 8 now has a 6.2-inch 1080P OLED display, slightly smaller than last year, but it features perfectly thin bezels all around—no more tiny chin like in previous years. It's now upgraded to a 120Hz display that reaches a maximum brightness of 2,000 nits, which is incredible. They've dubbed it the Actua display, and it remains visible at all times. Auto brightness has also been reliable this time, though it’s not LTPO, so you might want to disable the always-on feature to save battery life.
+
+The Pixel 8 Pro boasts a new 6.7-inch LTPO display, closer to 1440P, with a maximum brightness of 2,400 nits. This display is among the brightest I've ever seen on a smartphone, and I certainly did not expect that from a Pixel. They call it the Super Actua display. 
+
+Overall, the hardware feels as premium as any flagship from Xiaomi, Samsung, or others. The build quality, metal rails, satin back, clicky buttons, and bright displays all contribute to a rare win for Pixel hardware.
+
+Two more small details about the display: first, there's still just a single front-facing camera at the top, but Google has found a way through software to extract more info from this camera to support secure unlock for things like banking apps and logging in. Instead of adding extra hardware like an infrared camera, they've achieved this through software magic, which is convenient. Secondly, the fingerprint reader hasn’t improved. While most high-end flagships feature super-fast ultrasonic fingerprint scanners, this one is still optical and a bit slower. It’s not terrible, but you can tell it isn’t as fast or consistent in wet conditions compared to something like a Samsung phone. It also hasn't increased in size.
+
+Now, speaking of the Pixel, we should delve into its camera, as this is where the "fix it in post" mentality is pushed to its maximum. The new camera sensors across the board perform admirably, featuring a 50-megapixel primary sensor shared between the 8 and the 8 Pro with F1.7 OIS. Pixel photos look sharp, with impressive dynamic range, and autofocus is quick and effective in achieving shallow depth of field with close-up subjects. However, much of what defines a Pixel photo or video is its software. 
+
+The multiple exposures blend into one HDR shot, and there's strategic relighting for recognized faces. There seems to be extra noise reduction this year, resulting in some images appearing somewhat "watercolor-like," but the resolution is high enough that it generally doesn’t look terrible at lower zoom levels. I’ve also noticed a tendency to overdo HDR in some instances. 
+
+When it comes to features, there’s a lot to unpack. You likely already know about Magic Eraser, which removes unwanted subjects from images with ease. Then there's Face Unblur for photos where someone was moving too fast or where shaky hands resulted in a blurry face. Finally, there's "The Best Take," perfect for those who take group photos. This feature allows you to select the best expression from a series of burst shots, ensuring no one in the picture has their eyes closed or is looking the wrong way. This is a huge time-saver for holiday cards and similar occasions.
+
+In video, I've noticed improvements over the last year; it's less noisy in the shadows with nice depth of field and quick autofocus. I recorded almost an entire video with the Pixel 8 Pro, and it looks good. However, some footage has a noticeable artificial brightening effect on my face. 
+
+The Audio Eraser video feature is decent, allowing for some background sound removal, although it can't save a video from disruptive environments completely.
+
+Now, about the Pixel's software capabilities: the integration of features like Magic Editor is remarkable. Simply open a photo, hit Edit, and use the colorful Magic Editor button to remove or move objects, resize them, or even change the time of day. While these edits aren't perfect, they are convincing enough for regular users.
+
+Regarding battery life, you can't fix that in post. A bright 2,400 nit screen demands substantial energy, so hardware and an efficient chip are crucial. I'm glad to report good battery life on the Pixels, especially the 8 Pro, regularly achieving six to eight hours of screen-on time.
+
+That said, the real question is how long this battery life will last—whether it will remain strong for months or potentially falter like prior models. 
+
+Ultimately, the Pixel continues to excel at its core strengths. From call screening to an enhanced Google Assistant experience, the software feels intuitive. Android 14 has already revitalized older Pixels, although the only significant issue I've faced is a delay when opening Twitter notifications.
+
+One new feature worth mentioning is the ability to ask Google Assistant for a summary of webpages in Chrome. However, it appears many applications don’t yet support this feature.
+
+In conclusion, the Pixel 8 feels like a strong contender among flagship devices. It boasts excellent hardware, software features, and seven years of updates, starting at a price of $700. Given its capabilities, I consider this phone worth the price tag.
+
+As for whether the $300 premium for the Pro model is justified, it's a tough call. The differences come down to a few extra features. The Pixel 8 is an excellent phone, while the Pro model serves those who specifically desire the upgraded camera and additional functionalities. 
+
+Thanks for watching. Catch you in the next one!

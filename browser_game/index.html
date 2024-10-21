@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enhanced 3D Car Game with Three.js and Cannon.js</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+        #speedometer {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="speedometer">Speed: 0 km/h</div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GLTF Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.js"></script>
+
+    <!-- Cannon.js Physics Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/cannon@0.6.2/build/cannon.min.js"></script>
+
+    <!-- OrbitControls (for debugging, can be removed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/controls/OrbitControls.js"></script>
+
+    <script>
+        let scene, camera, renderer, car, world;
+        let keys = { w: false, a: false, s: false, d: false };
+        let speedometer = document.getElementById('speedometer');
+
+        // Initialize the Three.js scene
+        function init() {
+            scene = new THREE.Scene();
+
+            // Setup the camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 5, -10);
+            camera.lookAt(0, 0, 0);
+
+            // Setup the renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // Setup lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(50, 50, -50);
+            scene.add(directionalLight);
+
+            // Add a skybox
+            const skyboxLoader = new THREE.CubeTextureLoader();
+            const skyboxTexture = skyboxLoader.load([
+                'https://threejsfundamentals.org/threejs/resources/images/skybox/pos-x.jpg',
+                'https://threejsfundamentals.org/threejs/resources/images/skybox/neg-x.jpg',
+                'https://threejsfundamentals.org/threejs/resources/images/skybox/pos-y.jpg',
+                'https://threejsfundamentals.org/threejs/resources/images/skybox/neg-y.jpg',
+                'https://threejsfundamentals.org/threejs/resources/images/skybox/pos-z.jpg',
+                'https://threejsfundamentals.org/threejs/resources/images/skybox/neg-z.jpg',
+            ]);
+            scene.background = skyboxTexture;
+
+            // Setup the physics world
+            world = new CANNON.World();
+            world.gravity.set(0, -9.81, 0);
+            world.broadphase = new CANNON.NaiveBroadphase();
+            world.solver.iterations = 10;
+
+            // Create the ground
+            const groundGeometry = new THREE.PlaneGeometry(200, 200);
+            const groundTexture = new THREE.TextureLoader().load('https://threejsfundamentals.org/threejs/resources/images/checker.png');
+            groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+            groundTexture.repeat.set(50, 50);
+            const groundMaterial = new THREE.MeshPhongMaterial({ map: groundTexture });
+            const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
+            groundMesh.rotation.x = -Math.PI / 2;
+            scene.add(groundMesh);
+
+            // Create the physics body for the ground
+            const groundBody = new CANNON.Body({
+                mass: 0, // Static object
+                shape: new CANNON.Plane(),
+                material: new CANNON.Material({ friction: 0.9, restitution: 0.3 })
+            });
+            groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
+            world.addBody(groundBody);
+
+            // Load the car model
+            const loader = new THREE.GLTFLoader();
+            loader.load(
+                'https://threejsfundamentals.org/threejs/resources/models/cartoon_lowpoly_small_city_free_pack/scene.gltf',
+                function(gltf) {
+                    // Find and clone a car from the scene
+                    const carModel = gltf.scene.getObjectByName('Car_01');
+                    car = carModel.clone();
+                    car.scale.set(0.5, 0.5, 0.5);
+                    car.position.set(0, 0.5, 0);
+                    scene.add(car);
+
+                    // Create the car's physics body
+                    const box = new CANNON.Box(new CANNON.Vec3(1, 0.5, 2));
+                    const carBody = new CANNON.Body({ mass: 1500 });
+                    carBody.addShape(box);
+                    carBody.position.set(0, 0.5, 0);
+                    carBody.angularDamping = 0.5;
+                    world.addBody(carBody);
+
+                    // Store car and physics body together
+                    car.userData.physicsBody = carBody;
+
+                    // Start the animation loop
+                    animate();
+                },
+                undefined,
+                function(error) {
+                    console.error(error);
+                }
+            );
+
+            // Create some obstacles
+            createObstacles();
+
+            // Handle window resize
+            window.addEventListener('resize', onWindowResize);
+            window.addEventListener('keydown', onKeyDown);
+            window.addEventListener('keyup', onKeyUp);
+
+            // Optionally, add OrbitControls for debugging
+            // const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        }
+
+        // Create obstacles in the scene
+        function createObstacles() {
+            const boxGeometry = new THREE.BoxGeometry(2, 2, 2);
+            const boxMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+
+            for (let i = 0; i < 20; i++) {
+                const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
+                boxMesh.position.set(
+                    Math.random() * 100 - 50,
+                    1,
+                    Math.random() * 100 - 50
+                );
+                scene.add(boxMesh);
+
+                // Create physics body
+                const boxShape = new CANNON.Box(new CANNON.Vec3(1, 1, 1));
+                const boxBody = new CANNON.Body({ mass: 5 });
+                boxBody.addShape(boxShape);
+                boxBody.position.copy(boxMesh.position);
+                world.addBody(boxBody);
+
+                // Link mesh and body
+                boxMesh.userData.physicsBody = boxBody;
+            }
+        }
+
+        // Update on window resize
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // Handle key presses
+        function onKeyDown(event) {
+            keys[event.key.toLowerCase()] = true;
+        }
+
+        function onKeyUp(event) {
+            keys[event.key.toLowerCase()] = false;
+        }
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Update physics world
+            world.step(1 / 60);
+
+            // Apply car controls
+            const carBody = car.userData.physicsBody;
+            const maxSteerVal = 0.5;
+            const maxForce = 5000;
+            const brakeForce = 10;
+            const force = new CANNON.Vec3();
+            const steer = new CANNON.Vec3();
+
+            // Forward/Backward
+            if (keys.w) {
+                force.set(0, 0, -maxForce);
+            } else if (keys.s) {
+                force.set(0, 0, maxForce);
+            } else {
+                // Apply braking force
+                force.set(0, 0, 0);
+            }
+
+            // Left/Right
+            if (keys.a) {
+                carBody.angularVelocity.y += 0.05;
+            } else if (keys.d) {
+                carBody.angularVelocity.y -= 0.05;
+            } else {
+                carBody.angularVelocity.y *= 0.95;
+            }
+
+            // Apply force to the car
+            const localForce = carBody.quaternion.vmult(force);
+            carBody.applyForce(localForce, carBody.position);
+
+            // Sync Three.js mesh with Cannon.js body
+            car.position.copy(carBody.position);
+            car.quaternion.copy(carBody.quaternion);
+
+            // Update obstacles positions
+            scene.traverse(function(object) {
+                if (object.userData.physicsBody && object !== car) {
+                    object.position.copy(object.userData.physicsBody.position);
+                    object.quaternion.copy(object.userData.physicsBody.quaternion);
+                }
+            });
+
+            // Update speedometer
+            const speed = carBody.velocity.length();
+            speedometer.innerHTML = 'Speed: ' + (speed * 3.6).toFixed(0) + ' km/h';
+
+            // Update camera position
+            const relativeCameraOffset = new THREE.Vector3(0, 5, -10);
+            const cameraOffset = relativeCameraOffset.applyMatrix4(car.matrixWorld);
+            camera.position.lerp(cameraOffset, 0.1);
+            camera.lookAt(car.position);
+
+            // Render the scene
+            renderer.render(scene, camera);
+        }
+
+        // Initialize the game
+        init();
+    </script>
+</body>
+</html>

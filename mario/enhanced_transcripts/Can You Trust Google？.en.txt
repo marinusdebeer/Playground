@@ -1,0 +1,43 @@
+All right, we just need to talk about something real quick. One of the biggest announcements at Google's fall event was that they plan to support the Pixel 8 and Pixel 8 Pro with seven years of OS security and feature drop updates. This is industry-leading and truly impressive. 
+
+Here's a list of some other promises made in the smartphone world regarding how long they plan to support their devices. In the realm of Android, this level of commitment is unprecedented. Clearly, this was one of the best announcements of the Google event, and it's great to finally see this kind of support. 
+
+However, Google has a history of discontinuing products and abandoning projects and services that many people use or depend on. So, how do we reconcile these two points? You might think that relying on a big company is safer than relying on a small one when it comes to long-term project support. For example, if I were to set up a new smartphone, I wouldn’t want to use one from a tiny startup if I’m unsure they’ll be around in five years. If they go out of business, all my smartphone-related data could be lost. 
+
+You would expect a larger, more established company like Google to be more reliable, but it turns out the same problem can arise with them. A service you become invested in might just be a small rounding error in their budget, leading to its termination at any time. 
+
+I think what sums up this situation well is something my friend says: Google is willing to launch new projects aggressively, but if that project doesn’t gain a billion users or generate a billion dollars, it’s likely to get cut. Just in the past few weeks alone, we’ve seen the termination of Google Domains, Google Jamboard, Google Podcasts, and Pixel Pass—active services that had various amounts of users, all abruptly discontinued. The further back you look, the longer the list grows. It feels almost like a running joke that Google announces and then kills a new messaging service every year. There are entire web pages dedicated to tracking the extensive list of things Google has terminated. 
+
+Remember Google Plus? The Inbox app? Hangouts? A lot of people miss those, as well as Chromecast Audio, Stadia, and the list goes on. When Google ends these products or services, they often replace them or provide varying degrees of support for those affected. For instance, with Google Play Music, they subsequently launched YouTube Music, which had many overlapping features, so they made it easy to transfer your library from one to the other. While you might miss some features, at least you wouldn’t lose your entire music collection. 
+
+A similar scenario happened with Google Podcasts. It was a solid app, but again, they wanted to incorporate those features into YouTube Music, so they worked on an import process and tutorials for that. While it's commendable to try and facilitate transitions, it's not always a perfect solution.
+
+You might not have heard of Google Jamboard, but it was used by my Ultimate Frisbee team for scouting documents and tracking players' tendencies. Now it’s gone, or at least by the end of the year, it will be. So we’ll have to find something else. 
+
+Google Stadia, the gaming service, lasted only a couple of years. At least they allowed users to export their saved data and refunded everyone for games purchased when it was shut down, but there are still no alternatives. 
+
+As a fun fact, I recently transferred my domain from Squarespace to Google Domains. I was nervous about the process, which took about 24 hours, but I finally completed it, and within a week, Google killed Google Domains and sold all domains back to Squarespace. 
+
+The most surprising termination might be Pixel Pass. If you’re not familiar, it was a subscription plan launched alongside the Pixel 6 that let you pay $45 a month for a new phone, YouTube Premium, YouTube Music, Google One storage, and various other services. You would also receive a new Pixel for free every two years, which sounded fantastic for users of Google services. A lot of people signed up, but exactly 22 months after its announcement—just a month before the first upgrade cycle—the program was quietly terminated. No one received their promised phone upgrade, and no alternatives were announced. 
+
+This behavior certainly erodes trust in Google. Personally, I was considering switching to Google Fi due to its integration with the Pixel, but I can’t be certain it will still exist in a year or two, so I’ve decided against it. 
+
+The main takeaway here is that launching ambitious new projects is easy, but sustaining those projects long-term is far more challenging. The seven-year commitment to software updates for the Pixel is the most ambitious support plan we’ve seen in the smartphone market. This is what makes it so exciting yet difficult to believe. 
+
+If I were at Google, I would genuinely want this promise to come true because it's a fantastic initiative. We hope that more companies recognize Google’s announcement and follow suit. Making devices more useful and secure for longer periods benefits everyone: the users, security, and the environment, as people will use their phones longer. If this pans out, the phones people buy today could be up to date until 2030, which is remarkable in the tech world.
+
+I want to commend Google for this ambitious promise, but it’s just that—a promise. Google has a track record of breaking promises, so we’ll have to wait and see. Will the Pixel still be around in seven years? We can’t know for sure. The Nexus program lasted five years before being discontinued, and we are now in year eight of the Pixel. Will it last another seven years? I’m uncertain. 
+
+Interestingly, this also connects to a mini trend I’ve noticed lately regarding tech companies announcing features that aren’t available at launch. This isn’t just limited to Google; it’s happening across the board. Devices are released, but many new features aren’t ready at launch, which means reviewers can’t test these features until long after the release. Google just did this with the Pixel; the Video Boost feature and Video Night Sight are both coming later.
+
+This isn’t just a Google issue—Apple has done the same, notably with iPhone camera features. This year, they've again delayed several features, including the Journal app and the Airdrop transfer via the internet. Also, the much-hyped double tap feature for the Apple Watch is still in beta and labeled as “coming soon.” 
+
+I’ve been mindful of these occurrences over the past couple of months, and they feel reminiscent of a trend in the gaming industry, where studios often release half-finished games, testing the waters and then patching them later. Releasing incomplete products, whether games or tech, is concerning.
+
+I don’t appreciate this trend in tech and smartphones for several reasons. It complicates the review process—if the new features are unavailable at the time of the review, we can't evaluate the product fully. 
+
+I’ve often said this: never buy a new piece of technology based solely on the promise of future software updates. Purchase it for what it is today, and if additional features are delivered later, it’s a bonus. 
+
+That’s all I wanted to share for now. I hope Google, Apple, and others are listening, and I hope they can deliver on their promises—especially the features they announce at launch. I’ll be keeping an eye on the Pixel. I’m currently testing the phones and will review them. Subscribe to see my review when it’s published. 
+
+Thanks for watching, and I’ll catch you in the next one! Peace.

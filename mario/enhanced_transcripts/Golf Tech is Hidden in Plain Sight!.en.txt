@@ -1,0 +1,67 @@
+(bouncy upbeat music) 
+
+So every sport has some sort of technology involved in the show somewhere now, right? Tennis has the famous replay, the “in or out” graphic. American football has the digital line of scrimmage we all know. Soccer has this sweet new offsides graphic, and golf has the shot tracer. 
+
+Some of you who have been subscribed for a long time already know this, but many of you don’t. I am a golfer. I’ve been golfing for a long time, longer than I’ve been doing anything else. My first ever YouTube upload, before any tech videos, was a couple of golf videos, believe it or not. 
+
+- [Speaker] Come back, nice ball, good drive. 
+
+But I still watch golf all the time, and of course, after doing that Formula 1 video, my brain is in tech-in-sports mode. I’m realizing the amount of technology hidden in plain sight on a golf course that makes a broadcast possible is actually insane. There are cameras, lasers, radar, LiDAR, optical fiber cables, and volunteers carrying Samsung phones with a custom app installed on them. There’s so much happening here! But why? 
+
+When you think about it, there’s really one main reason for all this: golf is hard to watch, much like Formula 1. Unlike other sports, golf isn’t just one basketball court where all the action happens in the same place at the same time. It’s 18 different courts spread hundreds of yards apart, each with different action occurring simultaneously, all while a tiny white ball flies through the air and is nearly impossible to see. So, when you’re not physically at the golf course, there are basically three ways to watch golf, each requiring more technology than the last: the TV broadcast, the website portal, and then the Vision Pro.
+
+(upbeat music) 
+
+The TV broadcast is the simplest, right? But there’s still the major challenge of the golf ball being tiny and essentially invisible as soon as it’s hit. That problem is solved with the shot tracer. Many people don’t actually know how it’s created. It’s not a computer simply drawing a trace of where it “sees” the golf ball going; it’s very precisely measured. 
+
+If you’ve ever been near a golf course or watched a tournament broadcast, you’ll notice a ton of little towers. Well, they aren’t so little sometimes either. These towers are strategically placed all around the golf course—behind the tee boxes, around the fairways, and behind the greens—to cover the entire area. Each tower has three components: a camera, a TrackMan, and a wireless transmitter. 
+
+The TrackMan is key; it is the radar system used to measure the exact launch speed, angle, and spin rates of the golf ball the moment it’s struck by a club. Once the measurements are taken, the computers instantly know everything about how that golf ball will fly through the air: how high it will go, how far, and how much it will curve. This information becomes even more useful further down the line, but for the TV broadcast, it allows them to immediately project a shot shape line over the hole using the angle from a fixed camera positioned right behind the tee box, sending that data back to the broadcast trucks. 
+
+The really interesting part is that if you look around, you’ll see these towers all over the golf course—they're hidden in plain sight. Some are right next to the golfers at the tee box, and some are actually attached to TV towers. It’s not just at the tee boxes either; the TrackMan launch monitors actually face backward from behind the greens to capture launch data from all kinds of shots. It’s super impressive! 
+
+I got to check out these towers, and it turns out they are all completely battery-powered, lasting for an entire day of a tournament. The skirt around the bottom is covered in solar panels, allowing them to recharge throughout the day. All of this is to provide us with the shot tracer, making golf on TV dramatically easier to watch. 
+
+(upbeat music) 
+
+Now, sometimes you can’t always watch golf on TV. Maybe you’re at work, or somewhere else where you can’t be in front of a TV, but you keep an eye on the PGA Tour website, watching for updates. Lucky for you, they’ve built out the web portal. The website has a real-time play-by-play portal where you can jump around to any hole and see exactly what is happening when it happens. During tournaments, every shot is updated in real time.
+
+What I didn’t realize until I saw it in person was just how far they go to deliver all of these updates as quickly as possible. There are a few more pieces of tech on the golf course worth mentioning. First, there are on-fairway cameras that cover the whole course. They’re similar to the tower I showed you at the tee box but without a TrackMan—just cameras pointed everywhere. 
+
+Volunteers are stationed alongside every hole with laser rangefinders and tablets. They have a setup to quickly tag a ball once it lands and upload its exact location. Here’s how it works: 
+
+A golfer is on the tee box, ready to hit their first shot. You’ve loaded the website. Remember how I mentioned those radar trackers can compute exactly what the ball will do the moment the club impacts it? Perfect! That data is transmitted to the ShotLink trailer in the parking lot, where feeds from all the cameras across the golf course are collected. 
+
+Here’s where it gets crazy: the instant the shot is hit, the system projects a polygon on the course where it believes the ball will land. You can actually see it outlined in yellow. A few seconds later, boom—the ball lands and rolls right into that box. It’s incredible!
+
+Then, the volunteer with the laser and tablet will use the laser to get the ball’s exact location to confirm it and upload it. It gets updated on the Tour website literally within three seconds of the ball coming to rest. It’s impressive! The most mind-blowing part for me was watching this system predict where the ball would land before it even did—accounting for launch angle, spin, speed, wind, temperature, humidity, and elevation to estimate the ball's probable landing area. 
+
+Of course, it won’t always be perfect, especially if the ball does something unexpected, like hitting a tree or a bird. That’s why the volunteers are there—to finalize everything and submit the data. They told me the system actually calibrates itself over time. Every 10 shots, it gets even more accurate. I saw this in real time during the day. Earlier shots might be slightly off, while later shots were spot on. 
+
+And there’s one more piece of tech on the golf course I haven’t mentioned yet. Following every group of golfers during the tournament, you’ll spot one volunteer holding a phone. At this tournament, the Travelers, they were easy to find because they wore pink shirts. What are they doing exactly? I found out they are all equipped with the same phone: a ruggedized Samsung Galaxy XCover6, suitable for the outdoors. 
+
+They are keeping official scores for the online scorecard, and their fingerprint is used to close the betting windows for people gambling in real time on specific shots. They literally hold their fingerprint down on the screen until the moment a player begins their backswing. Then they release it to close the betting window. Here’s a clip of them doing exactly that: they wait for the player to hit, and then, as the shot is taken, the betting on that specific shot is locked in for whether it will hit the fairway or greens, or whatever the wager may be.
+
+(upbeat music) 
+
+Remember when the Vision Pro first came out and there were all those mockups of cool apps and experiences people wanted? One of them was Formula 1, with a dream F1 watching setup featuring the broadcast above and a mini-map of the cars on track below. It looked incredible, but it turned out it was just a mockup—no one had actually created it yet, except for the PGA Tour! 
+
+The PGA Tour’s Apple Vision Pro app is insane; it’s built on that concept and it actually works! They have the leaderboard up top, a broadcast feed, and other elements if desired, but at the bottom, you can have a real-time mini-map of any hole on the course. This map is extremely accurate, created from drone footage taken days before the tournament.
+
+Once the drone footage is imported and stitched together, you get stunning results. This is a flyover of the 10th hole, a 456-yard par four. You can see tons of details, like the other houses on the property, tee boxes, fairways, and even every single tree—including the iconic tree in the middle of the fairway. The cart path, hole placement on the green, TV towers, and spectator stands are all clearly visible, making it an incredibly detailed representation of each hole.
+
+As this tournament takes place, this is what you witness: a combination of all the technologies we’ve discussed—levels one, two, and now three. You see the broadcast in all its glory, the scoreboard updating in real time, and a full overhead view of any hole on the course where you can watch the shot flying through the air. The shot representations are accurate, reflecting if a player hits a low shot or a draw, fade, or high shot, as the launch monitor tracks all of this.
+
+This feels like a truly futuristic way to watch golf. It’s fantastic! Like Formula 1, the PGA Tour is at a new location every week for different tournaments, making it a massive logistical challenge to set all this up. Just seeing everything they bring in—from dozens of trailers to 10 to 20 miles of fiber running throughout the golf course, to drone footage mapping out every hole, grandstands, scoreboards, TrackMan towers, and TV towers—is impressive. 
+
+They can’t do this for every single tournament, but they strive for it at as many high-profile events as possible. It was thrilling to experience this event in person and then see how golfers hit specific shots, how it looked on the broadcast, and how it was represented for those who couldn’t attend. 
+
+For most sports, the broadcast is crucial. Only about 1% or less of the viewers are actually at the event. For everyone else, they learn and connect with the sport through the broadcast and media, and that’s what’s so amazing—how it continues to evolve over time. 
+
+I remember about 30 years ago when the NHL tried something interesting with a glowing puck back in the mid-'90s, aiming to make it easier for viewers to follow the puck. It was well-intentioned but tough to execute, although it was kind of cool for its time. Nowadays, the technology has become so refined and precise that we can track a tiny white ball through the air over the length of three football fields with just a couple of yards of margin for error. 
+
+At the end of the day, all of this is designed to deliver an outstanding show, create an engaging broadcast, and allow golfers to compete for their tournaments. At the end of the season, they aim to win the FedEx Cup, the coveted end-of-year prize. I even got to touch the FedEx Cup—pretty cool! 
+
+So yeah, shout out to the PGA Tour for making this video possible, for pulling back the curtain, and letting us see behind the scenes. Nobody usually gets to witness this stuff, but now you have. Thanks for watching! Catch you in the next one. Peace. 
+
+(upbeat music)

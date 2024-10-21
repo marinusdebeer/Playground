@@ -1,0 +1,442 @@
+- All right, so this is an iPhone 15
+and a 15 Plus and a 15
+Pro and a 15 Pro Max,
+every new phone in the lineup.
+New colors, new materials, new ports.
+There&amp;#39;s some good stuff to unbox here,
+so let&amp;#39;s do it.
+So starting with iPhone 15 and 15 Plus.
+This iPhone 15 here is the
+new blue color, and it is,
+I&amp;#39;m just gonna go ahead
+and rename this color to barely blue.
+I think that&amp;#39;s an appropriate name,
+because it really is barely
+giving hints of blue.
+You can really see it
+on the side rails too.
+But yeah, really subtle colors
+across the board this year.
+Anyway, the other things in
+the box are the paperwork,
+the single white Apple sticker,
+and there is no SIM card ejector tool here
+since they&amp;#39;re all eSIM,
+at least in the US now.
+But most importantly, the
+new cable in the iPhone box
+for all new iPhones
+is a single, white, braided
+USB-C to USB-C cable.
+I think this is the first time the iPhone
+is shipping with a braided
+nice cable like this.
+So hopefully it&amp;#39;ll be a higher quality
+and more durable than old cables
+we&amp;#39;ve been getting for years.
+So, cool, USB-C cable, USB-C phone.
+Now, if we take a look at the Plus,
+same idea, bigger box,
+but this new incredibly pale yellow.
+I mean, again, in perfect
+lighting at the Apple event
+I think it looked a
+little bit more colorful,
+but it just looks extremely pale out here.
+And then we&amp;#39;ve got the Pro boxes
+for the Pro phones as well.
+Still white boxes, but dark wallpapers.
+So the iPhone 15 Pro I have
+here is the new dark blue color.
+I almost want to call this
+one barely blue again,
+but this time it&amp;#39;s darker
+and kind of borders on gray
+when the light hits it
+from certain angles.
+Very safe.
+Same stuff in the box after that though,
+the paperwork, the white Apple sticker,
+and the new braided USB-C cable.
+And then our iPhone 15 Pro Max here
+is the new Natural Titanium color.
+And I gotta say, guys,
+I think this is gonna be the one to get.
+It&amp;#39;s the best color in person in the hand.
+I&amp;#39;ll talk more about why in a minute,
+but there you have it.
+The slightly new unboxing experience
+on iPhone 15s and 15 Pros.
+So by the time you see this,
+I&amp;#39;ve been testing these
+phones for about six days now.
+Not quite enough time for
+a review by my standards,
+but still plenty of time
+to give you some interesting thoughts,
+some things that I&amp;#39;ve picked
+up on, and some quirks.
+So first of all, these pale colors.
+I don&amp;#39;t really know how else to say it.
+Like, this might be totally fine with you.
+I always get told
+everyone&amp;#39;s gonna put
+a case on their phone,
+which they probably are.
+But hey, Apple did spend
+a ton of time and money
+making this new softer touch
+satin finish on the back,
+and some of us,
+some of us will carry our
+phones around with no case,
+so it&amp;#39;s worth mentioning.
+For the Pro phones
+there&amp;#39;s actually an extra
+layer of interesting though,
+because they&amp;#39;ve switched
+that rail material,
+the part that you actually
+touch on the outside,
+from shiny stainless
+steel to brushed titanium.
+We&amp;#39;ve all heard about
+how much lighter it is,
+and it&amp;#39;s something like 10% lighter,
+which is enough for me
+to notice and enjoy.
+But the other thing is I
+thought the brushed finish
+would sort of eliminate
+fingerprints on the sides.
+Absolutely not.
+I was wrong about that.
+I mean, it&amp;#39;s less,
+it&amp;#39;s not as bad as stainless steel,
+but especially on these darker colors
+like the black or this blue,
+you can totally see fingerprints
+and sort of where your hand oils
+are marking up the sides of the phone.
+And then on top of that,
+this is not anodized
+like aluminum might be.
+This is the new PVD coating
+they talked about on stage.
+And it&amp;#39;s only been a week here for me,
+and so I don&amp;#39;t know exactly how well
+this will hold up over time,
+but what I do know is if you get a scratch
+deep enough into this coating,
+it&amp;#39;s gotta be the Natural
+Titanium color underneath,
+which is very light.
+And so that might look rough,
+if you drop this phone with no case
+and get like a big gash
+on your dark colored phone
+and have light marks all over it.
+All of that to say,
+I do really think that this
+Natural Titanium or the light
+is gonna be the better color
+to get on the Pros this year.
+Okay, some things I&amp;#39;ve
+noticed in my first week.
+So first of all, on the Pro,
+the bezels are technically
+a little bit thinner,
+which makes the body a little smaller,
+but you really don&amp;#39;t notice
+that much after a few minutes.
+What you do notice more actually visually
+is the slightly softer curves
+all the way around these phones,
+seriously, on the 15 and 15 Pro.
+Because on the 14 it was so square,
+like it just went straight to
+the edge with a flat display
+and then it dropped right
+into the rail at 90 degrees.
+On these new phones,
+the edge of the front glass
+actually has a little bit
+of curve at the very edges,
+so it&amp;#39;s a softer curve into the rail.
+Then the rail itself has softer curves
+than the totally sharp
+corners from last year.
+So I think it&amp;#39;s a nice hybrid
+of making it just more comfortable
+in the hand with these curves,
+but still keeping the generally boxy look.
+Now, with USB-C on these phones,
+we already learned that you
+can just plug in a cable
+to charge an accessory, right?
+So it&amp;#39;s no reverse wireless charging,
+but you can at least plug in a USB-C cable
+straight to AirPods
+or an Apple Watch MagSafe
+charger, whatever,
+and it will charge from
+your phone&amp;#39;s battery.
+So that&amp;#39;s already pretty interesting,
+but I decided it&amp;#39;s worth learning
+all the rules and behaviors
+of plugging things into the iPhone 15s.
+So here they are.
+So if you plug in any
+older Lightning iPhone
+into a USB-C iPhone,
+regardless of the charge state,
+the USB-C iPhone will always give battery
+to the Lightning iPhone,
+every single time no matter what.
+Now, if you plug in another USB-C iPhone
+into your USB-C iPhone,
+it actually does a handshake
+where they talk to each other,
+figure out which one
+has the lower battery,
+and then the one with the
+higher state of charge goes,
+&amp;quot;All right, I&amp;#39;m a battery bank,
+and I will start charging the one
+with the lower stated of charge,&amp;quot;
+all the way till you unplug it.
+So I thought that was pretty interesting
+and it works pretty well.
+Then I decided to try a
+couple of Android phones
+and see if the same handshake happened.
+Basically what we found
+is if you plug into your
+friend&amp;#39;s Android phone
+who has more battery than you
+and that phone has USB PD,
+it will actually act like a battery bank.
+But if the phone doesn&amp;#39;t have USB PD,
+which is a bunch actually right now,
+it&amp;#39;s pretty inconsistent
+and you could end up charging it
+or it could end up charging you.
+Literally unplug and try it again.
+But if it has USB Power Delivery,
+it will actually do the same
+handshake that the iPhones do.
+It&amp;#39;s only 4 1/2 watts out,
+so it&amp;#39;s not huge.
+It&amp;#39;s not gonna fast charge or anything.
+But, you know, it is
+ideal for accessories.
+You can literally use the cable in the box
+to charge up the new AirPods
+or whatever else you wanna try.
+But yeah, you can rescue
+another smartphone in a pinch.
+So then the new Action button on the Pros.
+I was very curious about this.
+I was not sure if it would
+have some restrictions
+or if there&amp;#39;s some things
+that it wouldn&amp;#39;t let you do,
+and it turns out I haven&amp;#39;t
+been able to find any so far.
+It seems like it basically
+lets you do anything you want,
+and I&amp;#39;m very happy about that.
+I mean, this was a feature
+of a lot of Android phones in the past.
+There were some LG phones that did this,
+some Sony phones, I wanna
+say some ASUS phones.
+I&amp;#39;m hoping it starts to make
+a bit of a comeback here,
+because on this new iPhone it is great.
+So you jump into the settings
+and go to Action button,
+and it loads up this whole crazy UI
+that&amp;#39;s just nothing like any
+of the other settings pages
+on the iPhone,
+like they just stapled
+this in here, but okay.
+And as I showed you in
+the impressions video,
+you can do any number
+of pre-programmed things with this button.
+By default, it is still the
+mute switch that it replaces,
+and it has those two
+different haptic patterns.
+So when you mute it in your pocket,
+you know exactly what you&amp;#39;re doing
+without even checking
+you did it correctly.
+But honestly, I don&amp;#39;t know.
+I leave my phone on mute
+most of the time anyway.
+So you can also have it open up the camera
+in any of the camera modes.
+But then again, the camera shortcut
+is, like, right on your
+lock screen already,
+and I&amp;#39;m pretty used to that.
+Same thing with the flashlight.
+You could do that,
+but it&amp;#39;s also already on
+everyone&amp;#39;s lock screen.
+I like the voice memo trigger.
+It&amp;#39;s actually pretty convenient
+because it immediately starts recording
+when you press and hold the button.
+But my favorite by a mile is
+the Siri Shortcuts function
+because it basically lets
+you do anything else.
+You can stack up a bunch
+of different functions
+that are, like, location dependent,
+or you can have it call a certain contact
+or do certain things,
+or if you just wanna literally open
+any app on your phone with zero lag.
+So it could be your to-do
+list app or your calendar app
+or just open YouTube with
+any one button press.
+Whatever you want.
+For me, I&amp;#39;m gonna map my Action button
+on my brand new iPhone
+to the Google Assistant,
+the best assistant
+available on the iPhone.
+Also, Apple, if you&amp;#39;re listening,
+I also wish you could map a double press
+or a triple press of the Action button
+to a new specific function.
+Just think about it.
+Also, I was kind of curious
+how cases would handle
+this new Action button.
+So I asked channel sponsor dbrand
+to send over their new Ghost case,
+and I have it here.
+Personally, pretty solid.
+I think this matte black
+skeleton design looks sick.
+And yes, I can confirm
+that even with the case,
+the Action button still
+feels nice and clicky.
+Now, I might be thinking,
+all right, what&amp;#39;s so special
+about this clear case?
+I&amp;#39;ve seen a million clear cases.
+And between the skeleton and MagSafe,
+there&amp;#39;s a bunch of other stuff,
+but my favorite personally
+is if you&amp;#39;ve ever owned
+a clear case before,
+you probably know that after a while
+it kind of ends up looking like this,
+which is disgusting and yellow.
+But dbrand has promised me
+that they&amp;#39;ve specifically
+engineered the Ghost case
+to be impossible to yellow,
+and they use those words themselves.
+So they actually give you
+a lifetime case replacement
+guarantee if it every yellows.
+So that&amp;#39;s either a real promise
+or free cases for life, the way I see it.
+Either way, if you&amp;#39;re interested,
+I&amp;#39;ll leave a link below the like button
+if you wanna check it out.
+That&amp;#39;s the dbrand Ghost case.
+Now, I&amp;#39;ve also been taking
+some pictures and videos
+with these new cameras
+to get a sense of how they perform.
+I will be taking many, many more,
+posting them on on Twitter
+if you wanna follow me there.
+Instagram as well.
+I also fully plan on shooting
+the next Auto Focus car
+channel video with this phone,
+so you already know you
+can go subscribe over there
+to see how the video looks,
+to hear how the microphones sound.
+One thing that they did mention
+in the keynote specifically
+was there was a new
+coating over the lenses
+that I immediately thought,
+oh, does this fix the horrible
+nighttime flare issues
+with the iPhone&amp;#39;s video?
+First thing I did was go to a dark room,
+bring it out at night,
+shoot with some lights.
+No, it didn&amp;#39;t fix it, unfortunately.
+I&amp;#39;m sure the coating
+does some other great
+stuff during the daytime,
+but there&amp;#39;s still flare issues, sadly.
+But also, lastly,
+I wanna clarify the new camera
+behavior on the Pro phones.
+In the impressions video,
+I was a little down on the whole, like,
+1x versus 1.2x versus 1.5x thing,
+because I thought it was
+literally just a digital crop,
+which would be pretty pointless to me.
+But it&amp;#39;s actually closer to a
+set of Super Res Zoom presets
+that you can actually then
+digitally zoom between.
+I&amp;#39;ll detail all of this
+in the full reviews.
+And here&amp;#39;s some benchmark scores
+in case you&amp;#39;re curious
+about that sort of thing
+for performance for the A17 Pro,
+which is actually new.
+But generally, I think that wraps up
+my first, second impressions,
+my second look now that
+I got &amp;#39;em in the studio.
+Really I feel like the base iPhone 15s,
+if you wanna buy one of
+these or pre-order &amp;#39;em,
+it&amp;#39;s a bigger improvement
+than it seems on paper.
+Like, nothing is actually new here,
+but because it&amp;#39;s bringing things
+from last year&amp;#39;s Pro phone,
+it&amp;#39;s actually a very solid phone.
+And then the Pro, it&amp;#39;s
+a lot more interesting
+because there&amp;#39;s some
+genuinely new stuff happening.
+I&amp;#39;ve seen new stuff with the cameras.
+Also, it seems like someone found out
+the batteries are slightly
+bigger across the board,
+which is good too.
+We&amp;#39;ll see if that holds up.
+But generally, let me know
+what you wanna see in the full reviews
+in the comment section below,
+because I will be working on those
+over the next couple days and weeks,
+and hopefully you&amp;#39;ll see that soon.
+Either way, thanks for watching.
+Catch you in the next one.
+Peace.
+(mellow electronic music)

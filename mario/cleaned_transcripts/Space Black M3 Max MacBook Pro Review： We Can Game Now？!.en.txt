@@ -1,0 +1,322 @@
+(upbeat music)
+- All right, so there
+are two new things about
+this new laptop from Apple.
+The new color and the new chip.
+(upbeat music)
+Everything that was already great about
+the outside of Apple&amp;#39;s laptop
+redesign is still great.
+It still has a bunch of ports.
+The full size HDMI, the
+MagSafe is still here,
+still has that high quality
+build, the boxy design,
+the super bright display.
+Also everything that was awkward about it
+is also still awkward about it.
+Still has this nice big notch
+at the top with just a webcam
+and no face unlock.
+But it comes in black now, kind of.
+It looked a lot darker in
+Apple&amp;#39;s announcement video.
+Like the color is literally
+called Space Black, right?
+So I&amp;#39;m expecting a really,
+really black laptop.
+And in the commercial it looks awesome.
+They talk about this fancy
+new anodization process
+for the aluminum, so it&amp;#39;s not a coating,
+it&amp;#39;s an actual new chemistry
+process that is a part
+of the anodization itself.
+It&amp;#39;s supposed to be extra
+fingerprint resistant.
+But now that we actually
+have it here, in reality,
+I mean, it&amp;#39;s darker, but like,
+it&amp;#39;s just a little bit darker
+than the other Space Gray from before.
+If you wanna see a black laptop,
+this is a black laptop,
+like they make black laptops already.
+So Apple&amp;#39;s here is just,
+it&amp;#39;s a darker gray.
+I think it&amp;#39;s basically the darkest
+that Apple could get without
+showing a ton of fingerprints.
+I mean, it still does show
+some fingerprints a little bit.
+It&amp;#39;s definitely not completely immune.
+But compared to some other
+black laptops I&amp;#39;ve tried,
+it is better than those.
+So it&amp;#39;s somewhere in the middle
+of not so many fingerprints,
+but also darker than normal.
+It&amp;#39;s fine, it&amp;#39;s darker, which is nice.
+Like some camera angles it
+hits, it really looks dark,
+but you get the idea.
+It also, if you&amp;#39;re curious,
+it also comes with black apple stickers,
+and it also comes with a
+black MagSafe charging cable,
+but also, that braided cable
+is darker than the end.
+And it also comes with a
+brick that&amp;#39;s still white.
+So I wouldn&amp;#39;t say they fully committed
+to the Space Black theme quite yet.
+I&amp;#39;ll give &amp;#39;em partial credit.
+But then let&amp;#39;s talk about the chip inside.
+So the new three nanometer M3 family
+of chips gets announced
+and it does offer some
+nice improvements over
+the M2 family, definitely.
+It almost feels weird to compare it
+to the M2 stuff because almost nobody
+with an M2 should be upgrading to this,
+but at least it&amp;#39;s a
+good frame of reference.
+So I&amp;#39;ve been testing
+the absolute highest end
+M3 Max in this laptop,
+which from the M2 Max
+goes from a 38 core GPU
+to a 40 core GPU.
+And from 96 gigs of shared
+memory to now up to 128 gigs.
+CPU wise, Apple&amp;#39;s claims were about right.
+Somewhere in the 20 sometimes
+30% improvement range
+over last year, which is very respectable.
+And actually, it&amp;#39;s a bigger
+jump in single core performance
+than I was expecting, which is awesome for
+just the daily use, the quick snappy,
+everyday computing, browsing type stuff.
+And then GPU wise, this is
+where more people were hoping
+for a little bit of a bigger improvement.
+And again, it is a respectable bump.
+Not quite leapfrogging
+the big discreet GPUs,
+but still putting M3
+Max&amp;#39;s GPU up at the level
+of M1 Ultra.
+So that&amp;#39;s pretty impressive.
+And matching somewhere
+around AMD Radeon RX 6800 on benchmarks
+or about an RTX 3070, which is, you know,
+we&amp;#39;re talking a fairly
+mid-range card at this point.
+But that&amp;#39;s the thing about
+all this new GPU performance
+and the benchmarks and all that is great,
+but what&amp;#39;s actually more
+interesting, at least to me,
+is what you&amp;#39;re actually going to do with
+that extra performance,
+that extra graphics power.
+And for a laptop like this,
+that&amp;#39;s typically games
+or high powered graphics
+related applications.
+So yeah, when you see that
+powerful new GPU in a laptop
+with new hardware accelerated ray tracing
+for the first time in a
+Mac and the mesh shading
+and all that, probably the
+first thing you think is gaming.
+But then you realize it&amp;#39;s a Mac.
+So probably not gaming.
+But really I think the
+reason, at least in my head,
+that most people don&amp;#39;t
+associate gaming with Macs
+is not because they&amp;#39;re not powerful.
+I mean, they&amp;#39;re not as powerful
+as the highest industry
+GPUs, but they&amp;#39;re not bad.
+It&amp;#39;s just because the
+games that people play
+and are enthusiastic about
+are often not available on the Mac.
+Like, I&amp;#39;m not even a big PC gamer,
+but you already know, if you
+want to play &amp;quot;The Witcher,&amp;quot;
+the new &amp;quot;Fallout,&amp;quot; &amp;quot;Skyrim,&amp;quot; &amp;quot;Crysis,&amp;quot;
+&amp;quot;Apex Legends,&amp;quot; there&amp;#39;s a long list.
+And if you want to throw
+maximum GPU power at that game
+to play it in the best possible quality,
+you&amp;#39;re looking to optimize
+a PC, not buy a Mac.
+So I actually think, and
+I think it&amp;#39;s maybe worth
+an entire separate video,
+maybe let me know if you&amp;#39;re interested,
+but I think gaming on
+the Mac is in an all time
+interesting place right now,
+because again, lots of games
+are not available on the Mac,
+but this is the most powerful
+Mac that&amp;#39;s ever been made.
+And I&amp;#39;ve been playing
+with some of the games
+that Apple likes to show
+off, like in the app store.
+They&amp;#39;re like, &amp;quot;Guys, we have games.
+There&amp;#39;s lots of games
+and they&amp;#39;re really good
+and they take advantage of the new stuff.&amp;quot;
+I&amp;#39;ve been playing this
+game called &amp;quot;Lies of P.&amp;quot;
+It&amp;#39;s one of the ones they
+talked about in the keynote
+and it takes advantage
+of the hardware accelerated ray tracing.
+You can see it in the
+reflections and on the floor
+and in the sword and everything.
+It plays amazing. Like it looks great.
+Frame rates stay high. I&amp;#39;m
+playing at 4K resolution.
+There&amp;#39;s a visual depth and
+detail that&amp;#39;s beautiful.
+Plus, macOS Sonoma has the gaming mode,
+which is allocating as much
+power as possible to this game.
+It also lets you use
+a Bluetooth controller
+with way faster sampling
+and lower latency.
+And so just maxing out
+everything works great.
+It&amp;#39;s an awesome playing experience.
+I was very impressed.
+I just don&amp;#39;t care about this game.
+I&amp;#39;m not invested in that
+particular game at all.
+It was fun to play the demo,
+and I was impressed with the
+actual moment of the computing.
+It would get a little warm
+and the fans would spin up,
+but the fact that it would work
+on those Mac settings is amazing.
+I just don&amp;#39;t, I&amp;#39;m not
+invested in that game at all.
+And I think that sort of
+encapsulates the way I feel
+about all this extra GPU power,
+is like, you could use it for gaming,
+but if you&amp;#39;re gonna buy a
+computer for this much money
+to game, you&amp;#39;re not buying a Mac.
+But then again, of course,
+this is a Pro laptop,
+it&amp;#39;s a MacBook Pro.
+And so there are lots of other
+non-games that take advantage
+of this extra GPU power
+and of this new hardware
+accelerated ray tracing
+and the mesh shading and all of that.
+Things like Cinema 4D and this laptop
+with this chip is better than
+ever at all that stuff too.
+And I think we&amp;#39;re actually
+gonna slowly start seeing
+even more apps on the Mac take advantage
+of this stuff as time goes on.
+But my conclusion was, okay,
+look, when the event happened,
+I watched it and that
+last video you can see in
+that hotel room, and I
+was very excited about it.
+It got announced, I saw
+a new matte black MacBook
+with a new chip, and I thought that
+that new color on top of that new chip
+would be enough for me to go,
+&amp;quot;All right, you know what?
+It&amp;#39;s finally time, I&amp;#39;m gonna upgrade.&amp;quot;
+So I did, I clicked the order button
+and I purchased a new maxed out
+M3 Max MacBook Pro in matte black.
+But now that I&amp;#39;ve actually
+had this review unit here,
+and I&amp;#39;ve gone through my
+testing and I&amp;#39;ve experienced it,
+the color is kind of nice,
+but it&amp;#39;s not quite as impressive
+and new as I was maybe hoping.
+And then the new chip,
+it&amp;#39;s great and everything,
+but it&amp;#39;s not actually going
+to make a meaningful
+difference to my workflow.
+With a couple of videos I
+edit on the go on my laptop
+from the M1 Max laptop
+that I&amp;#39;ve been using.
+So I canceled.
+I logged in and I canceled my order
+and I will continue to daily
+what I have for the past,
+I guess, three years now,
+with the M1 Max 16 inch MacBook Pro.
+Turns out it&amp;#39;s not for me.
+Well, I mean, I guess it is a
+high-end matte black laptop.
+So maybe it is kind of for me.
+But I think the point I&amp;#39;m trying
+to make is if you already
+have an M family chip MacBook
+in the tier that you want,
+meaning if you have an
+M2 Pro or an M1 Pro,
+M3 Pro is not gonna be the
+huge difference for you.
+If you have M2 Max or M1 Max,
+M3 Max is not really for you.
+This is like any other spec bump
+far more for people with older machines.
+You didn&amp;#39;t need to hear me say this,
+but it&amp;#39;s true for people
+with older machines,
+with Intel machines,
+or with machines in a different tier,
+where this would really
+unlock something new
+in their workflow.
+And that&amp;#39;s what&amp;#39;s great about &amp;#39;em,
+is you&amp;#39;re gonna get a
+better machine than ever.
+For me, I&amp;#39;m gonna keep using M1 Max.
+That&amp;#39;s a testament to
+how good that thing is.
+Maybe I&amp;#39;ll do a two years later,
+three years later review
+or something like that.
+But for now, I&amp;#39;m glad there&amp;#39;s
+a new darker color available.
+But yeah, you know,
+it&amp;#39;s weirdly not for me.
+Still a great laptop,
+still great displays,
+amazing speakers, awesome build quality,
+battery life&amp;#39;s still awesome.
+But maybe my upgrade will come when
+they really commit to
+the matte black thing
+or there&amp;#39;s another huge upgrade
+somewhere down the line.

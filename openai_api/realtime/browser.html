@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time WebSocket Client</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+    #log {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      height: 300px;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+  <h1>Real-time WebSocket Client</h1>
+  
+  <input type="text" id="questionInput" placeholder="Ask a question..." />
+  <button id="sendButton">Send</button>
+
+  <div id="log"></div>
+
+  <script>
+    const url = "wss://api.openai.com/v1/realtime?model=gpt-4o-realtime-preview-2024-10-01";
+    const ws = new WebSocket(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("OPENAI_API_KEY")}`,
+        "OpenAI-Beta": "realtime=v1",
+      },
+    });
+
+    const input = document.getElementById("questionInput");
+    const sendButton = document.getElementById("sendButton");
+    const log = document.getElementById("log");
+
+    function addToLog(message) {
+      const msgElem = document.createElement("div");
+      msgElem.textContent = message;
+      log.appendChild(msgElem);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    ws.onopen = () => {
+      addToLog("Connected to server.");
+      ws.send(JSON.stringify({
+        type: "response.create",
+        response: {
+          modalities: ["text"],
+          instructions: "Please assist the user.",
+        },
+      }));
+    };
+
+    ws.onmessage = (event) => {
+      const msg = JSON.parse(event.data);
+      addToLog(`Response: ${JSON.stringify(msg?.item?.content || "No content")}`);
+    };
+
+    ws.onerror = (error) => {
+      console.error("WebSocket error:", error);
+      addToLog("WebSocket error occurred.");
+    };
+
+    ws.onclose = (event) => {
+      addToLog(`Connection closed: ${event.code} - ${event.reason}`);
+    };
+
+    sendButton.addEventListener("click", () => {
+      const question = input.value.trim();
+      if (question) {
+        const conversationEvent = {
+          type: "conversation.item.create",
+          item: {
+            type: "message",
+            role: "user",
+            content: [
+              {
+                type: "input_text",
+                text: question,
+              },
+            ],
+          },
+        };
+
+        ws.send(JSON.stringify(conversationEvent));
+        addToLog(`You: ${question}`);
+        input.value = "";
+      }
+    });
+  </script>
+</body>
+</html>
+

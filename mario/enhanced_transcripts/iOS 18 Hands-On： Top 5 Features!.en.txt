@@ -1,0 +1,59 @@
+(shapes springing)  
+(groovy hip-hop music)  
+
+Alright, it's mid-2024, so you know what that means: another new version of iOS is coming to an iPhone near you. I've been testing the newest version, iOS 18, on my iPhone for the past couple of weeks. It’s been in beta, and now that the public beta is out, you can also test it before its full release in September. There are some interesting features in this version.  
+
+Last year, I mentioned that almost every new feature was heavily ecosystem-based, meaning they relied on having a friend with an iPhone or some other Apple device in your life. However, this time it’s kind of the opposite—these are largely new features for the iPhone itself, which I really appreciate.  
+
+For this video, I’m leaving out Apple Intelligence features. That's more of a separate topic that I haven't been able to test in the pre-release betas. I’ll make a separate video about that once it's actually testable, so be sure to subscribe to catch that.  
+
+Now, let’s dive into the top five new features of iOS 18.  
+
+**Number five: The new Control Center.**  
+I placed this at number five because, while there is quite a bit of new stuff here, I’m not sure I like all the changes. When you pull down from the corner, the new Control Center is more colorful and paginated, with three pages now. Honestly, I'll probably never use the second two pages, but they serve as a full-page visualizer for any media that’s playing, along with an array of one-touch toggles for your basic connectivity options. However, this full-page list is just an expanded version of what was previously on the first page, requiring a few more taps to access.  
+
+On that first page, if you hit the plus button in the corner, it displays a grid allowing you to customize the size and placement of anything that has a tab in that bottom corner. Each tab has predefined sizes that they morph between, enabling you to design your perfect layout for the control screen. You can add new controls, and there’s a massive list of them to sift through for things you frequently use. Currently, these are mostly Apple app controls.  
+
+What I’m really looking forward to is the integration of third-party app controls. Right now, none are available, but I can't wait for features like one-touch control for the AC in my car or instantly accessing the barcode scanner in my calorie tracker app. Having more controls in this section is going to be pretty great.  
+
+We’ve also noticed a new flashlight control that allows you to adjust the intensity and beam width of the flashlight. While I find the intensity adjustment works wonderfully, I’m not entirely convinced about the beam width functionality yet. However, it’s still a neat addition.  
+
+Also, there’s a new button for turning off your phone, similar to what Android introduced a while back in their settings. Finally, you can customize the controls on your lock screen! Instead of the default flashlight and camera, you can now hold down, tap customize, and make changes. I hope third-party options are included, but there are already plenty of choices. I'm excited to set mine to my to-do list app someday.  
+
+**Number four: The Passwords app.**  
+Occasionally, an update installs a new app on everyone’s phones, and this is one of those. Essentially, it pulls all the password tools previously hidden in the settings into one dedicated app. Your iPhone has been saving your passwords for a while, including Wi-Fi passcodes, so this app serves as a simple way to find and manage everything in one place.  
+
+This app also supports new features like two-factor authentication and passkeys, along with some additional functions that might convince you to switch from your current password manager app to Apple’s Passwords app. For instance, in the bottom left, you can create shared passwords and passkeys with a group of trusted contacts that also have iPhones. When signing up for a new account, it continues its usual function of generating secure passwords and offering to remember them for you.  
+
+One thing I found interesting is that rather than using a master password, it defaults to Face ID. If you have Face ID set up on your iPhone, that’s what you’ll use to log in. The main reason I won’t be using this app is that I still use an Android phone, and there’s currently no Android version of this Passwords app available. However, they did make a Mac app and a Chrome extension, which is intriguing.  
+
+**Number three: The new home screen customization.**  
+Some of you might have expected this to be higher, perhaps even number one or two, but I have my reasons. The day has finally come—there's new home screen customization available for iPhone, somewhat. While there are great features, there are also some oddities.  
+
+Here's the good part: iPhone users can now place their icons anywhere on their home screens! Welcome to 2024, iPhone users! Although everything still snaps to a grid, you can now place icons on the right side or the bottom of your home screen where they are easily reachable without snapping back to the top. That's a great improvement! They started with widgets, and now they’ve added this functionality.  
+
+To customize further, tap and hold anywhere on the home screen to access the edit button at the top. From there, you can hit customize and explore the limited customization menu available for the iPhone. You can choose between dark mode, which slightly darkens your wallpaper and updates compatible icons, or light mode, which does the opposite.  
+
+There's also a button to make all your icons larger, removing the text for a cleaner look. However, there's a tinted button that feels a bit off. This button allows you to tint all your home screen icons to a single color, which can theoretically match your wallpaper. Interestingly, you can pick a specific color from your wallpaper as the tint. Despite how it sounds, I haven’t found any combination that looks appealing at all.  
+
+While some apps with simple, high-contrast icons look fine, others, particularly third-party apps, appear completely illegible. The inconsistency creates a visual disparity that's not pleasant. Even Apple widgets like the weather app can look great in contrast, while others fall flat. Google has experimented with similar concepts in Android, with mixed success, but I believe the tinting method will improve over time as more icons are updated to support it.  
+
+**Number two: The little things.**  
+There are numerous tiny improvements and features that aren't huge individually, but collectively add up to a much better experience. Many of these didn't even make the keynote! For example, there’s a game mode that gives CPU priority to any active game, reducing Bluetooth latency for wireless headphones or controllers—a simple but nice touch.  
+
+The Photos app has undergone a redesign, and the smart search functionality is much improved. When searching for something like "license plate," it not only recognizes and retrieves relevant photos but also suggests ways to narrow down the results to find exactly what you're looking for.  
+
+Additionally, there are now numerous shortcuts to Shazam integrated throughout, including a preset in the Action button settings. I found that interesting given that Apple acquired Shazam not long ago.  
+
+Finally, RCS support appears to be live on the iPhone in 2024. While it still shows as a green bubble for texting, you can now send high-quality media between any modern Android phone and an iPhone. I sent a three-megabyte image file from my iPhone to my Android device and received it intact, without quality loss. Now, you also get typing indicators and read receipts. Reactions work smoothly too. While it's not fully integrated into blue-bubble iMessage as some may have hoped, Apple can finally claim they’ve achieved this functionality.  
+
+**Number one: The calculator.**  
+Believe it or not, the best new feature in iOS 18 is **the calculator**! You might have thought this was only for the iPad since we saw it demoed in the iPadOS 18 keynote, but it’s on the iPhone too!  
+
+When you open the Calculator app, it looks like a basic calculator—very familiar. However, there’s a toggle in the bottom left that lets you switch to a scientific calculator, which is nice. The new feature is called Math Notes, which transforms the calculator into a notes-like app. You can create a new note and start handwriting math calculations. If you write an equation and add an equal sign, it automatically solves that equation for you and keeps it updated as you continue writing or typing. It’s impressive.  
+
+This feature can handle variables and graphs, essentially doing everything I’ve been asking Wolfram|Alpha to do lately. An underrated aspect is how well-considered it is, syncing across devices just like notes do. If you add calculations on your iPhone, they’re accessible on your iPad's calculator, and you can edit them seamlessly. If you redefine a variable in your note, the calculator recognizes that new value while keeping the old one for previous calculations. It’s astonishingly well thought out.  
+
+Sure, this functionality is easier on a bigger screen with an Apple Pencil, but remember, I was doing this with a paper notebook and a TI-84 in school. I genuinely wish I had a tool like this in my educational years. The handwriting recognition is excellent, handling equations seamlessly, and it even presents answers in your handwriting while indexing everything for easy searching. It’s impressive—more than any other feature I’ve seen in iOS 18. That’s why it’s my number one feature.  
+
+So, that sums up my top five. But as I mentioned, subscribe to see a deep dive into Apple Intelligence because that topic is crucial to understanding the entire Apple ecosystem. That video is coming soon! Thanks for watching, and I'll catch you in the next one. Peace!

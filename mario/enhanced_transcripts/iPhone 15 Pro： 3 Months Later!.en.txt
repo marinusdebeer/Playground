@@ -1,0 +1,37 @@
+So, this is my Titanium iPhone 15 Pro that I've been using without a case for 88 days, or about three months now. I want to provide longer-term reviews; while three months isn't a super long time in the grand scheme of smartphones, it's certainly longer than the usual one to two-week review period where I summarize everything from my experience. The longer I use a phone, the more I uncover about it—especially regarding how I personally use it.
+
+I consistently carry two phones, and the iPhone typically stays in my pocket for an extended period. Therefore, I have a lot more experiences to share about this iPhone. First off, I haven't put my phone in a case since the day I bought it. Sometimes I regret this decision, but occasionally, I don't. I rarely drop my phone, and so far, this one hasn't been dropped either. It does show some regular signs of wear and tear, which aren't too concerning. I do tend to get some larger scratches on the front display glass because I opted not to use a screen protector. However, these scratches are no more than usual despite the fancy ceramic shield.
+
+I appreciate the switch to titanium for the frame and the side rails of this phone; it looks significantly better than the stainless steel. It's also lighter, and I’m glad I chose this lighter color because it shows the fewest fingerprints and looks the cleanest. Overall, I'm happy with my specifications choice.
+
+Now, regarding long-term behavior, there are three interesting points about this phone. Two features I’m using much less than expected, and one I'm using almost exactly as much as I thought I would. First, the camera on the Pro iPhone introduces a neat multiple focal lengths feature. You can tap the 1x button three times to access 24mm, 28mm, and 35mm focal lengths, all with the same quality. However, I hardly use this feature. I generally frame things at 1x, and that’s the extent of it for me. Despite testing showing that it works, I think that the new crop button added in iOS 17, which appears when you zoom in on a photo, is significantly more useful—particularly for me and likely for others.
+
+Then there's the action button, which is a significant feature of this year's Pro iPhones, allowing some customization on your device. The user interface Apple created in the settings for this feature feels somewhat un-Apple-like. It works well, and you can map the button to nearly anything you want. However, there was a notable observation made by many about its placement: the old mute switch was conveniently tucked away, making it easy to leave your phone on mute indefinitely. Apple decided to place this action button in the same spot as the old mute switch, which makes it a bit tricky to reach, especially when using the phone with one hand.
+
+When I first got the phone, I was excited about the potential uses for the action button. Initially, I mapped it to Google Assistant since I rarely use Siri. Later, I briefly changed it to start a voice conversation with ChatGPT. While it's cool to have that feature, it isn’t particularly useful because it lacks access to current events, your calendar, or the weather. So, that didn’t last long. I then switched it to open a new task in my preferred to-do list app, TickTick. While this was handy, I already had the muscle memory to open the app manually, making it somewhat redundant.
+
+Eventually, I settled on programming the action button to open the camera, which is the fastest way for me to access it. While there’s also a lock screen shortcut, it's often quicker for me to just hit the button and take a photo if something is happening that I don't want to miss.
+
+Of course, USB Type-C is another standout feature of this generation of iPhones. The base iPhone 15 has slow USB 2.0 speeds, but the 15 Pro and Pro Max support USB 3.2 speeds, which significantly facilitates importing large files, like ProRes footage. Thank you, Europe, for influencing this change! As someone who typically uses a wireless charger, I appreciate having just one cable for charging my iPhone, Android phone, iPad Pro, and laptop.
+
+That said, I can’t entirely eliminate my lightning cables yet, as some devices in my Apple ecosystem, like the AirPods Max, still require one. I'm also stuck carrying the lightning cable for my Magic Keyboard and Apple Magic Trackpad. I’m unsure how long it will take Apple to upgrade all these devices to USB Type-C, but I guess my lightning cables will be around for a bit longer. Rumors suggest a refresh for the AirPods Max since they launched in late 2020, but there’s no official word yet.
+
+There have been several software updates to the iPhone 15 since its launch on iOS 17, and we've already made it to iOS 17.2. The new Journal app is live now, which some friends use, though I don’t. There have been numerous bug fixes and optimizations, addressing previously reported issues, including with the Instagram app and overheating problems.
+
+There’s also a new toggle in the camera app settings for recording spatial video for the Apple Vision Pro. This indicates some interesting alignment for the Vision Pro's launch, possibly in January or February. If you recall the demo for spatial videos on the Vision Pro, you can record them using an iPhone, specifically the 15 or 15 Pro, thanks to the horizontal arrangement of the main and ultra-wide cameras. 
+
+When activated in the camera app, you can shoot spatial video, which requires holding the iPhone in landscape mode since your eyes are side by side. However, it only captures at 1080p 30fps as it processes two streams of video simultaneously—one from the main camera and the other from the ultra-wide camera for depth. 
+
+You can go ahead and shoot spatial videos, but if you watch them back on the phone, they will appear as standard videos. To truly appreciate the spatial aspect of the recordings, you'll need an Apple Vision Pro.
+
+I've had the chance to experience the Vision Pro several times since my initial preview. I've recorded some spatial videos and watched them on the headset. I found that they look decent, especially when the subject is within two to four feet of the camera—creating a 3D-like effect. So, if you're recording spatial videos, keeping your subject within that range is ideal.
+
+Also, here's a tip: if anything is happening on the Dynamic Island and it's getting in the way, you can swipe across it to hide or change its view.
+
+Clearly, you don't need to upgrade your phone every year or even every couple of years. Still, after using the iPhone 15 Pro, I feel confident asserting that this is one of the better years to upgrade, given the updated cameras, USB Type-C, and titanium build. There's a concept known as an upgrade sweet spot, and this phone hits it, especially for those with much older iPhones.
+
+To wrap up, in my original iPhone 15 Pro review, I compared it to the Porsche 911 in that its design doesn't change much from generation to generation. Instead, they refine and improve the existing design slowly. I recently turned 30, and for my birthday, I took the plunge into a matte black version. Living with a 911 has helped me appreciate that strategy even more. It’s not flashy or dramatic; it's consistent, familiar, and confidence-inspiring.
+
+Also, every shot in this video was captured on an iPhone 15 Pro. Thanks for watching. I'll catch you guys in the next one. Peace!
+
+(bright upbeat music)

@@ -1,0 +1,61 @@
+(smooth music)
+
+All right, now that we're back down to Earth after all the Vision Pro launch excitement, I've had a chance to revisit some of the devices I was testing that got interrupted by that chaotic week, and there's some really impressive stuff. I really like the design of the OPPO Find X7 Ultra more than I expected. The Zenbook Duo, a full screen, dual screen laptop for 2024, is kind of amazing. There are a few other devices that surpassed my expectations as well. But the one that stood out to me the most is this guy right here, the OnePlus 12.
+
+This phone may have flown a bit under the radar with everything going on, but it comes with some nice improvements from last year and is priced very competitively. In fact, let's start with that: it retails for $799. Plus, if you pre-order, you get a free upgrade to the 16GB RAM and 512GB storage model at that price. It's already marked down to that on Amazon, so I’ll have a link below. 
+
+Now, while it does carry a flagship price, it's competing against some ultra phones that are priced at $1,000, $1,200, or even $1,300. So, suddenly, you could call it a flagship killer.
+
+On the outside, it looks nearly the same as last year’s model. They found a design they like and decided to keep it consistent. The shapes, the camera bump that seamlessly integrates into the side, and the Gorilla Glass 5 on the back are all familiar. There are new colors and textures, but in general, you'd be forgiven for thinking it's almost identical to last year.
+
+However, don’t let that fool you; the biggest noticeable physical difference is up front. This screen is much brighter, reaching up to 1,600 nits under sunlight and achieving an impressive peak HDR brightness of 4,500 nits. It’s incredibly readable outdoors and in any lighting scenario. It can also get extremely dim, which I appreciate. However, I’m not a fan of the curved edges—it leads to light fall-off and extra reflections. Still, from corner to corner, this 6.8-inch, 1440p LTPO Pro XDR display is a significant upgrade from last year.
+
+The rest of the upgrades to this phone consist of several small changes that combine to create a noticeable improvement overall. That's what smartphones have become. I remember reviewing the OnePlus 1, then the OnePlus 2 the following year, and observing the dramatic changes between the two. Nowadays, it's about stacking clever little enhancements to make user experience as good as possible.
+
+To be a flagship killer, you need the newest chip, so this phone comes with the Snapdragon 8 Gen 3. While you might not notice a massive difference when compared side by side to a Snapdragon 8 Gen 2 phone, this device features significantly improved cooling. As a result, it offers a bit of headroom for slightly boosted clock speeds, and its benchmarks fall right in line with gaming phones and the S24 Ultra. This means, in real-world use, the OnePlus 12 feels super fast and incredibly fluid—it’s a consistently smooth experience. OnePlus has excelled at this for quite some time, even keeping high performance mode off by default in the battery settings.
+
+Speaking of battery, this phone prioritizes long battery life over ultra-high performance. So, it has excellent battery longevity. First off, it has a massive battery capacity, now equipped with a 5,400 milliamp hour battery, one of the largest in a OnePlus flagship. You can be sure they kept their signature Super Fast Charging as well. It features a split battery design (dual 2,700 milliamp hours) and can charge at 80 watts wired. This combination of huge battery capacity, exceptional longevity, and ultra-fast charging makes this phone a strong contender for battery champ of the year.
+
+If you leave the phone at its default settings—regular performance mode at 1080p with auto frame rate—you can get two full light days out of it. When the battery dips close to zero, it can charge to half in just 12 minutes. If you want a full charge, it takes about half an hour. It’s incredibly convenient. Additionally, it supports wireless charging up to 50 watts, although you'll need to buy an appropriate charger separately. The OnePlus 11 didn’t have wireless charging at all, making this a big step forward. 
+
+I do wish for Qi2 support for wireless charging, but it seems to be having a rocky start this year, with very few phones actually supporting Qi2's magnetic features. This likely stems from a 15-watt charging limit with Qi2; if you want fast wireless charging, this phone doesn’t offer that.
+
+So, yes, no Qi2 support or magnets, but you do get very rapid charging alongside a better display, improved chip, and enhanced battery. The cameras have also seen an upgrade. 
+
+I'll be honest, though—cameras have been a weak point for OnePlus's top-tier phones for a while now. We’ve wanted to label them as flagship killers, but strong camera capabilities are crucial in flagship phones, and OnePlus hasn't matched the highest standards yet. The camera system on this phone is now acceptable for flagship level, but it still has room for improvement. 
+
+The main sensor is slightly different; it features the LYT-808 sensor instead of the LYT-T808 with two additional megapixels and a slightly wider aperture. That said, the OnePlus 12 photos won’t blow you away. I’ve done some side-by-side comparisons. The photos turn out pretty good most of the time; they’re sharp and have a bit more contrast than the OnePlus Open. The HDR effect is decent but falls short in challenging conditions, especially in low light.
+
+For context, we previously tested the OnePlus Open in a blind smartphone camera comparison with 20 of the best smartphone cameras in the world. In that test, the OnePlus Open did quite well, ranking third in standard light photos and also breaking the top 10 in portrait mode. In low light, however, it ranked fifth from the bottom, just below the Razr.
+
+In summary, while this new camera system comes with new hardware—like the updated zoom—it’s still not leagues ahead of its competitors; it’s just a slight improvement over last year’s model. This will suffice for many users, but if you’re looking for a flagship-level camera, there’s still some catching up to do.
+
+However, there are a ton of nice little features in this OnePlus phone that add to the overall experience. For instance, I love that I can force any app I want to run at whatever frame rate I choose. Unlike many other phones, the mapping apps like Waze and Google Maps often default to 60Hz, but on this phone, I can set them to 120Hz. 
+
+I also appreciate the infrared blaster—a rather uncommon feature in modern smartphones, akin to a headphone jack. This allows you to control appliances remotely, like TVs, without needing to find the remote. 
+
+Additionally, the USB-C port supports incredibly fast charging and data transfer speeds, being a USB 3.2 Gen 1 port. This means you can transfer large files quickly with the right cable.
+
+Moreover, the new screen supports high PWM dimming, which is great for those sensitive to flickering on OLED displays when at low brightness. The phone flickers on and off to achieve lower perceived brightness at an incredibly high frequency (2,160 Hz in this case), making it smooth at all brightness levels. 
+
+If you use your phone in the rain, you know how frustrating it can be with touch sensitivity problems. However, this phone features Aqua Touch technology, which allows it to remain responsive even with water on the screen. While it’s not perfect, it works significantly better than other phones, allowing me to type on the wet screen with ease—it’s very impressive!
+
+Other nice touches include 12 or 16 GB of fast RAM, Dolby Atmos with spatial audio support, and great haptics. All these small details culminate in a fantastic user experience.
+
+That said, it's not perfect—no phone really is. Some downsides include the continued use of a curved display, which may enhance the phone's character but comes with its own set of challenges, from glare to durability concerns. The fingerprint sensor still feels like a relatively average optical sensor that hasn't seen much improvement in years.
+
+Despite having the Snapdragon 8 Gen 3 chip, this phone doesn’t come with many new AI features, which is a missed opportunity. Qualcomm announced new AI capabilities with their new chips, but this phone seems to have skipped that aspect. The only AI feature I found was in the photo editor—a color overlay labeled AI Palettes—but it doesn’t feel very AI-driven. So, no generative fill, crop correction, or various other useful new features that other flagships are implementing.
+
+I also encountered a strange bug: when using the overlay browser and interacting with my favorite alert slider, it opens a search box every time. They shouldn’t be connected, but it happens consistently.
+
+Perhaps the biggest downside compared to other flagships is the promise of fewer years of software update support. I’ve already received a major software update since testing began, which included camera enhancements and bug fixes. However, OnePlus is only promising four years of software updates and five years of security updates. While that’s adequate for users who plan to keep a phone for three to five years, it falls short when compared to competitors like Google, Samsung, and Apple, which offer six to seven years of updates.
+
+So, is this a flagship killer? It depends on your definition of a flagship. The most compelling aspect of this phone is likely its competitive pricing. For instance, I’ve seen the 16GB RAM and 512GB model for $899, but pre-orders allow you to get it for $799. Some places even advertise it for $699 with a $100 trade-in discount on any phone, regardless of condition. If you can snag it for $699 while competing with phones that start at $1,300, that’s a solid deal!
+
+Ultimately, you should consider what’s most important to you. If the camera is a top priority or if long-term software updates matter significantly, or if AI features are particularly appealing, you may want to explore other flagship options. However, for overall performance, display quality, exceptional battery life, and extremely fast charging, this phone may be better than you anticipate.
+
+Furthermore, OnePlus has also released the OnePlus 12R around the same time. It looks almost identical but is a more budget-friendly version, cutting some corners on the camera and using the Snapdragon 8 Gen 2 instead of the Gen 3. It lacks wireless charging and is rated IP64 instead of IP65. It’s a trimmed-down version priced around $500. 
+
+So if the OnePlus 12 wasn’t on your radar, it should be, along with its budget-friendly counterpart. Thanks for watching, and catch you in the next one. Peace.
+
+(smooth music)

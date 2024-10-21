@@ -1,0 +1,45 @@
+(subtle groovy music)
+
+So, this is the Apple Watch Ultra. It was introduced at the top of the Apple Watch lineup for a premium price, primarily to accommodate a much larger battery in a smartwatch, but also to offer a few extra rugged features for enthusiasts willing to invest the extra money.
+
+Now, this is the Samsung Galaxy Watch Ultra, added to the top of the Galaxy Watch lineup for a similar premium price, serving the same purpose of fitting a bigger battery into a smartwatch while providing additional rugged features for those willing to spend the money.
+
+Look, there have been many copies before, in both directions. Samsung often copies Apple, and Apple returns the favor. However, this particular instance is so pronounced that it’s hard to overlook. There has been a lot of online chatter about how the new Galaxy Watch Ultra is a copycat product of the Apple Watch Ultra. And yes, it's true—it really is.
+
+But I've said this before, and I'll say it again: I actually don’t mind when these products and companies copy each other. As long as they're copying the good stuff, we, the customers, still win. This time, Samsung copied so many features that it went a step too far and imitated an additional aspect that I think ultimately hurt its case.
+
+Let’s take a look at the similarities. First of all, they share the same name and general concept. As I mentioned, this is the Watch Ultra. It's positioned at the top of the lineup and is the most expensive. They have also matched the Apple Watch Ultra's durability specs; both are made of titanium, are water-resistant to 100 meters, and feature sapphire glass over their displays. 
+
+For the basic on-paper specs, both have dual-frequency GPS for high accuracy, extra bright displays for outdoor visibility (actually both peaking at 3,000 nits), and come with three default bands. The Apple Watch Ultra has an Ocean Band, a Trail Loop, and an Alpine Band. In contrast, Samsung's Watch Ultra launches with three different bands: a Marine Band (instead of an Ocean Band), a Trail Band, and a Peakform Band. 
+
+You could say that the Ocean Band and Marine Band are a bit like asking, "Can I copy your homework, but change it a little so it’s not too obvious?" They didn’t really change it up enough, but it’s still acknowledged with a "Okay, sweet, thanks." They even have two holes on theirs instead of one—because not every marine is an ocean, right?
+
+Each watch has three buttons. You might recall that the Apple Watch added a special orange button on the side called the Action Button, which can be mapped to various functions, with a workout selector as the default. The Galaxy Watch Ultra features its own orange button on the side called the Quick Button, which can also be customized for different actions, starting with a workout selector as well.
+
+The similarities continue in the software. This specific watch face that Samsung uses heavily in its marketing borrows considerable inspiration from Apple’s flagship watch face, featuring complications around the corners. There’s also a monochrome Night Mode version, which was introduced with the Apple Watch Ultra. Changing the watch face is done the same way on both: just hold down the face for a moment, swipe over, and you can customize the complications.
+
+They both utilize a blob of icons to scroll through apps, and they even incorporated a double-pinch gesture. This was a recent feature introduced by Apple, which is now operational on Samsung’s watch as well. It’s off by default, but when activated, it functions similarly.
+
+As you can see, Samsung has lifted numerous features from the Apple Watch Ultra. Some have labeled it shameless, calling it pure copycat behavior, and there are endless comments online regarding this. There is, however, one aspect that Samsung copied that I genuinely have a problem with.
+
+When you first look at the Galaxy Watch Ultra, you could argue that it looks mostly different from the Apple Watch. While both have an orange button, Samsung implemented a unique design. It maintains a fully circular watch face but has a larger, more robust titanium body underneath, which I refer to as a cushion design. It feels definitely bigger than the Apple Watch Ultra, which was already rather substantial. However, in the grand scheme of watches, it’s not actually huge, especially since the screen size is akin to that of a large Watch7.
+
+I had hoped that, with the retaining of the circular screen, they would include a physically rotating bezel, similar to the beloved feature on the Watch6 Classic. It was a feature everyone desired, yet they chose not to feature it at all. The Galaxy Watch Ultra relies purely on touchscreen functionality, which may not seem like a significant issue at first. However, considering this is a fitness watch for active users, it becomes problematic in workout scenarios. Touchscreens can often be affected by sweat, sleeves, gloves, and wet conditions, making them challenging to use.
+
+A rotating crown for navigation would have provided a distinct advantage over the Apple Watch Ultra in this fitness-focused context, but they opted not to include it. If asked, I’m sure Samsung would justify their choice by stating that a rotating bezel is a moving part and wouldn’t endure the military-grade certification of the rest of the watch. The watch claims an 810H military certification for surviving tougher drops and resisting dust and extreme temperatures, meaning a moving part wouldn’t align with that.
+
+Nevertheless, I believe Samsung should have gone for the rotating bezel anyway. I think 99% of users would prefer that feature over military certification, while the 1% who wouldn’t could choose a Garmin or something different. Overall, I think this adjustment would have enhanced this particular watch.
+
+Now, there are a few other factors that distinguish this watch, primarily that it’s geared towards Android users rather than iPhone users—that’s number one. Wear OS performs really well; there were initial concerns about it not being smooth, but I’ve found it to be great. It’s very customizable and functional. The full-size keyboard is actually easier to type on due to larger letters, and symbols require accessing a secondary menu. I find I can type words quite efficiently on this compared to other smartwatches.
+
+The best part, though, is that the battery life has lived up to its claims. It can be a bit confusing with the varying claims of 60 hours, 100 hours in Power-Saving Mode, and 48 hours in Exercise Power-Saving Mode. However, I’ve found that it often matches and sometimes even exceeds the battery life of the Apple Watch Ultra, typically giving around a 25% better standby time. With light use—like receiving text messages or doing a couple of workouts—you can easily stretch this watch into two full days. Under heavier use, such as frequent workouts, the duration is comparable, but it still offers about a solid day and a half, especially with the usage of the 3,000-nit Super AMOLED display. That’s impressive.
+
+In summary, it's evident that Samsung has copied many aspects of the Apple Watch Ultra. However, as I've previously stated, if you're going to emulate the good features, you can end up with an excellent product, shameless inspiration notwithstanding. 
+
+Interestingly, Samsung updated the Watch7 simultaneously. That model also offers dual-frequency GPS, the same screen size, a slightly smaller battery, sapphire crystal on top, three sporty bands, and is half the price. This makes it harder to recommend the Galaxy Watch Ultra given its similarities.
+
+Ultimately, the Galaxy Watch Ultra is just a Galaxy Watch for those who desire a larger battery and a few more rugged features, but only if you’re willing to spend $650 on it. I believe that including the rotating bezel would have made it easier to justify and distinguish this device from its more affordable counterpart. For now, this Samsung product leans more heavily on its inspiration than I would have liked, and it certainly won't be the last instance from either side.
+
+Thanks for watching. Catch you in the next one. Peace. 
+
+(bright subtle music)

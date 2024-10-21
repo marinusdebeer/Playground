@@ -1,0 +1,17 @@
+{
+  "name": "realtime",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A module for real-time functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

@@ -1,11 +1,11 @@
 {
     "Limo": 131,
-    "Rattler": 80,
+    "Rattler": 117,
     "Sidewinder": 75,
     "Slyther": 77,
     "Rex": 84,
     "Slinky": 23,
-    "Boa": 39,
+    "Boa": 97,
     "Anaconda": 39,
     "Nagini": 75,
     "Fang": 14,
@@ -18,9 +18,10 @@
     "Kaa": 5,
     "Scalez": 29,
     "Player": 5,
-    "Serpentina": 39,
+    "Serpentina": 59,
     "Pythonia": 72,
     "Limp": 0,
-    "Copperhead": 49,
-    "limo": 49
+    "Copperhead": 100,
+    "limo": 301,
+    "vienna": 1
 }

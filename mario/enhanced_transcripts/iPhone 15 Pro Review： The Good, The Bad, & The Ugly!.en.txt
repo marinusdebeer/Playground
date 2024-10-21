@@ -1,0 +1,113 @@
+You know what's funny? When there aren't many changes, it really puts a magnifying glass on the few changes that do exist. Have you ever listened to a car reviewer describe the latest generation of the Porsche 911? This is a car that has looked more or less the same for the past 50 years, with slight evolutions in each new generation. And literally, every time you watch or read a review, they always say, "Oh, it's so refined! This is an engineering masterpiece that's been perfected over generations. It's a formula that’s been developed in the same direction for years."
+
+As a kid, I used to actively dislike Porsches because I knew they were expensive, but I thought they all looked so boring. Why would you get one of those when you could choose a much more exciting Ferrari or McLaren instead? But as I’ve gotten older, I can appreciate the Porsche formula a little more. I wouldn’t say I love it, but I can appreciate it more. Does that make sense? I hope that makes sense.
+
+This is the iPhone 15 Pro. Not a lot has changed. 
+
+So, okay, I think people have to get this thought out of their heads: you don't have to upgrade every year to the newest phone. I realize most of us already know this, but for some reason, people still cling to this idea that “last year’s phone is barely different from this year’s phone, so it’s not worth upgrading.” But that’s not new. For example, the Zenfone 10 I just reviewed is just a refinement of the Zenfone 9. The top-of-the-line ROG phone has looked the same for three years now, and the Pixel is finally finding its stride with design.
+
+What we’re really looking for is for them to fix anything that’s wrong or bad, and then to find clever and interesting ways to make slight improvements every year. Over a long time, those small changes add up to a bigger, more significant change. That’s what’s happening here with the iPhone 15 Pro.
+
+I’ve been using it for about two weeks now. They have made some improvements, but we’re also starting to see some possible problems, some new issues that have come up. So let’s talk about it.
+
+There are basically four new features they've added here. I'm going to cover some of the more fundamental and existential stuff in the regular iPhone 15 review, so definitely make sure you’re subscribed to see that when it comes out. But for the Pro, it's time to deep dive into the stuff that’s unique to this model: the build, the chip, the cameras, and the Action Button.
+
+The easiest place to start is with the way they’ve built this phone. Apple made updates to the build and materials of the iPhone this year. They’ve softened the corners a bit; it’s still clearly a boxy design, but now, instead of a completely flat glass front, there’s a gentle curve at the very edges. This might make screen protectors slightly more intricate, but I think it has a nice look to it.
+
+The screen sizes are exactly the same, but now the bezels are actually a tiny bit slimmer all around. Technically, the phone is about one millimeter smaller diagonally, and the rails have switched from shiny stainless steel to a lighter, coated, and brushed titanium. The result is very slightly better. 
+
+It’s kind of funny; I’ve always associated a heavy phone with an expensive feel. The ceramic phones are extra heavy; they feel substantial. But I understand why people want it lighter. This phone is actually noticeably lighter than the previous Pro. It’s 10% lighter on paper, but it feels like more.
+
+There’s a new set of colors, too. I’m sticking with this new natural titanium color; it’s the best one. This is the first year I’m not ordering a dark or black iPhone. They still look good, but they pick up fingerprints like crazy. My concerns about light-colored scratches were confirmed by Zack from JerryRigEverything in his video. Since I’m on team no case, I chose the all-gray phone; I think it looks dope.
+
+Basically, if you have a perfectly working phone, there's no reason to upgrade to this one just for the titanium build or the slightly thinner bezels. However, if you put this next to an iPhone 11, you can see the differences that have compounded over time, similar to how sitting in a 992 generation 911 versus a 997 generation car feels different.
+
+The real highlight of this build, let’s be honest, is the new port at the bottom: USB Type-C. This makes a big difference for people like me who have other gadgets—computers, headphones, a mouse, and a keyboard. Now I can just bring one charger that works with everything. I’ve already had that moment that everyone who gets this phone has when you try to plug in an existing Lightning cable and realize, oh right, new cable.
+
+I could have sworn Apple would do more with this port. We know they were basically forced into it by the EU, so shout out to the EU for that. Now we have a USB iPhone, but the only pitch is just, "Hey, one cable for everything." Seriously, Apple? With the switch from 30-pin to Lightning all those years ago, the benefits were obvious. It’s significantly smaller, allowing more room inside the phone, plus it’s reversible.
+
+Now, USB Type-C is already small and reversible. The charging speed hasn’t improved at all; it’s still 25 watts. There’s no extra "desktop mode" or anything like that; it’s just one cable for everything. Okay, fine. Welcome to the club. iPhone users can now take advantage of USB-C. 
+
+I talked about its ability to handshake with other devices for reverse charging at 4.5 watts in the unboxing video; that’s neat. You can also plug in other things, like keyboards and monitors; it mirrors your screen at up to 4K 60 frames per second. The Pro phone now supports USB 3.0 data transfer speeds, allowing you to transfer ProRes footage off the phone noticeably faster. You can also shoot video directly onto an external drive.
+
+Now, there’s some talk about the cable that comes in the box. Remember that nice high-quality braided USB-C cable? It only supports USB 2.0 transfer speeds, which means it’s a slow cable. So if you have a Pro phone, you’ll need a faster separate cable for it. That seemed weird to some, but it’s normal. Most smartphones come with just a USB-C cable for charging. If you want a data cable, you must buy a thicker, more robust one that looks the same but is meant for data. It’s kind of confusing and annoying, actually. 
+
+Welcome to the world of USB-C, my friends. 
+
+This is a good segue into the main enabler, the new powerhouse chip inside this phone, known as the A17 Pro. The base iPhone 15s come with last year’s A16 Bionic from the 14 Pro. So here’s this new, more powerful chip in the highest-end phones. It’s not just called the A17 Bionic; this is the first one with the Pro name, A17 Pro. This thing is pretty impressive on paper. It’s Apple’s first three-nanometer chip and the first three-nanometer chip in any phone we’ll probably see for at least another year or two. 
+
+I ran some benchmarks, and it’s literally approaching the levels of scores seen on the M1 chip. Compared to last year, it’s 10 to 20% more powerful on both CPU and GPU, which is very respectable. More power is like more horsepower in a car: it only really matters if it lets you do more with it. 
+
+The last-generation Porsche 911 Turbo S was already incredibly fast; you never approached its limits anywhere on public streets unless you’re at the highest end of performance on the track. The same goes for the Pro iPhone; it’s been great for basic tasks like surfing Instagram or texting. The only place you really notice the extra performance is during gaming. Apple showed wild gaming demos on the new iPhone at the keynote. 
+
+As a disclaimer, I'm not much of a phone gamer, so I’ll defer commentary on that to Dave2D; you can check out his video linked below. But they literally launched exclusive games on the iPhone, like "Resident Evil: Village" and "Assassin's Creed," but not cut-down mobile versions—these are the exact versions from the PlayStation. That’s impressive. Plus, having performance headroom is never a bad thing.
+
+For me, and I think for many others, the more impactful things that you’ll notice about this new chip are in the dedicated parts for specific tasks. The new image signal processor allows for extremely fast, lag-free photos. The new neural engine can automatically recognize Portrait Mode subjects, like people’s faces and pets. It even lets you go back and set a regular photo to Portrait Mode. The USB 3 controller that enables faster data transfer speeds is also part of the A17 Pro, which comes from the new chip.
+
+However, I’m currently more concerned about battery life. There are two main issues popping up, and I’m trying to figure out if they’re isolated problems or actual issues with the phone: battery life and overheating.
+
+Objectively speaking, these phones have slightly bigger batteries than last year’s models alongside the new three-nanometer chip. In controlled environments, they should perform better, and they do; they literally last longer on simple benchmark tests, so that’s good news.
+
+When I test a phone, I go by feel and generally have some good days, some average days, and a few bad days. I try to figure out what drains the battery and identify its weaknesses to reach a conclusion. After a couple of weeks in, I’ve had several average days and a couple of those bad draining days, but I haven’t experienced any amazing days with nine hours of screen-on time. I just haven't had any yet.
+
+Also, we started seeing headlines about possibly worse battery life and reports of overheating on Twitter, with some people asking if I’ve had any issues. Here’s the weird answer: yes, but not when I would expect. 
+
+A couple of days ago, I was at a golf tournament in Florida with a feels-like temperature around 100 degrees. I was outside all day with my phone at max brightness, GPS running, and it was fine—no overheating issues. However, a couple of hours later on an airplane, with my phone in Airplane Mode, just playing music via Bluetooth with Spotify and scrolling through Instagram, the phone got really hot and drained about 5% of battery in just five minutes. Then it was fine again, and there seems to be no rhyme or reason why this happens randomly. 
+
+My best theory is that the A17 Pro is a more powerful chip and can drain power more quickly in high-intensity settings like gaming. There have also been mentions of iOS 17 bugs; we're currently on version 17.0.2, and I suspect more updates are coming for both iOS and various apps. By the end of this, I feel like the battery life will basically even out to be the same as last year, which is a boring answer but that’s what I expect.
+
+Now, we can discuss what "Pro" actually means in a smartphone context. With iPhones, this has primarily meant cameras, and there is a lot going on with these cameras, both in hardware and software. 
+
+You’re looking at a new, larger 48-megapixel main camera, an improved ultra-wide with closer macro capability, and a whole telephoto situation we’ll dig into shortly. Software-wise, there’s a new image processing pipeline happening.
+
+You know how most smartphones (many today have 48-megapixel cameras) bin down to 12-megapixel shots? Previous iPhones did this too. The new model, for those who may have missed it, is by default producing 24-megapixel images instead of 12, with just about one and a half times the file size.
+
+This new process is actually the same across the board for the iPhone 15s and 15 Pros. It takes a full 48-megapixel sensor shot for detail information and a full 12-megapixel shot, then uses neural net technology to combine them and generate a detailed hybrid 24-megapixel image. It’s very complicated and clever, and the end result is slightly better.
+
+If you look at photos shot on this camera, they’re classic iPhone photos—they look pretty great with excellent dynamic range and sharpness. I still prefer and often shoot in the rich contrast profile, but mostly, the iPhone remains one of the best cameras for just pointing and shooting in full-auto mode, producing results that look good even if they don’t exactly resemble real life. It uses classic relighting, tone mapping, and everything we’re used to from smart HDR.
+
+The improved Macro Mode is also impressive. With the natural fall-off from the primary camera without needing Portrait Mode, you can achieve blurred backgrounds, which is awesome. Autofocus is incredibly fast, especially when there’s a face in the scene, making it a camera that loves detecting faces.
+
+The benefits of the larger sensor also show at night, with longer handheld captures. While it’s not magic, it’s simply physics. Does the 24-megapixel image make a difference over 12 megapixels? Well, zoomed out, not really; they look almost identical. It's not until you zoom all the way in that you begin to notice a difference in detail and contrast. 
+
+The 15 Pro is definitely more contrasty and sharp when pixel peeping at full zoom compared to last year. Of course, once you get past 2X zoom, it returns to producing standard 12-megapixel images.
+
+Overall, it’s a small, incremental improvement. If you look at the Pro phones, they’ve set a couple of presets from the 1X lens: there’s a 24mm all the way zoomed out, a little tighter at 28mm, and a 35mm that have their own dedicated image processing pipelines for maximizing detail in these essentially super-res, zoom focal lengths you can digitally zoom between. 
+
+I wouldn’t exactly say it has extra lenses, but there’s a slight difference in zoom functionality year over year that you can notice. The most Pro aspect of these new phones, though, is indisputably their video capabilities. 
+
+The iPhone's video capabilities have been far ahead of the rest of the smartphone competition. It doesn’t even shoot 8K, which it’s capable of doing with the 48-megapixels; I wish they would incorporate that feature. However, even just at 4K 30 in full auto mode, the detail, autofocus, slight depth, dynamic range, and stabilization are world-class.
+
+If you'd like to see test footage, the entire Rivian delivery van review I did on the Auto Focus channel was shot using the iPhone 15 Pro, audio included. I’ll drop the link below if you want to check it out.
+
+This year, you can also shoot in Log, a feature typically reserved for professional cameras. Unfortunately, it's buried several layers deep in the Settings app, which isn’t very Pro. However, if you find the time to switch to Log mode, it allows the iPhone to capture way more information with that flat look, dynamic range, and more. You don’t have to deal with Apple’s typical processing techniques. Apple has its own transformation LUT for converting it to SDR or HDR, or you can fully grade it yourself, which can yield impressive results.
+
+I do want to point out one issue, though: the haloing from point light sources. This is one of the most challenging optics issues; I understand why they haven't fully fixed it yet, but it’s notable. Anytime there are point lights, especially in video, the effect can be pretty dramatic, and it seems to be the worst on the iPhone compared to other phones. If that's the most significant downside to iPhone video, then I’ll gladly accept it.
+
+For the iPhone 15 Pro Max, the larger model is the only one that comes equipped with the new 5X telephoto lens. I’d bet that this feature will eventually make its way down to the smaller 16 Pro next year, but for now, it’s exclusive to the larger model. This lens allows for max zoom from 15X to 25X, which can be nice for those who frequently take zoomed photos and videos. However, it’s important to note that not many people should buy this phone solely for this lens, as it requires a larger device and could potentially result in worse 4X photos before you hit 5X.
+
+Its capabilities don’t quite measure up to some longer telephoto periscope lenses; for example, Samsung has a 10X optical lens that outperforms this one in terms of reach. Apple’s main advantage really lies in stabilization. They’ve finally added a zoom preview window in the viewfinder and optimized stabilization, allowing you to zoom all the way in without jitter.
+
+I’m going to borrow a line from Mr. Mobile, who summed it up well: much of the difference between these cameras—the iPhone, the last one, and others like Samsung and Pixel—is predominantly software-based, making comparisons less straightforward. If you want a definitive verdict on the iPhone 15 Pro side by side with Samsung, Pixel, or Oppo, you’ll need to factor in personal taste and experience. 
+
+This is especially true when it comes to usability—how you shoot photos and videos. I also want to mention the RAW Max button; it’s amusing. This button captures full-res 48-megapixel Pro RAW photos, but it just says RAW Max. To take a 48-megapixel JPEG, you have to dive back into Settings, switch it, and return, at which point the button changes to JPEG Max—also pretty funny.
+
+Finally, this new Pro phone has an Action Button—only for this model because only 'pros' need customization. I kind of love the Action Button, but I realize it’s either overrated or underrated depending on who you are. On one hand, it’s a customizable button—who saw that coming? It replaces the least-used button from previous iPhones since your phone should always be on mute anyway.
+
+You can map this Action Button to almost anything you want: keep it as a mute switch, and it has the same strong haptics to tell if it’s muted or unmuted in your pocket. There are also many other cool functions you can choose from, like launching your camera or voice recorder, or just any app via Siri Shortcut. Your favorite YouTube channel is probably making a tutorial on the best Siri Shortcuts to map to the Action Button.
+
+On the other hand, I feel many people will play with it for a few days, then forget about it. I think this is mainly due to its placement; it’s not very reachable. On the Pro Max, it’s way up in the corner above the volume buttons. It could be a good shutter button for the camera, but the volume buttons already do that, so I suspect many will simply reset it to mute and forget about it after a few weeks.
+
+But I guess that’s fine too; it’s one of those things you’ll just figure out how you’d use it after some time. This is similar to my experience with the Eight Sleep mattress cover. I’ve been using it for about three months now. 
+
+This pod cover goes on your mattress, warming or cooling you to help with sleep. Initially, I was a skeptic, but now I notice I have a harder time sleeping in hotel beds. I sleep so much better on the Eight Sleep bed because it cools down to help you fall asleep faster and warms up in the morning to ease you awake. 
+
+Temperature has proven to be a crucial factor in sleep quality, making it clear to me that better sleep and being able to depend on a good night’s rest is something I wouldn’t trade for anything. It took some time to realize that. Plus, there’s an app that displays all my sleep stats every night, letting me adjust the autocontrol if needed. If your partner sleeps on the other side of the bed, they can adjust their side’s temperature from the app too—it’s fantastic.
+
+I’ll leave a link below. Since they’re a great sponsor, they’re giving you guys $200 off the pod cover if you use code "MKBHD" at eightsleep.com/mkbhd. 
+
+But anyway, what’s the verdict on the new Pro iPhone of 2023? I often have conversations with friends that require me to condense everything into one sentence, and the truth is: it’s essentially the same phone as last year but with USB, a somewhat faster chip, a slightly brighter screen, thinner bezels, and, I don’t know, improved cameras—that’s kind of it. 
+
+So you have to decide how much of that matters to you. Is any of it important to you? Honestly, USB might be the most significant thing about the new iPhone, despite what Apple hoped. 
+
+Welcome to the club, my friends. Thanks for watching and catch you guys in the next one. Peace.

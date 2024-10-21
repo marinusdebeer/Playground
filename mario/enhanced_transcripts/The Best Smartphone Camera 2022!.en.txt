@@ -1,0 +1,73 @@
+All right, so we wanted to answer the question once and for all: What is the best smartphone camera out right now? Maybe you think it’s the iPhone, or maybe it's a Samsung flagship, or perhaps it’s one of those Pixels. 
+
+In years past, we’ve conducted blind voting using social media polls, which was really fun and yielded some surprising results. However, the results still depended on the match-ups I set up at the very beginning. I specifically placed the iPhone and the Pixel on opposite sides of the bracket, expecting the best ones to hopefully meet in the finals, but they never did. Plus, there was always a bit of human input involved; it’s possible I could have accidentally placed the second best phone against the best phone in the first round and had it eliminated.
+
+So this time, we’re going to solve that once and for all. Welcome to the "Blind Smartphone Camera Test: Scientific Edition." 
+
+Here’s the idea: We took 16 smartphones that came out this year. These are the flagship models—the expected heavy hitters—but we also included some mid-range options and even a few surprises. Then, we took the exact same photo with each one of them. This was harder than it sounds because you have to hold perfectly still for several minutes straight. But we did this for three different types of photos: a standard daylight photo, a low-light photo, and a portrait mode snap. 
+
+Next, we took all these images, compressed them, stripped them of their EXIF data, and assigned each one a letter. For maximum statistical confidence, we would ideally ask you all to vote on every possible matchup at least once—A versus B, then A versus C, then A versus D, and so forth. But that’s clearly a bit much; we want to be scientific, but asking you to vote over 100 times for each category was too tall an order.
+
+Instead, we got a little clever with it and built a power ranking system—specifically, an ELO rating algorithm, which you might have heard of before. They use this in chess, table tennis, and essentially in any video game where match-ups are encountered, and a ranking needs to be formed. This time, we used it to create a power ranking for smartphone cameras. 
+
+Basically, when you complete enough sanctioned match-ups, you receive a rating based on the ratings of your match-ups. You, along with everyone else, see comparisons at random, and we have a little progress bar along the bottom. You vote for the better photo each time, and after a while, we have enough information to determine your individual, customized, statistically significant winner.
+
+We built this entire site with the ELO rating system in place, loaded all the photos, and then tossed it into our Discord to have some of you beta test it before anyone else knew it existed. Shout out to Discord for sponsoring this portion of today’s video. With the launch of their new Server Subscription feature, we opened an exclusive premium area on our Discord server where members can ask the team, including me, general questions about tech or any of the content. You can also get exclusive insider info that you won’t find anywhere else, like this test. If you’re a creator looking for more information on this particular feature, definitely check out the link below.
+
+So anyway, I dropped the site link in there, and many of you got in quickly and voted. We received the data back in a text format. It looked a bit messy at first, but it was actually quite helpful and manageable. It summarized how many times each matchup was voted on and the votes for each side. Since I had a lot of assistance in building this site and loading the pictures, I didn’t know which phones were involved, allowing me to blind test myself. 
+
+It was every bit as engaging as I expected. While I could tell some of the phones that I suspected took certain pictures, for the most part, I simply glanced at the two side-by-side photos, and if I was seeing them on Instagram or Twitter, I just picked the better one without doing any pixel peeping or thorough inspection. 
+
+By the end of my testing, I found that my standard picture winner was G, my low-light winner was K, and my portrait mode winner was also K. Everything seemed to be working, and the data processing was on point. The only thing left to do was send it live, and here we go. 
+
+As soon as it went public, you guys jumped right on it. We peaked at around 35,000 votes per minute, totaling more than 21 million votes in about three days. There were essentially zero bad actors, and now we have a wealth of data. Many of you may have participated in this, meaning you’ve cast your votes and now have your letter. 
+
+Now it’s time to reveal all the smartphones involved in this test. Here you go from A through P. That’s all 16 phones listed. Therefore, the winner of the standard photo when I blind-tested myself was the Pixel 6A, while the winner for portrait mode and night mode was the Pixel 7. 
+
+But what were the overall winners according to statistics, over the 20-plus million votes? I don’t know if there’s any other collection of data like this anywhere on the internet, so this is super cool to explore. 
+
+So let’s dig into it. First of all, the overall winner—with the highest average ELO rating across all three categories—was the Pixel 6A, declared the people’s choice camera of 2022. In third place is the Asus Zenfone 9, and in second place is the Pixel 7 Pro. 
+
+However, there’s a lot of fascinating information to unpack. Performing well in one category did not guarantee success in the others. For example, the Pixel 7 Pro placed second, fourth, and first across the three categories, while the Pixel 6A came in third, second, and second. Meanwhile, the Oppo Find X5 Pro took first in standard mode, third in low light, and fifteenth in portrait mode. 
+
+This suggests that you could argue for the importance of the standard photo over low-light or portrait mode photos. If we assume the standard photo is approximately three times as important to most people, then the Oppo Find X5 Pro could be considered the overall winner, which is interesting. 
+
+In case you’re curious about the iPhone’s performance, the iPhone 14 Pro ranked sixth, tenth, and fifth across the categories. 
+
+Now, let’s take a look at the biggest losers—the phones that performed the worst in this test. The top contenders for “biggest losers” are the Sony Xperia 1 IV and the Moto Edge 30 Ultra. These phones had poor results overall. The Sony, despite its world-class sensor and advanced apps, went into full auto mode, like the rest of the phones, and failed to produce good pictures, ending up with the lowest average ELO rating across all three categories. 
+
+On the other hand, the Moto Edge 30 Ultra recorded the most overall losses. It produced some very unusual photos, including an extremely dark standard photo and an extraordinarily over-sharpened low-light picture, becoming the only phone to receive 2 million total votes against it.
+
+Now here’s an interesting thought: votes per dollar. If we sort by value for money, which phones performed the best relative to their launch price? The winners in this category are the Pixel 6A—no surprise here, with over 4,200 votes per dollar—and the Realme 10 Pro+, which is also impressive, being the only other phone over 4,000 votes per dollar at a price of $379. 
+
+The significant losers in this regard are again the $900 Moto Edge and the $1,600 Sony Xperia 1 IV. 
+
+I also had to dive into the text files to find the biggest discrepancy in match-ups between two phones in any category. The most significant difference was in portrait mode, where the Pixel 7 Pro faced off against the Sony Xperia 1 IV, with the Pixel winning 98% of the votes. To the 1,523 of you who voted for the Sony here, I’m not sure what you saw that the rest of us didn’t. 
+
+While it’s enlightening to see which phones received the most votes, it’s equally interesting to discover why certain phones and photos garnered more votes. The best way to do that was to categorize and order all the photos by the number of votes they received. This process revealed some intriguing patterns. For example, during our previous match-ups, we established that in cases of A versus B, if one photo appears significantly brighter than the other, it’s likely to win. But how far can brightness go? Is there such a thing as “too bright”? 
+
+It turns out, yes. The standard mode photos arranged from highest to lowest votes showed us that the three darkest photos were, without exception, the biggest losers. They lost substantial shadow detail in my hair and the comfortable sweater I’m wearing from shop.mkbhd.com. However, right above those were the three most overexposed photos, indicating a consistent order: great photos, then too bright, then too dark. This suggests that good exposure generally prevails, and if there is a misjudgment, people would prefer a photo that’s too bright rather than too dark.
+
+When reviewing low-light photos, you can see a similar pattern. Most neutral and correctly exposed photos, when sharp, generally won. The Vivo X80 Pro, Pixel 6A, Oppo Find X5 Pro, and Pixel 7 Pro all had strong performances. Then came two bright photos, which were preferred over the two dark ones. We also observed some wild anomalies in these low-light photos—the Vivo clearly stood out as the low-light champion. The S22 Ultra interestingly came in fifth despite completely missing focus on my face and instead focusing on the background. The iPhone 14 Pro, despite its excessive HDR processing that yielded a somewhat green "zombie-like" appearance, managed to grab 11th place. 
+
+As noted earlier, the Moto Edge Plus produced perhaps the most over-sharpened photo ever recorded, and in last place was the iPhone SE, the only phone without a night mode. It's unfortunate because it has OIS, a decent sensor, and a new processor; Apple simply held back premium features to protect higher-end models.
+
+Lastly, in portrait mode, the most variety emerged. In addition to factors such as sharpness and color exposure, we also judged cutout quality and the appearance of artificially blurred backgrounds. Each phone used slightly different focal lengths for their portrait mode by default; some used a 2x, others 2.5, some 3x, and even a couple used 1x. Ultimately, the Pixel 7 Pro dominated portrait mode as the clear winner, with great cutout quality, exposure, colors, and a nice soft background. The Pixel 6A came in second, while the Realme 10 Pro+ ranked third.
+
+Above them was what I believe to be the best cutout of the competition, from the Galaxy S22 Ultra, which seems nearly perfect in edge detection. This allowed it to rank fourth instead of seventh. I was curious whether there would be a correlation between the number of votes a phone received and whether a telephoto focal length was used, as this might yield a more natural blurred background at 3x. However, when we lined everything up, there was almost no correlation, which was interesting.
+
+Interestingly, the three worst photos that received the fewest votes were also the brightest ones, confirming that you can, in fact, overdo brightness. 
+
+So, in summary, the lessons learned from all the data are:
+
+1. Excelling in one category doesn’t guarantee success in the others.
+2. The Pixel 6A and the Realme 10 Pro+ are the best value options for smartphone cameras from the phones launched in 2022.
+3. The Pixel 6A being the overall winner aligns with its success in our previous bracket-style social media polling blind test, which was won by the Pixel 5A.
+
+In conclusion, brighter photos generally win, but it is indeed possible to go too bright. This mission was a success, and I’d like to congratulate the Pixel 6A as the People’s Choice Award winner! 
+
+We’ll keep the voting website up until the end of January, so you can still blind test yourself until January 31st at vote.mkbhd.com. I think we can now replace the letters with the actual names of the phones now that they’ve been revealed. However, we don’t want to bear the cost of processing all this data forever, so that’s your deadline.
+
+Thanks to everyone on Discord who helped beta test this project, to Zach for assisting in building the site and implementing the ELO-style power ranking system, and thanks to you for watching. Catch you guys in the next one. Peace! 
+
+(soft music)

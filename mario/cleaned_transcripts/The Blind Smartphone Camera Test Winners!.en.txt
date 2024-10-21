@@ -1,0 +1,461 @@
+(upbeat music)
+(logo whirring)
+- All right, y&amp;#39;all have
+waited patiently for this.
+Once again, this year,
+we&amp;#39;ve run our blind
+smartphone camera test,
+scientific style.
+We always think we know
+what the absolute best
+smartphone cameras are,
+but do we actually know?
+Like what if we wanted an objective answer
+straight from real-world data?
+Literally every time I review a phone,
+there&amp;#39;s some people in the
+comments section saying,
+&amp;quot;Oh, iPhone photos are
+the only good ones,&amp;quot;
+or, &amp;quot;I only like Pixel photos,&amp;quot;
+or, &amp;quot;Samsung is the only one
+who does good portrait mode.&amp;quot;
+But what if we put that to the test?
+What if we took a bunch
+of the best smartphone
+cameras on the planet
+and took them out into the real world
+and took the exact same photo
+with each and every one of them,
+and then strip them of all their labels,
+and then had you, the public,
+vote on which one&amp;#39;s
+photos you like the best?
+That should reveal the best
+actual smartphone camera.
+So that&amp;#39;s exactly what we did.
+This year, we took these 20 smartphones,
+updated all of their software,
+charged &amp;#39;em all up,
+got their batteries to 100%.
+Then we went out and took
+the same three photos
+with each one.
+One daytime photo,
+one low-light photo,
+and one portrait-mode photo.
+Yes, it is surprisingly
+hard to stay perfectly still
+for 20 identical photos
+to be taken in a row,
+but I did it for you.
+Then we had to go in and
+import all the photos
+from every single smartphone camera,
+harder than you think,
+strip them of all their EXIF data,
+and then upload them to
+a site that we&amp;#39;ve built
+that lets us put them side by side
+for you guys to vote on head-to-head
+millions and millions
+and millions of times,
+which you did.
+That should give us
+a statistically significant winner,
+and loser, we&amp;#39;ll get to that.
+And the results this year
+were kind of interesting, a little bit.
+I almost didn&amp;#39;t make this video,
+but I can tell people have been waiting,
+the competitive tension is high,
+and the actual results
+might be a little
+surprising to some of you.
+So let&amp;#39;s get into it.
+So the data our site spits out
+all comes in these text files
+with matchup ratings
+for every single
+combination of smartphones.
+We actually had them coded
+by letters of the alphabet you can see,
+A through T.
+But that little number,
+that one right here is the most important.
+That is the Elo rating.
+You know, the system
+that ranks chess players,
+or tennis players, basically
+anything head-to-head.
+With enough matchup information,
+we can sort of sort through
+all of these letters
+based on who they beat
+and who they lose to,
+and create a power rankings,
+and that will give us our winners.
+So the question you
+probably all wanna know,
+who were the winners?
+And so we&amp;#39;ll go category by category
+because, like I said, there
+were three different scenarios,
+daytime, low light and portrait mode,
+so let&amp;#39;s go one by one.
+So daytime, for the
+regular daylight photos,
+we kinda had it set up
+with just me sitting in
+front of this window here,
+but there&amp;#39;s a lot to this photo.
+The strongest light is
+from inside the room,
+but then the window light
+is actually a good test of dynamic range.
+And then there&amp;#39;s also a variety of colors,
+there&amp;#39;s my skin tone,
+there&amp;#39;s the orange chair
+next to the blue pillow,
+a few other things.
+This is on purpose,
+there&amp;#39;s no individual variable
+that can dominate this test.
+So every single phone,
+we try to frame the exact same way,
+from the exact same spot,
+holding one of &amp;#39;em up as a reference
+so we can get as close as possible.
+And everything is fully auto,
+we just open the camera app,
+make sure the lens is clean
+and just hit the shutter button.
+We don&amp;#39;t even tap to focus,
+just point and shoot.
+It takes about six minutes
+to go through all 20 phones.
+Like I said, it&amp;#39;s kinda hard to sit still
+for six minutes straight, but we did it.
+So for this regular
+daylight photo situation,
+the winner with the highest
+Elo rating is the Pixel 7A.
+That&amp;#39;s pretty impressive.
+So this is the photo that
+you guys, for the most part,
+voted as the winner in
+most of its matchups.
+Pretty neutral photo, to be honest,
+not too bright, not too dark,
+pretty excellent dynamic range.
+And it&amp;#39;s also not a fluke
+because the second-highest Elo rating
+came from the Pixel Fold.
+So the Fold took a very similar photo.
+And then finishing up on the podium
+was the OnePlus Open,
+one of those high-end folding phones.
+So I will say, my personal favorite photo
+and the one that actually won for me
+when I blind tested myself
+was this one.
+This is the fourth-highest Elo rating,
+this is the OnePlus 11.
+It&amp;#39;s definitely a little
+on the contrastier side,
+but a little more confident
+with nailing the exposure
+and having dynamic range.
+Nevertheless, it&amp;#39;s
+definitely interesting here.
+A lot of people pointed
+out that the sun behind me
+looked a little different in each photo.
+It might&amp;#39;ve been setting,
+so the background was a little different,
+which is a little bit true,
+but it wasn&amp;#39;t late enough in the day
+for that to actually affect the photo.
+I think the fact that the 7A
+is the only one with
+this little lens flare
+is actually just a coincidence.
+And then fun fact, in dead last
+with the absolute bottom-lowest Elo rating
+for this daytime photo
+is the iPhone 15 Pro.
+Not a terrible photo.
+I mean, you can&amp;#39;t really
+get a horrible photo
+in normal-looking lighting
+for most of these smartphones,
+but when you put it up against the others,
+it&amp;#39;s mostly just the darkest one.
+And so when you put it up side-by-side
+against these much brighter photos,
+people just picked the brighter one
+almost every single time.
+Funnily enough, though,
+you can absolutely overexpose
+for this competition,
+as the second-lowest Elo rating
+belongs to the Galaxy S23 Ultra
+for producing this weirdly
+overexposed masterpiece.
+So here are all the photos side-by-side
+with their Elo ratings.
+Feel free to pause it
+if you&amp;#39;d like to make
+some more observations,
+but let&amp;#39;s move on to the nighttime photos.
+So low light, low light is
+a much more challenging shot
+for a smartphone camera,
+especially with a tiny
+sensor and tiny optics
+trying to take in as
+much light as possible.
+But computational photography
+has come a long way,
+and even in this pretty dark rooftop
+where the only light source
+was like 40 feet away from me,
+these cameras still
+managed to do a good job.
+And if you&amp;#39;re ready for the plot twist,
+the highest overall Elo rating
+for the low-light photo
+comes from, dead last
+from the daylight photo,
+it is again the iPhone 15 Pro,
+with another totally reasonable photo.
+Now, following it very
+closely in second place
+was the Pixel 8 Pro.
+And actually the Pixel 7A coming in third.
+And to be honest, I fully
+agree with all of these.
+It&amp;#39;s starting to get ridiculous
+how much some of the
+other smartphone cameras
+started to pump up the light,
+like literally the second
+you get outside the top four,
+you get straight into bad HDR territory.
+Like this is the fifth-place
+photo from S23 Ultra,
+which is definitely too bright.
+And also, you can see this
+little HDR halo-y effect
+starting to show up around my head.
+And then if you scroll all the way down
+to the Oppo Find X6 Pro,
+just, my God, what happened?
+Like these cameras are going nuts.
+It looks like in this one
+they literally painted sloppily over me
+and just dragged up the exposure.
+Matter of fact.
+(pencil scratching)
+Yep, see?
+That&amp;#39;s exactly what it looks like.
+The Zenfone did this, too,
+along with a few others.
+And I honestly think the OnePlus Open
+not only made me brighter,
+but then it also identified the sky
+and made the sky darker,
+which just then starts to look ridiculous.
+I mean, real life looked
+nothing like this.
+So here are all the nighttime photos,
+and their Elo ratings.
+Pause it if you need it.
+And now we can move to the
+last-but-not-least category,
+portrait mode.
+So portrait mode kind of turns
+out to be the hardest test,
+like this to run
+because they all kinda do portrait mode
+a little bit differently.
+If you just open the camera app
+and switch to portrait mode,
+some of &amp;#39;em do 2X,
+some of &amp;#39;em are 3X,
+some of &amp;#39;em say 1X,
+but they&amp;#39;re actually like 1.5X,
+it&amp;#39;s kinda weird.
+So we tried to just keep
+it simple for this test
+and just open the camera app,
+switch to portrait mode,
+and then move our feet forward or backward
+to try to match the focal length
+with all of these shots.
+It kinda worked,
+and they all kinda also
+have different bokeh levels,
+some of &amp;#39;em are adjustable,
+some of &amp;#39;em aren&amp;#39;t.
+But like I said, we&amp;#39;re just
+going with the default,
+the point and shoot that
+most people will get
+when they do it.
+And the portrait-mode,
+point-and-shoot winner
+with the highest Elo rating
+is the Pixel 8 Pro.
+This was followed pretty
+closely by Samsung Z Fold 5,
+which I actually think
+had a better cutout.
+And then the third-highest Elo here
+was the iPhone 15 Pro,
+which I think had the
+most natural-looking blur.
+But basically all of
+these podium finishers
+have relatively subtle portrait modes,
+nothing too dramatic,
+and then pretty good
+detail and overall balance
+in just the rest of the photo.
+I say this because the losers here
+in this particular category
+were nothing like this.
+(laughing) They were some of
+the wonkiest, weirdest photos
+in the entire competition.
+And the loser with the
+absolute lowest Elo rating
+for this category,
+and actually in any category,
+was the Sony Xperia 1 V
+with this photo,
+with that, that&amp;#39;s the photo?
+Like, okay, this one looks like a mistake.
+We all actually thought it
+was a mistake as we shot it,
+like, &amp;quot;This can&amp;#39;t
+possibly be right, right?&amp;quot;
+We clean the lens, we take it again,
+it does it again.
+And then it did it again and again.
+So I mean, I guess, for whatever reason,
+this $1,200 Android flagship phone
+in its auto portrait mode
+just could not handle this lighting,
+it had some weird issues.
+Anyway, here&amp;#39;s all of
+the portrait-mode photos
+and their Elo ratings.
+You&amp;#39;re welcome.
+I&amp;#39;d like to give out some awards.
+Now that we have all of our matchup data
+and all of our voting and
+all of our Elo ratings
+from across every single person
+for what you guys voted for
+for more than 20 million total votes,
+there&amp;#39;s some pretty
+interesting stuff here.
+So we have our winners and losers
+in each of the three
+categories, which is cool,
+but if you average it all together,
+we have the highest
+overall average Elo rating.
+We&amp;#39;ll call this one the People&amp;#39;s Champ.
+And with the highest average of 1,660,
+that&amp;#39;s pretty competitive.
+It was the Pixel 7A.
+So this one won the daytime photo,
+as you probably remember,
+but then it also came in third
+place in the nighttime photo
+and fourth place of all 20
+in the portrait-mode photo.
+So that&amp;#39;s pretty strong.
+But here&amp;#39;s the kicker,
+the second-highest average Elo rating
+was the Pixel 8 Pro,
+and the third-highest average Elo rating,
+again, this is your votes,
+is the Pixel Fold.
+So Pixel, Pixel, Pixel,
+it&amp;#39;s a perfect Pixel podium.
+So here you can see the whole list
+from top to bottom.
+The three Pixels at the top,
+surprisingly in reverse price order.
+(laughing) And then bringing
+up the rear for total Elo
+is the Sony Xperia 1 V
+and the Xiaomi 13 Ultra.
+Then I also had to bring back
+the Bang for the Buck Award,
+which I did this last year also,
+it&amp;#39;s basically just
+most votes from you guys
+divided by MSRP at launch.
+So most votes per dollar, basically.
+And so your winner, again,
+is going to be the Pixel 7A.
+This was a phone that launched
+right around 500 bucks.
+It did incredible on the tests.
+But in second place in votes per dollar
+is the Nothing Phone 2.
+So a pretty good-performing phone,
+and it actually launched
+like upper mid-range price.
+So this is a good phone
+bang for the buck-wise.
+And then in 3A, 3B,
+right next to each other
+underneath these two,
+you have the OnePlus
+11 and the Zenfone 10.
+And then impressively, actually the Sony
+is not dead last in this category,
+it is expensive and it
+did perform horribly,
+but not worse bang for the buck-wise
+than a super-expensive folding phone,
+the Z Flip5 overall average
+did worse for the dollar,
+the more you know.
+So what did we learn with all this?
+Well, I&amp;#39;ll leave you with this.
+First of all, the Pixels killed it,
+they had the one-two-three finish,
+they&amp;#39;re great bang for the buck.
+It was weird that they&amp;#39;re
+inverse price order, but fine.
+But also there&amp;#39;s a lot more
+to a smartphone camera,
+of course, than just a
+sitting-down, staged photo
+of a person.
+We learned a little bit about
+how it shoots my skin tones.
+There&amp;#39;s a whole bunch of other
+things you might care about,
+from auto-focus speed, to the UI,
+to the actual file format,
+how editable it is,
+to videos, like there&amp;#39;s
+a bunch more to it.
+But at the end of the day,
+I think we were still pretty not shocked
+by the slightly brighter photos
+beating the slightly less bright photos.
+And maybe we&amp;#39;ll run it
+back again next year
+and learn something new.
+Either way, thanks for watching this one.
+Catch you guys next time.
+Peace.
+(upbeat music)
