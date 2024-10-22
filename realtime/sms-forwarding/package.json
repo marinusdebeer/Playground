@@ -9,6 +9,9 @@
     "restart": "npm run stop && npm run start",
     "logs": "tail -f server.log"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
