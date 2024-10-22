@@ -64,7 +64,6 @@ fastify.all('/incoming-call', async (request, reply) => {
   console.log(request.headers.host)
   const twimlResponse = `<?xml version="1.0" encoding="UTF-8"?>
                         <Response>
-                            <Say>${SYSTEM_MESSAGE}</Say>
                             <Connect>
                                 <Stream url="wss://${request.headers.host}/media-stream" />
                             </Connect>
