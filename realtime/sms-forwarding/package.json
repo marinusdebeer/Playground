@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "bash -c 'source ~/.bashrc && nvm exec 20 nohup node index.js > server.log 2>&1 &'",
+    "start": "./start-server.sh",
     "stop": "pkill -f 'node index.js'",
     "restart": "npm run stop && npm run start",
     "logs": "tail -f server.log"
