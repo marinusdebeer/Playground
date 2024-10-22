@@ -4,7 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nohup node index.js > server.log 2>&1 &",
+    "stop": "pkill -f 'node index.js'",
+    "restart": "npm run stop && npm run start",
+    "logs": "tail -f server.log"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +17,11 @@
     "@fastify/formbody": "^8.0.1",
     "dotenv": "^16.4.5",
     "fastify": "^5.0.0",
+    "openai": "^4.68.1",
     "twilio": "^5.3.4"
   }
 }
+git config --global user.name "Marinus"
+git config --global user.email "marinusdebeer@gmail.com"
+ssh-keygen -t ed25519 -C "marinusdebeer@gmail.com" -f ~/.ssh/playground-sms-ec2
+
