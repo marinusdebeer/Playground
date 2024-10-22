@@ -6,10 +6,11 @@ import fastifyFormBody from '@fastify/formbody';
 import fastifyWs from '@fastify/websocket';
 import twilio from 'twilio';
 import OpenAI from "openai";
-const openai = new OpenAI();
-
-// Load environment variables from .env file
 dotenv.config();
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
 // Retrieve the OpenAI API key from environment variables. You must have OpenAI Realtime API access.
 const { OPENAI_API_KEY, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_NUMBER } = process.env;
 if (!OPENAI_API_KEY || !TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN) {
@@ -295,10 +296,10 @@ fastify.register(async (fastify) => {
   });
 });
 
-fastify.listen({ port: PORT }, (err) => {
+fastify.listen({ port: 5050, host: '0.0.0.0' }, (err) => {
   if (err) {
-      console.error(err);
-      process.exit(1);
+    console.error(err);
+    process.exit(1);
   }
-  console.log(`Server is listening on port ${PORT}`);
+  console.log(`Server running on port 5050`);
 });

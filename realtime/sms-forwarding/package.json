@@ -1,16 +1,19 @@
 {
-  "name": "sms",
+  "name": "sms-forwarding",
   "version": "1.0.0",
-  "main": "text.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@fastify/formbody": "^8.0.1",
     "dotenv": "^16.4.5",
-    "express": "^4.21.1",
+    "fastify": "^5.0.0",
     "twilio": "^5.3.4"
   }
 }
