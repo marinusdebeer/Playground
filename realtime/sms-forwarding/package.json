@@ -21,7 +21,4 @@
     "twilio": "^5.3.4"
   }
 }
-git config --global user.name "Marinus"
-git config --global user.email "marinusdebeer@gmail.com"
-ssh-keygen -t ed25519 -C "marinusdebeer@gmail.com" -f ~/.ssh/playground-sms-ec2
 
