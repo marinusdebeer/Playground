@@ -7,7 +7,7 @@ import fastifyWs from '@fastify/websocket';
 import twilio from 'twilio';
 import OpenAI from "openai";
 dotenv.config();
-console.log("OPENAI_API_KEY", process.env.OPENAI_API_KEY)
+console.log("env", process.env)
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
