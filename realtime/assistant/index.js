@@ -47,11 +47,12 @@ fastify.get('/', async (request, reply) => {
 fastify.all('/incoming-call', async (request, reply) => {
   const twimlResponse = `<?xml version="1.0" encoding="UTF-8"?>
                           <Response>
-                              <Say>Hi, you are connected to Zen Zone Cleaning Services. How can I help you today?</Say>
-                              <Connect>
-                                  <Stream url="wss://${request.headers.host}/media-stream" />
-                              </Connect>
-                          </Response>`;
+                            <Say>Hi, you are connected to Zen Zone Cleaning Services. How can I help you today?</Say>
+                            <Start>
+                                <Stream url="wss://${request.headers.host}/media-stream" />
+                            </Start>
+                            <Pause length="60"/>
+                        </Response>`;
   reply.type('text/xml').send(twimlResponse);
 });
 
