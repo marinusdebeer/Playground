@@ -9,6 +9,7 @@ dotenv.config();
 
 // Retrieve the OpenAI API key from environment variables.
 const { OPENAI_API_KEY } = process.env;
+console.log('OpenAI API Key:', OPENAI_API);
 if (!OPENAI_API_KEY) {
   console.error('Missing OpenAI API key. Please set it in the .env file.');
   process.exit(1);
@@ -47,10 +48,10 @@ fastify.get('/', async (request, reply) => {
 fastify.all('/incoming-call', async (request, reply) => {
   const twimlResponse = `<?xml version="1.0" encoding="UTF-8"?>
                           <Response>
-                            <Say>Hi, you are connected to Zen Zone Cleaning Services. How can I help you today?</Say>
-                            <Start>
+                            <Say>Hi, how can I help you today?</Say>
+                            <Connect>
                                 <Stream url="wss://${request.headers.host}/media-stream" />
-                            </Start>
+                            </Connect>
                             <Pause length="60"/>
                         </Response>`;
   reply.type('text/xml').send(twimlResponse);
