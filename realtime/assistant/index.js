@@ -59,6 +59,7 @@ fastify.all('/incoming-call', async (request, reply) => {
 
 // WebSocket route for media-stream
 fastify.register(async (fastify) => {
+  console.log('WebSocket route registered');
   fastify.get('/media-stream', { websocket: true }, (connection, req) => {
     console.log('Client connected');
     fs.appendFile('response.json', "\nNew call", (err) => {
