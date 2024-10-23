@@ -66,7 +66,7 @@ fastify.register(async (fastify) => {
       if (err) console.error('Error appending to response.json:', err);
     });
 
-    const openAiWs = new WebSocket('wss://api.openai.com/v1/realtime?model=gpt-4o-realtime-preview-2024-10-01', {
+    const openAiWs = new WebSocket('ws://api.openai.com/v1/realtime?model=gpt-4o-realtime-preview-2024-10-01', {
       headers: {
         "Authorization": `Bearer ${OPENAI_API_KEY}`,
         "OpenAI-Beta": "realtime=v1"
