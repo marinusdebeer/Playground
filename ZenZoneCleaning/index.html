@@ -25,7 +25,7 @@
     .header {
       width: 100%;
       background-color: #ffffff;
-      padding: 1rem 2rem;
+      padding: 0.8rem 2rem;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       position: fixed;
       top: 0;
@@ -43,8 +43,12 @@
 
     .header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: #d35400;
+      white-space: nowrap; /* Prevent wrapping */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 60%; /* Adjust as needed */
     }
 
     /* Main Container Styling */
@@ -64,7 +68,7 @@
     /* Gift Header Styling */
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: 1.8rem; /* Adjusted for better fit */
       color: #d35400;
       margin-bottom: 1rem;
       display: flex;
@@ -74,8 +78,8 @@
     }
     h1::before, h1::after {
       content: "🎁";
-      margin: 0 0.5rem;
-      font-size: 1.5rem;
+      margin: 0 0.3rem;
+      font-size: 1.2rem;
     }
 
     /* Personalized Details Styling */
@@ -114,7 +118,7 @@
 
     /* Gift Details */
     .gift-details {
-      font-size: 1.8rem; /* Increased size for prominence */
+      font-size: 2rem; /* Increased size for prominence */
       color: #16a085;
       font-weight: 700; /* Made bolder */
       margin-top: 0.5rem;
@@ -188,10 +192,10 @@
         padding: 2rem 1.5rem;
       }
       h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
       .gift-details {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
       #displayCode {
         font-size: 1.8rem;
@@ -200,14 +204,18 @@
         font-size: 1rem;
         padding: 0.7rem 1.5rem;
       }
+      .header h2 {
+        font-size: 1.1rem;
+        max-width: 70%;
+      }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
       .gift-details {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
       }
       #displayCode {
         font-size: 1.6rem;
@@ -215,6 +223,10 @@
       .button {
         font-size: 0.9rem;
         padding: 0.6rem 1.2rem;
+      }
+      .header h2 {
+        font-size: 1rem;
+        max-width: 80%;
       }
     }
 
@@ -239,7 +251,7 @@
     <!-- Optional: Company Logo (Removed since it's now in the header) -->
     <!-- <img src="moose_logo.png" alt="Zen Zone Cleaning Logo" class="logo"> -->
 
-    <h1>🎁 Your Zen Zone Gift Card 🎁</h1>
+    <h1>🎁 Gift Card 🎁</h1>
     
     <p class="details"><span class="highlight">To:</span> <span id="toName">Ernie and Lil</span></p>
     <p class="details"><span class="highlight">From:</span> <span id="fromName">Rick and Simone</span></p>
