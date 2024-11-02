@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zen Zone Cleaning - Your Code</title>
+  <title>Your Zen Zone Cleaning Gift Card</title>
   <style>
     /* Reset and Base Styles */
     * {
@@ -13,59 +13,78 @@
     }
     body, html {
       height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to bottom right, #D4E6F1, #F2F3F4);
+      background: linear-gradient(to bottom right, #FFE5D9, #FFC8A2);
       color: #333;
     }
-    
+
     /* Container Styling */
     .container {
       text-align: center;
       background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
       max-width: 90%;
       width: 400px;
+      animation: fadeIn 1.5s ease;
     }
 
-    /* Header Styling */
+    /* Gift Header Styling */
     h1 {
-      font-size: 1.5rem;
-      color: #2980B9;
+      font-size: 1.8rem;
+      color: #FF6F61;
       margin-bottom: 1rem;
     }
 
     /* Code Display Styling */
     #displayCode {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: #2ECC71;
       font-weight: bold;
-      letter-spacing: 2px;
-      margin-top: 1rem;
+      letter-spacing: 3px;
+      margin-top: 1.5rem;
       display: inline-block;
-      padding: 0.5rem 1rem;
-      border: 2px dashed #2ECC71;
-      border-radius: 8px;
+      padding: 0.7rem 1.5rem;
+      border: 3px dashed #2ECC71;
+      border-radius: 12px;
+      background-color: #F0FFF4;
     }
 
-    /* Subtext Styling */
+    /* Subtext and Message Styling */
     p {
       font-size: 1rem;
       color: #555;
       margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Celebration Styles */
+    .celebration {
+      font-size: 1.2rem;
+      color: #FF6F61;
+      margin-top: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Fade In Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Welcome to Zen Zone Cleaning Services</h1>
-    <p>Your access code is:</p>
+    <h1>🎉 You've Received a Zen Zone Gift! 🎉</h1>
+    <p>Use this exclusive code to book your cleaning service with a special discount:</p>
     <div id="displayCode">No code provided</div>
+    <p class="celebration">Thank you for choosing Zen Zone Cleaning Services!</p>
   </div>
 
   <script>
