@@ -1,23 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zen Zone Cleaning Code Display</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zen Zone Cleaning - Your Code</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom right, #D4E6F1, #F2F3F4);
+      color: #333;
+    }
+    
+    /* Container Styling */
+    .container {
+      text-align: center;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
+      width: 400px;
+    }
+
+    /* Header Styling */
+    h1 {
+      font-size: 1.5rem;
+      color: #2980B9;
+      margin-bottom: 1rem;
+    }
+
+    /* Code Display Styling */
+    #displayCode {
+      font-size: 2.5rem;
+      color: #2ECC71;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 2px dashed #2ECC71;
+      border-radius: 8px;
+    }
+
+    /* Subtext Styling */
+    p {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Zen Zone Cleaning Services</h1>
-    <p>Your Code: <span id="displayCode"></span></p>
 
-    <script>
-        // JavaScript to extract 'code' parameter from URL and display it
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-        if (code) {
-            document.getElementById('displayCode').textContent = code;
-        } else {
-            document.getElementById('displayCode').textContent = 'No code provided';
-        }
-    </script>
+  <div class="container">
+    <h1>Welcome to Zen Zone Cleaning Services</h1>
+    <p>Your access code is:</p>
+    <div id="displayCode">No code provided</div>
+  </div>
+
+  <script>
+    // JavaScript to extract 'code' parameter from URL and display it
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    if (code) {
+      document.getElementById('displayCode').textContent = code;
+    }
+  </script>
 </body>
 </html>
