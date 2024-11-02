@@ -68,7 +68,7 @@
     /* Gift Header Styling */
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem; /* Adjusted for better fit */
+      font-size: 2.5rem; /* Increased size for prominence */
       color: #d35400;
       margin-bottom: 1rem;
       display: flex;
@@ -79,7 +79,7 @@
     h1::before, h1::after {
       content: "🎁";
       margin: 0 0.3rem;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
 
     /* Personalized Details Styling */
@@ -161,8 +161,8 @@
     /* Call-to-Action Button */
     .button {
       margin-top: 2rem;
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
+      padding: 1rem 2.5rem; /* Increased padding for bigger button */
+      font-size: 1.2rem; /* Increased font size */
       color: #fff;
       background-color: #d35400;
       border: none;
@@ -171,6 +171,7 @@
       text-decoration: none;
       display: inline-block;
       transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .button:hover {
       background-color: #e67e22;
@@ -192,7 +193,7 @@
         padding: 2rem 1.5rem;
       }
       h1 {
-        font-size: 1.6rem;
+        font-size: 2.2rem;
       }
       .gift-details {
         font-size: 1.8rem;
@@ -201,8 +202,8 @@
         font-size: 1.8rem;
       }
       .button {
-        font-size: 1rem;
-        padding: 0.7rem 1.5rem;
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
       }
       .header h2 {
         font-size: 1.1rem;
@@ -212,17 +213,17 @@
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 1.4rem;
+        font-size: 2rem;
       }
       .gift-details {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
       #displayCode {
         font-size: 1.6rem;
       }
       .button {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
       }
       .header h2 {
         font-size: 1rem;
@@ -274,7 +275,7 @@
       If you need assistance, feel free to call us at <span class="highlight">705-242-1166</span>.
     </p>
 
-    <a href="https://zenzonecleaning.com" class="button">Book Your Cleaning Now</a>
+    <a href="#" id="bookButton" class="button" target="_blank">Book Your Cleaning Now</a>
 
     <p class="celebration">Thank you for choosing Zen Zone Cleaning Services!</p>
   </div>
@@ -298,6 +299,16 @@
     }
     if (message) {
       document.getElementById('message').textContent = decodeURIComponent(message);
+    }
+
+    // Update the Book Now button with the code parameter
+    const bookButton = document.getElementById('bookButton');
+    if (code) {
+      const bookingURL = `https://zenzonecleaning.com/?code=${encodeURIComponent(code)}`;
+      bookButton.href = bookingURL;
+    } else {
+      // Fallback if no code is present
+      bookButton.href = 'https://zenzonecleaning.com';
     }
   </script>
 </body>
