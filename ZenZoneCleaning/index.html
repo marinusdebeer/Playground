@@ -43,12 +43,13 @@
 
     .header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-size: 1.5rem; /* Increased font size for better visibility */
       color: #d35400;
       white-space: nowrap; /* Prevent wrapping */
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 60%; /* Adjust as needed */
+      margin: 0;
     }
 
     /* Main Container Styling */
@@ -109,19 +110,19 @@
       text-align: center;
     }
 
-    /* Icon for Gift Allotment */
-    .gift-icon {
-      font-size: 3rem;
+    /* Gift Details */
+    .gift-details-hour {
+      font-size: 2.5rem; /* Increased size for prominence */
       color: #16a085;
+      font-weight: bold; /* Made bolder */
       margin-bottom: 0.5rem;
     }
 
-    /* Gift Details */
-    .gift-details {
-      font-size: 2.5rem; /* Increased size for prominence */
+    .gift-details-session {
+      font-size: 2rem;
       color: #16a085;
-      font-weight: 700; /* Made bolder */
-      margin-top: 0.5rem;
+      font-weight: 700;
+      margin-top: 0;
     }
 
     /* Code Display Styling */
@@ -195,8 +196,11 @@
       h1 {
         font-size: 2.5rem;
       }
-      .gift-details {
+      .gift-details-hour {
         font-size: 2rem;
+      }
+      .gift-details-session {
+        font-size: 1.8rem;
       }
       #displayCode {
         font-size: 1.8rem;
@@ -215,8 +219,11 @@
       h1 {
         font-size: 2.2rem;
       }
-      .gift-details {
+      .gift-details-hour {
         font-size: 1.8rem;
+      }
+      .gift-details-session {
+        font-size: 1.6rem;
       }
       #displayCode {
         font-size: 1.6rem;
@@ -256,9 +263,6 @@
 
   <!-- Main Container -->
   <div class="container">
-    <!-- Optional: Company Logo (Removed since it's now in the header) -->
-    <!-- <img src="moose_logo.png" alt="Zen Zone Cleaning Logo" class="logo"> -->
-
     <h1>🎁 Gift Card 🎁</h1>
     
     <p class="details"><span class="highlight">To:</span> <span id="toName">Ernie and Lil</span></p>
@@ -266,8 +270,8 @@
     <p class="details"><span class="highlight">Message:</span> <span id="message">Wishing you a Merry Christmas filled with love and joy!</span></p>
     
     <div class="gift-allotment">
-      <div class="gift-icon">🧹</div>
-      <div class="gift-details">3-Hour Professional Cleaning Session</div>
+      <div class="gift-details-hour">3-Hour</div>
+      <div class="gift-details-session">Professional Cleaning Session</div>
     </div>
 
     <p>Your exclusive gift code:</p>
@@ -279,7 +283,7 @@
     </p>
 
     <p class="contact-info">
-      If you need assistance, feel free to call us at <span class="highlight">705-242-1166</span>.
+      If you need assistance, feel free to call us at <span class="highlight"><a href="tel:7052421166" style="color: #d35400; text-decoration: none;">705-242-1166</a></span>.
     </p>
 
     <a href="#" id="bookButton" class="button" target="_blank">Book Your Cleaning Now</a>
@@ -333,20 +337,17 @@
 
       // Update the display code section to show assistance message
       const displayCode = document.getElementById('displayCode');
-      displayCode.textContent = 'Please call us at 705-242-1166 to obtain your gift code.';
+      displayCode.textContent = 'Call us at 705-242-1166 to get your gift code.';
       displayCode.style.border = 'none';
       displayCode.style.backgroundColor = 'transparent';
       displayCode.style.color = '#e74c3c'; // Change color to indicate importance
 
-      // Optionally, disable the Book Now button or remove the href
+      // Update the Book Now button to direct to call
       const bookButton = document.getElementById('bookButton');
-      bookButton.href = '#';
+      bookButton.href = 'tel:7052421166';
       bookButton.style.backgroundColor = '#95a5a6'; // Change color to indicate disabled state
-      bookButton.style.cursor = 'not-allowed';
+      bookButton.style.cursor = 'pointer'; // Change cursor to pointer
       bookButton.textContent = 'Call for Assistance';
-
-      // Optionally, hide the gift allotment section if desired
-      // document.querySelector('.gift-allotment').style.display = 'none';
     }
   </script>
 </body>
