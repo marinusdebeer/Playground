@@ -271,7 +271,7 @@
     </div>
 
     <p>Your exclusive gift code:</p>
-    <div id="displayCode">Error please call the number on this page!</div>
+    <div id="displayCode">GIFT2024</div>
 
     <p class="instructions">
       To redeem your gift card, enter the above code during checkout on our booking form at 
@@ -288,34 +288,65 @@
   </div>
 
   <script>
-    // JavaScript to extract parameters from URL and display them
+    // JavaScript to handle URL parameters and display content accordingly
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    const toName = urlParams.get('to');
-    const fromName = urlParams.get('from');
-    const message = urlParams.get('message');
+    const hasParams = urlParams.toString().length > 0;
 
-    if (code) {
-      document.getElementById('displayCode').textContent = code;
-    }
-    if (toName) {
-      document.getElementById('toName').textContent = decodeURIComponent(toName);
-    }
-    if (fromName) {
-      document.getElementById('fromName').textContent = decodeURIComponent(fromName);
-    }
-    if (message) {
-      document.getElementById('message').textContent = decodeURIComponent(message);
-    }
+    if (hasParams) {
+      const code = urlParams.get('code');
+      const toName = urlParams.get('to');
+      const fromName = urlParams.get('from');
+      const message = urlParams.get('message');
 
-    // Update the Book Now button with the code parameter
-    const bookButton = document.getElementById('bookButton');
-    if (code) {
-      const bookingURL = `https://zenzonecleaning.com/booknow/home_cleaning?code=${encodeURIComponent(code)}`;
-      bookButton.href = bookingURL;
+      // Update the display code if present
+      if (code) {
+        document.getElementById('displayCode').textContent = code;
+      }
+
+      // Update the personalized details if present
+      if (toName) {
+        document.getElementById('toName').textContent = decodeURIComponent(toName);
+      }
+      if (fromName) {
+        document.getElementById('fromName').textContent = decodeURIComponent(fromName);
+      }
+      if (message) {
+        document.getElementById('message').textContent = decodeURIComponent(message);
+      }
+
+      // Update the Book Now button with the code parameter
+      const bookButton = document.getElementById('bookButton');
+      if (code) {
+        const bookingURL = `https://zenzonecleaning.com/booknow/home_cleaning?code=${encodeURIComponent(code)}`;
+        bookButton.href = bookingURL;
+      } else {
+        // Fallback if no code is present
+        bookButton.href = 'https://zenzonecleaning.com/booknow/home_cleaning';
+      }
     } else {
-      // Fallback if no code is present
-      bookButton.href = 'https://zenzonecleaning.com/booknow/home_cleaning';
+      // If no URL parameters are present, display a blank gift card and prompt to call for the code
+
+      // Clear personalized details
+      document.getElementById('toName').textContent = '';
+      document.getElementById('fromName').textContent = '';
+      document.getElementById('message').textContent = '';
+
+      // Update the display code section to show assistance message
+      const displayCode = document.getElementById('displayCode');
+      displayCode.textContent = 'Please call us at 705-242-1166 to obtain your gift code.';
+      displayCode.style.border = 'none';
+      displayCode.style.backgroundColor = 'transparent';
+      displayCode.style.color = '#e74c3c'; // Change color to indicate importance
+
+      // Optionally, disable the Book Now button or remove the href
+      const bookButton = document.getElementById('bookButton');
+      bookButton.href = '#';
+      bookButton.style.backgroundColor = '#95a5a6'; // Change color to indicate disabled state
+      bookButton.style.cursor = 'not-allowed';
+      bookButton.textContent = 'Call for Assistance';
+
+      // Optionally, hide the gift allotment section if desired
+      // document.querySelector('.gift-allotment').style.display = 'none';
     }
   </script>
 </body>
