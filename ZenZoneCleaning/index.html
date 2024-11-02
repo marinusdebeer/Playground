@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Zen Zone Cleaning Gift Card</title>
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Reset and Base Styles */
     * {
@@ -13,111 +15,156 @@
     }
     body, html {
       height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: 'Quicksand', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to bottom right, #FFE5D9, #FFC8A2);
+      background: #f5f5f5;
       color: #333;
-      padding: 1rem;
+    }
+
+    /* Background Styling */
+    body {
+      background-image: url('https://yourdomain.com/path-to-your-background-image.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Overlay for better readability */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
     }
 
     /* Container Styling */
     .container {
+      position: relative;
       text-align: center;
       background: white;
-      padding: 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-      max-width: 500px;
-      width: 100%;
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      max-width: 90%;
+      width: 500px;
       animation: fadeIn 1.5s ease;
     }
 
     /* Gift Header Styling */
     h1 {
-      font-size: 1.8rem;
-      color: #FF6F61;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #d35400;
       margin-bottom: 1rem;
     }
 
     /* Code Display Styling */
     #displayCode {
-      font-size: 2rem;
-      color: #2ECC71;
+      font-size: 2.5rem;
+      color: #16a085;
       font-weight: bold;
       letter-spacing: 2px;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border: 3px dashed #2ECC71;
+      padding: 0.7rem 1.5rem;
+      border: 3px dashed #16a085;
       border-radius: 12px;
-      background-color: #F0FFF4;
+      background-color: #e8f8f5;
       word-break: break-word;
     }
 
     /* Personalized Details Styling */
     .details {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #555;
       margin-top: 1rem;
-      line-height: 1.6;
+      line-height: 1.8;
     }
-    
-    /* Bold Highlight for Key Info */
+
+    /* Highlighted Text */
     .highlight {
-      color: #FF6F61;
+      color: #d35400;
       font-weight: bold;
     }
 
     /* Celebration Message Styling */
     .celebration {
-      font-size: 1.2rem;
-      color: #FF6F61;
+      font-size: 1.3rem;
+      color: #d35400;
       margin-top: 2rem;
       font-weight: bold;
       letter-spacing: 1px;
     }
 
-    /* Fade In Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Button Styling */
+    .button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      color: #fff;
+      background-color: #d35400;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #e67e22;
     }
 
     /* Responsive Adjustments */
     @media (max-width: 600px) {
       h1 {
-        font-size: 1.5rem;
-      }
-      #displayCode {
         font-size: 1.8rem;
       }
+      #displayCode {
+        font-size: 2rem;
+      }
       .container {
-        padding: 1.5rem;
+        padding: 2rem;
       }
       .celebration {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
+      .button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+
+    /* Fade In Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
+  <div class="overlay"></div>
+
   <div class="container">
-    <h1>🎉 Your Zen Zone Cleaning Gift Card 🎉</h1>
+    <h1>🎁 A Luxurious Gift Awaits You 🎁</h1>
     <p class="details"><span class="highlight">To:</span> <span id="toName">Recipient's Name</span></p>
     <p class="details"><span class="highlight">From:</span> <span id="fromName">Sender's Name</span></p>
     <p class="details"><span class="highlight">Message:</span> <span id="message">Wishing you a Merry Christmas!</span></p>
-    <p class="details"><span class="highlight">Gift:</span> 3-Hour Professional Cleaning Session</p>
-    <p>Your unique code:</p>
+    <p class="details"><span class="highlight">Gift:</span> 3-Hour Premium Cleaning Experience</p>
+    <p>Your exclusive gift code:</p>
     <div id="displayCode">No code provided</div>
 
     <p class="details">
-      To redeem your gift card, enter the above code during checkout on our booking form at 
-      <a href="https://zenzonecleaning.com" target="_blank">zenzonecleaning.com</a>. 
-      If you need assistance, feel free to call us at <span class="highlight">705-242-1166</span>.
+      Redeem your gift by entering the above code during checkout on our booking form at 
+      <a href="https://zenzonecleaning.com" target="_blank">zenzonecleaning.com</a>.
+      For assistance, please call us at <span class="highlight">705-242-1166</span>.
     </p>
+
+    <a href="https://zenzonecleaning.com" class="button">Book Your Cleaning Now</a>
 
     <p class="celebration">Thank you for choosing Zen Zone Cleaning Services!</p>
   </div>
@@ -134,13 +181,13 @@
       document.getElementById('displayCode').textContent = code;
     }
     if (toName) {
-      document.getElementById('toName').textContent = toName;
+      document.getElementById('toName').textContent = decodeURIComponent(toName);
     }
     if (fromName) {
-      document.getElementById('fromName').textContent = fromName;
+      document.getElementById('fromName').textContent = decodeURIComponent(fromName);
     }
     if (message) {
-      document.getElementById('message').textContent = message;
+      document.getElementById('message').textContent = decodeURIComponent(message);
     }
   </script>
 </body>
