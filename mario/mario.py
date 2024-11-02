@@ -974,7 +974,7 @@ class Pipe(pygame.sprite.Sprite):
     
     def transport_player(self, player):
         # Check if player is standing on top of the pipe and pressing "Down"
-        if player.rect.bottom == self.rect.top and pygame.key.get_pressed()[pygame.K_DOWN]:
+        if player.rect.bottom == self.rect.top and pygame.key.get_pressed()[pygame.K_DOWN] and self.rect.x <= player.rect.centerx <= self.rect.right:
             return self.destination_level
         return None
 
@@ -1069,7 +1069,7 @@ class Level:
             Platform(600, 400, 200, 40),
             Platform(900, 300, 200, 40),
             Platform(1200, 300, 200, 40),
-            Platform(1500, 500, 200, 40),
+            # Platform(1500, 500, 200, 40),
             Platform(1800, 400, 200, 40),
             Platform(2100, 300, 200, 40),
             Platform(2400, 400, 200, 40),
@@ -1262,8 +1262,8 @@ def load_main_level(player, level):
     level.load_level_one()
 
     # Set player's position when they return from the secret area
-    player.rect.x = 1500  # Set a new position after returning from the secret area
-    player.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 40
+    player.rect.x = 800  # Set a new position after returning from the secret area
+    player.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 80
 
 def handle_events(player):
     global fullscreen
@@ -1382,7 +1382,7 @@ def load_new_level(player, level):
     # Load next level data
     level.load_level(player.level)
     player.rect.x = 100
-    player.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - 40
+    player.rect.y = SCREEN_HEIGHT - PLAYER_HEIGHT - GROUND_HEIGHT
 
 def save_game(player):
     save_data = player.save_state()
