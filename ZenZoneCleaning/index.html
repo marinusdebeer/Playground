@@ -13,7 +13,7 @@
     }
     body, html {
       height: 100%;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -42,27 +42,33 @@
 
     /* Code Display Styling */
     #displayCode {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #2ECC71;
       font-weight: bold;
-      letter-spacing: 3px;
-      margin-top: 1.5rem;
+      letter-spacing: 2px;
+      margin-top: 1rem;
       display: inline-block;
-      padding: 0.7rem 1.5rem;
+      padding: 0.5rem 1.5rem;
       border: 3px dashed #2ECC71;
       border-radius: 12px;
       background-color: #F0FFF4;
     }
 
-    /* Subtext and Message Styling */
-    p {
+    /* Personalized Details Styling */
+    .details {
       font-size: 1rem;
       color: #555;
       margin-top: 1rem;
       line-height: 1.6;
     }
+    
+    /* Bold Highlight for Key Info */
+    .highlight {
+      color: #FF6F61;
+      font-weight: bold;
+    }
 
-    /* Celebration Styles */
+    /* Celebration Message Styling */
     .celebration {
       font-size: 1.2rem;
       color: #FF6F61;
@@ -81,18 +87,35 @@
 <body>
 
   <div class="container">
-    <h1>🎉 You've Received a Zen Zone Gift! 🎉</h1>
-    <p>Use this exclusive code to book your cleaning service with a special discount:</p>
+    <h1>🎉 A Special Gift for You! 🎉</h1>
+    <p class="details"><span class="highlight">To:</span> <span id="toName">Recipient's Name</span></p>
+    <p class="details"><span class="highlight">From:</span> <span id="fromName">Sender's Name</span></p>
+    <p class="details"><span class="highlight">Message:</span> <span id="message">Wishing you a clean, fresh space!</span></p>
+    <p class="details"><span class="highlight">Service Hours:</span> 3 Hours of Professional Cleaning</p>
+    <p>Your unique code:</p>
     <div id="displayCode">No code provided</div>
     <p class="celebration">Thank you for choosing Zen Zone Cleaning Services!</p>
   </div>
 
   <script>
-    // JavaScript to extract 'code' parameter from URL and display it
+    // JavaScript to extract parameters from URL and display them
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
+    const toName = urlParams.get('to');
+    const fromName = urlParams.get('from');
+    const message = urlParams.get('message');
+
     if (code) {
       document.getElementById('displayCode').textContent = code;
+    }
+    if (toName) {
+      document.getElementById('toName').textContent = toName;
+    }
+    if (fromName) {
+      document.getElementById('fromName').textContent = fromName;
+    }
+    if (message) {
+      document.getElementById('message').textContent = message;
     }
   </script>
 </body>
