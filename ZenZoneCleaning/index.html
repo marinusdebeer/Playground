@@ -1,1 +1,23 @@
-<h2>Hello World, Welcome to Zen Zone Cleaning Services!</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Zone Cleaning Code Display</title>
+</head>
+<body>
+    <h1>Welcome to Zen Zone Cleaning Services</h1>
+    <p>Your Code: <span id="displayCode"></span></p>
+
+    <script>
+        // JavaScript to extract 'code' parameter from URL and display it
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        if (code) {
+            document.getElementById('displayCode').textContent = code;
+        } else {
+            document.getElementById('displayCode').textContent = 'No code provided';
+        }
+    </script>
+</body>
+</html>
