@@ -21,10 +21,36 @@
       overflow-x: hidden;
     }
 
-    /* Container Styling */
+    /* Header Bar Styling */
+    .header {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header img {
+      max-height: 50px;
+      margin-right: 1rem;
+    }
+
+    .header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #d35400;
+    }
+
+    /* Main Container Styling */
     .container {
       max-width: 600px;
-      margin: 2rem auto;
+      margin: 6rem auto 2rem; /* Added top margin to accommodate fixed header */
       background: #ffffff;
       padding: 2.5rem 2rem;
       border-radius: 15px;
@@ -33,12 +59,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    /* Company Logo (Optional) */
-    .logo {
-      max-width: 150px;
-      margin-bottom: 1rem;
     }
 
     /* Gift Header Styling */
@@ -94,9 +114,9 @@
 
     /* Gift Details */
     .gift-details {
-      font-size: 1.5rem;
+      font-size: 1.8rem; /* Increased size for prominence */
       color: #16a085;
-      font-weight: 600;
+      font-weight: 700; /* Made bolder */
       margin-top: 0.5rem;
     }
 
@@ -171,7 +191,7 @@
         font-size: 1.8rem;
       }
       .gift-details {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
       }
       #displayCode {
         font-size: 1.8rem;
@@ -187,7 +207,7 @@
         font-size: 1.6rem;
       }
       .gift-details {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
       #displayCode {
         font-size: 1.6rem;
@@ -208,9 +228,16 @@
 </head>
 <body>
 
+  <!-- Header Bar -->
+  <div class="header">
+    <img src="moose_logo.png" alt="Zen Zone Cleaning Logo">
+    <h2>Zen Zone Cleaning Services</h2>
+  </div>
+
+  <!-- Main Container -->
   <div class="container">
-    <!-- Optional: Company Logo -->
-    <!-- <img src="https://yourdomain.com/path-to-your-logo.png" alt="Zen Zone Cleaning Logo" class="logo"> -->
+    <!-- Optional: Company Logo (Removed since it's now in the header) -->
+    <!-- <img src="moose_logo.png" alt="Zen Zone Cleaning Logo" class="logo"> -->
 
     <h1>🎁 Your Zen Zone Gift Card 🎁</h1>
     
