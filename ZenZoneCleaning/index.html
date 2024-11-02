@@ -19,6 +19,7 @@
       align-items: center;
       background: linear-gradient(to bottom right, #FFE5D9, #FFC8A2);
       color: #333;
+      padding: 1rem;
     }
 
     /* Container Styling */
@@ -28,8 +29,8 @@
       padding: 2.5rem;
       border-radius: 12px;
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-      max-width: 90%;
-      width: 400px;
+      max-width: 500px;
+      width: 100%;
       animation: fadeIn 1.5s ease;
     }
 
@@ -42,7 +43,7 @@
 
     /* Code Display Styling */
     #displayCode {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: #2ECC71;
       font-weight: bold;
       letter-spacing: 2px;
@@ -52,6 +53,7 @@
       border: 3px dashed #2ECC71;
       border-radius: 12px;
       background-color: #F0FFF4;
+      word-break: break-word;
     }
 
     /* Personalized Details Styling */
@@ -81,6 +83,22 @@
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      #displayCode {
+        font-size: 1.8rem;
+      }
+      .container {
+        padding: 1.5rem;
+      }
+      .celebration {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
