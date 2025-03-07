@@ -35,25 +35,30 @@ class ReplayBuffer:
         return len(self.buffer)
 
 class DQNAgent:
-    def __init__(self, state_dim, action_dim, device):
+    def __init__(self, state_dim, action_dim, device, num_episodes):
         self.state_dim = state_dim
         self.action_dim = action_dim
         self.device = device
+        self.num_episodes = num_episodes
 
         self.policy_net = DQN(state_dim, action_dim).to(self.device)
         self.target_net = DQN(state_dim, action_dim).to(self.device)
         self.target_net.load_state_dict(self.policy_net.state_dict())
         self.target_net.eval()
 
-        self.optimizer = optim.Adam(self.policy_net.parameters(), lr=1e-3)
-        self.replay_buffer = ReplayBuffer(capacity=10000)
+        self.replay_buffer = ReplayBuffer(capacity=100_000)
         self.batch_size = 64
         self.gamma = 0.99
-        self.epsilon = 1.0
+        self.learning_rate = 0.00025
+        self.initial_epsilon = 1.0
+        self.epsilon = self.initial_epsilon
         self.epsilon_min = 0.05
-        self.epsilon_decay = 0.995
-        self.update_target_every = 1000
+        # Decay rate per episode; adjust this value as needed.
+        self.epsilon_decay = 0.04  
+        self.update_target_every = 3000
         self.step_count = 0
+
+        self.optimizer = optim.Adam(self.policy_net.parameters(), lr=self.learning_rate)
 
     def select_action(self, state):
         self.step_count += 1
@@ -90,6 +95,7 @@ class DQNAgent:
         if self.step_count % self.update_target_every == 0:
             self.target_net.load_state_dict(self.policy_net.state_dict())
     
-    def decay_epsilon(self):
-        if self.epsilon > self.epsilon_min:
-            self.epsilon *= self.epsilon_decay
+    def decay_epsilon(self, episode):
+        # Decays epsilon after each episode using the formula:
+        # epsilon = max(initial_epsilon * (epsilon_decay ** (episode / num_episodes)), epsilon_min)
+        self.epsilon = max(self.initial_epsilon * (self.epsilon_decay ** (episode / self.num_episodes)), self.epsilon_min)

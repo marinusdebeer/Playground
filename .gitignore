@@ -49,3 +49,4 @@ log
 gym/mario/checkpoints
 *.flac
 *.wav
+*.pt

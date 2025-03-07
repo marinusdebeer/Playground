@@ -19,6 +19,12 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 PURPLE = (128, 0, 128)
 
+# Adjustable Reward Parameters
+REWARD_BRICK = 1.0         # Reward for hitting a brick
+REWARD_PADDLE = 0.1        # Reward for hitting the paddle
+REWARD_LOSE_BALL = 0.0     # Reward for losing the ball (set to 0)
+REWARD_CLEAR_LEVEL = 0.0  # Bonus for clearing all bricks
+
 # Paddle Settings
 PADDLE_WIDTH = 100
 PADDLE_HEIGHT = 15
@@ -142,7 +148,7 @@ class BreakoutEnv:
             self.paddle.x / (WIDTH - self.paddle.width),
             self.ball.x / WIDTH,
             self.ball.y / HEIGHT,
-            self.ball.vx / 15.0,  # normalized by max speed
+            self.ball.vx / 15.0,  # normalized by assumed max speed
             self.ball.vy / 15.0
         ], dtype=np.float32)
         return state
@@ -180,7 +186,7 @@ class BreakoutEnv:
             self.ball.vy = -abs(self.ball.vy)
             hit_pos = (self.ball.x - self.paddle.x) / self.paddle.width
             self.ball.vx = INITIAL_BALL_SPEED * ((hit_pos - 0.5) * 2) + 0.2 * self.paddle.dx
-            reward += 0.1
+            reward += REWARD_PADDLE
 
         # Handle brick collisions (process one brick per step)
         ball_rect = self.ball.get_rect()
@@ -188,15 +194,15 @@ class BreakoutEnv:
             if brick.rect.colliderect(ball_rect):
                 self.ball.vy *= -1
                 self.bricks.remove(brick)
-                reward += 10
-                self.score += 10
+                reward += REWARD_BRICK
+                self.score += REWARD_BRICK
                 self.ball.increase_speed()
                 break
 
         # Ball falls below paddle
         if self.ball.y - self.ball.radius > HEIGHT:
             self.lives -= 1
-            reward -= 5
+            reward += REWARD_LOSE_BALL  # now 0 (adjustable)
             if self.lives <= 0:
                 self.done = True
             else:
@@ -205,7 +211,7 @@ class BreakoutEnv:
 
         # Win condition: all bricks cleared
         if not self.bricks:
-            reward += 50
+            reward += REWARD_CLEAR_LEVEL
             self.done = True
 
         if self.render_mode:
